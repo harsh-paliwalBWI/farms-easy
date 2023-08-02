@@ -82,7 +82,7 @@ const Testimonials = () => {
        <div className='text-[#253d4e] text-center text-2xl font-bold'>What Our Clients Says</div>
 <div className='flex justify-center items-center gap-0 md:gap-[20px] pb-[50px]  px-[3.5%] '>
     
-      <div className='back w-[100%] 3xl:w-[80%] mt-[20px] '>
+      <div className='back w-[100%]  mt-[20px] '>
         <Slider ref={slider} {...settings}
           dotsClass={`slick-dots `}
           arrows={false}
