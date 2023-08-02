@@ -1,8 +1,13 @@
 import React from 'react'
+import GetInTouch from '@/components/geteInTouch/GetInTouch'
+import DropALine from '@/components/dropALine/DropALine'
 
 const page = () => {
   return (
-    <div>contact page</div>
+    <div>
+      <GetInTouch/>
+      <DropALine/>
+    </div>
   )
 }
 

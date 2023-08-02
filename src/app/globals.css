@@ -52,5 +52,15 @@
   justify-content: center;
   text-align: center;
 } */
+.get-in-touch input::placeholder{
+  font-size: 15px !important;
+}
+.slick-slide>div {
+  margin: 0 20px;
+ 
+}
 
+/* .slick-list {
+  margin: 0 -10px;
+} */
 

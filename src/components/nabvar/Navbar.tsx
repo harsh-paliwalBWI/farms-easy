@@ -29,8 +29,8 @@ const Navbar = async() => {
                 <div>Services</div>
                 <Link href={"/gallery"}>Gallery</Link>
                 <Link href={"/farmerlist"}>Farmer List</Link>
-               
                 <Link href={"/contactUs"}>Contact Us</Link>
+               
             </div>
             <div className='flex items-center text-[#51150a] font-bold gap-2 '>
                 <div><BsTelephone className="h-[18px] w-[18px]"/></div>

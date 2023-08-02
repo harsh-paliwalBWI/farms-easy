@@ -11,7 +11,7 @@ const DUMMY_DATA=[{image:ourMission,heading:'WHO WE ARE',text:"We are a successf
 
 const OurMission = async() => {
   return (
-    <div className='relative bg-our-mission-bg bg-cover bg-no-repeat py-[100px]'>
+    <div className='relative bg-our-mission-bg  py-[100px]'>
       
         <div className='w-full relative'>
           {/* <Image src={backGroundImage} width={1000} height={1000} style={{ width: "100vw", objectFit: "cover" }} alt="" /> */}
