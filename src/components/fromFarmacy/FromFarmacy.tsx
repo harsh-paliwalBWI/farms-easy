@@ -24,7 +24,7 @@ const FromFarmacy = async() => {
             <div>
             {
                 DUMMY_DATA.map((item:any,idx:number)=>{
-                    return <div className='flex items-center'>
+                    return <div className='flex items-center' key={idx}>
                         <div className='border-[2px] border-[black]'>
                         <div className='font-bold text-lg'>{item.heading}</div>
                         <div className='text-xs text-[#606060] font-medium text-right'>{item.text}</div>
@@ -39,7 +39,7 @@ const FromFarmacy = async() => {
             <div>
             {
                 DUMMY_DATA1.map((item:any,idx:number)=>{
-                    return <div className='flex items-center'>
+                    return <div className='flex items-center' key={idx}>
                         <div className='border-[2px] border-[black]'>
                         <div className='font-bold text-lg'>{item.heading}</div>
                         <div className='text-xs text-[#606060] text-right'>{item.text}</div>

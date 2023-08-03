@@ -21,7 +21,7 @@ const HaveQuestions = () => {
             <div className='text-2xl font-bold mb-[10px]'>Have Questions?</div>
         <div className=''>
             {DUMMY_DATA.map((item:any,idx:number)=>{
-                return <Disclosure >
+                return <Disclosure  key={idx}>
                 <Disclosure.Button className="py-5 flex justify-between items-center border-b-[1px] border-[#E6F2DA] w-full pr-[30px] ">
                   <span className='text-xs font-medium'>{item.question}</span>
                   <MdOutlineKeyboardArrowDown/>

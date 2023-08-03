@@ -1,8 +1,22 @@
+"use client";
 import React from 'react';
 import BannerImg from "../../images/healthierBanner.svg";
 import Image from 'next/image';
+import { useQuery } from '@tanstack/react-query';
 
-const HealthierWay =async() => {
+// async function getUsers() {
+//   const res = await fetch("https://jsonplaceholder.typicode.com/users");
+//   const users = (await res.json());
+//   return users;
+// }
+
+
+const HealthierWay = () => {
+  // const { data } = useQuery({
+  //   queryKey: ["hydrate-users"],
+  //   queryFn: () => getUsers(),
+  // });
+
   return (
     <div className='relative '>
       <div className='relative '>

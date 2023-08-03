@@ -7,18 +7,18 @@ import image5 from "../../../images/Rectangle 4.svg"
 import image6 from "../../../images/Rectangle 15.svg"
 import Image from 'next/image'
 
-const DUMMY_DATA=[{image:image1,btnText:"Vegetables"},
-{image:image2,btnText:"Vegetables"},
-{image:image3,btnText:"Vegetables"},{image:image4,btnText:"Vegetables"},
-{image:image5,btnText:"Vegetables"},{image:image6,btnText:"Vegetables"},]
-const CategoryCard = async() => {
+const DUMMY_DATA = [{ image: image1, btnText: "Vegetables" },
+{ image: image2, btnText: "Vegetables" },
+{ image: image3, btnText: "Vegetables" }, { image: image4, btnText: "Vegetables" },
+{ image: image5, btnText: "Vegetables" }, { image: image6, btnText: "Vegetables" },]
+const CategoryCard = async () => {
   return (
     <div className=' border-[2px] border-black  category-card gap-8 '>
-    {/* <div className='flex flex-wrap border-[2px] border-[green] mx-auto w-90%'> */}
-    {/* <div className='category-card w-full'> */}
-      {DUMMY_DATA.map((item:any,idx:number)=>{
-        return <div className=''>
-          <div className=''><Image src={item.image} width={1000} height={1000} alt=''/></div>
+      {/* <div className='flex flex-wrap border-[2px] border-[green] mx-auto w-90%'> */}
+      {/* <div className='category-card w-full'> */}
+      {DUMMY_DATA.map((item: any, idx: number) => {
+        return <div className='' key={idx}>
+          <div className=''><Image src={item.image} width={1000} height={1000} alt='' /></div>
           <div><button>{item.btnText}</button></div>
         </div>
       })}

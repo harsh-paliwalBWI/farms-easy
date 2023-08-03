@@ -11,68 +11,75 @@ import "slick-carousel/slick/slick-theme.css";
 const Products = () => {
     const slider = useRef<any>(null)
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 7,
-        slidesToScroll: 1,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         initialSlide: 0,
-        // responsive: [
-        //     {
-        //         breakpoint: 1024,
-        //         settings: {
-        //             slidesToShow: 3,
-        //             slidesToScroll: 1,
-        //             infinite: true,
-        //             dots: true
-        //         }
-        //     },
-        //     {
-        //         breakpoint: 600,
-        //         settings: {
-        //             slidesToShow: 2,
-        //             slidesToScroll: 1,
-        //             initialSlide: 2
-        //         }
-        //     },
-        //     {
-        //         breakpoint: 768,
-        //         settings: {
-        //             slidesToShow: 2,
-        //             slidesToScroll: 1,
-        //             initialSlide: 2
-        //         }
-        //     },
-        //     {
-        //         breakpoint: 480,
-        //         settings: {
-        //             slidesToShow: 1,
-        //             slidesToScroll: 1
-        //         }
-        //     }
-        // ]
+        responsive: [
+            {
+                breakpoint: 1242,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     };
-    const arr = [1, 2, 3, 54, 6, 7]
-  return (
-    <div className='flex justify-center items-center '>
-    <button onClick={() => slider.current.slickPrev()}><IoIosArrowBack className='h-[25px] w-[25px]' /></button>
-    <div className='back '>
-        <div className='w-[100%]'>
-        {/* <ProductCard /> */}
+    return (
+        <div className='flex justify-center items-center mt-10 '>
+            <button onClick={() => slider.current?.slickPrev()} className='bg-[#F2F3F4] p-2 rounded-full '><IoIosArrowBack className='h-[25px] w-[25px]' /></button>
+            <div className='back '>
+                <div className='w-[85vw]'>
+                    <Slider ref={slider} {...settings} className='' dotsClass={`slick-dots `} arrows={true} nextArrow={<></>} prevArrow={<></>} draggable={true}>
+                        {[1, 2, 3, 4, 4, 7, 6, 3, 5].map((item: any, idx: number) => {
+                            return <div key={idx} className='lg:w-[25vw]'>
+                                <ProductCard />
+                            </div>
+                        })}
 
-            {/* <Slider ref={slider}  className='' dotsClass={`slick-dots `}>
-                {[1,2,3,4,4,7,6,3,5].map((item:any,idx:number)=>{
-                    return <ProductCard key={idx}/>
-                 
-                })}
-             
-            </Slider> */}
+                    </Slider>
+                </div>
+            </div>
+            <button onClick={() => slider.current.slickNext()} className='bg-[#F2F3F4] p-2 rounded-full '><IoIosArrowForward className='h-[25px] w-[25px]' /></button>
         </div>
-    </div>
-    <button onClick={() => slider.current.slickNext()} ><IoIosArrowForward className='h-[25px] w-[25px]' /></button>
-</div>
 
-  )
+    )
 }
 
 export default Products

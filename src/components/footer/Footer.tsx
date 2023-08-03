@@ -48,10 +48,10 @@ const SOCIAL_MEDIA=[{icon:<RiFacebookFill/>},{icon:<RiLinkedinFill/>},{icon:<FaI
         </div>
         {/* <div ></div> */}
         {DUMMY_DATA.map((item:any,idx:number)=>{
-          return <div className=''>
+          return <div className='' key={idx}>
             <div className='font-semibold text-xl mb-[20px]'>{item.heading}</div>
             {item.subLinks.map((item:any,idx:number)=>{
-              return <div className='text-[#555555] text-sm font-semibold mb-[20px]'>{item.name}</div>
+              return <div key={idx} className='text-[#555555] text-sm font-semibold mb-[20px]'>{item.name}</div>
             })}
           </div>
         })}

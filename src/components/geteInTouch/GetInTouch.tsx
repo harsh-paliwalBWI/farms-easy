@@ -28,7 +28,7 @@ const GetInTouch = () => {
             </div>
             <div className=' flex flex-col gap-6'>
                 {DummyData.map((item:any,idx:number)=>{
-                    return <div className='flex items-center gap-5 '>
+                    return <div className='flex items-center gap-5 ' key={idx}>
                          <div className='bg-[#588f27] h-[60px] w-[60px] rounded-full flex justify-center items-center'><Image src={item.image} alt='' width={23} height={23}/></div>
                     <div>
                         <div className='text-lg font-semibold'>{item.heading}</div>

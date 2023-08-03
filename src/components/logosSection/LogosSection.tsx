@@ -17,7 +17,7 @@ const LogosSection = async() => {
       <div className='flex flex-wrap gap-x-[20px] gap-y-[40px] justify-around items-center py-[80px]   '>
         {
             IMAGES.map((item:any,idx:number)=>{
-                return <div className='w-[180px]  '><Image src={item.image} height={1000} width={1000} alt=''/></div>
+                return <div className='w-[180px]  ' key={idx}><Image src={item.image} height={1000} width={1000} alt=''/></div>
             })
         }
         </div>
