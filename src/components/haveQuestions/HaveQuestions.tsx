@@ -16,9 +16,9 @@ const DUMMY_DATA=[{question:"Lorem ipsum dolor sit amet, consectetur adipiscing 
 const HaveQuestions = () => {
   return (
     <div className=' bg-have-questions-bg bg-cover bg-no-repeat flex gap-[80px] items-center pr-[3.5%] '>
-        <div className='h-fit'><Image src={Img} alt='' width={450} height={450} className=''/></div>
+        <div className='h-fit'><Image src={Img} alt='' width={600} height={600} className=''/></div>
         <div className=' w-[60%] 3xl:w-[80%]'>
-            <div className='text-2xl font-bold mb-[10px]'>Have Questions?</div>
+            <div className='text-3xl font-bold mb-[10px]'>Have Questions?</div>
         <div className=''>
             {DUMMY_DATA.map((item:any,idx:number)=>{
                 return <Disclosure >

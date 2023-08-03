@@ -18,34 +18,36 @@ const DUMMY_DATA1=[{heading:"100% Organic",text:"We advocate that food be authen
 
 const FromFarmacy = async() => {
   return (
-    <div className='px-[3.5%]'>
-        <div className='text-center font-bold text-2xl'>Form Farmacy Farm Fresh</div>
-        <div className='flex border-[2px] border-[black] justify-center items-center'>
-            <div>
+    <div className='px-[3.5%]  py-[20px]'>
+        <div className='text-center font-bold text-3xl'>Form Farmacy Farm Fresh</div>
+        <div className='flex justify-center items-center my-[60px]'>
+            <div className='  flex flex-col gap-[60px]'>
             {
                 DUMMY_DATA.map((item:any,idx:number)=>{
-                    return <div className='flex items-center'>
-                        <div className='border-[2px] border-[black]'>
-                        <div className='font-bold text-lg'>{item.heading}</div>
+                    return <div className='flex items-center gap-5'>
+                        <div className=''>
+                        <div className='font-bold text-lg text-right mb-[10px]'>{item.heading}</div>
                         <div className='text-xs text-[#606060] font-medium text-right'>{item.text}</div>
                         <div className='text-xs text-[#606060] font-medium text-right'>{item.text1}</div>
                         </div>
-                        <div className='border-[2px] border-[black]'><Image src={item.image} alt='' height={50} width={50}/></div>
+                        <div className=''><Image src={item.image} alt='' height={50} width={50}/></div>
                     </div>
                 })
             }
             </div>
             <div><Image src={HeartVegetableImg} alt='' height={400} width={400}/></div>
-            <div>
+            <div className='  flex flex-col gap-[60px]'>
             {
                 DUMMY_DATA1.map((item:any,idx:number)=>{
-                    return <div className='flex items-center'>
-                        <div className='border-[2px] border-[black]'>
-                        <div className='font-bold text-lg'>{item.heading}</div>
+                    return <div className='flex items-center gap-5'>
+                        <div className=''><Image src={item.image} alt='' height={50} width={50}/></div>
+
+                        <div className=' '>
+                        <div className='font-bold text-lg mb-[10px]'>{item.heading}</div>
                         <div className='text-xs text-[#606060] text-right'>{item.text}</div>
-                        <div className='text-xs text-[#606060] text-right'>{item.text1}</div>
+                        <div className='text-xs text-[#606060] '>{item.text1}</div>
                         </div>
-                        <div className='border-[2px] border-[black]'><Image src={item.image} alt='' height={50} width={50}/></div>
+                        {/* <div className=''><Image src={item.image} alt='' height={50} width={50}/></div> */}
                     </div>
                 })
             }

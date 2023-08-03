@@ -7,13 +7,14 @@ import PlayStoreLink from '@/components/playstoreLink/PlayStoreLink'
 import Testimonials from '@/components/testimonials/Testimonials'
 import Products from '@/components/products/Products'
 import CategoryList from '@/components/categoryList/CategoryList'
+import Leaf from '@/components/leaf/Leaf'
 
 export default async function Home() {
   return (
    <div className='w-full '>
     <HealthierWay/>
     {/* <Category/> */}
-    <Products/>
+    {/* <Products/> */}
     {/* <CategoryList/> */}
     <LogosSection/>
     <Testimonials/>
