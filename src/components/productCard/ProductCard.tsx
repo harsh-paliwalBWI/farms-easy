@@ -6,7 +6,7 @@ import Image from 'next/image'
 import arrow from "../../images/Vector (1).svg"
 const ProductCard = () => {
   return (
-    <div className='border-[2px] border-[black]'>
+    <div className=''>
          <div className='border-[#479332] border-[1px] w-fit p-[15px] rounded-md '>
             <div>
                 <div className='flex items-center justify-between'>

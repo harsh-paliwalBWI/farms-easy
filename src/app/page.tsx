@@ -13,8 +13,8 @@ export default async function Home() {
    <div className='w-full '>
     <HealthierWay/>
     {/* <Category/> */}
-    {/* <Products/> */}
-    <CategoryList/>
+    <Products/>
+    {/* <CategoryList/> */}
     <LogosSection/>
     <Testimonials/>
     <PlayStoreLink/>
