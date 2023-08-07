@@ -77,11 +77,10 @@ const Testimonials = () => {
     };
    
   return (
-    <div className=' py-[70px]'>
+    <div className=' pb-[70px]'>
        <div className='text-center text-[#51150a] font-semibold text-lg mb-[10px] '>Testimonials</div>
-       <div className='text-[#253d4e] text-center text-2xl font-bold'>What Our Clients Says</div>
+       <div className='text-[#253d4e] text-center text-3xl font-bold'>What Our Clients Says</div>
 <div className='flex justify-center items-center gap-0 md:gap-[20px] pb-[50px]  px-[3.5%] '>
-    
       <div className='back w-[100%]  mt-[20px] '>
         <Slider ref={slider} {...settings}
           dotsClass={`slick-dots `}
@@ -95,7 +94,7 @@ const Testimonials = () => {
             <Image src={quotationImg} alt=''/></div>
               <div className={`py-[60px] px-[30px] rounded-lg  ${idx===0?"bg-[#F9F5F4]":"bg-[#f1f3e8]"} relative z-10   border-b-[#ececec] `}>
                 <div className={`absolute w-6 h-6 -bottom-[14px] left-0 right-0 mx-auto  ${idx===0?"bg-[#F9F5F4]":"bg-[#f1f3e8]"} rotate-45 rounded-md`}></div>
-                <div className='text-center md:text-[15px] text-[13px]  '>
+                <div className='text-center md:text-[15px] text-[13px] text-[#555555] text-xs leading-5 '>
                {item.feedback}
                 </div>
                 </div>

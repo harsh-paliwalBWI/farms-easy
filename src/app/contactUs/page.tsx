@@ -4,6 +4,7 @@ import DropALine from '@/components/dropALine/DropALine'
 import Leaf from '@/components/leaf/Leaf'
 
 const page = async() => {
+  
   return (
     <div>
       <Leaf text="Contact Us"/>

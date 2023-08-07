@@ -26,9 +26,9 @@ const data2=[{heading:"sfgfdgh",subLinks:[{icon:<CiLocationOn/>,darkKey:"Address
 const SOCIAL_MEDIA=[{icon:<RiFacebookFill/>},{icon:<RiLinkedinFill/>},{icon:<FaInstagram/>},{icon:<BsTwitter/>}]
   return (
     <div className='  h-fit'>
-      <div className='flex  justify-between gap-10  py-[50px] px-[3.5%] '>
+      <div className='flex lg:flex-row flex-wrap  sm:justify-center lg:justify-between gap-10  py-[50px] px-[3.5%] '>
         <div className=''>
-          <div className=' mb-[20px]'><Image src={logo} alt='' height={300} width={300}/></div>
+          <div className=' mb-[20px]'><Image src={logo} alt='' height={300} width={300} className=' sm:w-[260px] sm:h-[80px] h-[60px] w-[200px] '/></div>
           <div className='flex items-center gap-3  mb-[20px]'>
             <div><CiLocationOn className="text-[#588f27] h-[25px] w-[25px]" /></div>
             <div className='font-bold text-sm'>Address : <span className='text-[#555555] text-sm font-semibold'>1762 school house road</span></div>
@@ -48,10 +48,10 @@ const SOCIAL_MEDIA=[{icon:<RiFacebookFill/>},{icon:<RiLinkedinFill/>},{icon:<FaI
         </div>
         {/* <div ></div> */}
         {DUMMY_DATA.map((item:any,idx:number)=>{
-          return <div className=''>
-            <div className='font-semibold text-xl mb-[20px]'>{item.heading}</div>
+          return <div className='' key={idx}>
+            <div className='font-semibold sm:text-xl text-base mb-[20px]'>{item.heading}</div>
             {item.subLinks.map((item:any,idx:number)=>{
-              return <div className='text-[#555555] text-sm font-semibold mb-[20px]'>{item.name}</div>
+              return <div key={idx} className='text-[#555555] text-sm font-semibold mb-[20px]'>{item.name}</div>
             })}
           </div>
         })}
@@ -64,9 +64,7 @@ const SOCIAL_MEDIA=[{icon:<RiFacebookFill/>},{icon:<RiLinkedinFill/>},{icon:<FaI
             <div className='bg-[#588f27] h-[40px] w-[40px] rounded-full flex items-center justify-center'><RiLinkedinFill className="text-white h-[20px] w-[20px]" /></div>
             <div className='bg-[#588f27] h-[40px] w-[40px] rounded-full flex items-center justify-center'><FaInstagram className="text-white h-[20px] w-[20px]"/></div>
             <div className='bg-[#588f27] h-[40px] w-[40px] rounded-full flex items-center justify-center'><BsTwitter className="text-white h-[20px] w-[20px]"/></div>
-            {/* {SOCIAL_MEDIA.map((item:any,idx:number)=>{
-              return <div className='text-white bg-[#588f27] h-[50px] w-[50px] rounded-full flex '><span>{item.icon}</span></div>
-            })} */}
+           
           </div>
         </div>
        

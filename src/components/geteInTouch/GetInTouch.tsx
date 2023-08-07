@@ -17,7 +17,7 @@ const DummyData=[{image:locationImg,heading:"Visit Us",subHeading:"92 Bowery St.
 
 const GetInTouch = () => {
   return (
-    <div className='flex  px-[3.5%] justify-center gap-[150px] mb-[400px] py-[40px] '>
+    <div className='flex  px-[3.5%] justify-center gap-[150px] mb-[400px] py-[40px] border-[2px] border-black '>
         <div className=''>
             <div className='text-[#588f27] text-md font-semibold mb-[5px]'>Our Contacts</div>
             <h1 className='font-semibold text-2xl mb-[10px]'>Get in Touch</h1>
@@ -28,7 +28,7 @@ const GetInTouch = () => {
             </div>
             <div className=' flex flex-col gap-6'>
                 {DummyData.map((item:any,idx:number)=>{
-                    return <div className='flex items-center gap-5 '>
+                    return <div className='flex items-center gap-5 ' key={idx}>
                          <div className='bg-[#588f27] h-[60px] w-[60px] rounded-full flex justify-center items-center'><Image src={item.image} alt='' width={23} height={23}/></div>
                     <div>
                         <div className='text-lg font-semibold'>{item.heading}</div>

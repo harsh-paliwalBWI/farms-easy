@@ -24,9 +24,9 @@ const FromFarmacy = async() => {
             <div className='  flex flex-col gap-[60px]'>
             {
                 DUMMY_DATA.map((item:any,idx:number)=>{
-                    return <div className='flex items-center gap-5'>
+                    return <div className='flex items-center gap-5' key={idx}>
                         <div className=''>
-                        <div className='font-bold text-lg text-right mb-[10px]'>{item.heading}</div>
+                        <div className='font-bold text-lg text-right'>{item.heading}</div>
                         <div className='text-xs text-[#606060] font-medium text-right'>{item.text}</div>
                         <div className='text-xs text-[#606060] font-medium text-right'>{item.text1}</div>
                         </div>
@@ -39,15 +39,14 @@ const FromFarmacy = async() => {
             <div className='  flex flex-col gap-[60px]'>
             {
                 DUMMY_DATA1.map((item:any,idx:number)=>{
-                    return <div className='flex items-center gap-5'>
+                    return <div className='flex items-center gap-5' key={idx}>
                         <div className=''><Image src={item.image} alt='' height={50} width={50}/></div>
 
-                        <div className=' '>
-                        <div className='font-bold text-lg mb-[10px]'>{item.heading}</div>
+                        <div className=''>
+                        <div className='font-bold text-lg'>{item.heading}</div>
                         <div className='text-xs text-[#606060] text-right'>{item.text}</div>
                         <div className='text-xs text-[#606060] '>{item.text1}</div>
                         </div>
-                        {/* <div className=''><Image src={item.image} alt='' height={50} width={50}/></div> */}
                     </div>
                 })
             }

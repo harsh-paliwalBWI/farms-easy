@@ -55,12 +55,22 @@
 .get-in-touch input::placeholder{
   font-size: 15px !important;
 }
+.bst-sell-form input::placeholder{
+  font-size: 12px !important;
+font-weight: 500;
+}
+.create-account input::placeholder{
+  font-size: 12px !important;
+font-weight: 500;
+}
+.log-in input::placeholder{
+  font-size: 12px !important;
+font-weight: 500;
+}
 .slick-slide>div {
   margin: 0 20px;
+  /* margin-right: 20px; */
  
 }
 
-/* .slick-list {
-  margin: 0 -10px;
-} */
 

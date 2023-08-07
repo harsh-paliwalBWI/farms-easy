@@ -14,7 +14,7 @@ const Farmerlistitem: FC<Props> = ({ item }) => {
   return (
     <div className="  flex bg-[#f8f9f8]  rounded-3xl  px-8 py-8  ">
       <div className="bg-white w-[12rem] h-[12rem]  aspect-[1/1]  flex items-center justify-center rounded-xl">
-        <Image src={item.fermerlistImage} alt=''  />
+        <Image src={item.fermerlistImage} alt='' />
       </div>
 
       <div className="  text-left  ml-[1.5rem] ">

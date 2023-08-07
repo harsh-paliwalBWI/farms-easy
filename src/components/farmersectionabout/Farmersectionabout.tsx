@@ -1,22 +1,23 @@
 import React from 'react'
-import leafimage from "../../images/Group 34147.svg"
-import headingsectionimage from "../../images/Rectangle 2.svg"
+import farmerlogoimage from "../../images/logobackground.svg"
 import Image from 'next/image'
-
+const DUMMY_DATA={para1:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",para2:"  There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."}
 
 const Farmersectionabout = () => {
   return (
-    <div className='relative'>
-
-      {/* <Image src={headingsectionimage} className="  h-auto w-[100vw] object-cover"  alt=""></Image>
-        
-      <div className=" top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#ffffff]">
-        Gallery
-      </div>
-      <div className=" lute top-1/2 left-1/2 transform  -translate-x-1/2   translate-y-4  sm:translate-y-6 md:translate-y-10 lg:translate-y-16 xl:translate-y-24">
-      <Image src={leafimage}   alt="" className='h-10 sm:h-12 md:h-24  lg:h-36   xl:h-auto '></Image>
-      </div> */}
-      </div>
+    <div className=' border-[2px]  px-[3.5%] py-[3.5%] mt-16 '>
+    <div className='flex border-[2px] border-[red] justify-center gap-[60px] items-center '>
+    <div className=' border-[2px] border-[black] '>
+    
+        <div className=' w-[575px]'><Image src={farmerlogoimage} alt=''  width={1000} height={1000}/></div>
+    </div>
+    <div className='flex flex-col gap-[2rem] border-[2px] border-[black] '>
+        <div className='font-bold text-3xl '>About Us</div>
+        <div className=' text-base font-medium  leading-8'>{DUMMY_DATA.para1}</div>
+        <div className=' text-base font-medium  leading-8'>{DUMMY_DATA.para2}</div>
+    </div>
+    </div>
+</div>
        
   )
 }

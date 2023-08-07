@@ -7,19 +7,18 @@ const DUMMY_DATA=[{count:"30+",text:"Store Tie-Up"},{count:"20K",text:"Land Acre
 
 const OrganicSince = () => {
   return (
-    <div className=' px-[3.5%]  pb-[80px] pt-[20px] border-[2px] border-[black]'>
-        <div className='flex justify-center gap-10  border-[2px] border-[red] '> 
-        <div className='flex flex-col   w-fit  border-[2px] border-[green] relative'>
+    <div className=' px-[3.5%]  pb-[80px] pt-[20px] '>
+        <div className='flex justify-center items-end  gap-[80px] '> 
+        <div className='flex flex-col   w-fit   relative'>
         {/* <div><Image src={vegetableImg} alt='' width={1000} height={1000} className='h-[150px] w-[150px] translate-x-[150px] translate-y-[50px]'/></div> */}
             <div className='h-[500px] w-[500px]'><Image src={farmerImg} alt='' height={1000} width={1000}/>
             </div>
-        <div className='absolute bottom-[20px]'><Image src={vegetableImg} alt='' width={1000} height={1000} className='h-[150px] w-[150px]'/></div>
+        <div className='absolute bottom-[-20px]'><Image src={vegetableImg} alt='' width={1000} height={1000} className='h-[170px] w-[170px]'/></div>
 
             
         </div>
         
-        <div className=' border-[2px] border-[black]'>
-            <div className='flex items-end'>
+        <div className=' flex flex-col justify-center'>
             <div className='font-bold text-3xl mb-[15px]'>Organic Since 2015</div>
             <div className='text-[#6a6a6a] text-xs font-medium mb-[30px]'>A one-stop shop full of all the right choices, NativeFarm is a health food haven with organic<br/> 
             fruit & vegetables, organic bread from bakeries, only organic meat and sustainable fish from<br/> 
@@ -40,7 +39,6 @@ const OrganicSince = () => {
                     <div className='text-[#5f5f5f] text-xs font-semibold'>Founder of the Company</div>
                     </div>
                 </div>
-        </div>
         </div>
         </div>
     </div>
