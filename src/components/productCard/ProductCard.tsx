@@ -3,11 +3,10 @@ import VegtableImg from "../../images/Rectangle 23978.svg"
 import DiscountImg from "../../images/Vector (3).png"
 import heartImg from "../../images/Frame 34409.svg"
 import Image from 'next/image'
-import arrow from "../../images/Vector (1).svg"
 
 const ProductCard = () => {
   return (
-    <div className=' w-fit'>
+    
       <div className='border-[#479332] border-[1px] w-fit p-[15px] rounded-md flex justify-center '>
         <div>
           <div className='flex items-center justify-between'>
@@ -26,7 +25,7 @@ const ProductCard = () => {
 
         </div>
       </div>
-    </div>
+    
   )
 }
 

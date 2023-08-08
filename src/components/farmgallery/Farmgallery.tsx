@@ -13,7 +13,7 @@ const DATA1 = [{ GalleryImage: Image1 }, { GalleryImage: Image2 }, { GalleryImag
 
 const Farmgallery = async () => {
   return (<>
-    <div className=' mt-[7rem] mb-[7rem]' >
+    <div className=' mt-[1rem] mb-[7rem]' >
       <div className='text-center font-bold text-4xl mb-[2rem]'>Our Farm Gallery</div>
       {/* <div className='flex border-[2px] border-[black] '> */}
 
