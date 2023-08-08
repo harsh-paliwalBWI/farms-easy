@@ -26,7 +26,7 @@ const DropALine = async () => {
                     <textarea placeholder='Message...' rows={6} className='outline-0 w-full py-[8px] px-[20px]' />
 
                 </div>
-                <Button className='px-[40px] py-[15px]'/>
+                <Button text={"Get in Touch"} className='px-[40px] py-[15px]'/>
             </div>
         </div>
     );

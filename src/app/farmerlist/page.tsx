@@ -8,7 +8,7 @@ import React from 'react'
 const Page = async() => {
   return (
     <div>
-        {/* <Headersection/> */}
+        
         <Leaf text={"Farmer List"}/>
         <Farmerlistsection/>
        

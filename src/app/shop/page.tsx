@@ -1,13 +1,17 @@
 
 
 import Headersectiontype2 from '@/components/headersectiontype2/Headersectiontype2'
+import Productdescription from '@/components/productdescription/productdescription'
+import Productqualities from '@/components/productsqualities/Productqualities'
 
 import React from 'react'
 
 const Page = async() => {
   return (
     <div>
-        <Headersectiontype2/>
+        <Headersectiontype2 heading={"Shop"}/>
+        <Productdescription/>
+        <Productqualities/>
         
        
         

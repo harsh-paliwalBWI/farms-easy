@@ -21,7 +21,7 @@ const Farmerlistsection = () => {
   return (
     <>
       
-        <div className="  mt-[6rem] px-[3.5%] py-[3.5%] items-center">
+        <div className="  my-[1rem] px-[3.5%] py-[3.5%] items-center">
           <div className="flex flex-wrap justify-between gap-y-8 w-[100%]">
             {DUMMY_DATA.map((item: any, idx: number) => {
               return (
