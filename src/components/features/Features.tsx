@@ -18,7 +18,7 @@ const Features = () => {
     <div className='px-[3.5%]'>
 <div className='flex items-center justify-between  py-[50px]'>
     {dummdData.map((item:any,idx:number)=>{
-        return <div className='flex items-start gap-10'>
+        return <div key={idx} className='flex items-start gap-10'>
             <div className='bg-[#588F27] h-[80px] w-[80px] rounded-full flex items-center justify-center'><Image src={item.img} alt='' height={35} width={35}/></div>
             <div>
             <div className='font-semibold text-lg mb-[3px]'>{item.heading}</div>

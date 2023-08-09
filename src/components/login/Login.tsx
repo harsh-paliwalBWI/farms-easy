@@ -71,7 +71,7 @@ const Login:FC<Props> = ({createAccountClickHandler}) => {
                         <div className='font-semibold text-lg'>Log In with Google</div>
                     </div>
                     <div className='flex justify-center items-center gap-3 font-medium text-base'>
-                        <div>Don't have an account? </div>
+                        <div>Don&apos;t have an account? </div>
                         <div onClick={createAccountClickHandler} className='text-[#51150A]'>Sign up</div>
                     </div>
 

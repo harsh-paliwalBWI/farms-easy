@@ -26,7 +26,7 @@ const OrganicSince = () => {
              and healthy options, while our Health & Bodycare department.</div>
              <div className='flex  justify-between mb-[50px] '>
                 {DUMMY_DATA.map((item:any,idx:number)=>{
-                    return <div>
+                    return <div key={idx}>
                         <div className='text-[#588f27] text-2xl font-bold mb-[5px]'>{item.count}</div>
                         <div className='font-semibold text-sm'>{item.text}</div>
                     </div>

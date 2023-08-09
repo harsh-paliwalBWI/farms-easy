@@ -57,7 +57,7 @@ const Signup:FC<Props> = ({redirectToLogin}) => {
                 <div className='font-semibold text-lg'>Log In with Google</div>
             </div>
             <div className='flex justify-center items-center gap-3 font-medium text-base'>
-                <div>Don't have an account? </div>
+                <div>Don&apos;t have an account? </div>
                 <div onClick={redirectToLoginHandler} className='text-[#51150A]'>Log in</div>
             </div>
 
