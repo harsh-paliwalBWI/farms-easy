@@ -94,8 +94,8 @@ await setDoc(doc(db,"auth",user.uid),{role:"user",email:email,createdAt:new Date
         </div>
 
         <div className="bg-white  px-[40px] py-[50px]  rounded-xl relative  md:w-[50%] w-[100%] create-account">
-          <div className="absolute top-[-20px] left-[-25px]">
-            <Image src={smallLeaf} alt="" height={50} width={50} />
+          <div className="absolute sm:top-[-20px] sm:left-[-25px] top-[-10px] left-[-15px]">
+            <Image src={smallLeaf} alt="" height={50} width={50} className="sm:h-[50px] sm:w-[50px] w-[30px] h-[30px]" />
           </div>
           <div className="font-bold sm:text-3xl text:xl mb-[30px]">Create an account</div>
           <div className="text-[#777777] text-sm mb-[30px]">

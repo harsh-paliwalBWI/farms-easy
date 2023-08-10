@@ -15,12 +15,13 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Products = () => {
     const matches = useMediaQuery('(max-width:1094px)');
+    const matches2 = useMediaQuery('(max-width:480px)');
     const slider = useRef<any>(null)
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 7,
+        slidesToShow: 5,
         slidesToScroll: 5,
         initialSlide: 0,
         responsive: [
@@ -31,6 +32,7 @@ const Products = () => {
                     slidesToScroll: 4,
                     infinite: true,
                     // dots: true
+                   
                 }
             },
             {
@@ -71,7 +73,8 @@ const Products = () => {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    dots: true
                 }
             }
         ]
@@ -80,7 +83,7 @@ const Products = () => {
         <div className=' px-[3.5%] pt-[100px]'>
             <div className='flex items-center justify-between mb-[65px]'>
             <div className='text-[#253D4E] font-bold md:text-3xl sm:text-2xl text-xl'>Featured Products</div>
-            {matches?<div><CiViewList className="h-[30px] w-[30px] text-[#253D4E]"/></div>:
+            {/* {matches?<div><CiViewList className="h-[30px] w-[30px] text-[#253D4E]"/></div>:
             <div className='flex gap-10 text-[#253D4E] font-semibold text-base'>
             <div>All</div>
             <div>Vegetables</div>
@@ -91,15 +94,17 @@ const Products = () => {
             <div>Pulses</div>
             <div>Flower</div>
             </div>
-}
+} */}
             </div>
-        <div className='flex justify-center items-center border-[2px] border-[black]'>
-            <button onClick={() => slider.current?.slickPrev()} className='bg-[#F2F3F4] p-2 rounded-full  border-[2px] border-[black]'><MdArrowBack className='h-[25px] w-[25px]' /></button>
-            <div className='back '>
+        <div className='flex justify-center items-center '>
+            {!matches2&&
+            <button onClick={() => slider.current?.slickPrev()} className='bg-[#F2F3F4] p-2 rounded-full  '><MdArrowBack className='h-[25px] w-[25px]' /></button>
+            }
+          <div className='back '>
                 <div className='w-[85vw]'>
                     <Slider ref={slider} {...settings} className='' dotsClass={`slick-dots `} arrows={true} nextArrow={<></>} prevArrow={<></>} draggable={true}>
                         {[1, 2, 3, 4, 4, 7, 6, 3, 5].map((item: any, idx: number) => {
-                            return <div key={idx} className='lg:w-[25vw] border-[2px] border-[red]'>
+                            return <div key={idx} className='lg:w-[27vw] '>
                                 <ProductCard />
                             </div>
                         })}
@@ -107,8 +112,12 @@ const Products = () => {
                     </Slider>
                 </div>
             </div>
-            <button onClick={() => slider.current.slickNext()} className='bg-[#F2F3F4] p-2 rounded-full  border-[2px] border-[black]'><MdArrowForward className='h-[25px] w-[25px]' /></button>
+            {!matches2&&
+        
+        <button onClick={() => slider.current.slickNext()} className='bg-[#F2F3F4] p-2 rounded-full  '><MdArrowForward className='h-[25px] w-[25px]' /></button>
+            }
         </div>
+
         </div>
 
     )

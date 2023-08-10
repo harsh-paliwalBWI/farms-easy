@@ -22,7 +22,7 @@ const GetInTouch = () => {
     const matches2 = useMediaQuery('(max-width:1000px)');
     const matches3 = useMediaQuery('(max-width:452px)');
   return (
-    <div className='flex sm:px-[3.5%] px-[7%]  md:mb-[400px] mb-[600px] sm:mb-[600px] sm:pb-[20px] pb-[20px]  '>
+    <div className='flex sm:px-[3.5%] px-[7%]  md:mb-[400px] mb-[600px] sm:mb-[600px] sm:pb-[20px] pb-[20px] md:pt-[50px]  '>
         <div className='flex lg:justify-center lg:flex-row flex-wrap xl:gap-[150px]   w-fit mx-auto'>
         <div className=''>
             <div className='text-[#588f27] text-md font-semibold mb-[5px]'>Our Contacts</div>
@@ -48,7 +48,7 @@ const GetInTouch = () => {
         {!matches2&&
         <div className='flex items-start relative  '> 
         <div className='  '><Image src={basketImg} alt='' width={matches?400:500} height={matches?400:500}  className=''/></div>
-        <div className='   absolute top-[-80px] right-[-100px]'><Image src={organicLogo} alt='' width={matches?150:230} height={matches?150:230} className=''/></div>
+        <div className='   absolute top-[-60px] right-[-100px]'><Image src={organicLogo} alt='' width={matches?150:230} height={matches?150:230} className=''/></div>
         </div>
 }
         </div>
