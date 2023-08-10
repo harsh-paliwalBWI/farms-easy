@@ -26,94 +26,69 @@ galleryImages:[ g1 ,g2,  g3, g4, g5, g6]}
 
 const Farmergallery = () => {
 
-    const slider = useRef<any>(null)
-    const settings = {
-      dots: true,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      initialSlide: 0,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            infinite: true,
-              dots: true
-
-  
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            initialSlide: 2,
-            dots: true
-
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            initialSlide: 2,
-            dots: true
-
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: true
-
-          }
+  const slider = useRef<any>(null);
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
         }
-      ]
-    };
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 2,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true
+        }
+      }
+    ]
+  };
 
-
-
-  
-    return (
-
-
-<div className="relative  bg-cover bg-center bg-videobg  mt-[6.5%] pt-[6%]">
-
-
-
-<div className="flex flex-col px-[3.5%] ">
-        <h1 className="text-white text-4xl font-bold mb-[2rem]">Our Gallery </h1>
-        <p className="text-white text-base leading-7  mb-[2rem] ">{DUMMY_DATA.text}</p>
-</div>
-<div className='flex justify-center items-center gap-0 md:gap-[20px] pb-[50px]  px-[3.5%] '>
-    
-    <div className='back w-[100%]  mt-[20px] pb-[50px]'>
-      <Slider ref={slider} {...settings}
-        dotsClass={`slick-dots `}
-        arrows={false}
-        className='!w-[100%] pb-[50px]'>
-        {DUMMY_DATA.galleryImages.map((item: any,idx:number) => {
-          return <div key={idx} className=''>
-            <div><Image src={item} alt=" "/></div>
-             
-              
-          </div>
-        })}
-      </Slider>
+  return (
+    <div className="relative bg-cover bg-center bg-videobg px-[3.5%] pt-[10%] pb-[4%]">
+      <div className="flex flex-col">
+        <h1 className="text-white text-4xl font-bold mb-[2rem]">Our Gallery</h1>
+        <p className="text-white text-base leading-7 mb-[2rem]">{DUMMY_DATA.text}</p>
+      </div>
+      <div className="flex flex-col md:flex-row items-center justify-between gap-0 md:gap-[20px] w-full pb-[50px]">
+        <div className="back w-full mt-[20px]">
+          <Slider
+            ref={slider}
+            {...settings}
+            dotsClass="slick-dots"
+            arrows={false}
+            className="w-full pb-[70px]"
+          >
+            {DUMMY_DATA.galleryImages.map((item: any, idx: number) => (
+              <div key={idx}>
+                <Image src={item} alt="" />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </div>
     </div>
-  </div>
-
-
-</div>
-      );
-  
-}
+  );
+};
 
 export default Farmergallery

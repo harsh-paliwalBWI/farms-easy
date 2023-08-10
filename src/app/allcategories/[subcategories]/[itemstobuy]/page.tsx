@@ -12,7 +12,7 @@ const Page = async() => {
   return (
     <div className=''>
         <Headersectiontype2 heading={"Vegetables"}/>
-        <div className='flex justify-between  px-[3.5%] gap-6 py-[1.5%]'>
+        <div className='flex flex-col md:flex-row justify-between items-start px-[3.5%] md:gap-6 py-[1.5%]'>
         <FilterComponent/>
         <Productsidecomponent/>
         

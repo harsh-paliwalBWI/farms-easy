@@ -10,25 +10,19 @@ import Farmerpageproducts from '../farmerpageproducts/Farmerpageproducts';
 
 const Ourproducts = () => {
   return (
-    <div className='flex  px-[3.5%]  py-[3.5%] flex-col'>
-        <div className='flex justify-between'>
-        <div className=''>
-             <h1 className='font-semibold text-3xl '>Our Products</h1>
-        </div>
-        
-        <div className=' '> <Button text="VIEW ALL" className='px-[40px] py-[15px]'/></div>
-       
-        </div>
-        <div className='flex  '>
-        <Farmerpageproducts/>
-        
-        </div>
-        
-
-
-
-
+    <div className='flex flex-col px-[3.5%] py-[3.5%]'>
+    <div className='flex flex-col md:flex-row justify-between items-center mb-12'>
+      <div className='mb-4 md:mb-0'>
+        <h1 className='font-bold text-xl md:text-3xl'>Our Products</h1>
+      </div>
+      <div className=''>
+        <Button text="VIEW ALL" className='px-[50px] py-[12px] ' />
+      </div>
     </div>
+    <div className='flex flex-col'>
+      <Farmerpageproducts />
+    </div>
+  </div>
   )
 }
 

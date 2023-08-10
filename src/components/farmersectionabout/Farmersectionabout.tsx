@@ -8,38 +8,32 @@ const DUMMY_DATA={fermerlistImage: ImageB, heading: "ACACIA Organic Farm", categ
 
 const Farmersectionabout = () => {
   return (
-    <div className='  px-[3.5%] py-[3.5%] '>
-    <div className='flex  justify-center gap-[60px] items-center '>
-    <div className=''>
-    
-        <div className='relative w-[575px]'><Image src={farmerlogoimage} alt='' className='' width={1000} height={1000}/>
-        <div className='absolute top-0 left-0  '><Image src={overlay} alt=''  width={1000} height={1000}/></div>
-        <div className="absolute w-[100%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-between gap-[1rem]  rounded-3xl   ">
-      <div className="bg-white w-[12rem] h-[12rem]  aspect-[1/1]  flex items-center justify-center rounded-xl">
-        <Image src={DUMMY_DATA.fermerlistImage} alt=''  />
-      </div>
-
-      
-        <h2 className="  text-xl font-bold text-[white] my-[.75rem]">{DUMMY_DATA.heading}</h2>
-        <div className='flex gap-1 items-center'>
-        <TiLocation className="h-6 w- text-[#9ac96b] " ></TiLocation>
-        <p className="font-medium text-[#9ac96b] text-sm ">{DUMMY_DATA.location}</p>
+    <div className='px-[3.5%] py-[3.5%]'>
+      <div className='flex flex-col md:flex-row justify-center gap-[60px] items-center'>
+        <div className='md:w-[48%]'>
+          <div className='relative h-[100%]'>
+            <Image src={farmerlogoimage} alt='' className='w-full' width={1000} height={1000} />
+            <div className='absolute top-0 left-0'><Image src={overlay} alt='' width={1000} height={1000} /></div>
+            <div className="absolute w-full  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center  md:gap-3 rounded-3xl p-4  ">
+              <div className="bg-white w-[35%] h-[35%] aspect-[1/1]  flex items-center justify-center rounded-xl">
+                <Image src={DUMMY_DATA.fermerlistImage} alt='' width={1000} height={1000} />
+              </div>
+              <h2 className="text-lg md:text-xl font-bold text-white my-2">{DUMMY_DATA.heading}</h2>
+              <div className='flex gap-1 items-center'>
+                <TiLocation className="h-6 w-auto text-[#A4D672] " />
+                <p className="font-medium text-[#A4D672] text-sm">{DUMMY_DATA.location}</p>
+              </div>
+              <p className="text-sm md:text-base text-white text-center">{DUMMY_DATA.categories}</p>
+            </div>
+          </div>
         </div>
-        <p className="text-sm text-[white] text-center ">{DUMMY_DATA.categories}</p>
-        
-        
-     
+        <div className='flex w-full md:w-[52%] flex-col gap-4 md:gap-6'>
+          <div className='font-bold text-xl md:text-3xl'>About Us</div>
+          <div className='text-base font-medium'>{DUMMY_DATA.para1}</div>
+          <div className='text-base font-medium'>{DUMMY_DATA.para2}</div>
+        </div>
+      </div>
     </div>
-    </div>
-        
-    </div>
-    <div className='flex flex-col gap-[2rem] '>
-        <div className='font-bold text-3xl '>About Us</div>
-        <div className=' text-base font-medium  leading-8'>{DUMMY_DATA.para1}</div>
-        <div className=' text-base font-medium  leading-8'>{DUMMY_DATA.para2}</div>
-    </div>
-    </div>
-</div>
        
   )
 }

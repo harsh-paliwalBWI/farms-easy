@@ -29,12 +29,12 @@ const Productdescription = () => {
 
 
   return (
-    <div className='  px-[3.5%] py-[5.5%] '>
-    <div className='flex flex-wrap justify-center gap-[60px]  '>
-    <div className='w-[50%]'>
-            <div className='flex flex-col gap-[1rem]'>
-                <Image src={DUMMY_DATA.image1} alt='' className='' width={1000} height={1000}/> 
-                <div className='flex gap-[1rem]'>
+    <div className='px-[3.5%] py-[5.5%]'>
+      <div className='flex flex-col md:flex-row justify-center gap-[60px]'>
+        <div className='md:w-[50%]'>
+          <div className='flex flex-col gap-[1rem]'>
+            <Image src={DUMMY_DATA.image1} alt='' className='w-full' width={1000} height={1000} />
+            <div className='flex gap-[1rem]'>
                 <Image src={DUMMY_DATA.image2} alt='' className='w-[25%]' width={1000} height={1000}/>
                 <Image src={DUMMY_DATA.image3} alt='' className='w-[25%]' width={1000} height={1000}/>
                 <Image src={DUMMY_DATA.image4} alt='' className='w-[25%]' width={1000} height={1000}/>
@@ -43,7 +43,7 @@ const Productdescription = () => {
     </div>
         
     </div>
-    <div className='flex flex-col gap-[.5rem] w-[44%]'>
+    <div className='flex flex-col gap-[.5rem] md:w-[44%]'>
         <div className='font-semibold text-2xl '>{DUMMY_DATA.productname}</div>
         <div className='flex justify-between'>
         <div className=' text-base font-medium  text-[#b4b5b5]'>By <span className='text-[#598f26]'>{DUMMY_DATA.vendor}</span></div>

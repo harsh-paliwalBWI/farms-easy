@@ -10,7 +10,7 @@ const Leaf:FC<Props> = ({text}) => {
     <div className='flex flex-col items-center'>
 <div style={{ position: "relative" }} className=''>
           <Image src={leaf} alt='' width={1000} height={1000} style={{ width: "100vw", objectFit: "cover" }} className='' />
-           <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-center  w-[90%] text-white font-semibold sm:text-3xl text-xl '>
+           <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-center  w-[90%] text-white font-semibold sm:text-4xl text-xl '>
            {text}
           </div>
           </div>

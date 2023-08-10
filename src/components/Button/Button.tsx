@@ -11,7 +11,7 @@ interface Props {
 const Button:FC<Props> = ({className,text}) => {
   return (
   <>
-  <div className={`${className} relative border-[2px] border-[#588F27]  text-sm font-semibold w-fit`}>
+  <div className={`${className} relative border-[2px] border-[#588F27]  text-base font-bold w-fit`}>
                     {text}<Image src={triangle} alt='' className='absolute bottom-0 right-0' />
                 </div>
   </>

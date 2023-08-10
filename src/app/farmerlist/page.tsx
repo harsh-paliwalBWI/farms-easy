@@ -1,6 +1,5 @@
 
 import Farmerlistsection from '@/components/farmerListsection/Farmerlistsection'
-import Headersection from '@/components/headersection/Headersection'
 import Leaf from '@/components/leaf/Leaf'
 
 import React from 'react'
