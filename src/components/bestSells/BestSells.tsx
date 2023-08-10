@@ -12,8 +12,12 @@ import Image from 'next/image'
 import offerImg from "../../images/Group 1749 (1).png"
 import {AiOutlineMail} from "react-icons/ai"
 import {LuKey} from "react-icons/lu"
+import useMediaQuery from '@mui/material/useMediaQuery';
+import {CiViewList} from "react-icons/ci"
 
 const BestSells = () => {
+    const matches = useMediaQuery('(max-width:770px)');
+
     const slider = useRef<any>(null)
     const settings = {
         dots: false,
@@ -26,7 +30,7 @@ const BestSells = () => {
             {
                 breakpoint: 1242,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                     slidesToScroll: 4,
                     infinite: true,
                     // dots: true
@@ -44,7 +48,7 @@ const BestSells = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 1,
                     slidesToScroll: 2,
                     initialSlide: 2
                 }
@@ -61,7 +65,8 @@ const BestSells = () => {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    // initialSlide: 1
                 }
             }
         ]
@@ -70,6 +75,7 @@ const BestSells = () => {
     <div className='px-[3.5%] '>
           <div className='flex items-center justify-between '>
             <div className='text-[#253D4E] font-bold text-3xl'>Daily Best Sells</div>
+            {matches?<div><CiViewList className="h-[30px] w-[30px] text-[#253D4E]"/></div>:
             <div className='flex items-center gap-10 text-[#253D4E] font-semibold text-base'>
             <div>Featured</div>
             <div>Popular</div>
@@ -79,11 +85,12 @@ const BestSells = () => {
                 <div> <button onClick={() => slider.current.slickNext()} className='bg-[#F2F3F4] p-2 rounded-full '><MdArrowForward className='h-[25px] w-[25px]' /></button></div>
             </div>
             </div>
+}
             </div>
-            <div className='flex justify-start gap-5 items-center py-[80px] w-full  '>
+            <div className='flex md:justify-start justify-center lg:flex-row flex-col gap-5 items-center py-[80px] w-full mx-auto border-[2px] border-[black]  '>
            
             {/* <div className='back '> */}
-                <div className='w-[73vw] '>
+                <div className='w-[73%]  border-[2px] border-[red] '>
                     <Slider ref={slider} {...settings} className='' dotsClass={`slick-dots `} arrows={true} nextArrow={<></>} prevArrow={<></>} draggable={true}>
                         {[1, 2, 3, 4, 4, 7, 6, 3, 5].map((item: any, idx: number) => {
                             return <div key={idx} className='lg:w-[25vw]'>
@@ -94,7 +101,7 @@ const BestSells = () => {
                     </Slider>
                 </div>
             {/* </div> */}
-            <div className=' relative rounded-md'>
+            <div className=' relative rounded-md border-[2px] border-[black]'>
                 <Image src={offerImg} className='' width={1000}  height={1000} alt='' style={{aspectRatio:"auto",height:"400px",width:"230px"}}/>
                 <div className='absolute bottom-[15px] px-[15px] w-full bst-sell-form'>
                     <div className='text-[#588F27] font-bold text-2xl text-center mb-[20px]'>10% OFF</div>
@@ -112,7 +119,7 @@ const BestSells = () => {
                     </div>
                     <div className='bg-[#588F27] text-base text-center text-[#FFFFFF] py-[12px] rounded-md'>Register Now</div>
                 </div>
-                </div>
+                </div> 
         </div>
     </div>
   )

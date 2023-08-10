@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {/* <NavSearch/> */}
         <Providers>
-          <SearchHeader/>
+          {/* <SearchHeader/> */}
           <Navbar />
           {children}
           <Footer />

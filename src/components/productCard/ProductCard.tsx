@@ -7,7 +7,7 @@ import Image from 'next/image'
 const ProductCard = () => {
   return (
     
-      <div className='border-[#479332] border-[1px] w-fit p-[15px] rounded-md flex justify-center '>
+      <div className='border-[#479332] border-[1px] w-[230px] h-[345px] p-[15px] rounded-md flex justify-center '>
         <div>
           <div className='flex items-center justify-between'>
             <div className='relative'><Image src={DiscountImg} alt='' width={65} height={65} /> <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-fit text-[12px] text-center flex gap-2 text-white font-medium '><span>15%</span><span>OFF</span></div></div>

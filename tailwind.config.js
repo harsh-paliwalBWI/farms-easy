@@ -17,7 +17,7 @@ module.exports = {
           "healthier-image":"url('../images/healthierBanner.svg')",
           "category-bg":"url('../images/Rectangle 3 (1).svg')",
           "our-mission-bg":"url('../images/bg-image01 1.svg')",
-          "playstore-image":"url('../images/hero-bg.svg')",
+          "playstore-image":"url('../images/Group 1749 (2).png')",
           "have-questions-bg":"url('../images/Rectangle 24013.svg')",
           "videobg":"url('../images/video-bg 1.svg')",
           "login-bg":"url('../images/Rectangle 2 (4).svg')"

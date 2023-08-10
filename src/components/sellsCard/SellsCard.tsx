@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const SellsCard = () => {
   return (
-    <div className=' w-fit'>
+    // <div className=' w-fit'>
     <div className='border-[#479332] border-[1px]   rounded-md flex justify-center h-[400px] w-[230px] relative'>
       <div>
        
@@ -19,7 +19,7 @@ const SellsCard = () => {
         </div>
       </div>
     </div>
-  </div>
+  // </div>
   )
 }
 

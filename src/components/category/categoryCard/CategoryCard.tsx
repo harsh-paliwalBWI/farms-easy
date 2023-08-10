@@ -89,7 +89,7 @@ const DUMMY_DATA = [
 
 const CategoryCard = () => {
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10 place-items-center'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 gap-x-8 md:gap-y-10  gap-y-3  place-items-center'>
       {DUMMY_DATA.map((item, idx) => {
         return (
           <div key={idx} className=''>
@@ -97,7 +97,7 @@ const CategoryCard = () => {
               <Image src={item.image} width={500} height={500} alt='' />
             </div>
             <div className=''>
-              <button className=' w-[60%] py-[15px] bg-[#E0EAD3] font-bold rounded-md -translate-y-6 drop-shadow-xl text-lg'>{item.btnText}</button>
+              <button className=' w-[60%] py-[15px] bg-[#E0EAD3] font-bold rounded-md -translate-y-6 drop-shadow-xl md:text-lg sm:text-base text-sm'>{item.btnText}</button>
             </div>
           </div>
         );

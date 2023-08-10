@@ -4,7 +4,7 @@ import Signup from '@/components/signup/Signup'
 import React from 'react'
 import { useRouter } from 'next/navigation'
 
-const page = async() => {
+const page = () => {
     const router=useRouter()
     const redirectToLoginHandler=()=>{
         router.push("/login")

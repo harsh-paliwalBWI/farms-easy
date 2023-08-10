@@ -5,7 +5,7 @@ import Login from '@/components/login/Login'
 import { useRouter } from 'next/navigation'
 
 
-const page = async() => {
+const page =() => {
     const router = useRouter()
 
     const handleCreateAccountClick = () => {

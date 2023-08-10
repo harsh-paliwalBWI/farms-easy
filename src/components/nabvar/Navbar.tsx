@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import NavMobile from '../navMobile/NavMobile';
+import SearchHeader from '../searchHeader/SearchHeader';
 
 
 
@@ -18,6 +19,10 @@ const Navbar = () => {
 
     return (
         <div>
+            {!mobile&&
+            <div className=''>
+            <SearchHeader/>
+            </div>}
             {mobile?<NavMobile/>:
         <div className='w-full  px-[3.5%] flex justify-between py-[12px] bg-[#eef0e5] font-medium text-md'>
             <div className='flex items-center gap-10 font-medium  '>

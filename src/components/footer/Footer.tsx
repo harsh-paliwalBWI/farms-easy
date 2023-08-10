@@ -26,7 +26,7 @@ const data2=[{heading:"sfgfdgh",subLinks:[{icon:<CiLocationOn/>,darkKey:"Address
 const SOCIAL_MEDIA=[{icon:<RiFacebookFill/>},{icon:<RiLinkedinFill/>},{icon:<FaInstagram/>},{icon:<BsTwitter/>}]
   return (
     <div className='  h-fit'>
-      <div className='flex lg:flex-row flex-wrap  sm:justify-center lg:justify-between gap-10  py-[50px] px-[3.5%] '>
+      <div className='flex lg:flex-row flex-wrap  sm:justify-center lg:justify-between gap-10  md:py-[50px] py-[20px]  px-[3.5%] border-t-[0.1px] border-[#E1E1E1] '>
         <div className=''>
           <div className=' mb-[20px]'><Image src={logo} alt='' height={300} width={300} className=' sm:w-[260px] sm:h-[80px] h-[60px] w-[200px] '/></div>
           <div className='flex items-center gap-3  mb-[20px]'>
@@ -57,13 +57,13 @@ const SOCIAL_MEDIA=[{icon:<RiFacebookFill/>},{icon:<RiLinkedinFill/>},{icon:<FaI
         })}
         </div>
         <div className=' border-b-[0.1px] border-[#E1E1E1] ' ></div>
-        <div className='flex justify-between items-center py-[20px] px-[3.5%]' >
-          <div className='text-[#555555] text-sm font-semibold'>&copy; 2023, All Rights reserved by <span className='text-[#588f27] font-semibold'>Farmacy Farm Fresh</span></div>
-          <div className='flex gap-3'>
-            <div className='bg-[#588f27] h-[40px] w-[40px] rounded-full flex items-center justify-center'><RiFacebookFill className="text-white h-[20px] w-[20px]"/></div>
-            <div className='bg-[#588f27] h-[40px] w-[40px] rounded-full flex items-center justify-center'><RiLinkedinFill className="text-white h-[20px] w-[20px]" /></div>
-            <div className='bg-[#588f27] h-[40px] w-[40px] rounded-full flex items-center justify-center'><FaInstagram className="text-white h-[20px] w-[20px]"/></div>
-            <div className='bg-[#588f27] h-[40px] w-[40px] rounded-full flex items-center justify-center'><BsTwitter className="text-white h-[20px] w-[20px]"/></div>
+        <div className='flex sm:justify-between justify-center gap-5 sm:gap-0 items-center py-[20px] px-[3.5%]' >
+          <div className='text-[#555555] md:text-sm text-xs font-semibold'>&copy; 2023, All Rights reserved by <span className='text-[#588f27] font-semibold'>Farmacy Farm Fresh</span></div>
+          <div className='flex sm:gap-3 gap-2'>
+            <div className='bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center'><RiFacebookFill className="text-white md:h-[22px] md:w-[22px] w-[15px] h-[15px]"/></div>
+            <div className='bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center'><RiLinkedinFill className="text-white md:h-[22px] md:w-[22px] w-[15px] h-[15px]" /></div>
+            <div className='bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center'><FaInstagram className="text-white md:h-[22px] md:w-[22px] w-[15px] h-[15px]"/></div>
+            <div className='bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center'><BsTwitter className="text-white md:h-[22px] md:w-[22px] w-[15px] h-[15px]"/></div>
            
           </div>
         </div>
