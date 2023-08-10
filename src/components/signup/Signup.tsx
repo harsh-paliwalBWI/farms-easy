@@ -5,16 +5,22 @@ import Image from "next/image";
 import smallLeaf from "../../images/Group 34147.svg";
 import { FcGoogle } from "react-icons/fc";
 import check from "../../images/Vector 28.svg";
-import {db,auth} from "../../config/firebase-config"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { db, auth } from "../../config/firebase-config";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import { collection, doc, getDocs, query, setDoc, where } from 'firebase/firestore';
-
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 
 interface Props {
-  redirectToLogin: any;
+  redirectToLogin?: any;
 }
-const Signup: FC<Props> = ({ redirectToLogin }) => {
+const Signup: FC<Props> = () => {
   const router = useRouter();
   const DUMMY_DATA = [
     { image: smallLeaf, text: "Includes Wide variety of Products." },
@@ -25,47 +31,68 @@ const Signup: FC<Props> = ({ redirectToLogin }) => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<any>("");
   const [password, setPassword] = useState<any>("");
-// const auth=getAuth()
+  // const auth=getAuth()
 
   const redirectToLoginHandler = () => {
     router.push("/login");
   };
 
-  const addUserToFirebase=async(user:any)=>{
+  const addUserToFirebase = async (user: any) => {
     console.log(user.uid);
-    
-   await setDoc(doc(db,"user",user.uid),{role:"user",name:name,email:email,createdAt:new Date(),profilePic:{url:""},wishListIds:[]},{merge:true})
-await setDoc(doc(db,"auth",user.uid),{role:"user",email:email,createdAt:new Date()},{merge:true})
 
-    console.log({role:"user", name:name, email:email,createdAt:new Date(),profilePic:{url:""},wishListIds:[]
-    },"usr from log")
- 
-    
-  }
-  const signupHandler=()=>{
-    if(email&&password.length>5&&name){
-        console.log("inside signupHandler");
-        createUserWithEmailAndPassword(auth, email, password)
+    await setDoc(
+      doc(db, "user", user.uid),
+      {
+        role: "user",
+        name: name,
+        email: email,
+        createdAt: new Date(),
+        profilePic: { url: "" },
+        wishListIds: [],
+      },
+      { merge: true }
+    );
+    await setDoc(
+      doc(db, "auth", user.uid),
+      { role: "user", email: email, createdAt: new Date() },
+      { merge: true }
+    );
+
+    console.log(
+      {
+        role: "user",
+        name: name,
+        email: email,
+        createdAt: new Date(),
+        profilePic: { url: "" },
+        wishListIds: [],
+      },
+      "usr from log"
+    );
+  };
+  const signupHandler = () => {
+    if (email && password.length > 5 && name) {
+      console.log("inside signupHandler");
+      createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          // Signed in 
-          
+          // Signed in
+
           const user = userCredential.user;
-          console.log(user,"from userCredential.user")
-          addUserToFirebase(user)
+          console.log(user, "from userCredential.user");
+          addUserToFirebase(user);
           // ...
         })
         .catch((error) => {
-            console.log("User already exists. Please login");
-            
+          console.log("User already exists. Please login");
+
           const errorCode = error.code;
           const errorMessage = error.message;
           // ..
         });
-    }else{
-        console.log("plase fill details ");
+    } else {
+      console.log("plase fill details ");
     }
-
-  }
+  };
   return (
     <div className="bg-login-bg  bg-cover bg-no-repeat sm:px-[3.5%] px-[7%]">
       <div className="flex md:flex-row flex-wrap  md:justify-between justify-center md:gap-0 gap-5 py-[10%] w-[90%] mx-auto">
@@ -97,7 +124,9 @@ await setDoc(doc(db,"auth",user.uid),{role:"user",email:email,createdAt:new Date
           <div className="absolute top-[-20px] left-[-25px]">
             <Image src={smallLeaf} alt="" height={50} width={50} />
           </div>
-          <div className="font-bold sm:text-3xl text:xl mb-[30px]">Create an account</div>
+          <div className="font-bold sm:text-3xl text:xl mb-[30px]">
+            Create an account
+          </div>
           <div className="text-[#777777] text-sm mb-[30px]">
             Let’s get started!
           </div>
@@ -116,7 +145,7 @@ await setDoc(doc(db,"auth",user.uid),{role:"user",email:email,createdAt:new Date
               placeholder="Email"
               className=" w-full  px-[20px] py-[5px] outline-0"
               value={email}
-              onChange={(e)=>setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="   mb-[20px]">
@@ -125,10 +154,13 @@ await setDoc(doc(db,"auth",user.uid),{role:"user",email:email,createdAt:new Date
               placeholder="Password"
               className="  w-full px-[20px] py-[5px] outline-0"
               value={password}
-              onChange={(e)=>setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div onClick={signupHandler} className=" text-center bg-[#62A403] py-[12px] rounded-2xl text-[white] cursor-pointer">
+          <div
+            onClick={signupHandler}
+            className=" text-center bg-[#62A403] py-[12px] rounded-2xl text-[white] cursor-pointer"
+          >
             Create an account
           </div>
           <div className="flex items-center justify-center gap-10 my-[20px]">
@@ -143,8 +175,11 @@ await setDoc(doc(db,"auth",user.uid),{role:"user",email:email,createdAt:new Date
             <div className="font-semibold text-lg">Sign Up with Google</div>
           </div>
           <div className="flex justify-center items-center gap-3 font-medium text-base">
-            <div>Don't have an account? </div>
-            <div onClick={redirectToLoginHandler} className="text-[#51150A] cursor-pointer">
+            <div>Don&apos;t have an account? </div>
+            <div
+              onClick={redirectToLoginHandler}
+              className="text-[#51150A] cursor-pointer"
+            >
               Log in
             </div>
           </div>

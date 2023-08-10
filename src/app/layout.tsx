@@ -1,13 +1,17 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Jost } from 'next/font/google'
+import { Inter, Jost } from "next/font/google";
 // import Navbar from '@/components/nabvar/navbar'
 import Footer from '@/components/footer/Footer'
-const inter = Jost({subsets:['latin']})
 import Navbar from '@/components/nabvar/Navbar'
 import NavSearch from '@/components/mainNavSearch/NavSearch'
 import Providers from "@/utils/provider";
 import SearchHeader from '@/components/searchHeader/SearchHeader'
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["300", "400", "600", "700", "900"],
+  variable: "--font-jost",
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,11 +24,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      {/* <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin=''/>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet"/> */}
-      <body className={inter.className}>
+    <html lang="en" className={jost.variable}>
+    
+      <body className="font-jost">
         {/* <NavSearch/> */}
         <Providers>
           {/* <SearchHeader/> */}

@@ -23,7 +23,7 @@ const GetInTouch = () => {
     const matches3 = useMediaQuery('(max-width:452px)');
   return (
     <div className='flex sm:px-[3.5%] px-[7%]  md:mb-[400px] mb-[600px] sm:mb-[600px] sm:pb-[20px] pb-[20px]  '>
-        <div className='flex lg:justify-center lg:flex-row flex-wrap xl:gap-[150px]   w-fit mx-auto'>
+        <div className='flex lg:justify-between px-20 lg:flex-row flex-wrap xl:gap-[150px] w-full  mx-auto'>
         <div className=''>
             <div className='text-[#588f27] text-md font-semibold mb-[5px]'>Our Contacts</div>
             <h1 className='font-semibold md:text-4xl text-2xl mb-[15px]'>Get in Touch</h1>

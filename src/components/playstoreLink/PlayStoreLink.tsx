@@ -52,7 +52,7 @@ const PlayStoreLink = () => {
           </div>
         </div>
         {!matches&&
-        <div className='w-[600px]  border-[2px] border-[red] absolute bottom-[-200px] translate-y-[-10px] right-0 '>
+        <div className='w-[600px]  absolute bottom-[-200px] translate-y-[-10px] right-0 '>
           <div className=''>
             <Image src={phoneImg} alt='' width={1000} height={1000} className=' ' />
           </div>

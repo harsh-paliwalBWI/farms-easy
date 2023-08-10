@@ -26,8 +26,8 @@ const Farmerpageproducts = () => {
 
     return (
         <div className='flex flex-col md:flex-row flex-wrap justify-start items-center gap-6 md:gap-8 my-6'>
-            {displayedProducts.map((product) => (
-                <ProductCard></ProductCard>
+            {displayedProducts.map((product,idx) => (
+                <ProductCard key={idx}></ProductCard>
                 // <ProductCard
                 //     key={product.id}
                 //     productname={product.productname}
