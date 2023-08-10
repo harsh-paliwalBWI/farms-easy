@@ -64,7 +64,7 @@ const Productdescription = () => {
 
         <div className=' text-base text-[#8a8b8a] font-medium  leading-8'>{DUMMY_DATA.para1}</div>
         <div className=' text-base font-semibold  my-[1rem]'>SKU: <span className='text-[#5b5b5a]'>{DUMMY_DATA.Sku}</span></div>
-        <button type="button" className=" text-white bg-[#598f26] w-[45%] font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2"  onClick={handleOpenModal} >I'M INTERESTED</button>
+        <button type="button" className=" text-white bg-[#598f26] w-[45%] font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2"  onClick={handleOpenModal} >I&apos;M INTERESTED</button>
     </div>
     </div>
     {modalOpen && <Modal handleCloseModal={handleCloseModal} />}

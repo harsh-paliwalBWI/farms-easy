@@ -5,7 +5,6 @@ import Leaf from '@/components/leaf/Leaf'
 import OrganicSince from '@/components/organicSince/OrganicSince'
 import React from 'react'
 
-
 const Page = async() => {
   return (
     <div>

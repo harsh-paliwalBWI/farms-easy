@@ -38,7 +38,7 @@ export default async function Home() {
       <Offers/>
       <CategoryList/>
       <Testimonials />
-      <PlayStoreLink />
+      {/* <PlayStoreLink /> */}
       <LogosSection />
       <OurMission />
 

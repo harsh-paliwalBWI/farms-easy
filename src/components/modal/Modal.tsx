@@ -13,7 +13,7 @@ const Modal:FC<Props> = ({ handleCloseModal }) => {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40">
       <div className="bg-white w-[38rem]  rounded-3xl p-12">
         <div className="flex items-center justify-between mb-10">
-          <h2 className="text-2xl font-bold">I'M Interested</h2>
+          <h2 className="text-2xl font-bold">I&apos;M Interested</h2>
           <button onClick={handleCloseModal} className="text-gray-500 hover:text-gray-700">
             <TiTimes className="h-6 w-6" />
           </button>
