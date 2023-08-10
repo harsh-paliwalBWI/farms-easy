@@ -28,7 +28,7 @@ export default async function Home() {
       {/* </Hydrate> */}
       <Features/>
        <Category/>
-      {/* <Products /> */}
+      <Products />
       <OfferBanner/>
       <BestSells/>
       <Offers/>

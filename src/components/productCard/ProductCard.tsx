@@ -14,7 +14,7 @@ import Image from 'next/image'
 const ProductCard = () => {
   return (
     
-    <div className='border-[#479332] border-[1px] w-[280px] md:w-[260px] p-[12px] rounded-md flex'>
+    <div className='border-[#479332] border-[1px]  p-[12px] rounded-md flex'>
     <div className='w-full'>
       <div className='flex items-center justify-between'>
         <div className='relative'>

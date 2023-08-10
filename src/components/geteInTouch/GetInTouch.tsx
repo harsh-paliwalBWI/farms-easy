@@ -48,7 +48,7 @@ const GetInTouch = () => {
         {!matches2&&
         <div className='flex items-start relative  '> 
         <div className='  '><Image src={basketImg} alt='' width={matches?400:500} height={matches?400:500}  className=''/></div>
-        <div className='   absolute top-[-80px] right-[-100px]'><Image src={organicLogo} alt='' width={matches?150:230} height={matches?150:230} className=''/></div>
+        <div className='   absolute top-[-60px] right-[-100px]'><Image src={organicLogo} alt='' width={matches?150:230} height={matches?150:230} className=''/></div>
         </div>
 }
         </div>
