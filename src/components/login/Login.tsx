@@ -69,16 +69,16 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
 
   }
   return (
-    <div className="bg-login-bg  bg-cover bg-no-repeat px-[3.5%]">
-      <div className="flex md:flex-row flex-wrap  md:justify-between justify-center md:gap-0 gap-5 py-[10%] ">
+    <div className="bg-login-bg  bg-cover bg-no-repeat sm:px-[3.5%] px-[7%]">
+      <div className="flex md:flex-row flex-wrap  md:justify-between justify-center md:gap-0 gap-5 py-[10%] w-[90%] mx-auto ">
         <div className="">
-          <div className="md:mb-[35%] mb-[15%]">
+          <div className="md:mb-[15%] mb-[15%]">
             <Image
               src={whiteLogo}
               alt=""
               width={1000}
               height={1000}
-              className=" sm:w-[300px] sm:h-[100px] h-[60px] w-[200px] "
+              className=" sm:w-[350px] sm:h-[150px] h-[60px] w-[200px]"
             />
           </div>
           <div className="flex flex-col gap-5">
@@ -90,18 +90,18 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
                   <div>
                     <Image src={item.image} alt="" width={20} height={20} />
                   </div>
-                  <div className="text-white">{item.text}</div>
+                  <div className="text-white sm:text-xl text-base font-medium">{item.text}</div>
                 </div>
               );
             })}
           </div>
         </div>
-        <div className="bg-white  px-[40px] py-[50px]  rounded-xl relative  md:w-[50%] w-[100%] log-in">
-          <div className="absolute top-[-20px] left-[-25px]">
-            <Image src={smallLeaf} alt="" height={50} width={50} />
+        <div className="bg-white  sm:px-[40px] px-[20px] sm:py-[50px] py-[20px]  rounded-xl relative  md:w-[45%] w-[100%] log-in">
+          <div className="absolute sm:top-[-20px] sm:left-[-25px] top-[-10px] left-[-15px]">
+            <Image src={smallLeaf} alt="" height={50} width={50} className="sm:h-[50px] sm:w-[50px] w-[30px] h-[30px]" />
           </div>
 
-          <div className="font-bold text-3xl mb-[30px]">Log In</div>
+          <div className="font-bold sm:text-3xl text-xl mb-[30px]">Log In</div>
           <div className="text-[#777777] text-sm mb-[30px]">
             Please enter your details.
           </div>
@@ -123,7 +123,7 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
               onChange={(e)=>setPassword(e.target.value)}
             />
           </div>
-          <div className="flex    py-[5px]  justify-between  mb-[40px] items-center font-medium text-base">
+          <div className="flex   flex-grow sm:flex-row flex-col sm:gap-0 gap-5 py-[5px]  justify-between  mb-[40px] items-center font-medium sm:text-base text-sm">
             <div className="flex items-center gap-3">
               <div
                 className={`w-5 h-5 border-2 rounded-sm cursor-pointer flex justify-center items-center ${
@@ -144,7 +144,7 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
           </div>
           <div className="flex items-center justify-center gap-10 my-[20px]">
             <div className="w-[25%] h-[0.2px] bg-[#dfdfdf]"></div>
-            <span className="text-gray-600">OR</span>
+            <span className="text-gray-600 sm:text-base text-sm">OR</span>
             <div className="w-[25%] h-px bg-[#dfdfdf]"></div>
           </div>
 
@@ -152,10 +152,10 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
             <div className="">
               <FcGoogle className="h-[25px] w-[25px]" />
             </div>
-            <div className="font-semibold text-lg">Log In with Google</div>
+            <div className="font-semibold sm:text-lg text-sm">Log In with Google</div>
           </div>
-          <div className="flex justify-center items-center gap-3 font-medium text-base">
-            <div>Don/'t have an account? </div>
+          <div className="flex justify-center items-center gap-3 font-medium sm:text-base text-sm">
+            <div>Don&apos;t have an account? </div>
             <div
               onClick={createAccountClickHandler}
               className="text-[#51150A] cursor-pointer"

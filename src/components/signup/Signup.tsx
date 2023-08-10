@@ -67,10 +67,10 @@ await setDoc(doc(db,"auth",user.uid),{role:"user",email:email,createdAt:new Date
 
   }
   return (
-    <div className="bg-login-bg  bg-cover bg-no-repeat px-[3.5%]">
-      <div className="flex md:flex-row flex-wrap  md:justify-between justify-center md:gap-0 gap-5 py-[10%] ">
+    <div className="bg-login-bg  bg-cover bg-no-repeat sm:px-[3.5%] px-[7%]">
+      <div className="flex md:flex-row flex-wrap  md:justify-between justify-center md:gap-0 gap-5 py-[10%] w-[90%] mx-auto">
         <div className="">
-          <div className="md:mb-[35%] mb-[15%]">
+          <div className="md:mb-[15%] mb-[15%]">
             <Image
               src={whiteLogo}
               alt=""
@@ -97,7 +97,7 @@ await setDoc(doc(db,"auth",user.uid),{role:"user",email:email,createdAt:new Date
           <div className="absolute top-[-20px] left-[-25px]">
             <Image src={smallLeaf} alt="" height={50} width={50} />
           </div>
-          <div className="font-bold text-3xl mb-[30px]">Create an account</div>
+          <div className="font-bold sm:text-3xl text:xl mb-[30px]">Create an account</div>
           <div className="text-[#777777] text-sm mb-[30px]">
             Let’s get started!
           </div>

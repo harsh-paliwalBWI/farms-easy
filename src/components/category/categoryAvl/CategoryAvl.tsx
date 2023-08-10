@@ -16,8 +16,8 @@ const CategoryAvl = async () => {
           <div className={`${idx === 0 ? "bg-[#a4d672]" : "bg-white"} rounded-full w-[102px] h-[102px]  flex justify-center items-center mx-auto translate-y-[30px]`}>
             <Image src={item.image} height={60} width={60} alt='' /></div>
           <div className={`${idx === 0 ? "bg-[#588f27]" : "bg-[#b1bca6]"}  text-white font-semibold rounded-md  text-center h-[120px] pt-[40px] pb-[35px] w-[250px] px-[20px] `}>
-            <div className='sm:text-lg text-base'>{item.catText}</div>
-            <div className='sm:text-lg text-base'>{item.catText2}</div>
+            <div className='sm:text-lg text-base font-medium'>{item.catText}</div>
+            <div className='sm:text-lg text-base font-medium'>{item.catText2}</div>
           </div>
         </div>
       })}

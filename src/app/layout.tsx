@@ -1,9 +1,9 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Jost } from 'next/font/google'
 // import Navbar from '@/components/nabvar/navbar'
 import Footer from '@/components/footer/Footer'
-const inter = Inter({ subsets: ['latin'] })
+const inter = Jost({subsets:['latin']})
 import Navbar from '@/components/nabvar/Navbar'
 import NavSearch from '@/components/mainNavSearch/NavSearch'
 import Providers from "@/utils/provider";
@@ -22,6 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* <link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin=''/>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet"/> */}
       <body className={inter.className}>
         {/* <NavSearch/> */}
         <Providers>

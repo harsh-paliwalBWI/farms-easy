@@ -80,7 +80,7 @@ const Products = () => {
         <div className=' px-[3.5%] pt-[100px]'>
             <div className='flex items-center justify-between mb-[65px]'>
             <div className='text-[#253D4E] font-bold md:text-3xl sm:text-2xl text-xl'>Featured Products</div>
-            {matches?<div><CiViewList className="h-[30px] w-[30px] text-[#253D4E]"/></div>:
+            {/* {matches?<div><CiViewList className="h-[30px] w-[30px] text-[#253D4E]"/></div>:
             <div className='flex gap-10 text-[#253D4E] font-semibold text-base'>
             <div>All</div>
             <div>Vegetables</div>
@@ -91,7 +91,7 @@ const Products = () => {
             <div>Pulses</div>
             <div>Flower</div>
             </div>
-}
+} */}
             </div>
         <div className='flex justify-center items-center border-[2px] border-[black]'>
             <button onClick={() => slider.current?.slickPrev()} className='bg-[#F2F3F4] p-2 rounded-full  border-[2px] border-[black]'><MdArrowBack className='h-[25px] w-[25px]' /></button>

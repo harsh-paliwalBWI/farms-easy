@@ -8,6 +8,7 @@ import Slider from "react-slick"
 import userImg from "../../images/Ellipse 10.png"
 import quotationImg from "../../images/quotation 2.svg"
 import Image from 'next/image';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 const DUMMY_DATA=[{feedback:"A paragraph is a unit of text that consists of a group of sentences related to a central topic or idea. It serves as a container for expressing a complete thought or developing a specific aspect of an argument. By employing paragraphs, writers can",
@@ -75,9 +76,9 @@ const Testimonials = () => {
         }
       ]
     };
-   
+    const matches = useMediaQuery('(max-width:1150px)');
   return (
-    <div className='border-[2px] border-[red] pb-[150px] '>
+    <div className={` pb-[150px] ${matches?"pb-[20px]":"pb-[150px]"}`}>
        <div className='text-center text-[#51150a] font-semibold md:text-lg sm:text-base text-sm mb-[10px] '>Testimonials</div>
        <div className='text-[#253d4e] text-center md:text-3xl sm:text-2xl text-xl font-bold'>What Our Clients Says</div>
 <div className='flex justify-center items-center gap-0 md:gap-[20px] pb-[20px]  px-[3.5%] '>

@@ -75,7 +75,11 @@ const BestSells = () => {
     <div className='px-[3.5%] '>
           <div className='flex items-center justify-between '>
             <div className='text-[#253D4E] font-bold text-3xl'>Daily Best Sells</div>
-            {matches?<div><CiViewList className="h-[30px] w-[30px] text-[#253D4E]"/></div>:
+            <div className='flex gap-3 items-center'>
+                <div><button onClick={() => slider.current?.slickPrev()} className='bg-[#F2F3F4] p-2 rounded-full '><MdArrowBack className='h-[25px] w-[25px]' /></button></div>
+                <div> <button onClick={() => slider.current.slickNext()} className='bg-[#F2F3F4] p-2 rounded-full '><MdArrowForward className='h-[25px] w-[25px]' /></button></div>
+            </div>
+            {/* {matches?<div><CiViewList className="h-[30px] w-[30px] text-[#253D4E]"/></div>:
             <div className='flex items-center gap-10 text-[#253D4E] font-semibold text-base'>
             <div>Featured</div>
             <div>Popular</div>
@@ -85,7 +89,7 @@ const BestSells = () => {
                 <div> <button onClick={() => slider.current.slickNext()} className='bg-[#F2F3F4] p-2 rounded-full '><MdArrowForward className='h-[25px] w-[25px]' /></button></div>
             </div>
             </div>
-}
+} */}
             </div>
             <div className='flex md:justify-start justify-center lg:flex-row flex-col gap-5 items-center py-[80px] w-full mx-auto border-[2px] border-[black]  '>
            
