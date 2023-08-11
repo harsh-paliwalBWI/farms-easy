@@ -24,7 +24,7 @@ const DATA1 = [
 const Farmgallery = () => {
   const { data }: any = useQuery({
     queryKey: ["farm-gallery"],
-    queryFn: () => fetchFarmGallery(),
+    queryFn: () => fetchFarmGallery()
   });
 
   return (
@@ -36,7 +36,7 @@ const Farmgallery = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8">
         {data &&
           data?.status &&
-          (data?.res?.images?.slice(0,6))?.map((item: any, idx: number) => (
+          data?.res?.images?.slice(0, 6)?.map((item: any, idx: number) => (
             <div className="rounded-lg overflow-hidden" key={idx}>
               <Image
                 src={item.url}
