@@ -5,6 +5,7 @@ import Image from "next/image";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import Link from "next/link";
 import Modal from "../modal/Modal";
+import FlatIcon from "../flatIcon/flatIcon";
 
 const SellsCard = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -55,7 +56,7 @@ const SellsCard = () => {
             </div>
             <Link href={"/product/new-product"}>
               <div className="bg-[#51150A] flex items-center justify-center px-[13px] py-[14px] rounded-md">
-                <HiOutlineArrowRight className="text-white" />
+              <FlatIcon icon={`flaticon-left-arrow text-md text-white  `} />
               </div>
             </Link>
           </div>

@@ -5,11 +5,16 @@ import Image from "next/image";
 import hydroponicImg from "../../../images/Frame 34412.svg";
 import sproutImg from "../../../images/sprout 1 (1).svg";
 import CategoryCard from "../categoryCard/CategoryCard";
+import FlatIcon from "@/components/flatIcon/flatIcon";
 
 const DUMMY_DATA = [
-  { image: sproutImg, catText: "FARM PRODUCTS", catText2: "" },
-  { image: CategoryImg, catText: "ORGANIC FARM", catText2: "PRODUCTS" },
-  { image: hydroponicImg, catText: "HYDROPONIC ", catText2: "FARM PRODUCTS " },
+  { image: "flaticon-sprout", catText: "FARM PRODUCTS", catText2: "" },
+  { image: "flaticon-organic", catText: "ORGANIC FARM", catText2: "PRODUCTS" },
+  {
+    image: "flaticon-hydroponic-2",
+    catText: "HYDROPONIC ",
+    catText2: "FARM PRODUCTS ",
+  },
 ];
 
 const CategoryAvl = () => {
@@ -23,32 +28,28 @@ const CategoryAvl = () => {
             <div
               key={idx}
               className="cursor-pointer"
-              // onClick={() => setSelectedCategory(idx)}
+              onClick={() => setSelectedCategory(idx)}
             >
               <div
                 className={`${
                   idx === selectedCategory ? "bg-[#a4d672]" : "bg-white"
                 } rounded-full w-[102px] h-[102px]  flex justify-center items-center mx-auto translate-y-[30px]`}
               >
-                <Image
-                  src={item.image}
-                  height={60}
-                  width={60}
-                  alt=""
-                  style={{
-                    maxWidth: "100%",
-                    height: "auto"
-                  }} />
+                <FlatIcon
+                  icon={`${item?.image} ${
+                    idx === selectedCategory ? "text-white" : "text-primary"
+                  } text-5xl`}
+                />
               </div>
               <div
                 className={`${
                   idx === selectedCategory ? "bg-[#588f27]" : "bg-[#b1bca6]"
                 }   text-white font-semibold rounded-md  text-center h-[120px] pt-[40px] pb-[35px] w-[250px] px-[20px] `}
               >
-                <div className="sm:text-lg text-base  font-medium">
+                <div className="sm:text-lg text-base text-white  font-medium">
                   {item.catText}
                 </div>
-                <div className="sm:text-lg text-base  font-medium">
+                <div className="sm:text-lg text-base text-white  font-medium">
                   {item.catText2}
                 </div>
               </div>

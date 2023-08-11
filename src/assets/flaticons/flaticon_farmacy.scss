@@ -1,0 +1,213 @@
+$flaticon_farmacy-font: "flaticon_farmacy";
+
+@font-face {
+    font-family: $flaticon_farmacy-font;
+    src: url("./flaticon_farmacy.ttf?e547f1fe9047296b1836f4450ff8ab11") format("truetype"),
+url("./flaticon_farmacy.woff?e547f1fe9047296b1836f4450ff8ab11") format("woff"),
+url("./flaticon_farmacy.woff2?e547f1fe9047296b1836f4450ff8ab11") format("woff2"),
+url("./flaticon_farmacy.eot?e547f1fe9047296b1836f4450ff8ab11#iefix") format("embedded-opentype"),
+url("./flaticon_farmacy.svg?e547f1fe9047296b1836f4450ff8ab11#flaticon_farmacy") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_farmacy !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon_farmacy-map: (
+    "star-1": "\f101",
+    "insta": "\f102",
+    "facebook": "\f103",
+    "almonds": "\f104",
+    "home": "\f105",
+    "calling": "\f106",
+    "broccoli": "\f107",
+    "calling-fill": "\f108",
+    "location": "\f109",
+    "information-button": "\f10a",
+    "hydroponic": "\f10b",
+    "time-left": "\f10c",
+    "location-fill": "\f10d",
+    "message": "\f10e",
+    "hydroponic-2": "\f10f",
+    "fruit": "\f110",
+    "message-fill": "\f111",
+    "quotation": "\f112",
+    "grid-1": "\f113",
+    "search": "\f114",
+    "organic": "\f115",
+    "leaf": "\f116",
+    "category": "\f117",
+    "lentil": "\f118",
+    "time-circle": "\f119",
+    "list": "\f11a",
+    "left-arrow": "\f11b",
+    "wheat-plant": "\f11c",
+    "play": "\f11d",
+    "linkedin": "\f11e",
+    "organic-product": "\f11f",
+    "vegetable": "\f120",
+    "fruit-2": "\f121",
+    "visible": "\f122",
+    "pesticide": "\f123",
+    "sprout": "\f124",
+    "heart": "\f125",
+    "down-arrow": "\f126",
+    "frams": "\f127",
+    "cereal": "\f128",
+    "pesticide-free": "\f129",
+    "twitter": "\f12a",
+    "flower": "\f12b",
+    "vision": "\f12c",
+    "target-1": "\f12d",
+    "star": "\f12e",
+    "spicec": "\f12f",
+);
+
+.flaticon-star-1:before {
+    content: map-get($flaticon_farmacy-map, "star-1");
+}
+.flaticon-insta:before {
+    content: map-get($flaticon_farmacy-map, "insta");
+}
+.flaticon-facebook:before {
+    content: map-get($flaticon_farmacy-map, "facebook");
+}
+.flaticon-almonds:before {
+    content: map-get($flaticon_farmacy-map, "almonds");
+}
+.flaticon-home:before {
+    content: map-get($flaticon_farmacy-map, "home");
+}
+.flaticon-calling:before {
+    content: map-get($flaticon_farmacy-map, "calling");
+}
+.flaticon-broccoli:before {
+    content: map-get($flaticon_farmacy-map, "broccoli");
+}
+.flaticon-calling-fill:before {
+    content: map-get($flaticon_farmacy-map, "calling-fill");
+}
+.flaticon-location:before {
+    content: map-get($flaticon_farmacy-map, "location");
+}
+.flaticon-information-button:before {
+    content: map-get($flaticon_farmacy-map, "information-button");
+}
+.flaticon-hydroponic:before {
+    content: map-get($flaticon_farmacy-map, "hydroponic");
+}
+.flaticon-time-left:before {
+    content: map-get($flaticon_farmacy-map, "time-left");
+}
+.flaticon-location-fill:before {
+    content: map-get($flaticon_farmacy-map, "location-fill");
+}
+.flaticon-message:before {
+    content: map-get($flaticon_farmacy-map, "message");
+}
+.flaticon-hydroponic-2:before {
+    content: map-get($flaticon_farmacy-map, "hydroponic-2");
+}
+.flaticon-fruit:before {
+    content: map-get($flaticon_farmacy-map, "fruit");
+}
+.flaticon-message-fill:before {
+    content: map-get($flaticon_farmacy-map, "message-fill");
+}
+.flaticon-quotation:before {
+    content: map-get($flaticon_farmacy-map, "quotation");
+}
+.flaticon-grid-1:before {
+    content: map-get($flaticon_farmacy-map, "grid-1");
+}
+.flaticon-search:before {
+    content: map-get($flaticon_farmacy-map, "search");
+}
+.flaticon-organic:before {
+    content: map-get($flaticon_farmacy-map, "organic");
+}
+.flaticon-leaf:before {
+    content: map-get($flaticon_farmacy-map, "leaf");
+}
+.flaticon-category:before {
+    content: map-get($flaticon_farmacy-map, "category");
+}
+.flaticon-lentil:before {
+    content: map-get($flaticon_farmacy-map, "lentil");
+}
+.flaticon-time-circle:before {
+    content: map-get($flaticon_farmacy-map, "time-circle");
+}
+.flaticon-list:before {
+    content: map-get($flaticon_farmacy-map, "list");
+}
+.flaticon-left-arrow:before {
+    content: map-get($flaticon_farmacy-map, "left-arrow");
+}
+.flaticon-wheat-plant:before {
+    content: map-get($flaticon_farmacy-map, "wheat-plant");
+}
+.flaticon-play:before {
+    content: map-get($flaticon_farmacy-map, "play");
+}
+.flaticon-linkedin:before {
+    content: map-get($flaticon_farmacy-map, "linkedin");
+}
+.flaticon-organic-product:before {
+    content: map-get($flaticon_farmacy-map, "organic-product");
+}
+.flaticon-vegetable:before {
+    content: map-get($flaticon_farmacy-map, "vegetable");
+}
+.flaticon-fruit-2:before {
+    content: map-get($flaticon_farmacy-map, "fruit-2");
+}
+.flaticon-visible:before {
+    content: map-get($flaticon_farmacy-map, "visible");
+}
+.flaticon-pesticide:before {
+    content: map-get($flaticon_farmacy-map, "pesticide");
+}
+.flaticon-sprout:before {
+    content: map-get($flaticon_farmacy-map, "sprout");
+}
+.flaticon-heart:before {
+    content: map-get($flaticon_farmacy-map, "heart");
+}
+.flaticon-down-arrow:before {
+    content: map-get($flaticon_farmacy-map, "down-arrow");
+}
+.flaticon-frams:before {
+    content: map-get($flaticon_farmacy-map, "frams");
+}
+.flaticon-cereal:before {
+    content: map-get($flaticon_farmacy-map, "cereal");
+}
+.flaticon-pesticide-free:before {
+    content: map-get($flaticon_farmacy-map, "pesticide-free");
+}
+.flaticon-twitter:before {
+    content: map-get($flaticon_farmacy-map, "twitter");
+}
+.flaticon-flower:before {
+    content: map-get($flaticon_farmacy-map, "flower");
+}
+.flaticon-vision:before {
+    content: map-get($flaticon_farmacy-map, "vision");
+}
+.flaticon-target-1:before {
+    content: map-get($flaticon_farmacy-map, "target-1");
+}
+.flaticon-star:before {
+    content: map-get($flaticon_farmacy-map, "star");
+}
+.flaticon-spicec:before {
+    content: map-get($flaticon_farmacy-map, "spicec");
+}

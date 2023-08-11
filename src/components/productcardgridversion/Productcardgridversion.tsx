@@ -35,8 +35,8 @@ const ProductCard = () => {
               height: "auto"
             }} />
           <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-fit text-[12px] text-center flex gap-2 text-white font-medium'>
-            <span>15%</span>
-            <span>OFF</span>
+            <span className='text-white'>15%</span>
+            <span className='text-white'>OFF</span>
           </div>
         </div>
         <div>

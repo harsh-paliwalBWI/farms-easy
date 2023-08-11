@@ -3,13 +3,11 @@ import React, { useRef } from "react";
 import ProductCard from "../productCard/ProductCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
-import { IoIosArrowForward } from "react-icons/io";
-import { IoIosArrowBack } from "react-icons/io";
 import "slick-carousel/slick/slick-theme.css";
 import { MdArrowBack } from "react-icons/md";
 import { MdArrowForward } from "react-icons/md";
-import { CiViewList } from "react-icons/ci";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import FlatIcon from "../flatIcon/flatIcon";
 
 const Products = () => {
   const matches = useMediaQuery("(max-width:1094px)");
@@ -66,7 +64,7 @@ const Products = () => {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
-          dots:true
+          dots: true,
         },
       },
       {
@@ -104,7 +102,9 @@ const Products = () => {
             onClick={() => slider.current?.slickPrev()}
             className="bg-[#F2F3F4] p-2 rounded-full  "
           >
-            <MdArrowBack className="h-[25px] w-[25px]" />
+            <FlatIcon icon={`flaticon-left-arrow text-2xl rotate-180 `} />
+
+            {/* <MdArrowBack className="h-[25px] w-[25px]" /> */}
           </button>
         )}
         <div className="back ">
@@ -134,7 +134,7 @@ const Products = () => {
             onClick={() => slider.current.slickNext()}
             className="bg-[#F2F3F4] p-2 rounded-full  "
           >
-            <MdArrowForward className="h-[25px] w-[25px]" />
+            <FlatIcon icon={`flaticon-left-arrow text-2xl  `} />
           </button>
         )}
       </div>

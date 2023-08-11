@@ -10,6 +10,7 @@ import { RiLinkedinFill } from "react-icons/ri";
 import { RiFacebookFill } from "react-icons/ri";
 import { BsTwitter } from "react-icons/bs";
 import Image from "next/image";
+import FlatIcon from "../flatIcon/flatIcon";
 const Footer = async () => {
   const DUMMY_DATA = [
     {
@@ -53,7 +54,7 @@ const Footer = async () => {
   ];
 
   const SOCIAL_MEDIA = [
-    { icon: <RiFacebookFill /> },
+    { icon: <FlatIcon icon={"flaticon-facebook"} /> },
     { icon: <RiLinkedinFill /> },
     { icon: <FaInstagram /> },
     { icon: <BsTwitter /> },
@@ -71,15 +72,16 @@ const Footer = async () => {
               className=" sm:w-[260px] sm:h-[80px] h-[60px] w-[200px] "
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
           <div className="flex items-center gap-3  mb-[20px]">
             <div>
-              <CiLocationOn className="text-[#588f27] h-[25px] w-[25px]" />
+              <CiLocationOn className="text-xl text-primary"/>
             </div>
             <div className="font-bold text-sm">
-              Address :{" "}
+              Address :
               <span className="text-[#555555] text-sm font-semibold">
                 1762 school house road
               </span>
@@ -87,7 +89,7 @@ const Footer = async () => {
           </div>
           <div className="flex items-center gap-3  mb-[20px]">
             <div>
-              <BsTelephone className="text-[#588f27] h-[20px] w-[20px]" />
+              <FlatIcon classname="flaticon-calling text-[#588f27] text-xl" />
             </div>
             <div className="font-bold text-sm">
               Call Us :{" "}
@@ -98,7 +100,7 @@ const Footer = async () => {
           </div>
           <div className="flex items-center gap-3 mb-[20px]">
             <div>
-              <CiMail className="text-[#588f27] h-[20px] w-[20px]" />
+              <FlatIcon classname="flaticon-message text-[#588f27] text-xl" />
             </div>
             <div className="font-bold text-sm">
               Email :{" "}
@@ -109,7 +111,7 @@ const Footer = async () => {
           </div>
           <div className="flex items-center gap-3 ">
             <div>
-              <BsClock className="text-[#588f27] h-[20px] w-[20px]" />
+              <FlatIcon classname="flaticon-time-left text-[#588f27] text-xl" />
             </div>
             <div className="font-bold text-sm">
               Work Hours :{" "}
@@ -152,16 +154,17 @@ const Footer = async () => {
         </div>
         <div className="flex sm:gap-3 gap-2">
           <div className="bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center">
-            <RiFacebookFill className="text-white md:h-[22px] md:w-[22px] w-[15px] h-[15px]" />
+            {/* <RiFacebookFill className="text-white md:h-[22px] md:w-[22px] w-[15px] h-[15px]" /> */}
+            <FlatIcon icon={"flaticon-facebook text-white text-xl"} />
           </div>
           <div className="bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center">
-            <RiLinkedinFill className="text-white md:h-[22px] md:w-[22px] w-[15px] h-[15px]" />
+            <FlatIcon icon={"flaticon-linkedin text-white text-xl"} />
           </div>
           <div className="bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center">
-            <FaInstagram className="text-white md:h-[22px] md:w-[22px] w-[15px] h-[15px]" />
+            <FlatIcon icon={"flaticon-insta text-white text-xl"} />
           </div>
           <div className="bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center">
-            <BsTwitter className="text-white md:h-[22px] md:w-[22px] w-[15px] h-[15px]" />
+            <FlatIcon icon={"flaticon-twitter text-white text-xl"} />
           </div>
         </div>
       </div>

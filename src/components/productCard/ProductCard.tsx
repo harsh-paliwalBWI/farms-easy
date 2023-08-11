@@ -8,13 +8,16 @@ import { BsHeart } from "react-icons/bs";
 
 import Image from "next/image";
 import Link from "next/link";
+import FlatIcon from "../flatIcon/flatIcon";
 
 const ProductCard = () => {
-
-  const [modalOpen, setModalOpen] = useState(false); 
-  const handleOpenModal = () => {    setModalOpen(true);  };
-    const handleCloseModal = () => {    setModalOpen(false);  };
-
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className="border-[#479332] border-[1px]  p-[12px] rounded-md flex">
@@ -28,15 +31,16 @@ const ProductCard = () => {
               height={65}
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-fit text-[12px] text-center flex gap-2 text-white font-medium">
-              <span>15%</span>
-              <span>OFF</span>
+              <span className="text-white">15%</span>
+              <span className="text-white">OFF</span>
             </div>
           </div>
           <div>
-            <BsHeart className="h-[18px] w-[20.59px] text-[#777777]" />
+            <FlatIcon icon={`flaticon-heart text-2xl `} />
           </div>
         </div>
         <div className="my-[10px] flex justify-center">
@@ -45,8 +49,9 @@ const ProductCard = () => {
             alt=""
             style={{
               maxWidth: "100%",
-              height: "auto"
-            }} />
+              height: "auto",
+            }}
+          />
         </div>
         <div className="text-[#ADADAD] text-[12px]">Vegetables</div>
         <div className="text-[#253D4E] font-semibold my-[5px]">
@@ -58,7 +63,8 @@ const ProductCard = () => {
           <span className="text-[#588F27] font-medium">Organic Nature</span>
         </div>
         <div className="flex h-5  gap-1 items-center my-[5px] ">
-          <TiLocation className="h-[100%] w-auto text-[#598f26]" />
+          <FlatIcon icon={`flaticon-location-fill text-lg text-primary`} />
+          {/* <i className="h-[100%] w-auto text-[#598f26]" /> */}
           <p className="font-bold text-xs">Devanahalli, Karnataka</p>
         </div>
         <div className="flex items-center gap-2 mb-[5px]">
@@ -70,9 +76,9 @@ const ProductCard = () => {
             I’M Interested
           </div>
 
-          <Link href={'/product/new-product'}>
+          <Link href={"/product/new-product"}>
             <div className="bg-[#51150A] flex items-center justify-center px-[13px] py-[14px] rounded-md">
-              <HiOutlineArrowRight className="text-white" />
+              <FlatIcon icon={`flaticon-left-arrow text-lg text-white`} />
             </div>
           </Link>
         </div>

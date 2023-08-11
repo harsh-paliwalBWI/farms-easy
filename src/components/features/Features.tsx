@@ -3,24 +3,25 @@ import React from "react";
 import Image from "next/image";
 // import img from "../../images/Group 6.svg"
 import img from "../../images/Group.svg";
+import FlatIcon from "../flatIcon/flatIcon";
 
 const dummdData = [
   {
-    img: img,
+    img: "flaticon-leaf",
     heading: "FRESH & ORGANIC",
     text: "Neque porro quisquam est, qui dolorem ",
     text1: "ipsum quia dolor sit amet, consectetur,",
     text2: "adipisci velit, sed qu",
   },
   {
-    img: img,
+    img: "flaticon-frams",
     heading: "CERTIFIED ORGANIC SOURCES",
     text: "Neque porro quisquam est, qui dolorem ",
     text1: "ipsum quia dolor sit amet, consectetur,",
     text2: "adipisci velit, sed qu",
   },
   {
-    img: img,
+    img: "flaticon-pesticide",
     heading: "Pesticide Free",
     text: "Neque porro quisquam est, qui dolorem ",
     text1: "ipsum quia dolor sit amet, consectetur,",
@@ -37,16 +38,7 @@ const Features = () => {
           return (
             <div key={idx} className="flex items-start  gap-5 ">
               <div className="bg-[#588F27] sm:h-[80px] sm:w-[80px] h-[60px] w-[60px] rounded-full flex items-center justify-center">
-                <Image
-                  src={item.img}
-                  alt=""
-                  height={35}
-                  width={35}
-                  style={{
-                    maxWidth: "100%",
-                    height: "auto",
-                  }}
-                />
+                <FlatIcon icon={`${item?.img} text-white text-4xl`} />
               </div>
               <div>
                 <div className="font-semibold sm:text-lg text-sm mb-[3px]">

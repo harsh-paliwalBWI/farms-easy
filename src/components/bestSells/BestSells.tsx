@@ -14,6 +14,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { LuKey } from "react-icons/lu";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { CiViewList } from "react-icons/ci";
+import FlatIcon from "../flatIcon/flatIcon";
 
 const BestSells = () => {
   const matches = useMediaQuery("(max-width:770px)");
@@ -92,7 +93,7 @@ const BestSells = () => {
               onClick={() => slider.current?.slickPrev()}
               className="bg-[#F2F3F4] p-2 rounded-full "
             >
-              <MdArrowBack className="h-[25px] w-[25px]" />
+              <FlatIcon icon={`flaticon-left-arrow text-2xl rotate-180 `} />
             </button>
           </div>
           <div>
@@ -101,7 +102,7 @@ const BestSells = () => {
               onClick={() => slider.current.slickNext()}
               className="bg-[#F2F3F4] p-2 rounded-full "
             >
-              <MdArrowForward className="h-[25px] w-[25px]" />
+              <FlatIcon icon={`flaticon-left-arrow text-2xl  `} />
             </button>
           </div>
         </div>
@@ -171,7 +172,7 @@ const BestSells = () => {
               </div>
               <div className="flex items-center gap-2  w-full px-[10px] rounded-sm bg-[#FFFFFF] ">
                 <span>
-                  <AiOutlineMail className="text-[#ADADAD] h-[15px] w-[15px]" />
+                  <FlatIcon icon={`flaticon-message  text-[#ADADAD] `} />
                 </span>
                 <input
                   placeholder="johndoe@gmail.com"

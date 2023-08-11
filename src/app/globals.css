@@ -1,7 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "../assets/flaticons/flaticon_mycollection.css";
+@import "../assets/flaticons/flaticon_farmacy.css";
+
+h1,p,h2,h3,h4,h5,h6,div,span,a{
+  color: black;
+}
+
+.rc-slider-track {
+  position: absolute;
+  height: 100%;
+  border-radius: 6px;
+  background-color: #A5D67A !important;
+  opacity: 100% !important;
+}
+.rc-slider-handle{
+  background-color: #588f27 !important;
+  border-color: #588f27 !important;
+  opacity: 100% !important;
+  box-shadow: none !important;
+}
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

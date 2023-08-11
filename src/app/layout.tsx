@@ -28,7 +28,7 @@ export default function RootLayout({
       <link
         rel="stylesheet"
         type="text/css"
-        href="../assets/flaticons/flaticon_mycollection.css"
+        href="../assets/flaticons/flaticon_farmacy.css"
       />
       <body className="font-jost">
         {/* <NavSearch/> */}

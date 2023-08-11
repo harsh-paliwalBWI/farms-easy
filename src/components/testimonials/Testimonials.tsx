@@ -9,6 +9,7 @@ import userImg from "../../images/Ellipse 10.png";
 import quotationImg from "../../images/quotation 2.svg";
 import Image from "next/image";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import FlatIcon from "../flatIcon/flatIcon";
 
 const DUMMY_DATA = [
   {
@@ -122,7 +123,8 @@ const Testimonials = () => {
                         idx === 0 ? "bg-[#51150a]" : "bg-[#588f27]"
                       } h-[70px] w-[70px] rounded-full flex justify-center items-center relative z-30 translate-y-[30px]`}
                     >
-                      <Image
+                      <FlatIcon icon={"flaticon-quotation text-5xl text-white"} />
+                      {/* <Image
                         src={quotationImg}
                         alt=""
                         height={40}
@@ -131,7 +133,7 @@ const Testimonials = () => {
                           maxWidth: "100%",
                           height: "auto",
                         }}
-                      />
+                      /> */}
                     </div>
                     <div
                       className={`py-[60px] px-[30px] rounded-lg  ${

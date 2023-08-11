@@ -1,0 +1,161 @@
+@font-face {
+    font-family: "flaticon_farmacy";
+    src: url("./flaticon_farmacy.ttf?e547f1fe9047296b1836f4450ff8ab11") format("truetype"),
+url("./flaticon_farmacy.woff?e547f1fe9047296b1836f4450ff8ab11") format("woff"),
+url("./flaticon_farmacy.woff2?e547f1fe9047296b1836f4450ff8ab11") format("woff2"),
+url("./flaticon_farmacy.eot?e547f1fe9047296b1836f4450ff8ab11#iefix") format("embedded-opentype"),
+url("./flaticon_farmacy.svg?e547f1fe9047296b1836f4450ff8ab11#flaticon_farmacy") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_farmacy !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-star-1:before {
+    content: "\f101";
+}
+.flaticon-insta:before {
+    content: "\f102";
+}
+.flaticon-facebook:before {
+    content: "\f103";
+}
+.flaticon-almonds:before {
+    content: "\f104";
+}
+.flaticon-home:before {
+    content: "\f105";
+}
+.flaticon-calling:before {
+    content: "\f106";
+}
+.flaticon-broccoli:before {
+    content: "\f107";
+}
+.flaticon-calling-fill:before {
+    content: "\f108";
+}
+.flaticon-location:before {
+    content: "\f109";
+}
+.flaticon-information-button:before {
+    content: "\f10a";
+}
+.flaticon-hydroponic:before {
+    content: "\f10b";
+}
+.flaticon-time-left:before {
+    content: "\f10c";
+}
+.flaticon-location-fill:before {
+    content: "\f10d";
+}
+.flaticon-message:before {
+    content: "\f10e";
+}
+.flaticon-hydroponic-2:before {
+    content: "\f10f";
+}
+.flaticon-fruit:before {
+    content: "\f110";
+}
+.flaticon-message-fill:before {
+    content: "\f111";
+}
+.flaticon-quotation:before {
+    content: "\f112";
+}
+.flaticon-grid-1:before {
+    content: "\f113";
+}
+.flaticon-search:before {
+    content: "\f114";
+}
+.flaticon-organic:before {
+    content: "\f115";
+}
+.flaticon-leaf:before {
+    content: "\f116";
+}
+.flaticon-category:before {
+    content: "\f117";
+}
+.flaticon-lentil:before {
+    content: "\f118";
+}
+.flaticon-time-circle:before {
+    content: "\f119";
+}
+.flaticon-list:before {
+    content: "\f11a";
+}
+.flaticon-left-arrow:before {
+    content: "\f11b";
+}
+.flaticon-wheat-plant:before {
+    content: "\f11c";
+}
+.flaticon-play:before {
+    content: "\f11d";
+}
+.flaticon-linkedin:before {
+    content: "\f11e";
+}
+.flaticon-organic-product:before {
+    content: "\f11f";
+}
+.flaticon-vegetable:before {
+    content: "\f120";
+}
+.flaticon-fruit-2:before {
+    content: "\f121";
+}
+.flaticon-visible:before {
+    content: "\f122";
+}
+.flaticon-pesticide:before {
+    content: "\f123";
+}
+.flaticon-sprout:before {
+    content: "\f124";
+}
+.flaticon-heart:before {
+    content: "\f125";
+}
+.flaticon-down-arrow:before {
+    content: "\f126";
+}
+.flaticon-frams:before {
+    content: "\f127";
+}
+.flaticon-cereal:before {
+    content: "\f128";
+}
+.flaticon-pesticide-free:before {
+    content: "\f129";
+}
+.flaticon-twitter:before {
+    content: "\f12a";
+}
+.flaticon-flower:before {
+    content: "\f12b";
+}
+.flaticon-vision:before {
+    content: "\f12c";
+}
+.flaticon-target-1:before {
+    content: "\f12d";
+}
+.flaticon-star:before {
+    content: "\f12e";
+}
+.flaticon-spicec:before {
+    content: "\f12f";
+}

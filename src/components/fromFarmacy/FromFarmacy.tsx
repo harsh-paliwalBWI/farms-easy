@@ -1,33 +1,28 @@
 "use client";
 import React from "react";
 import HeartVegetableImg from "../../images/image 28.svg";
-import image1 from "../../images/vegetable 1.svg";
-import image2 from "../../images/Frame 34412.svg";
-import image3 from "../../images/wheat-plant 1.svg";
-import image4 from "../../images/organic-product 1.svg";
-import image5 from "../../images/Frame 34412 (1).svg";
-import image6 from "../../images/fruit (2) 1.svg";
 import Image from "next/image";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import blinkImg from "../../images/blink-img-3.svg";
+import FlatIcon from "../flatIcon/flatIcon";
 const DUMMY_DATA = [
   {
     heading: "Healthy Food",
     text: "We advocate that food be authentic and",
     text1: "ethical, freshly prepared and tasty.",
-    image: image1,
+    image: "flaticon-vegetable",
   },
   {
     heading: "Fresh Products",
     text: "We advocate that food be authentic and",
     text1: "ethical, freshly prepared and tasty.",
-    image: image2,
+    image: "flaticon-fruit",
   },
   {
     heading: "Hydroponic Products",
     text: "We advocate that food be authentic and",
     text1: "ethical, freshly prepared and tasty.",
-    image: image3,
+    image: "flaticon-hydroponic-2",
   },
 ];
 
@@ -36,19 +31,19 @@ const DUMMY_DATA1 = [
     heading: "100% Organic",
     text: "We advocate that food be authentic and",
     text1: "ethical, freshly prepared and tasty.",
-    image: image4,
+    image: "flaticon-organic-product",
   },
   {
     heading: "Local Growth",
     text: "We advocate that food be authentic and",
     text1: "ethical, freshly prepared and tasty.",
-    image: image5,
+    image: "flaticon-wheat-plant",
   },
   {
     heading: "Pesticide Free",
     text: "We advocate that food be authentic and",
     text1: "ethical, freshly prepared and tasty.",
-    image: image6,
+    image: "flaticon-pesticide-free",
   },
 ];
 
@@ -79,7 +74,10 @@ const FromFarmacy = () => {
                             <Image src={item.image} alt='' height={50} width={50}/>
                             </div> */}
                 <div className="relative rounded-full h-[40px] w-[40px] bg-[#EFF4DC] z-30 ml-4">
-                  <Image
+                  <FlatIcon
+                    icon={`${item?.image} text-[2.5rem] text-primary absolute top-[-30%] left-[-30%]`}
+                  />
+                  {/* <Image
                     src={item.image}
                     alt=""
                     height={50}
@@ -87,9 +85,11 @@ const FromFarmacy = () => {
                     className="absolute top-[-30%] left-[-30%]"
                     style={{
                       maxWidth: "100%",
-                      height: "auto"
-                    }} />
+                      height: "auto",
+                    }}
+                  /> */}
                   {/* <div className="h-[40px] w-[40px] rounded-full bg-[#EFF4DC] absolute top-[50%] left-[50%] opacity-50 "></div> */}
+                  /
                 </div>
               </div>
             );
@@ -103,28 +103,23 @@ const FromFarmacy = () => {
             width={550}
             style={{
               maxWidth: "100%",
-              height: "auto"
-            }} />
+              height: "auto",
+            }}
+          />
         </div>
         <div className="  flex flex-col sm:gap-[60px] gap-[30px]">
           {DUMMY_DATA1.map((item: any, idx: number) => {
             return (
               <div className="flex items-center gap-5" key={idx}>
-               <div className="relative rounded-full h-[40px] w-[40px] bg-[#EFF4DC] z-30 ml-4">
-                  <Image
-                    src={item.image}
-                    alt=""
-                    height={50}
-                    width={50}
-                    className="absolute bottom-[30%] left-[30%]"
-                    style={{
-                      maxWidth: "100%",
-                      height: "auto"
-                    }} />
+                <div className="relative rounded-full h-[40px] w-[40px] bg-[#EFF4DC] z-30 ml-4">
+                  <FlatIcon
+                    icon={`${item?.image} text-[2.5rem] text-primary absolute top-[-40%] left-[30%]`}
+                  />
+
                   {/* <div className="h-[40px] w-[40px] rounded-full bg-[#EFF4DC] absolute top-[50%] left-[50%] opacity-50 "></div> */}
                 </div>
                 <div className="">
-                  <div className="font-bold sm:text-lg text-base mb-[5px]">
+                  <div className="font-bold sm:text-lg text-base mb-[5px] ">
                     {item.heading}
                   </div>
                   <div className="text-xs text-[#606060] text-right">
@@ -144,8 +139,9 @@ const FromFarmacy = () => {
             alt=""
             style={{
               maxWidth: "100%",
-              height: "auto"
-            }} />
+              height: "auto",
+            }}
+          />
         </div>
       )}
     </div>
