@@ -29,7 +29,6 @@ const SellsCard = () => {
             className="rounded-t-sm "
             style={{
               width: "230px",
-              height: "auto",
               maxWidth: "100%",
               height: "auto"
             }} />
