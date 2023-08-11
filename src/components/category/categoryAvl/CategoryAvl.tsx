@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import CategoryImg from "../../../images/Vector.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import hydroponicImg from "../../../images/Frame 34412.svg";
 import sproutImg from "../../../images/sprout 1 (1).svg";
 import CategoryCard from "../categoryCard/CategoryCard";

@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react';
 import headingsectionimage from "../../images/Rectangle 2.svg";
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 interface Props {
   heading: string;

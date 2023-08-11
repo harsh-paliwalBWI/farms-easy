@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import { GoDotFill } from 'react-icons/go';
 import desc1 from "../../images/descriptionimg1.svg";
 import desc2 from "../../images/descriptionimg2.svg";

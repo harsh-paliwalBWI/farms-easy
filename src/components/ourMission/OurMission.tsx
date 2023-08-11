@@ -5,7 +5,7 @@ import vision from "../../images/vision 1.svg"
 import target from "../../images/target 1.svg"
 import ourMission from "../../images/information-button 1.svg"
 import backGroundImage from "../../images/bg-image01 1.svg"
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 const DUMMY_DATA = [{ image: ourMission, heading: 'WHO WE ARE', text: "We are a successful private company with", text1: "extensive knowledge of natural and organic", text2: "products." },
 { image: target, heading: 'OUR MISSION', text: "To educate and empower the world about the", text1: "good and positive effects of adopting an", text2: "organic lifestyle." },

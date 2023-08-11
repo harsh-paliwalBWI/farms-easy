@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, FC } from "react";
 import whiteLogo from "../../images/Group 3.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import smallLeaf from "../../images/Group 34147.svg";
 import { FcGoogle } from "react-icons/fc";
 import check from "../../images/Vector 28.svg";

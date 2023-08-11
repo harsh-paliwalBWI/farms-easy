@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { TiLocation } from "react-icons/ti";
 import Modal from "@/components/modal/Modal";
 
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 import brocli1 from "../../images/brocli1.svg";
 import brocli2 from "../../images/brocli2.svg";

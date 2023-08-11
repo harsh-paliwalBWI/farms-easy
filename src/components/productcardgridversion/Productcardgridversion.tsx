@@ -9,7 +9,7 @@ import { TiLocation } from 'react-icons/ti';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { BsHeart } from 'react-icons/bs';
 
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 
 

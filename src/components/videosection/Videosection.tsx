@@ -4,7 +4,7 @@ import React from 'react';
 import videoimg1 from "../../images/video-image1.svg"
 import videoimg2 from "../../images/video-image2.svg"
 import videoimg3 from "../../images/video-image3.svg"
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 const Videosection = () => {
     return (

@@ -6,7 +6,7 @@ import g3 from "../../images/video-image3.svg"
 import g4 from "../../images/g4.svg"
 import g5 from "../../images/g5.svg"
 import g6 from "../../images/g6.svg"
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 
 

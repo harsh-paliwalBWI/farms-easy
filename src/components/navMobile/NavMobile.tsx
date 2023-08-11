@@ -9,7 +9,7 @@ import { BiGridAlt } from "react-icons/bi";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import { BsTelephone } from "react-icons/bs";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import logo from "../../images/logo (2).png";
 import { FiSearch } from "react-icons/fi";
 

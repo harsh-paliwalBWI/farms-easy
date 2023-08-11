@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import img from "../../images/Frame 34407.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import Link from "next/link";
 import Modal from "../modal/Modal";

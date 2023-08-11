@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import phoneImg from "../../images/App.svg";
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import appStoreImg from "../../images/image 13.svg"
 import playStoreImg from "../../images/image 14.svg"
 import useMediaQuery from '@mui/material/useMediaQuery';

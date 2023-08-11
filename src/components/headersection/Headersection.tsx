@@ -3,7 +3,7 @@
 import React from 'react'
 import leafimage from "../../images/Group 34147.svg"
 import headingsectionimage from "../../images/Rectangle 2.svg"
-import Image from 'next/image'
+import Image from "next/legacy/image"
 const DUMMY_DATA=[{count:"30+",text:"Store Tie-Up"},{count:"20K",text:"Land Acres"},{count:"100+",text:"Organic Products"}]
 
 const Headersection = () => {

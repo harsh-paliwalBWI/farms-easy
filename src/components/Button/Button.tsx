@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import triangle from "../../images/Rectangle 23990.svg"
 import { FC, useState } from 'react'
 interface Props {

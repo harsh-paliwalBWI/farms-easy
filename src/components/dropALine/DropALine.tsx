@@ -2,7 +2,7 @@
 
 import React from 'react'
 import MapImg from "../../images/Rectangle 23991.svg"
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import triangle from "../../images/Rectangle 23990.svg"
 import Button from '../Button/Button';
 // import useMediaQuery from '@mui/material/useMediaQuery';

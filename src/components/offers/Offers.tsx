@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import OffersImg from "../../images/Rectangle 23976 (1).png"
 
 const Offers = () => {

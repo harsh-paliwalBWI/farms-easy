@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import logo from "../../images/logo (2).png";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import lilHeart from "../../images/li_heart.svg";
 import arrowDown from "../../images/li_chevron-down.svg";
 import userImg from "../../images/Ellipse 2.svg";

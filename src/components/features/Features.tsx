@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 // import img from "../../images/Group 6.svg"
 import img from "../../images/Group.svg"
 

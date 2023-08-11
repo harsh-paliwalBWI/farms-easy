@@ -9,7 +9,7 @@ import { FaInstagram } from "react-icons/fa";
 import { RiLinkedinFill } from "react-icons/ri";
 import { RiFacebookFill } from "react-icons/ri";
 import { BsTwitter } from "react-icons/bs";
-import Image from "next/image";
+import Image from "next/legacy/image";
 const Footer = async () => {
   const DUMMY_DATA = [
     {

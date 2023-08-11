@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import BannerImg from "../../images/healthierBanner.svg";
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { useQuery } from '@tanstack/react-query';
 
 // async function getUsers() {

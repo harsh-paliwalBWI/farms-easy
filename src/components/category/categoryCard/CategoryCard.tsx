@@ -78,7 +78,7 @@ import image3 from "../../../images/Rectangle 8.svg";
 import image4 from "../../../images/Rectangle 5.svg";
 import image5 from "../../../images/Rectangle 4.svg";
 import image6 from "../../../images/Rectangle 15.svg";
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 const DUMMY_DATA = [
   { image: image1, btnText: "VEGETABLES" },

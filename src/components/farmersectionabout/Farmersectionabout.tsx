@@ -1,7 +1,7 @@
 import React from 'react'
 import { TiLocation } from 'react-icons/ti';
 import farmerlogoimage from "../../images/logobackground.svg"
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import ImageB from "../../images/farmerlist2.svg";
 import overlay from "../../images/overlay.svg";
 const DUMMY_DATA={fermerlistImage: ImageB, heading: "ACACIA Organic Farm", categories: "Vegetables, Fruits, Nuts, Flowers, Grains, Spices etc...", location: "Devanahalli, Karnataka", para1:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",para2:"  There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."}

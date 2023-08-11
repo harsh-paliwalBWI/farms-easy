@@ -6,7 +6,7 @@ import brand2 from "../../images/brand-2.svg"
 import brand3 from "../../images/brand-3.svg"
 import brand4 from "../../images/brand-4.svg"
 import brand5 from "../../images/brand-5.svg"
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 
 const IMAGES=[{image:brand4},{image:brand2},{image:brand5},{image:brand3},{image:brand1}]

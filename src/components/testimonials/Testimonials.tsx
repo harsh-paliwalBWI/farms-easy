@@ -7,7 +7,7 @@ import { useRef } from 'react';
 import Slider from "react-slick"
 import userImg from "../../images/Ellipse 10.png"
 import quotationImg from "../../images/quotation 2.svg"
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 

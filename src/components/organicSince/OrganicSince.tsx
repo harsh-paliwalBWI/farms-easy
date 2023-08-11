@@ -3,7 +3,7 @@ import React from "react";
 import farmerImg from "../../images/Rectangle 24011.svg";
 import organicLogo from "../../images/Frame (1).svg";
 import vegetableImg from "../../images/blink-img-1.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import useMediaQuery from "@mui/material/useMediaQuery";
 const DUMMY_DATA = [
   { count: "30+", text: "Store Tie-Up" },

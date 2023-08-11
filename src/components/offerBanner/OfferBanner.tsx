@@ -2,7 +2,7 @@
 import React from "react";
 import bannerImg from "../../images/Group 1747.png";
 import sideImg from "../../images/Offer2-img.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { FiArrowRight } from "react-icons/fi";
 import leftBanner from "../../images/Group 1748.png";
 import sideImg1 from "../../images/Offer1-img.svg";

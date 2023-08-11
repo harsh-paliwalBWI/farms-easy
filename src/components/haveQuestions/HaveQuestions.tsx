@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Img from "../../images/Rectangle 24012.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Disclosure } from "@headlessui/react";
 import { IoIosArrowUp } from "react-icons/io";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";

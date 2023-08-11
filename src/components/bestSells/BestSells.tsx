@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SellsCard from "../sellsCard/SellsCard";
 import img from "../../images/Frame 34407.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import offerImg from "../../images/Group 1749 (1).png";
 import { AiOutlineMail } from "react-icons/ai";
 import { LuKey } from "react-icons/lu";

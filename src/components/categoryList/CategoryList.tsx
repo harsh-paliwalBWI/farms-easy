@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import img from "../../images/Group 6.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const DUMMY_DATA = [
   {

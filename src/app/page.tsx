@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import LogosSection from '@/components/logosSection/LogosSection'
 import OurMission from '@/components/ourMission/OurMission'
 import HealthierWay from '@/components/healthierWay/HealthierWay'

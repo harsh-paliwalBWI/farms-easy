@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { useState } from 'react'
 import Modal from '@/components/modal/Modal'
 import VegtableImg from "../../images/Rectangle 23978.svg";

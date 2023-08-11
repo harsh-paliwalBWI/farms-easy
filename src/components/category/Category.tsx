@@ -3,7 +3,7 @@ import CategoryAvl from "./categoryAvl/CategoryAvl";
 import CategoryCard from "./categoryCard/CategoryCard";
 import img from "../../images/slider-bg-vert-1 1.svg";
 import bottomImg from "../../images/slider-bg-vert-1 2.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const Category = async () => {
   // const [selectedCategory, setSelectedCategory] = useState(0);

@@ -5,7 +5,7 @@ import location from "../../images/Location.svg"
 import meail from "../../images/Message.svg"
 import calling from "../../images/Calling.svg"
 import organicLogo from "../../images/Frame (1).svg"
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import {HiLocationMarker} from "react-icons/hi"
 import call from "../../images/Calling.png"
 import locationImg from "../../images/Location.png"

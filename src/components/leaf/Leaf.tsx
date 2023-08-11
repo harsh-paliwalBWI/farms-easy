@@ -2,7 +2,7 @@
 
 import React,{FC} from 'react'
 import leaf from "../../images/Rectangle 2 (3).svg"
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import smallLeaf from "../../images/Group 34147.svg"
 interface Props{
 text:string

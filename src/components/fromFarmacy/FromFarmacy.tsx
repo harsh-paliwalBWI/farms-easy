@@ -7,7 +7,7 @@ import image3 from "../../images/wheat-plant 1.svg";
 import image4 from "../../images/organic-product 1.svg";
 import image5 from "../../images/Frame 34412 (1).svg";
 import image6 from "../../images/fruit (2) 1.svg";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import blinkImg from "../../images/blink-img-3.svg";
 const DUMMY_DATA = [
