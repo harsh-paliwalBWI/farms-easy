@@ -1,3 +1,5 @@
+"use client"
+
 import React,{FC} from 'react'
 import leaf from "../../images/Rectangle 2 (3).svg"
 import Image from 'next/image'

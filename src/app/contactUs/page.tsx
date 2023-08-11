@@ -3,7 +3,7 @@ import GetInTouch from '@/components/geteInTouch/GetInTouch'
 import DropALine from '@/components/dropALine/DropALine'
 import Leaf from '@/components/leaf/Leaf'
 
-const page = async() => {
+const Contact = async() => {
   
   return (
     <div>
@@ -14,4 +14,4 @@ const page = async() => {
   )
 }
 
-export default page
+export default Contact

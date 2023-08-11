@@ -1,6 +1,18 @@
+"use client"
 import React from 'react';
+import Slider from 'rc-slider';
+import { useState } from 'react';
+import Range from "rc-slider"
+import 'rc-slider/assets/index.css';
 
 const FilterComponent = () => {
+
+  // const [sliderValue, setSliderValue] = useState(50);
+
+  // const handleSliderChange = (value) => {
+  //   setSliderValue(value);
+  // };
+
   return (
     <div className="flex flex-col p-4 w-[95%]  md:w-[28%] gap-8 bg-[#F6F9F3] border-[#588F27] border-t-4 rounded-xl">
       
@@ -34,6 +46,21 @@ const FilterComponent = () => {
           step="10"
           className="w-full bg-[#56B03D]"
         />
+       
+       <div>
+      {/* <Slider
+        min={1000}        
+        max={10000}      
+        step={10}      
+        value={sliderValue}
+        onChange={handleSliderChange}
+              />
+      <p>Slider Value: {sliderValue}</p> */}
+    </div>
+
+
+
+
         <div className="flex justify-between">
           <h2 className="text-base font-semibold">Rs 1000</h2>
           <h2 className="text-base font-semibold">Rs 10000</h2>

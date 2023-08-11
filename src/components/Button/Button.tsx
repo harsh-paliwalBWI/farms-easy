@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import triangle from "../../images/Rectangle 23990.svg"

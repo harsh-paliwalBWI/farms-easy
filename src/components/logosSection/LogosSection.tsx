@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import brand1 from "../../images/brand-1.svg"
 import brand2 from "../../images/brand-2.svg"

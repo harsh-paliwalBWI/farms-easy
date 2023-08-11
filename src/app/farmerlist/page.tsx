@@ -4,7 +4,7 @@ import Leaf from '@/components/leaf/Leaf'
 
 import React from 'react'
 
-const Page = async() => {
+const Farmerlist = async() => {
   return (
     <div>
         
@@ -16,4 +16,4 @@ const Page = async() => {
   )
 }
 
-export default Page
+export default Farmerlist

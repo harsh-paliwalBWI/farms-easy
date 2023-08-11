@@ -8,7 +8,7 @@ import Productsidecomponent from '@/components/productsidecomponent/Productsidec
 
 import React from 'react'
 
-const Page = async() => {
+const subCategories = async() => {
   return (
     <div className=''>
         <Headersectiontype2 heading={"Vegetables"}/>
@@ -24,4 +24,4 @@ const Page = async() => {
   )
 }
 
-export default Page
+export default subCategories

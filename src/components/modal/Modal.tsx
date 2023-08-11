@@ -1,3 +1,5 @@
+"use client"
+
 import React, {FC} from 'react';
 import { TiTimes } from 'react-icons/ti';
 import Button from '../Button/Button';

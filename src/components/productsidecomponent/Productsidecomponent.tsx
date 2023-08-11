@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Listbox } from '@headlessui/react';
 import { PiListDashesLight } from 'react-icons/pi';
 import { RxGrid } from 'react-icons/rx';
-import ProductCard from '../productCard/ProductCard';
+import Productgridversion from '../productcardgridversion/Productcardgridversion';
 import Productcardrowversion from '@/components/productcardrowversion/Productcardrowversion';
 import { BiChevronDown } from 'react-icons/bi';
 
@@ -125,11 +125,12 @@ const Productsidecomponent = () => {
 
       <div className={isMobileView ? 'grid gap-6 justify-center' : 'grid gap-6'}>
         {viewMode === 'grid' ? (
-          <div className='grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6'>
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+          <div className='grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+            <Productgridversion/>
+            <Productgridversion />
+            <Productgridversion/>
+            <Productgridversion />
+            <Productgridversion />
           </div>
         ) : (
           <div className='grid grid-cols-1 gap-6 mt-5'>

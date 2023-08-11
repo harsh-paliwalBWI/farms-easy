@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import VegtableImg from "../../images/Rectangle 23978.svg";
 import DiscountImg from "../../images/Vector (3).png";
 import heartImg from "../../images/Frame 34409.svg";
@@ -10,6 +10,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ProductCard = () => {
+
+  const [modalOpen, setModalOpen] = useState(false); 
+  const handleOpenModal = () => {    setModalOpen(true);  };
+    const handleCloseModal = () => {    setModalOpen(false);  };
+
+
   return (
     <div className="border-[#479332] border-[1px]  p-[12px] rounded-md flex">
       <div className="w-full">

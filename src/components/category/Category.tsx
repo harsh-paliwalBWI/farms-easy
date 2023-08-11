@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CategoryAvl from "./categoryAvl/CategoryAvl";
 import CategoryCard from "./categoryCard/CategoryCard";
 import img from "../../images/slider-bg-vert-1 1.svg";

@@ -1,11 +1,20 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import img from "../../images/Frame 34407.svg";
 import Image from "next/image";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import Link from "next/link";
+import Modal from "../modal/Modal";
 
 const SellsCard = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     // <div className=' w-fit'>
     <div className="border-[#479332] border-[1px]  rounded-md flex justify-center h-[370px] lg:h-[370px]  relative">
@@ -37,18 +46,18 @@ const SellsCard = () => {
             </span>
           </div>
           <div className="flex gap-2">
-
-          <div className="bg-[#588F27] text-white text-base w-full py-[10px] rounded-md text-center">
-            I&apos;M Interested
-          </div>
-          <Link href={'/product/new-product'}>
-          <div className="bg-[#51150A] flex items-center justify-center px-[13px] py-[14px] rounded-md">
-            <HiOutlineArrowRight className="text-white" />
-          </div>
-          </Link>
+            <div className="bg-[#588F27] text-white text-base w-full py-[10px] rounded-md text-center">
+              I&apos;M Interested
+            </div>
+            <Link href={"/product/new-product"}>
+              <div className="bg-[#51150A] flex items-center justify-center px-[13px] py-[14px] rounded-md">
+                <HiOutlineArrowRight className="text-white" />
+              </div>
+            </Link>
           </div>
         </div>
       </div>
+      {modalOpen && <Modal handleCloseModal={handleCloseModal} />}
     </div>
     // </div>
   );

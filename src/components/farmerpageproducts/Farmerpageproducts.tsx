@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import ProductCard from '../productCard/ProductCard';
 import veg2 from "../../images/veg2.svg"

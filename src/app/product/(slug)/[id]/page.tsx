@@ -9,7 +9,7 @@ const Page = async ({ params }: any) => {
   
   return (
     <div>
-      <Headersectiontype2 heading={"Shop"} />
+      <Headersectiontype2 heading={"Product"} />
       <Productdescription />
       <Productqualities />
     </div>
