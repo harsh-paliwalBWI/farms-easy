@@ -146,14 +146,14 @@ const BestSells = () => {
             className=""
             width={1000}
             height={1000}
-            layout="responsive"
+            // layout="responsive"
             alt=""
             style={{
               aspectRatio: "auto",
-              // height: "400px",
+              height: "400px",
               width: "100%",
               maxWidth: "100%",
-              height: "auto",
+              // height: "auto",
             }}
           />
           <div className="absolute bottom-[15px] px-[15px] w-full bst-sell-form">
