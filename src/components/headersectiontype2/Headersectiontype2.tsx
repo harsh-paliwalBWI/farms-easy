@@ -1,26 +1,27 @@
-import React,{FC} from 'react'
-import leafimage from "../../images/Group 34147.svg"
-import headingsectionimage from "../../images/Rectangle 2.svg"
-import Image from 'next/image'
-const DUMMY_DATA=[{count:"30+",text:"Store Tie-Up"},{count:"20K",text:"Land Acres"},{count:"100+",text:"Organic Products"}]
- 
-interface Props{
-  heading:string
-}
-const Headersectiontype2:FC<Props> = ({heading}) => {
-  return (
-    <div className='relative'>
-      <Image src={headingsectionimage} className="  h-auto w-[100vw] object-cover"  alt=""></Image>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-       <div className='text-lg md:text-xl lg:text-2xl xl:text-3xl text-[#ffffff] font-bold mb-[20px]'>{heading}</div>
-       <div className='flex text-white gap-3 text-sm justify-center items-center'>
-       <div>Home</div>
-       <div>Contacts</div>
-       </div>
-      </div>
-            </div>
-       
-  )
+"use client"
+
+import React, { FC } from 'react';
+import headingsectionimage from "../../images/Rectangle 2.svg";
+import Image from 'next/image';
+
+interface Props {
+  heading: string;
 }
 
-export default Headersectiontype2
+const Headersectiontype2: FC<Props> = ({ heading }) => {
+  return (
+    <div className='relative'>
+      <Image src={headingsectionimage} className="h-auto w-[100vw] object-cover" alt=""></Image>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className='text-lg text-[#ffffff] font-semibold text-center sm:mb-[20px] sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl'>{heading}</div>
+        <div className='flex text-white gap-3 text-sm sm:text-sm md:text-lgbase lg:text-lg xl:text-xl justify-center items-center'>
+          <div>Home</div>
+          <div className="rounded-full bg-[#A4D672] w-[10px] h-[10px]"></div>
+          <div>Vegetables</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Headersectiontype2;

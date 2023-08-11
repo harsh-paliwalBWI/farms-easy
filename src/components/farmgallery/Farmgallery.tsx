@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import Image1 from "../../images/gallery image1.svg";
 import Image2 from "../../images/gallery image2.svg";

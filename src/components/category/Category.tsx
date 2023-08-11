@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import CategoryAvl from './categoryAvl/CategoryAvl'
 import CategoryCard from './categoryCard/CategoryCard'

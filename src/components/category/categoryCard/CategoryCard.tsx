@@ -69,6 +69,8 @@
 // export default CategoryCard;
 
 
+"use client"
+
 import React from 'react';
 import image1 from "../../../images/Rectangle 6.svg";
 import image2 from "../../../images/Rectangle 7.svg";

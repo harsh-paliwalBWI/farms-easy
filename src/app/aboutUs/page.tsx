@@ -5,7 +5,7 @@ import Leaf from '@/components/leaf/Leaf'
 import OrganicSince from '@/components/organicSince/OrganicSince'
 import React from 'react'
 
-const Page = async() => {
+const AboutUs = async() => {
   return (
     <div>
       <Leaf text="About Us"/>
@@ -16,4 +16,4 @@ const Page = async() => {
   )
 }
 
-export default Page
+export default AboutUs

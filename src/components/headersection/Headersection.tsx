@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import leafimage from "../../images/Group 34147.svg"
 import headingsectionimage from "../../images/Rectangle 2.svg"

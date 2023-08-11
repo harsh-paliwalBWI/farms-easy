@@ -1,8 +1,10 @@
-import React from "react";
-import CategoryImg from "../../../images/Vector.svg";
-import Image from "next/image";
-import hydroponicImg from "../../../images/Frame 34412.svg";
-import sproutImg from "../../../images/sprout 1 (1).svg";
+"use client"
+
+import React from 'react'
+import CategoryImg from "../../../images/Vector.svg"
+import Image from 'next/image'
+import hydroponicImg from "../../../images/Frame 34412.svg"
+import sproutImg from "../../../images/sprout 1 (1).svg"
 
 const DUMMY_DATA = [
   { image: sproutImg, catText: "FARM PRODUCTS", catText2: "" },

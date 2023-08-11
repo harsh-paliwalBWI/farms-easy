@@ -6,7 +6,7 @@ import Productqualities from '@/components/productsqualities/Productqualities'
 
 import React from 'react'
 
-const Page = async() => {
+const Shop = async() => {
   return (
     <div>
         <Headersectiontype2 heading={"Shop"}/>
@@ -19,4 +19,4 @@ const Page = async() => {
   )
 }
 
-export default Page
+export default Shop

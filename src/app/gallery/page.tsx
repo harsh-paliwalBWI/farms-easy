@@ -6,7 +6,7 @@ import Button from '@/components/Button/Button'
 import Leaf from '@/components/leaf/Leaf'
 import React from 'react'
 
-const Page = async() => {
+const Gallery = async() => {
   return (
     <div>
        <Leaf text={"Gallery"}/>
@@ -22,4 +22,4 @@ const Page = async() => {
   )
 }
 
-export default Page
+export default Gallery

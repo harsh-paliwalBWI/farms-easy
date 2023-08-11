@@ -7,7 +7,7 @@ import Ourproducts from '@/components/ourproducts/Ourproducts'
 
 import React from 'react'
 
-const Page = async() => {
+const FarmerDetails = async() => {
   return (
     <div>
         <Leaf text={"ACACIA Organic Farm"}/>
@@ -20,4 +20,4 @@ const Page = async() => {
   )
 }
 
-export default Page
+export default FarmerDetails

@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import videoimg1 from "../../images/video-image1.svg"
 import videoimg2 from "../../images/video-image2.svg"

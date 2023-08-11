@@ -1,14 +1,14 @@
 "use client"
 
 import React from 'react'
-import { useState } from 'react'
 import VegtableImg from "../../images/Rectangle 23978.svg"
 import DiscountImg from "../../images/Vector (3).png"
-import heartImg from "../../images/Frame 34409.svg"
+import { useState } from 'react'
+import Modal from '@/components/modal/Modal'
 import { TiLocation } from 'react-icons/ti';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { BsHeart } from 'react-icons/bs';
-import Modal from '@/components/modal/Modal'
+
 import Image from 'next/image'
 
 
@@ -18,12 +18,11 @@ const ProductCard = () => {
 
   const [modalOpen, setModalOpen] = useState(false); 
   const handleOpenModal = () => {    setModalOpen(true);  };
-    const handleCloseModal = () => {    setModalOpen(false);  };
-
+  const handleCloseModal = () => {    setModalOpen(false);  };  
 
   return (
     
-    <div className='border-[#479332] border-[1px]  p-[12px] rounded-md flex'>
+    <div className='border-[#479332] border-[1px] w-[full] md:w-[full] p-[12px] rounded-md flex'>
     <div className='w-full'>
       <div className='flex items-center justify-between'>
         <div className='relative'>
@@ -58,7 +57,8 @@ const ProductCard = () => {
         <span className='text-[#ADADAD] text-sm line-through'>Rs 1,500</span>
       </div>
       <div className='flex items-center justify-between gap-3'>
-        <div className='bg-[#588F27] text-white text-xs px-[20px] py-[15px] rounded-md w-full text-center' onClick={handleOpenModal}>I&apos;M INTERESTED
+        <div className='bg-[#588F27] text-white text-xs px-[20px] py-[15px] rounded-md w-full text-center' onClick={handleOpenModal}>
+          I’M Interested
         </div>
         <div className='bg-[#51150A] flex items-center justify-center px-[13px] py-[14px] rounded-md'>
           <HiOutlineArrowRight className="text-white" />

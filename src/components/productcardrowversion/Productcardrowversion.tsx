@@ -1,9 +1,19 @@
+"use client"
+
 import React from 'react';
 import Image from 'next/image';
+import { useState } from 'react'
+import Modal from '@/components/modal/Modal'
 import VegtableImg from "../../images/Rectangle 23978.svg";
 import { TiLocation } from 'react-icons/ti';
 
 const ProductRowVersion = () => {
+
+  
+  const [modalOpen, setModalOpen] = useState(false); 
+  const handleOpenModal = () => {    setModalOpen(true);  };
+  const handleCloseModal = () => {    setModalOpen(false);  };  
+
   return (
     <div className='border-[#479332] border-[1px] p-[1.5%] justify-between rounded-md flex flex-col sm:flex-row'>
 
@@ -39,11 +49,12 @@ const ProductRowVersion = () => {
           <span className='text-[#ADADAD] text-sm line-through'>Rs 1,500</span>
         </div>
         
-        <div className='bg-[#479332] w-full text-white text-sm px-[25px] py-[10px] rounded-md '>I’M Interested</div>
+        <div className='bg-[#479332] w-full text-white text-sm px-[25px] py-[10px] rounded-md ' onClick={handleOpenModal}>I’M Interested</div>
         <div className='bg-[#51150A] w-full text-white text-sm px-[25px] text-center py-[10px] rounded-md '>Buy Now</div>
         
         
       </div>
+      {modalOpen && <Modal handleCloseModal={handleCloseModal} />}
     </div>
   );
 };

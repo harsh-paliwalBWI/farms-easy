@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import vision from "../../images/vision 1.svg"
 import target from "../../images/target 1.svg"

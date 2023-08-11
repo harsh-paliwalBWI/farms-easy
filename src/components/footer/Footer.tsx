@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import {CiLocationOn} from "react-icons/ci"
 import {BsTelephone} from 'react-icons/bs'
