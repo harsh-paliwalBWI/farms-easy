@@ -10,6 +10,7 @@ import Offers from '@/components/offers/Offers'
 import BestSells from '@/components/bestSells/BestSells'
 import OfferBanner from '@/components/offerBanner/OfferBanner'
 import Features from '@/components/features/Features'
+import Products from '@/components/products/Products'
 
 // async function getUsers() {
 //   const res = await fetch("https://jsonplaceholder.typicode.com/users");

@@ -10,34 +10,46 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import { BsTelephone } from "react-icons/bs";
 import Image from "next/image";
-import logo from "../../images/logo (2).png"
-import {FiSearch} from "react-icons/fi"
+import logo from "../../images/logo (2).png";
+import { FiSearch } from "react-icons/fi";
 
 const NavMobile = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const pathname = usePathname();
-  const mobile= useMediaQuery('(max-width:480px)');
-  const matches= useMediaQuery('(max-width:624px)');
+  const mobile = useMediaQuery("(max-width:480px)");
+  const matches = useMediaQuery("(max-width:624px)");
   return (
     <div className="w-full  sm:px-[3.5%] px-[7%]  py-[10px] bg-[#eef0e5] font-medium text-md  relative ">
       <div className="flex justify-between items-center">
-      <div><Image src={logo} alt='' width={mobile?100:150} height={mobile?100:150}/></div>
-      <div className="flex items-center sm:gap-10 gap-5">
-        <div className="bg-white sm:px-[10px] sm:py-[10px] px-[5px] py-[5px] rounded-md"><FiSearch  className="sm:h-[22px] sm:w-[22px] h-[18px] w-[18px]"/></div>
-      <div
-        onClick={(prev) => {
-          setIsMobile(true);
-          document.body.classList.add("no-scroll");
-        }}
-      >
-        <AiOutlineMenu className="sm:h-[25px] sm:w-[25px] h-[20px] w-[20px]"  />
+        <div>
+          <Image
+            src={logo}
+            alt=""
+            width={mobile ? 100 : 150}
+            height={mobile ? 100 : 150}
+          />
+        </div>
+        <div className="flex items-center sm:gap-10 gap-5">
+          <div className=" sm:px-[10px] sm:py-[10px] px-[5px] py-[5px] rounded-md">
+            <FiSearch className="sm:h-[22px] sm:w-[22px] h-[18px] w-[18px]" />
+          </div>
+          <div
+            onClick={(prev) => {
+              setIsMobile(true);
+              document.body.classList.add("no-scroll");
+            }}
+          >
+            <AiOutlineMenu className="sm:h-[25px] sm:w-[25px] h-[20px] w-[20px]" />
+          </div>
+        </div>
       </div>
-      </div>
-      </div>
-      
 
       {isMobile && (
-        <div className={` bg-[white]  ${matches?"w-[100%]":"w-[50%]"} absolute top-0 right-0 h-screen z-30`}>
+        <div
+          className={` bg-[white]  ${
+            matches ? "w-[100%]" : "w-[50%]"
+          } absolute top-0 right-0 h-screen z-30`}
+        >
           <div
             onClick={() => {
               setIsMobile(false);

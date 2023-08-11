@@ -81,7 +81,7 @@ const BestSells = () => {
     ],
   };
   return (
-    <div className="px-[3.5%] ">
+    <div className="px-[3.5%] pb-2 ">
       <div className="flex items-center justify-between ">
         <div className="text-[#253D4E] font-bold text-3xl">
           Daily Best Sells
@@ -119,7 +119,7 @@ const BestSells = () => {
       </div>
       <div className="flex md:justify-start justify-center lg:flex-row flex-col gap-5 items-center my-4  w-full mx-auto   ">
         {/* <div className='back '> */}
-        <div className="w-full lg:w-[73%] ">
+        <div className="w-full lg:w-[73%] h-fit ">
           <Slider
             ref={slider}
             {...settings}
@@ -140,14 +140,14 @@ const BestSells = () => {
           </Slider>
         </div>
         {/* </div> */}
-        <div className=" relative rounded-md">
+        <div className="w-full relative rounded-md ">
           <Image
             src={offerImg}
             className=""
             width={1000}
             height={1000}
             alt=""
-            style={{ aspectRatio: "auto", height: "400px", width: "230px" }}
+            style={{ aspectRatio: "auto", height: "400px", width: "100%" }}
           />
           <div className="absolute bottom-[15px] px-[15px] w-full bst-sell-form">
             <div className="text-[#588F27] font-bold text-2xl text-center mb-[20px]">

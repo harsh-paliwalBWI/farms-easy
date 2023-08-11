@@ -3,6 +3,7 @@ import React from "react";
 import img from "../../images/Frame 34407.svg";
 import Image from "next/image";
 import { HiOutlineArrowRight } from "react-icons/hi";
+import Link from "next/link";
 
 const SellsCard = () => {
   return (
@@ -40,9 +41,11 @@ const SellsCard = () => {
           <div className="bg-[#588F27] text-white text-base w-full py-[10px] rounded-md text-center">
             I&apos;M Interested
           </div>
+          <Link href={'/product/new-product'}>
           <div className="bg-[#51150A] flex items-center justify-center px-[13px] py-[14px] rounded-md">
             <HiOutlineArrowRight className="text-white" />
           </div>
+          </Link>
           </div>
         </div>
       </div>
