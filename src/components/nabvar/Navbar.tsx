@@ -33,7 +33,7 @@ const Navbar = () => {
               </div>
               <div>All Categories</div>
               <div>
-                {/* <i className="flaticon-black-plane text-primary-6000 text-" /> */}
+                <i className="flaticon-black-plane text-primary-6000 text-" />
                 <MdOutlineKeyboardArrowRight className="h-[25px] w-[25px]" />
               </div>
             </div>

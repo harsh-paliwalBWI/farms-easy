@@ -11,7 +11,7 @@ import BestSells from '@/components/bestSells/BestSells'
 import OfferBanner from '@/components/offerBanner/OfferBanner'
 import Features from '@/components/features/Features'
 import Products from '@/components/products/Products'
-import '../assets/flaticons/flaticon_mycollection.css'
+// import '../assets/flaticons/flaticon_mycollection.css'
 
 
 // async function getUsers() {
