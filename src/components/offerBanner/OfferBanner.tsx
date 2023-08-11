@@ -28,7 +28,8 @@ const OfferBanner = () => {
             style={{
               maxWidth: "100%",
               height: "auto"
-            }} />
+            }} 
+            />
         </div>
         <div style={{ position: "relative" }} className="relative min-w-[90vw] md:min-w-[45vw] md:flex-1 ">
           <Image
