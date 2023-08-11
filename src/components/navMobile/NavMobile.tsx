@@ -9,7 +9,7 @@ import { BiGridAlt } from "react-icons/bi";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import { BsTelephone } from "react-icons/bs";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import logo from "../../images/logo (2).png";
 import { FiSearch } from "react-icons/fi";
 
@@ -27,7 +27,10 @@ const NavMobile = () => {
             alt=""
             width={mobile ? 100 : 150}
             height={mobile ? 100 : 150}
-          />
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
         <div className="flex items-center sm:gap-10 gap-5">
           <div className=" sm:px-[10px] sm:py-[10px] px-[5px] py-[5px] rounded-md">

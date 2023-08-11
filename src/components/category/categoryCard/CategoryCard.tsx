@@ -78,7 +78,7 @@ import image3 from "../../../images/Rectangle 8.svg";
 import image4 from "../../../images/Rectangle 5.svg";
 import image5 from "../../../images/Rectangle 4.svg";
 import image6 from "../../../images/Rectangle 15.svg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 const DUMMY_DATA = [
   { image: image1, btnText: "VEGETABLES" },
@@ -96,7 +96,15 @@ const CategoryCard = () => {
         return (
           <div key={idx} className=''>
             <div className=''>
-              <Image src={item.image} width={500} height={500} alt='' />
+              <Image
+                src={item.image}
+                width={500}
+                height={500}
+                alt=''
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </div>
             <div className=''>
               <button className=' w-[60%] py-[15px] bg-[#E0EAD3] font-bold rounded-md -translate-y-6 drop-shadow-xl md:text-lg sm:text-base text-sm'>{item.btnText}</button>

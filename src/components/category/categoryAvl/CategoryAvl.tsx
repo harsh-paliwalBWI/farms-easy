@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import CategoryImg from "../../../images/Vector.svg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import hydroponicImg from "../../../images/Frame 34412.svg";
 import sproutImg from "../../../images/sprout 1 (1).svg";
 import CategoryCard from "../categoryCard/CategoryCard";
@@ -30,7 +30,15 @@ const CategoryAvl = () => {
                   idx === selectedCategory ? "bg-[#a4d672]" : "bg-white"
                 } rounded-full w-[102px] h-[102px]  flex justify-center items-center mx-auto translate-y-[30px]`}
               >
-                <Image src={item.image} height={60} width={60} alt="" />
+                <Image
+                  src={item.image}
+                  height={60}
+                  width={60}
+                  alt=""
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
               </div>
               <div
                 className={`${

@@ -6,7 +6,7 @@ import { TiLocation } from "react-icons/ti";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { BsHeart } from "react-icons/bs";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 
 const ProductCard = () => {
@@ -21,7 +21,15 @@ const ProductCard = () => {
       <div className="w-full">
         <div className="flex items-center justify-between">
           <div className="relative">
-            <Image src={DiscountImg} alt="" width={65} height={65} />
+            <Image
+              src={DiscountImg}
+              alt=""
+              width={65}
+              height={65}
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-fit text-[12px] text-center flex gap-2 text-white font-medium">
               <span>15%</span>
               <span>OFF</span>
@@ -32,7 +40,13 @@ const ProductCard = () => {
           </div>
         </div>
         <div className="my-[10px] flex justify-center">
-          <Image src={VegtableImg} alt="" />
+          <Image
+            src={VegtableImg}
+            alt=""
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
         <div className="text-[#ADADAD] text-[12px]">Vegetables</div>
         <div className="text-[#253D4E] font-semibold my-[5px]">

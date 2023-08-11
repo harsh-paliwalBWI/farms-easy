@@ -8,7 +8,7 @@ import Image4 from "../../images/gallery image4.svg";
 import Image5 from "../../images/gallery image5.svg";
 import Image6 from "../../images/gallery image6.svg";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import { fetchFarmGallery } from "@/utils/databaseService";
 
@@ -43,8 +43,11 @@ const Farmgallery = () => {
                 alt=""
                 width={500}
                 height={500}
-                layout="responsive"
-              />
+                sizes="100vw"
+                style={{
+                  width: "100%",
+                  height: "auto"
+                }} />
             </div>
           ))}
       </div>

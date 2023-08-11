@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, FC } from "react";
 import whiteLogo from "../../images/Group 3.svg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import smallLeaf from "../../images/Group 34147.svg";
 import { FcGoogle } from "react-icons/fc";
 import check from "../../images/Vector 28.svg";
@@ -92,7 +92,10 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
               width={1000}
               height={1000}
               className=" sm:w-[350px] sm:h-[150px] h-[60px] w-[200px]"
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
           <div className="flex flex-col gap-5">
             {DUMMY_DATA.map((item: any, idx: number) => {
@@ -101,7 +104,15 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
               return (
                 <div className="flex gap-5 items-center" key={idx}>
                   <div>
-                    <Image src={item.image} alt="" width={20} height={20} />
+                    <Image
+                      src={item.image}
+                      alt=""
+                      width={20}
+                      height={20}
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto"
+                      }} />
                   </div>
                   <div className="text-white sm:text-xl text-base font-medium">
                     {item.text}
@@ -119,7 +130,10 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
               height={50}
               width={50}
               className="sm:h-[50px] sm:w-[50px] w-[30px] h-[30px]"
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
 
           <div className="font-bold sm:text-3xl text-xl mb-[30px]">Log In</div>
@@ -154,7 +168,13 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
                 }`}
                 onClick={toggleCheckbox}
               >
-                {isChecked && <Image src={check} alt="" />}
+                {isChecked && <Image
+                  src={check}
+                  alt=""
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />}
               </div>
               <div>Remember Me</div>
             </div>

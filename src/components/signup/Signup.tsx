@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, FC } from "react";
 import whiteLogo from "../../images/Group 3.svg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import smallLeaf from "../../images/Group 34147.svg";
 import { FcGoogle } from "react-icons/fc";
 import check from "../../images/Vector 28.svg";
@@ -104,14 +104,25 @@ const Signup: FC<Props> = () => {
               width={1000}
               height={1000}
               className=" sm:w-[300px] sm:h-[100px] h-[60px] w-[200px] "
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
           <div className="flex flex-col gap-5">
             {DUMMY_DATA.map((item: any, idx: number) => {
               return (
                 <div className="flex gap-5 items-center" key={idx}>
                   <div>
-                    <Image src={item.image} alt="" width={20} height={20} />
+                    <Image
+                      src={item.image}
+                      alt=""
+                      width={20}
+                      height={20}
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto"
+                      }} />
                   </div>
                   <div className="text-white">{item.text}</div>
                 </div>
@@ -122,7 +133,16 @@ const Signup: FC<Props> = () => {
 
         <div className="bg-white  px-[40px] py-[50px]  rounded-xl relative  md:w-[50%] w-[100%] create-account">
           <div className="absolute sm:top-[-20px] sm:left-[-25px] top-[-10px] left-[-15px]">
-            <Image src={smallLeaf} alt="" height={50} width={50} className="sm:h-[50px] sm:w-[50px] w-[30px] h-[30px]" />
+            <Image
+              src={smallLeaf}
+              alt=""
+              height={50}
+              width={50}
+              className="sm:h-[50px] sm:w-[50px] w-[30px] h-[30px]"
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
           <div className="font-bold sm:text-3xl text:xl mb-[30px]">
             Create an account

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import MapImg from "../../images/Rectangle 23991.svg"
-import Image from "next/legacy/image"
+import Image from "next/image"
 import triangle from "../../images/Rectangle 23990.svg"
 import Button from '../Button/Button';
 // import useMediaQuery from '@mui/material/useMediaQuery';
@@ -13,7 +13,17 @@ const DropALine = async () => {
         <div className='relative  z-0 '>
 
             <div className=' relative z-10'>
-                <Image src={MapImg} alt='' width={1000} height={1000} style={{ width: "100vw", objectFit: "cover" }} />
+                <Image
+                    src={MapImg}
+                    alt=''
+                    width={1000}
+                    height={1000}
+                    style={{
+                        width: "100vw",
+                        objectFit: "cover",
+                        maxWidth: "100%",
+                        height: "auto"
+                    }} />
             </div>
             <div className='absolute md:top-[-350px] sm:top-[-600px] top-[-600px]  w-[85%] mx-auto  sm:px-[50px] px-[20px] sm:py-[50px] py-[25px] shadow-2xl rounded-xl get-in-touch z-30 bg-white left-1/2 transform -translate-x-1/2 '
             >

@@ -9,7 +9,7 @@ import { FaInstagram } from "react-icons/fa";
 import { RiLinkedinFill } from "react-icons/ri";
 import { RiFacebookFill } from "react-icons/ri";
 import { BsTwitter } from "react-icons/bs";
-import Image from "next/legacy/image";
+import Image from "next/image";
 const Footer = async () => {
   const DUMMY_DATA = [
     {
@@ -69,7 +69,10 @@ const Footer = async () => {
               height={300}
               width={300}
               className=" sm:w-[260px] sm:h-[80px] h-[60px] w-[200px] "
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
           <div className="flex items-center gap-3  mb-[20px]">
             <div>

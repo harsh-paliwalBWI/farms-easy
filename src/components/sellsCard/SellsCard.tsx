@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import img from "../../images/Frame 34407.svg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import Link from "next/link";
 import Modal from "../modal/Modal";
@@ -17,6 +17,7 @@ const SellsCard = () => {
 
   return (
     // <div className=' w-fit'>
+    // </div>
     <div className="border-[#479332] border-[1px]  rounded-md flex justify-center h-[370px] lg:h-[370px]  relative">
       <div className=" flex flex-col items-center">
         <div className=" bg-red-200 w-fit">
@@ -25,9 +26,13 @@ const SellsCard = () => {
             alt=""
             width={1000}
             height={1000}
-            style={{ width: "230px", height: "auto" }}
             className="rounded-t-sm "
-          />
+            style={{
+              width: "230px",
+              height: "auto",
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
         <div className="px-[15px] absolute bottom-[15px] w-full">
           <div className="text-[#ADADAD] text-[12px]">Vegetables</div>
@@ -59,7 +64,6 @@ const SellsCard = () => {
       </div>
       {modalOpen && <Modal handleCloseModal={handleCloseModal} />}
     </div>
-    // </div>
   );
 };
 

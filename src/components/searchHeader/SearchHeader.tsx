@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import logo from "../../images/logo (2).png";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import lilHeart from "../../images/li_heart.svg";
 import arrowDown from "../../images/li_chevron-down.svg";
 import userImg from "../../images/Ellipse 2.svg";
@@ -12,7 +12,15 @@ const SearchHeader = () => {
     <div className="flex items-center justify-between px-[3.5%] py-[10px]">
       <Link href={"/"}>
         <div>
-          <Image src={logo} alt="" width={180} height={180} />
+          <Image
+            src={logo}
+            alt=""
+            width={180}
+            height={180}
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
       </Link>
       <div className="flex justify-between items-center gap-3 rounded-sm  w-[50%] bg-[#F9F9F9]">
@@ -27,7 +35,13 @@ const SearchHeader = () => {
       <div className="flex items-center gap-5">
         <div className="flex items-center gap-3">
           <div>
-            <Image src={lilHeart} alt="" />
+            <Image
+              src={lilHeart}
+              alt=""
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
           <div>Wishlist</div>
         </div>

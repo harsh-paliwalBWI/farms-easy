@@ -3,7 +3,7 @@ import React from "react";
 import farmerImg from "../../images/Rectangle 24011.svg";
 import organicLogo from "../../images/Frame (1).svg";
 import vegetableImg from "../../images/blink-img-1.svg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import useMediaQuery from "@mui/material/useMediaQuery";
 const DUMMY_DATA = [
   { count: "30+", text: "Store Tie-Up" },
@@ -26,7 +26,10 @@ const OrganicSince = () => {
                 height={1000}
                 width={1000}
                 className=""
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </div>
             <div className="absolute bottom-[-20px]">
               <Image
@@ -35,7 +38,10 @@ const OrganicSince = () => {
                 width={1000}
                 height={1000}
                 className="h-[180px] w-[180px]"
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </div>
           </div>
         )}
@@ -77,7 +83,10 @@ const OrganicSince = () => {
                 width={1000}
                 height={1000}
                 className=""
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </div>
             <div className="">
               <div className="text-[#51150A] font-bold mb-[5px] sm:text-lg text-base">

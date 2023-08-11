@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import img from "../../images/Group 6.svg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 const DUMMY_DATA = [
   {
@@ -133,7 +133,13 @@ const CategoryList = () => {
                   return (
                     <div key={idx} className="flex gap-3  items-center ">
                       <div>
-                        <Image src={item.image} alt="" />
+                        <Image
+                          src={item.image}
+                          alt=""
+                          style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                          }} />
                       </div>
                       <div className="flex flex-col gap-3 ">
                         <div className="text-[#253D4E] text-sm font-medium flex gap-3">

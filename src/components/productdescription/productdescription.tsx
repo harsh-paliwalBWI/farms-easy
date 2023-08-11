@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { TiLocation } from "react-icons/ti";
 import Modal from "@/components/modal/Modal";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 import brocli1 from "../../images/brocli1.svg";
 import brocli2 from "../../images/brocli2.svg";
@@ -51,7 +51,10 @@ const Productdescription = () => {
               className="w-full"
               width={1000}
               height={1000}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
             <div className="flex gap-[1rem]">
               <Image
                 src={DUMMY_DATA.image2}
@@ -59,28 +62,40 @@ const Productdescription = () => {
                 className="w-[25%]"
                 width={1000}
                 height={1000}
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
               <Image
                 src={DUMMY_DATA.image3}
                 alt=""
                 className="w-[25%]"
                 width={1000}
                 height={1000}
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
               <Image
                 src={DUMMY_DATA.image4}
                 alt=""
                 className="w-[25%]"
                 width={1000}
                 height={1000}
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
               <Image
                 src={DUMMY_DATA.image5}
                 alt=""
                 className="w-[25%]"
                 width={1000}
                 height={1000}
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </div>
           </div>
         </div>

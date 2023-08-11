@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useState } from 'react'
 import Modal from '@/components/modal/Modal'
 import VegtableImg from "../../images/Rectangle 23978.svg";
@@ -18,7 +18,14 @@ const ProductRowVersion = () => {
     <div className='border-[#479332] border-[1px] p-[1.5%] justify-between rounded-md flex flex-col sm:flex-row'>
 
       <div className='flex justify-center'>
-        <Image src={VegtableImg} alt='Vegetable' className='w-[500] h-[500] sm:w-[300] sm:h-[300] md:w-[400] md:h-[400]' />
+        <Image
+          src={VegtableImg}
+          alt='Vegetable'
+          className='w-[500] h-[500] sm:w-[300] sm:h-[300] md:w-[400] md:h-[400]'
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
       </div>
 
       <div className='flex flex-col w-full md:w-[60%]'>

@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { FC } from "react";
 import { TiLocation } from 'react-icons/ti';
 
@@ -17,7 +17,13 @@ const Farmerlistitem: FC<Props> = ({ item }) => {
   return (
     <div className="flex flex-col items-center gap-5 bg-[#f8f9f8] rounded-3xl p-4 md:p-8 md:flex-row">
     <div className="bg-white w-[10rem] h-[10rem] md:w-[12rem] md:h-[12rem] aspect-[1/1] flex items-center justify-center rounded-xl">
-      <Image src={item.fermerlistImage} alt='' />
+      <Image
+        src={item.fermerlistImage}
+        alt=''
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
     </div>
 
     <div className="ml-4 md:ml-6 text-left">

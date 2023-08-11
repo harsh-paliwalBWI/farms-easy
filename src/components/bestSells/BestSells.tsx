@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SellsCard from "../sellsCard/SellsCard";
 import img from "../../images/Frame 34407.svg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import offerImg from "../../images/Group 1749 (1).png";
 import { AiOutlineMail } from "react-icons/ai";
 import { LuKey } from "react-icons/lu";
@@ -146,8 +146,15 @@ const BestSells = () => {
             className=""
             width={1000}
             height={1000}
+            layout="responsive"
             alt=""
-            style={{ aspectRatio: "auto", height: "400px", width: "100%" }}
+            style={{
+              aspectRatio: "auto",
+              // height: "400px",
+              width: "100%",
+              maxWidth: "100%",
+              height: "auto",
+            }}
           />
           <div className="absolute bottom-[15px] px-[15px] w-full bst-sell-form">
             <div className="text-[#588F27] font-bold text-2xl text-center mb-[20px]">

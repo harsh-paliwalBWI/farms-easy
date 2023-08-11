@@ -3,7 +3,7 @@ import CategoryAvl from "./categoryAvl/CategoryAvl";
 import CategoryCard from "./categoryCard/CategoryCard";
 import img from "../../images/slider-bg-vert-1 1.svg";
 import bottomImg from "../../images/slider-bg-vert-1 2.svg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 const Category = async () => {
   // const [selectedCategory, setSelectedCategory] = useState(0);
@@ -24,8 +24,12 @@ const Category = async () => {
           alt=""
           width={1000}
           height={1000}
-          style={{ width: "100vw", objectFit: "cover" }}
-        />
+          style={{
+            width: "100vw",
+            objectFit: "cover",
+            maxWidth: "100%",
+            height: "auto"
+          }} />
       </div>
       <div className="absolute bottom-0 left-0  ">
         <Image
@@ -33,8 +37,12 @@ const Category = async () => {
           alt=""
           width={1000}
           height={1000}
-          style={{ width: "100vw", objectFit: "cover" }}
-        />
+          style={{
+            width: "100vw",
+            objectFit: "cover",
+            maxWidth: "100%",
+            height: "auto"
+          }} />
       </div>
     </div>
   );

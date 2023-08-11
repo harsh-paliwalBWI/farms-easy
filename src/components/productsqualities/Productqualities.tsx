@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import Image from "next/legacy/image"
+import Image from "next/image"
 import { GoDotFill } from 'react-icons/go';
 import desc1 from "../../images/descriptionimg1.svg";
 import desc2 from "../../images/descriptionimg2.svg";
@@ -21,8 +21,26 @@ const Productqualities = () => {
     <div className='flex flex-col md:flex-row justify-center gap-[60px]'>
       <div className='md:w-[47%]'>
         <div className='flex flex-col gap-[2rem]'>
-          <Image src={DUMMY_DATA.image1} alt='' className='w-full' width={1000} height={1000} />
-          <Image src={DUMMY_DATA.image2} alt='' className='w-full' width={1000} height={1000} />
+          <Image
+            src={DUMMY_DATA.image1}
+            alt=''
+            className='w-full'
+            width={1000}
+            height={1000}
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
+          <Image
+            src={DUMMY_DATA.image2}
+            alt=''
+            className='w-full'
+            width={1000}
+            height={1000}
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
       </div>
       <div className='flex flex-col gap-[2rem] md:w-[47%]'>
@@ -38,8 +56,7 @@ const Productqualities = () => {
       </div>
     </div>
   </div>
-       
-  )
+  );
 }
 
 export default Productqualities

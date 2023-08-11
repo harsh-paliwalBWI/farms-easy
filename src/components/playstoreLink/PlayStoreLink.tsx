@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import phoneImg from "../../images/App.svg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import appStoreImg from "../../images/image 13.svg"
 import playStoreImg from "../../images/image 14.svg"
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -17,14 +17,39 @@ const PlayStoreLink = () => {
           <div className='text-[#588f27] font-bold md:text-4xl text-2xl sm:mb-[25px] mb-[10px]'>Android & IOS App</div>
           <div className='text-md font-bold md:mb-[60px] mb-[20px]'>Available on both IOS & Android</div>
           <div className='flex items-center sm:flex-row flex-col sm:gap-0 gap-3'>
-            <div className='sm:w-[205px] w-[158px]'><Image src={appStoreImg} alt='' width={1000} height={1000}/></div>
-            <div className='sm:w-[240px] w-[180px]'><Image src={playStoreImg} alt='' width={1000} height={1000}/></div>
+            <div className='sm:w-[205px] w-[158px]'><Image
+              src={appStoreImg}
+              alt=''
+              width={1000}
+              height={1000}
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} /></div>
+            <div className='sm:w-[240px] w-[180px]'><Image
+              src={playStoreImg}
+              alt=''
+              width={1000}
+              height={1000}
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} /></div>
           </div>
         </div>
         {!matches&&
         <div className='w-[600px]  absolute bottom-[-200px] translate-y-[-10px] right-0 '>
           <div className=''>
-            <Image src={phoneImg} alt='' width={1000} height={1000} className=' ' />
+            <Image
+              src={phoneImg}
+              alt=''
+              width={1000}
+              height={1000}
+              className=' '
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
         </div>
 }

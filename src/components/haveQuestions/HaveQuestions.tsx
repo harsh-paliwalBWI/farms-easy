@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Img from "../../images/Rectangle 24012.svg";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { Disclosure } from "@headlessui/react";
 import { IoIosArrowUp } from "react-icons/io";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
@@ -46,7 +46,15 @@ const HaveQuestions = () => {
     >
       {!matches && (
         <div className="w-1/2">
-          <Image src={Img} alt="" width={900} height={900} />
+          <Image
+            src={Img}
+            alt=""
+            width={900}
+            height={900}
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
       )}
       <div className={`${matches ? "w-[100%]" : "w-1/2"}`}>

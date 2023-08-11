@@ -6,7 +6,7 @@ import g3 from "../../images/video-image3.svg"
 import g4 from "../../images/g4.svg"
 import g5 from "../../images/g5.svg"
 import g6 from "../../images/g6.svg"
-import Image from "next/legacy/image"
+import Image from "next/image"
 
 
 
@@ -81,7 +81,13 @@ const Farmergallery = () => {
           >
             {DUMMY_DATA.galleryImages.map((item: any, idx: number) => (
               <div key={idx}>
-                <Image src={item} alt="" />
+                <Image
+                  src={item}
+                  alt=""
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
               </div>
             ))}
           </Slider>

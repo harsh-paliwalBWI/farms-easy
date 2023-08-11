@@ -7,7 +7,7 @@ import { useRef } from 'react';
 import Slider from "react-slick"
 import userImg from "../../images/Ellipse 10.png"
 import quotationImg from "../../images/quotation 2.svg"
-import Image from "next/legacy/image";
+import Image from "next/image";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
@@ -88,30 +88,46 @@ const Testimonials = () => {
           arrows={false}
           className='!w-[100%]'>
           {DUMMY_DATA.map((item: any,idx:number) => {
-            return <div key={item} className=''>
-               
-                <div className=' flex flex-col items-center mb-[30px]'>
-        <div className={` ${idx===0?"bg-[#51150a]":"bg-[#588f27]"} h-[70px] w-[70px] rounded-full flex justify-center items-center relative z-30 translate-y-[30px]`}>
-            <Image src={quotationImg} alt='' height={40} width={40}/></div>
-              <div className={`py-[60px] px-[30px] rounded-lg  ${idx===0?"bg-[#F9F5F4]":"bg-[#f1f3e8]"} relative z-10   border-b-[#ececec] `}>
-                <div className={`absolute w-6 h-6 -bottom-[14px] left-0 right-0 mx-auto  ${idx===0?"bg-[#F9F5F4]":"bg-[#f1f3e8]"} rotate-45 rounded-md`}></div>
-                <div className='text-center md:text-[15px] text-[13px] text-[#555555] text-xs leading-5 '>
-               {item.feedback}
+            return (
+              <div key={item} className=''>
+                 
+                  <div className=' flex flex-col items-center mb-[30px]'>
+          <div className={` ${idx===0?"bg-[#51150a]":"bg-[#588f27]"} h-[70px] w-[70px] rounded-full flex justify-center items-center relative z-30 translate-y-[30px]`}>
+              <Image
+                src={quotationImg}
+                alt=''
+                height={40}
+                width={40}
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} /></div>
+                <div className={`py-[60px] px-[30px] rounded-lg  ${idx===0?"bg-[#F9F5F4]":"bg-[#f1f3e8]"} relative z-10   border-b-[#ececec] `}>
+                  <div className={`absolute w-6 h-6 -bottom-[14px] left-0 right-0 mx-auto  ${idx===0?"bg-[#F9F5F4]":"bg-[#f1f3e8]"} rotate-45 rounded-md`}></div>
+                  <div className='text-center md:text-[15px] text-[13px] text-[#555555] text-xs leading-5 '>
+                 {item.feedback}
+                  </div>
+                  </div>
                 </div>
+                <div className=' text-center md:mb-[50px] mb-[20px]'>
+                  <div className=' flex justify-center items-center mb-[10px]'><Image
+                    src={item.userImg}
+                    alt=''
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto"
+                    }} /></div>
+                    <div className='sm:text-xl font-semibold mb-[5px] '>{item.name}</div>
+                    <div className='md:text-[14px] text-[13px] text-[#588f27] font-medium'>{item.type}</div>
                 </div>
               </div>
-              <div className=' text-center md:mb-[50px] mb-[20px]'>
-                <div className=' flex justify-center items-center mb-[10px]'><Image src={item.userImg} alt=''/></div>
-                  <div className='sm:text-xl font-semibold mb-[5px] '>{item.name}</div>
-                  <div className='md:text-[14px] text-[13px] text-[#588f27] font-medium'>{item.type}</div>
-              </div>
-            </div>
+            );
           })}
         </Slider>
       </div>
     </div>
     </div>
-  )
+  );
 }
 
 export default Testimonials
