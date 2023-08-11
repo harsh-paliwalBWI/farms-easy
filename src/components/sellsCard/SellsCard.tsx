@@ -20,7 +20,7 @@ const SellsCard = () => {
     // </div>
     <div className="border-[#479332] border-[1px]  rounded-md flex justify-center h-[370px] lg:h-[370px]  relative">
       <div className=" flex flex-col items-center">
-        <div className=" bg-red-200 w-fit">
+        <div className="  w-fit">
           <Image
             src={img}
             alt=""

@@ -140,7 +140,7 @@ const BestSells = () => {
           </Slider>
         </div>
         {/* </div> */}
-        <div className="w-full relative rounded-md ">
+        <div className="w-full relative rounded-md  max-h-[370px] ">
           <Image
             src={offerImg}
             className=""
@@ -150,13 +150,13 @@ const BestSells = () => {
             alt=""
             style={{
               aspectRatio: "auto",
-              height: "400px",
+              height: "370px",
               width: "100%",
               maxWidth: "100%",
               // height: "auto",
             }}
           />
-          <div className="absolute bottom-[15px] px-[15px] w-full bst-sell-form">
+          <div className="absolute bottom-[15px] px-[15px] max-h-[370px] w-full bst-sell-form">
             <div className="text-[#588F27] font-bold text-2xl text-center mb-[20px]">
               10% OFF
             </div>

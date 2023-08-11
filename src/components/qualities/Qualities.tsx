@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-const Qualities = async() => {
+const Qualities = () => {
   return (
     <div></div>
   )
