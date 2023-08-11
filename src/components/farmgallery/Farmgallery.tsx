@@ -30,9 +30,9 @@ const Farmgallery = () => {
   const [hoverdIndex, setHoveredIndex]: any = useState(null);
   return (
     <div className="px-[3.5%] sm:px-6 lg:px-8">
-      <div className="text-center font-bold text-2xl md:text-4xl md:mb-[2rem] mb-[2rem]">
+      <h1 className="text-center font-bold text-2xl md:text-4xl md:mb-[2rem] mb-[2rem]">
         Our Farm Gallery
-      </div>
+      </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8">
         {data &&

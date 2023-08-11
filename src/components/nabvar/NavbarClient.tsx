@@ -118,6 +118,7 @@ const NavbarClient = () => {
                                     subCategories?.map((sub: any, idx: any) => {
                                       return (
                                         <Link
+                                          key={idx}
                                           onClick={() => {
                                             setIsCategoriesOpen(false);
                                             setSelectedCategory("");
@@ -127,10 +128,9 @@ const NavbarClient = () => {
                                           }
                                         >
                                           <div
-                                            key={idx}
                                             className={`px-4 py-3  flex justify-between `}
                                           >
-                                            <p className="">{category.name}</p>
+                                            <p className="">{sub.name}</p>
                                             <div></div>
                                           </div>
                                         </Link>
@@ -213,7 +213,7 @@ const NavbarClient = () => {
           </div>
           <div className="flex items-center  font-bold gap-2 ">
             <div>
-              <FlatIcon icon="flaticon-calling text-xl text-[#51150a]"/>
+              <FlatIcon icon="flaticon-calling text-xl text-[#51150a]" />
             </div>
             <p className="text-[#51150A]">1800-234-3566</p>
           </div>
