@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "push": "git push origin fwebsite"
+    "add":"git add .",
+    "postadd":"git commit -m 'changes'",
+    "push": "git push origin fwebsite",
+
+    "postdev":"console.log('POST TAG')",
+    "postbuild":"console.log('avyasvucsa')"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
