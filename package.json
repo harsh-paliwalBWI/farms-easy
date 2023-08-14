@@ -9,7 +9,7 @@
     "lint": "next lint",
     "add":"git add .",
     "postadd":"git commit -m 'changes'",
-    "push": "git push origin fwebsite",
+    "postpostadd": "git push origin fwebsite",
 
     "postdev":"console.log('POST TAG')",
     "postbuild":"console.log('avyasvucsa')"
