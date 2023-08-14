@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "push": "git push origin fwebsite"
+    "push": "git push origin fwebsite",
+    "pull": "git pull code fwebsite",
+    "postpull": "git push origin master"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
