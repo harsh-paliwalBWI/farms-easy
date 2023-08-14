@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "push": "git push origin fwebsite",
+    "pull": "git pull code fwebsite",
+    "postpull": "git push origin master",
     "precommit":"git add .",
     "commit":"git commit -m 'changes'",
     "postcommit": "git push origin fwebsite"
