@@ -25,9 +25,7 @@ export const fetchCategories = async () => {
   let arr: any = [];
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    arr.push({ ...doc.data(), id: doc.id });
-    console.log(arr);
-    
+    arr.push({ ...doc.data(), id: doc.id });    
   });
 
   return JSON.parse(JSON.stringify(arr));

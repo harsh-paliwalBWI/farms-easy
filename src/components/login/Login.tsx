@@ -37,12 +37,10 @@ const Login: FC<Props> = () => {
 
   const loginHandler = () => {
     if (email && password) {
-      console.log("inside login");
       signInWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(userCredential.user.emailVerified, "verify");
           await setDoc(
             doc(db, "user", user.uid),
             { lastAccessAt: new Date() },

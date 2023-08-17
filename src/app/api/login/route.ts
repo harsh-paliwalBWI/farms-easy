@@ -7,9 +7,7 @@ export async function GET(request: Request) {
         const response = NextResponse.json({
             status: true
         });
-        console.log('cooloes adding');
         response.cookies.set('uid', id);
-        console.log('cooloes added');
         return response;
 
 

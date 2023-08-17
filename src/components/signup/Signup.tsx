@@ -78,13 +78,11 @@ const Signup: FC<Props> = () => {
   };
   const signupHandler = () => {
     if (email && password.length > 5 && name) {
-      console.log("inside signupHandler");
       createUserWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
           // Signed in
 
           const user = userCredential.user;
-          console.log(user, "from userCredential.user");
           await addUserToFirebase(user);
           await signInWithEmailAndPassword(auth, email, password)
             .then(async (val: any) => {
@@ -92,7 +90,6 @@ const Signup: FC<Props> = () => {
               router.push("/");
             })
             .catch((e) => {
-              console.log("CANNOT LOGIN ");
               router.push("/login");
             });
           // ...

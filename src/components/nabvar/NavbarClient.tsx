@@ -27,8 +27,7 @@ const NavbarClient = ({ cookie }: any) => {
     queryKey: ["sub-categories"],
     queryFn: () => fetchSubCategories(),
   });
-  console.log(subCategories,"sub");
-  console.log(categories,"cat");
+
   
   
 
