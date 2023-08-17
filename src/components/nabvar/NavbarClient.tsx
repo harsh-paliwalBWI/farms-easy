@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiGridAlt } from "react-icons/bi";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import NavMobile from "../navMobile/NavMobile";
@@ -9,12 +9,16 @@ import SearchHeader from "../searchHeader/SearchHeader";
 import { usePathname } from "next/navigation";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useQuery } from "@tanstack/react-query";
-import { fetchCategories, fetchSubCategories } from "@/utils/databaseService";
+import {
+  checkUserLogin,
+  fetchCategories,
+  fetchSubCategories,
+} from "@/utils/databaseService";
 import OutsideClickHandler from "../../utils/OutsideClickHandler";
 import FlatIcon from "../flatIcon/flatIcon";
 // import { log } from "console";
 
-const NavbarClient = () => {
+const NavbarClient = ({ cookie }: any) => {
   const { data: categories } = useQuery({
     queryKey: ["categories"],
     queryFn: () => fetchCategories(),
@@ -37,7 +41,7 @@ const NavbarClient = () => {
     <div>
       {!mobile && (
         <div className="">
-          <SearchHeader />
+          <SearchHeader cookie={cookie} />
         </div>
       )}
       {mobile ? (

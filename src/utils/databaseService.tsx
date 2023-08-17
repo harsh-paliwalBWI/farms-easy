@@ -1,4 +1,4 @@
-import { db } from "@/config/firebase-config";
+import { auth, db } from "@/config/firebase-config";
 import {
   collection,
   doc,
@@ -46,4 +46,45 @@ export const fetchSubCategories = async () => {
   //   // doc.data() is never undefined for query doc snapshots
   //   console.log(doc.id, " => ", doc.data());
   // });
+};
+
+export const checkUserLogin = (cookie: any) => {
+  const uid = auth.currentUser?.uid;
+  if (uid) {
+    return true;
+  }
+
+  if (cookie?.value) {
+    return true;
+  }
+
+  return false;
+  // if (uid && cookie?.value) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+};
+
+export const getUserData = async (cookie: any) => {
+  let uid;
+  if (auth.currentUser?.uid) {
+    uid = auth.currentUser?.uid;
+  }
+  if (cookie?.value) {
+    uid = cookie?.value;
+  }
+
+  if (uid) {
+    const docRef = doc(db, "user", uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return JSON.parse(JSON.stringify({ ...docSnap.data(), id: docSnap.id }));
+    } else {
+      return JSON.parse(JSON.stringify({ status: false }));
+    }
+  } else {
+    return JSON.parse(JSON.stringify({}));
+  }
 };
