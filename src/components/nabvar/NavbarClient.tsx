@@ -12,6 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchCategories, fetchSubCategories } from "@/utils/databaseService";
 import OutsideClickHandler from "../../utils/OutsideClickHandler";
 import FlatIcon from "../flatIcon/flatIcon";
+// import { log } from "console";
 
 const NavbarClient = () => {
   const { data: categories } = useQuery({
@@ -22,6 +23,10 @@ const NavbarClient = () => {
     queryKey: ["sub-categories"],
     queryFn: () => fetchSubCategories(),
   });
+  console.log(subCategories,"sub");
+  console.log(categories,"cat");
+  
+  
 
   const pathname = usePathname();
   const mobile = useMediaQuery("(max-width:1080px)");
@@ -46,7 +51,7 @@ const NavbarClient = () => {
                 setSelectedCategory("");
               }}
             >
-              <div className="flex items-center gap-5 text-white bg-[#588f27]  rounded-md text-md font-medium relative hover:cursor-pointer">
+              <div className="flex items-center gap-5 text-white bg-[#588f27]  rounded-md text-md font-medium relative hover:cursor-pointer ">
                 <div
                   className="flex items-center gap-5 py-[15px] px-[20px]"
                   onClick={() => {
