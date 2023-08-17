@@ -5,29 +5,17 @@ import Image from "next/image";
 import smallLeaf from "../../images/Group 34147.svg";
 import { FcGoogle } from "react-icons/fc";
 import check from "../../images/Vector 28.svg";
-import {
-  GoogleAuthProvider,
-  getAdditionalUserInfo,
-  getAuth,
-  sendEmailVerification,
-  sendPasswordResetEmail,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../config/firebase-config";
-import {
-  collection,
-  doc,
-  getDocs,
-  query,
-  setDoc,
-  where,
-} from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface Props {
   createAccountClickHandler?: any;
 }
-const Login: FC<Props> = ({ createAccountClickHandler }) => {
+const Login: FC<Props> = () => {
   const DUMMY_DATA = [
     { image: smallLeaf, text: "Includes Wide variety of Products." },
     { image: smallLeaf, text: "Fresh Groceries, Delivered to You." },
@@ -37,34 +25,29 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
   const [email, setEmail] = useState<any>("");
   const [password, setPassword] = useState<any>("");
 
+  const router = useRouter();
+
+  const handleCreateAccountClick = () => {
+    router.push("/signup"); // Replace 'signup' with your actual signup page route
+  };
+
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
   };
 
   const loginHandler = () => {
     if (email && password) {
-      console.log("inside login");
       signInWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(userCredential.user.emailVerified, "verify");
           await setDoc(
             doc(db, "user", user.uid),
             { lastAccessAt: new Date() },
             { merge: true }
           );
-          // if (userCredential.user.emailVerified) {
-          //     (async () => {
-          //     //   localStorage.setItem("@auth", user.uid);
-          //       await setDoc(doc(db, "user", user.uid), { lastAccessAt: new Date() }, { merge: true });
-
-          //     })()
-          //   } else {
-          //    console.log("please verify email");
-
-          //   }
-          // ...
+          await axios.get(`/api/login?uid=${user.uid}`);
+          router.push("/");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -81,6 +64,7 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
       console.log("fill details");
     }
   };
+
   return (
     <div className="bg-login-bg  bg-cover bg-no-repeat sm:px-[3.5%] px-[7%]">
       <div className="flex md:flex-row flex-wrap  md:justify-between justify-center md:gap-0 gap-5 py-[10%] w-[90%] mx-auto ">
@@ -94,13 +78,12 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
               className=" sm:w-[350px] sm:h-[150px] h-[60px] w-[200px]"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
           <div className="flex flex-col gap-5">
             {DUMMY_DATA.map((item: any, idx: number) => {
-              console.log("fghgf");
-
               return (
                 <div className="flex gap-5 items-center" key={idx}>
                   <div>
@@ -111,8 +94,9 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
                       height={20}
                       style={{
                         maxWidth: "100%",
-                        height: "auto"
-                      }} />
+                        height: "auto",
+                      }}
+                    />
                   </div>
                   <div className="text-white sm:text-xl text-base font-medium">
                     {item.text}
@@ -132,8 +116,9 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
               className="sm:h-[50px] sm:w-[50px] w-[30px] h-[30px]"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
 
           <div className="font-bold sm:text-3xl text-xl mb-[30px]">Log In</div>
@@ -168,13 +153,16 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
                 }`}
                 onClick={toggleCheckbox}
               >
-                {isChecked && <Image
-                  src={check}
-                  alt=""
-                  style={{
-                    maxWidth: "100%",
-                    height: "auto"
-                  }} />}
+                {isChecked && (
+                  <Image
+                    src={check}
+                    alt=""
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto",
+                    }}
+                  />
+                )}
               </div>
               <div>Remember Me</div>
             </div>
@@ -202,12 +190,13 @@ const Login: FC<Props> = ({ createAccountClickHandler }) => {
           </div>
           <div className="flex justify-center items-center gap-3 font-medium sm:text-base text-sm">
             <div>Don&apos;t have an account? </div>
-            <div
-              onClick={createAccountClickHandler}
+            <Link
+              href={"/signup"}
+              // onClick={handleCreateAccountClick}
               className="text-[#51150A] cursor-pointer"
             >
               Sign up
-            </div>
+            </Link>
           </div>
         </div>
       </div>

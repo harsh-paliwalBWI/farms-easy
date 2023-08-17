@@ -6,7 +6,12 @@ import smallLeaf from "../../images/Group 34147.svg";
 import { FcGoogle } from "react-icons/fc";
 import check from "../../images/Vector 28.svg";
 import { db, auth } from "../../config/firebase-config";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithCredential,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { useRouter } from "next/navigation";
 import {
   collection,
@@ -16,6 +21,7 @@ import {
   setDoc,
   where,
 } from "firebase/firestore";
+import axios from "axios";
 
 interface Props {
   redirectToLogin?: any;
@@ -72,14 +78,20 @@ const Signup: FC<Props> = () => {
   };
   const signupHandler = () => {
     if (email && password.length > 5 && name) {
-      console.log("inside signupHandler");
       createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
           // Signed in
 
           const user = userCredential.user;
-          console.log(user, "from userCredential.user");
-          addUserToFirebase(user);
+          await addUserToFirebase(user);
+          await signInWithEmailAndPassword(auth, email, password)
+            .then(async (val: any) => {
+              await axios.get(`/api/login?uid=${user.uid}`);
+              router.push("/");
+            })
+            .catch((e) => {
+              router.push("/login");
+            });
           // ...
         })
         .catch((error) => {
@@ -93,6 +105,7 @@ const Signup: FC<Props> = () => {
       console.log("plase fill details ");
     }
   };
+
   return (
     <div className="bg-login-bg  bg-cover bg-no-repeat sm:px-[3.5%] px-[7%]">
       <div className="flex md:flex-row flex-wrap  md:justify-between justify-center md:gap-0 gap-5 py-[10%] w-[90%] mx-auto">
@@ -106,8 +119,9 @@ const Signup: FC<Props> = () => {
               className=" sm:w-[300px] sm:h-[100px] h-[60px] w-[200px] "
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
           <div className="flex flex-col gap-5">
             {DUMMY_DATA.map((item: any, idx: number) => {
@@ -121,8 +135,9 @@ const Signup: FC<Props> = () => {
                       height={20}
                       style={{
                         maxWidth: "100%",
-                        height: "auto"
-                      }} />
+                        height: "auto",
+                      }}
+                    />
                   </div>
                   <div className="text-white">{item.text}</div>
                 </div>
@@ -141,8 +156,9 @@ const Signup: FC<Props> = () => {
               className="sm:h-[50px] sm:w-[50px] w-[30px] h-[30px]"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
           <div className="font-bold sm:text-3xl text:xl mb-[30px]">
             Create an account

@@ -3,6 +3,7 @@ import React from "react";
 import BannerImg from "../../images/healthierBanner.svg";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
+import { auth } from "@/config/firebase-config";
 
 // async function getUsers() {
 //   const res = await fetch("https://jsonplaceholder.typicode.com/users");
