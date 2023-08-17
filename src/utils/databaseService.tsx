@@ -1,5 +1,6 @@
 import { auth, db } from "@/config/firebase-config";
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
@@ -25,7 +26,7 @@ export const fetchCategories = async () => {
   let arr: any = [];
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    arr.push({ ...doc.data(), id: doc.id });    
+    arr.push({ ...doc.data(), id: doc.id });
   });
 
   return JSON.parse(JSON.stringify(arr));
@@ -85,4 +86,26 @@ export const getUserData = async (cookie: any) => {
   } else {
     return JSON.parse(JSON.stringify({}));
   }
+};
+
+export const handleContactUsSubmit = async (data: any) => {
+  const docRef = await addDoc(collection(db, "enquiries"), data);
+  if (docRef.id) {
+    return true;
+  }
+  return false;
+};
+export const handleLeadSubmit = async (data: any) => {
+  const docRef = await addDoc(collection(db, "leads"), data);
+  if (docRef.id) {
+    return true;
+  }
+  return false;
+};
+export const handleBuyNowRequestSubmit = async (data: any) => {
+  const docRef = await addDoc(collection(db, "buyNowRequest"), data);
+  if (docRef.id) {
+    return true;
+  }
+  return false;
 };

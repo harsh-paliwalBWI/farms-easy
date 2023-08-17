@@ -6,7 +6,8 @@ import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/nabvar/Navbar";
 import NavSearch from "@/components/mainNavSearch/NavSearch";
 import Providers from "@/utils/provider";
-import SearchHeader from "@/components/searchHeader/SearchHeader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const jost = Jost({
   subsets: ["latin"],
   weight: ["300", "400", "600", "700", "900"],
@@ -29,6 +30,7 @@ export default function RootLayout({
         rel="stylesheet"
         type="text/css"
         href="../assets/flaticons/flaticon_farmacy.css"
+        
       />
       <body className="font-jost">
         {/* <NavSearch/> */}
@@ -37,6 +39,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <ToastContainer />
         </Providers>
       </body>
     </html>
