@@ -120,7 +120,7 @@ const BestSells = () => {
       </div>
       <div className="flex md:justify-start justify-center lg:flex-row flex-col gap-5 items-center my-4  w-full mx-auto   ">
         {/* <div className='back '> */}
-        <div className="w-full lg:w-[73%] h-fit ">
+        <div className="w-full lg:w-[73%] h-full ">
           <Slider
             ref={slider}
             {...settings}
