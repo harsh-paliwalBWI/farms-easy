@@ -11,6 +11,14 @@ import brocli3 from "../../images/brocli3.svg";
 import brocli4 from "../../images/brocli4.svg";
 import brocli5 from "../../images/brocli5.svg";
 import { HiOutlineArrowRight } from "react-icons/hi";
+import { useQuery } from "@tanstack/react-query";
+import {
+  getUserData,
+  handleBuyNowRequestSubmit,
+} from "@/utils/databaseService";
+import { auth } from "@/config/firebase-config";
+import { RotatingLines } from "react-loader-spinner";
+import { toast } from "react-toastify";
 
 const DUMMY_DATA = {
   id: 6,
@@ -31,13 +39,69 @@ const DUMMY_DATA = {
   Sku: "Variable Product-10",
 };
 
-const Productdescription = () => {
+const Productdescription = ({ cookie }: any) => {
   const [modalOpen, setModalOpen] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+  const [product, setProduct]: any = useState({
+    name: "asnkcsa",
+    class: "ascsca",
+  });
+  const { data: userData } = useQuery({
+    queryKey: ["userData"],
+    queryFn: () => getUserData(cookie),
+    refetchInterval: 2000,
+    keepPreviousData: true,
+  });
   const handleOpenModal = () => {
     setModalOpen(true);
   };
   const handleCloseModal = () => {
     setModalOpen(false);
+  };
+
+  const handleBuyNowRequest = async () => {
+    let data: any = {
+      createdAt:new Date(),
+      products: [
+        {
+          name: product?.name,
+          qty: 1,
+          quotedPrice: 0,
+          id: product?.id || "", // product id
+          variant: {
+            unit: product?.unit || "",
+            price: product?.price || {},
+            weight: product?.weight || 0,
+            sku: product?.sku || "",
+          },
+          vendor: {
+            id: product?.vendor?.id || "",
+          },
+        },
+      ],
+      productIds: [product?.id || ""], // for where clause to check user has raised the buy now req or not
+    };
+
+    if (auth.currentUser?.uid && userData) {
+      data["user"] = {
+        id: auth.currentUser?.uid,
+        name: userData?.name || "",
+        phoneNo: userData?.phoneNo || "",
+        // phoneNo: string,
+      };
+    }
+
+    setLoading(true);
+    const res: boolean = await handleBuyNowRequestSubmit(data);
+    if (res) {
+      setLoading(false);
+      toast("Your buy request has been sent.", { type: "success" });
+      return;
+    } else {
+      toast("Something went wrong.", { type: "error" });
+      return;
+    }
   };
 
   return (
@@ -53,8 +117,9 @@ const Productdescription = () => {
               height={1000}
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
             <div className="flex gap-[1rem]">
               <Image
                 src={DUMMY_DATA.image2}
@@ -64,8 +129,9 @@ const Productdescription = () => {
                 height={1000}
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  height: "auto",
+                }}
+              />
               <Image
                 src={DUMMY_DATA.image3}
                 alt=""
@@ -74,8 +140,9 @@ const Productdescription = () => {
                 height={1000}
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  height: "auto",
+                }}
+              />
               <Image
                 src={DUMMY_DATA.image4}
                 alt=""
@@ -84,8 +151,9 @@ const Productdescription = () => {
                 height={1000}
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  height: "auto",
+                }}
+              />
               <Image
                 src={DUMMY_DATA.image5}
                 alt=""
@@ -94,8 +162,9 @@ const Productdescription = () => {
                 height={1000}
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  height: "auto",
+                }}
+              />
             </div>
           </div>
         </div>
@@ -141,14 +210,35 @@ const Productdescription = () => {
             >
               I&apos;M INTERESTED
             </button>
-            <div className="bg-[#51150A] gap-2 w-[45%] flex items-center justify-center font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2">
-              <p className="text-white">Buy now</p>
-              <HiOutlineArrowRight className="text-white" />
+            <div
+              className="bg-[#51150A] gap-2 w-[45%] flex items-center justify-center font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2 cursor-pointer"
+              onClick={handleBuyNowRequest}
+            >
+              {loading ? (
+                <RotatingLines
+                  strokeColor="#fff"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="25"
+                  visible={true}
+                />
+              ) : (
+                <>
+                  <p className="text-white">Buy now</p>
+                  <HiOutlineArrowRight className="text-white" />
+                </>
+              )}
             </div>
           </div>
         </div>
       </div>
-      {modalOpen && <Modal handleCloseModal={handleCloseModal} />}
+      {modalOpen && (
+        <Modal
+          handleCloseModal={handleCloseModal}
+          selectedProduct={product}
+          cookie={cookie}
+        />
+      )}
     </div>
   );
 };

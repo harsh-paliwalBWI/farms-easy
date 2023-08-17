@@ -1,14 +1,82 @@
 "use client";
 
-import React from "react";
+import validator from "validator";
+
+import React, { useState } from "react";
 import MapImg from "../../images/Rectangle 23991.svg";
 import Image from "next/image";
 import triangle from "../../images/Rectangle 23990.svg";
 import Button from "../Button/Button";
+import { toast } from "react-toastify";
+import { addDoc } from "firebase/firestore";
+import { handleContactUsSubmit } from "@/utils/databaseService";
 // import useMediaQuery from '@mui/material/useMediaQuery';
 
 const DropALine = () => {
   // const matches = useMediaQuery('(min-width:1096px)');
+  const [state, setState] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    website: "",
+    message: "",
+  });
+
+  const [loading, setLoading]: any = useState(false);
+
+  const handleChange = ({ name, value }: any) => {
+    setState((val) => {
+      return { ...val, [name]: value };
+    });
+  };
+
+  const handleSubmit = async () => {
+    if (!state.name || !state.email || !state.phone || !state.message) {
+      toast("Enter details correctly", { type: "error" });
+      return;
+    }
+
+    if (!validator.isEmail(state.email)) {
+      toast("Incorrect Email.", { type: "error" });
+      return;
+    }
+
+    if (
+      (state.phone.length < 10 || state.phone.length > 10) &&
+      !state.phone.includes("+")
+    ) {
+      toast("Incorrect Phone Number", { type: "error" });
+      return;
+    }
+    setLoading(true);
+
+    const data = {
+      createdAt: new Date(),
+      email: state.email,
+      message: state.message,
+      name: state.name,
+      phoneNo: state.phone,
+      website: state.website,
+    };
+
+    const res: boolean = await handleContactUsSubmit(data);
+    if (res) {
+      setState({
+        email: "",
+        message: "",
+        name: "",
+        website: "",
+        phone: "",
+      });
+      setLoading(false);
+      toast("Thank you for contacting us", { type: "success" });
+      return;
+    } else {
+      toast("Something went wrong.", { type: "error" });
+      return;
+    }
+  };
+
   return (
     <div className="relative  z-0 ">
       <div className=" relative z-10">
@@ -34,12 +102,22 @@ const DropALine = () => {
             <input
               type="text"
               placeholder="Your Name*"
+              name="name"
+              onChange={(e) => {
+                handleChange({ name: e.target.name, value: e.target.value });
+              }}
+              value={state.name}
               className="outline-0 w-full py-[15px] px-[20px]"
             />
           </div>
           <div className="md:w-[50%] w-[100%] border-[0.5px] border-[#E3E3E3]  rounded-sm">
             <input
               type="email"
+              name="email"
+              onChange={(e) => {
+                handleChange({ name: e.target.name, value: e.target.value });
+              }}
+              value={state.email}
               placeholder="Your Email*"
               className="outline-0 w-full py-[15px]   px-[20px]"
             />
@@ -49,13 +127,28 @@ const DropALine = () => {
           <div className="md:w-[50%] w-[100%] border-[0.5px] border-[#E3E3E3] rounded-sm ">
             <input
               type="text"
+              name="phone"
+              onChange={(e) => {
+                if (
+                  validator.isNumeric(e.target.value) ||
+                  e.target.value === ""
+                ) {
+                  handleChange({ name: e.target.name, value: e.target.value });
+                }
+              }}
+              value={state.phone}
               placeholder="Phone Number*"
               className="outline-0 w-full py-[15px]   px-[20px]"
             />
           </div>
           <div className="md:w-[50%] w-[100%] border-[0.5px] border-[#E3E3E3]  rounded-sm">
             <input
-              type="email"
+              type="text"
+              name="website"
+              onChange={(e) => {
+                handleChange({ name: e.target.name, value: e.target.value });
+              }}
+              value={state.website}
               placeholder="Website"
               className="outline-0 w-full py-[15px]   px-[20px]"
             />
@@ -65,10 +158,20 @@ const DropALine = () => {
           <textarea
             placeholder="Message..."
             rows={6}
+            name="message"
+            onChange={(e) => {
+              handleChange({ name: e.target.name, value: e.target.value });
+            }}
+            value={state.message}
             className="outline-0 w-full py-[15px] px-[20px]"
           />
         </div>
-        <Button text={"Get in Touch"} className="px-[40px] py-[15px]" />
+        <Button
+          onClickHandler={handleSubmit}
+          isLoading={loading}
+          text={"Get in Touch"}
+          className="px-[40px] py-[15px] cursor-pointer"
+        />
       </div>
     </div>
   );
