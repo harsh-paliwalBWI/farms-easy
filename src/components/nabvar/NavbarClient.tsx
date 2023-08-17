@@ -28,9 +28,6 @@ const NavbarClient = ({ cookie }: any) => {
     queryFn: () => fetchSubCategories(),
   });
 
-  
-  
-
   const pathname = usePathname();
   const mobile = useMediaQuery("(max-width:1080px)");
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
@@ -123,27 +120,33 @@ const NavbarClient = ({ cookie }: any) => {
                               {selectedCategory === category?.id && (
                                 <div className="absolute top-0 left-full bg-white border-l rounded-lg border-[#dbdbdb] w-auto min-w-[200px]">
                                   {subCategories &&
-                                    subCategories?.map((sub: any, idx: any) => {
-                                      return (
-                                        <Link
-                                          key={idx}
-                                          onClick={() => {
-                                            setIsCategoriesOpen(false);
-                                            setSelectedCategory("");
-                                          }}
-                                          href={
-                                            "/category/category-1/subCategory2"
-                                          }
-                                        >
-                                          <div
-                                            className={`px-4 py-3  flex justify-between `}
+                                    subCategories
+                                      .filter((val: any) =>
+                                        val.categories.includes(
+                                          selectedCategory
+                                        )
+                                      )
+                                      ?.map((sub: any, idx: any) => {
+                                        return (
+                                          <Link
+                                            key={idx}
+                                            onClick={() => {
+                                              setIsCategoriesOpen(false);
+                                              setSelectedCategory("");
+                                            }}
+                                            href={
+                                              "/category/category-1/subCategory2"
+                                            }
                                           >
-                                            <p className="">{sub.name}</p>
-                                            <div></div>
-                                          </div>
-                                        </Link>
-                                      );
-                                    })}
+                                            <div
+                                              className={`px-4 py-3  flex justify-between `}
+                                            >
+                                              <p className="">{sub.name}</p>
+                                              <div></div>
+                                            </div>
+                                          </Link>
+                                        );
+                                      })}
                                 </div>
                               )}
                             </div>
