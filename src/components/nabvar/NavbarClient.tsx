@@ -221,6 +221,34 @@ const NavbarClient = ({ cookie }: any) => {
                 Contact Us
               </p>
             </Link>
+            <Link
+              href={"/farmer-registration"}
+              className={`${
+                pathname.includes("farmer-registration") && "text-primary"
+              }`}
+            >
+              <p
+                className={`${
+                  pathname.includes("farmer-registration") && "text-primary"
+                }`}
+              >
+                Farmer Registration
+              </p>
+            </Link>
+            <Link
+              href={"/#"}
+              className={`${
+                pathname.includes("farmer-login") && "text-primary"
+              }`}
+            >
+              <p
+                className={`${
+                  pathname.includes("farmer-login") && "text-primary"
+                }`}
+              >
+                Farmer Login
+              </p>
+            </Link>
           </div>
           <div className="flex items-center  font-bold gap-2 ">
             <div>

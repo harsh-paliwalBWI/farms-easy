@@ -11,25 +11,31 @@ import { RiFacebookFill } from "react-icons/ri";
 import { BsTwitter } from "react-icons/bs";
 import Image from "next/image";
 import FlatIcon from "../flatIcon/flatIcon";
+import Link from "next/link";
 const Footer = async () => {
   const DUMMY_DATA = [
     {
       heading: "Account",
-      subLinks: [{ name: "Wishlist" }, { name: "Track Order" }],
+      subLinks: [
+        { name: "My Enquiry" },
+        { name: "Register as Buyer" },
+        { name: "Farmer Login" },
+        { name: "Farmer Registration", path: "/farmer-registration" },
+      ],
     },
     {
       heading: "Useful links",
-      subLinks: [{ name: "About Us" }, { name: "Contact" }],
+      subLinks: [
+        { name: "About Us", path: "/aboutUs" },
+        { name: "Contact", path: "/contactUs" },
+        { name: "Hot Deals" },
+        { name: "Promotions" },
+        { name: "New Products" },
+      ],
     },
     {
       heading: "Help Center",
-      subLinks: [
-        { name: "Payments" },
-        { name: "Refund" },
-        { name: "Checkout" },
-        { name: "Shipping" },
-        { name: "Privacy Policy" },
-      ],
+      subLinks: [{ name: "Privacy Policy" }, { name: "Terms & Conditions" }],
     },
   ];
   const data2 = [
@@ -78,12 +84,12 @@ const Footer = async () => {
           </div>
           <div className="flex items-center gap-3  mb-[20px]">
             <div>
-              <CiLocationOn className="text-xl text-primary"/>
+              <CiLocationOn className="text-xl text-primary" />
             </div>
             <div className="font-bold text-sm">
               Address :
               <span className="text-[#555555] text-sm font-semibold">
-                1762 school house road
+                1762 School House Road
               </span>
             </div>
           </div>
@@ -94,7 +100,7 @@ const Footer = async () => {
             <div className="font-bold text-sm">
               Call Us :{" "}
               <span className="text-[#555555] text-sm font-semibold">
-                1733-5565-5465
+                1233-777-2615
               </span>
             </div>
           </div>
@@ -131,12 +137,11 @@ const Footer = async () => {
                 </div>
                 {item.subLinks.map((item: any, idx: number) => {
                   return (
-                    <div
-                      key={idx}
-                      className="text-[#555555] text-sm font-semibold mb-[20px]"
-                    >
-                      {item.name}
-                    </div>
+                    <Link href={item?.path || "/#"} key={idx}>
+                      <div className="text-[#555555] text-sm font-semibold mb-[20px]">
+                        {item.name}
+                      </div>
+                    </Link>
                   );
                 })}
               </div>

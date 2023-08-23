@@ -9,7 +9,6 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    
     extend: {
       fontFamily: {
         jost: "var(--font-jost)",
@@ -29,6 +28,9 @@ module.exports = {
         videobg: "url('../images/video-bg 1.svg')",
         "login-bg": "url('../images/Rectangle 2 (4).svg')",
       },
+      boxShadow:{
+        "center": "0 0 10px 5px #eeeeee"
+      }
     },
     screens: {
       sm: "480px",
