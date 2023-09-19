@@ -15,7 +15,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Farmacy Farm",
+  title: "Farms Easy",
   description: "Website for Farm Products",
 };
 

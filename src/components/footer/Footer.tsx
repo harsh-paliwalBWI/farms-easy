@@ -4,7 +4,7 @@ import { BsTelephone } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 import { BsClock } from "react-icons/bs";
 import farmacyLogo from "../../images/Farmacylogo (1).svg";
-import logo from "../../images/logo (2).png";
+import logo from "../../images/logo.jpeg";
 import { FaInstagram } from "react-icons/fa";
 import { RiLinkedinFill } from "react-icons/ri";
 import { RiFacebookFill } from "react-icons/ri";
@@ -79,6 +79,7 @@ const Footer = async () => {
               style={{
                 maxWidth: "100%",
                 height: "auto",
+                maxHeight: "150px",
               }}
             />
           </div>

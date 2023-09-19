@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import logo from "../../images/logo (2).png";
+import logo from "../../images/logo.jpeg";
 import Image from "next/image";
 import Link from "next/link";
 import FlatIcon from "../flatIcon/flatIcon";
@@ -53,6 +53,7 @@ const SearchHeader = ({ cookie }: any) => {
             style={{
               maxWidth: "100%",
               height: "auto",
+              maxHeight: "100px",
             }}
           />
         </div>
