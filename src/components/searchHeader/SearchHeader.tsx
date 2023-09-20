@@ -44,7 +44,7 @@ const SearchHeader = ({ cookie }: any) => {
   return (
     <div className="flex items-center justify-between px-[3.5%] py-[10px]">
       <Link href={"/"}>
-        <div>
+        <div className="">
           <Image
             src={logo}
             alt=""
@@ -53,8 +53,8 @@ const SearchHeader = ({ cookie }: any) => {
             style={{
               maxWidth: "100%",
               height: "auto",
-              maxHeight: "100px",
             }}
+             className="w-[100px]"
           />
         </div>
       </Link>
