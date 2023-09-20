@@ -17,48 +17,64 @@ const DUMMY_DATA = [
   },
 ];
 
-const CategoryAvl = () => {
-  const [selectedCategory, setSelectedCategory] = useState(0);
+const CategoryAvl = ({ categories, subCategories }: any) => {
+  const [selectedCategory, setSelectedCategory] = useState(
+    categories && categories[0]?.id
+  );
   return (
     // <div className=' w-[70%] mx-auto chooseCategory gap-8 '>
     <>
       <div className="flex justify-center md:flex-no-wrap flex-wrap gap-x-10 gap-2  w-[90%] mx-auto sm:mb-[70px] mb-[50px]">
-        {DUMMY_DATA.map((item: any, idx: number) => {
-          return (
-            <div
-              key={idx}
-              className="cursor-pointer"
-              onClick={() => setSelectedCategory(idx)}
-            >
+        {categories &&
+          categories.map((item: any, idx: number) => {
+            return (
               <div
-                className={`${
-                  idx === selectedCategory ? "bg-[#a4d672]" : "bg-white"
-                } rounded-full w-[102px] h-[102px]  flex justify-center items-center mx-auto translate-y-[30px]`}
+                key={item?.id}
+                className="cursor-pointer"
+                onClick={() => setSelectedCategory(item?.id)}
               >
-                <FlatIcon
-                  icon={`${item?.image} ${
-                    idx === selectedCategory ? "text-white" : "text-primary"
-                  } text-5xl`}
-                />
-              </div>
-              <div
-                className={`${
-                  idx === selectedCategory ? "bg-[#588f27]" : "bg-[#b1bca6]"
-                }   text-white font-semibold rounded-md  text-center h-[120px] pt-[40px] pb-[35px] w-[250px] px-[20px] `}
-              >
-                <div className="sm:text-lg text-base text-white  font-medium">
-                  {item.catText}
+                <div
+                  className={`${
+                    item?.id === selectedCategory ? "bg-[#a4d672]" : "bg-white"
+                  } rounded-full w-[102px] h-[102px]  flex justify-center items-center mx-auto translate-y-[30px]`}
+                >
+                  <FlatIcon
+                    icon={`${
+                      idx === 0
+                        ? "flaticon-sprout"
+                        : idx === 1
+                        ? "flaticon-organic"
+                        : "flaticon-hydroponic-2"
+                    } ${
+                      item?.id === selectedCategory
+                        ? "text-white"
+                        : "text-primary"
+                    } text-5xl`}
+                  />
                 </div>
-                <div className="sm:text-lg text-base text-white  font-medium">
-                  {item.catText2}
+                <div
+                  className={`${
+                    item?.id === selectedCategory
+                      ? "bg-[#588f27]"
+                      : "bg-[#b1bca6]"
+                  }   text-white font-semibold rounded-md  text-center h-[120px] pt-[40px] pb-[35px] w-[250px] px-[20px] `}
+                >
+                  <div className="sm:text-lg text-base text-white  font-medium">
+                    {item.name}
+                  </div>
+                  {/* <div className="sm:text-lg text-base text-white  font-medium">
+                    {item.catText2}
+                  </div> */}
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
         {/* <CategoryCard /> */}
       </div>
-      <CategoryCard />
+      <CategoryCard
+        selectedCategory={selectedCategory}
+        subCategories={subCategories}
+      />
     </>
   );
 };
