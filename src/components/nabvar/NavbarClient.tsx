@@ -236,7 +236,8 @@ const NavbarClient = ({ cookie }: any) => {
               </p>
             </Link>
             <Link
-              href={"/#"}
+              href={"https://bwi-emb-farmacy-vendor.web.app/"}
+              target="_blank"
               className={`${
                 pathname.includes("farmer-login") && "text-primary"
               }`}
