@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import ProductCard from "../productCard/ProductCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -8,15 +8,28 @@ import { MdArrowBack } from "react-icons/md";
 import { MdArrowForward } from "react-icons/md";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import FlatIcon from "../flatIcon/flatIcon";
+import Modal from "../modal/Modal";
+import { useQuery } from "@tanstack/react-query";
+import { fetchHomeData } from "@/utils/databaseService";
 
 const Products = () => {
-  const matches = useMediaQuery("(max-width:1094px)");
   const matches2 = useMediaQuery("(max-width:480px)");
   const matches833 = useMediaQuery("(max-width:833px)");
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const { data: homeData } = useQuery({
+    queryKey: ["homeData"],
+    queryFn: () => fetchHomeData(),
+  });
   const slider = useRef<any>(null);
   const settings = {
     dots: false,
-    infinite: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
@@ -27,7 +40,6 @@ const Products = () => {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 4,
-          infinite: true,
           // dots: true
         },
       },
@@ -36,7 +48,6 @@ const Products = () => {
         settings: {
           slidesToShow: 5,
           slidesToScroll: 5,
-          infinite: true,
           // dots: true
         },
       },
@@ -45,7 +56,6 @@ const Products = () => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
           // dots: true
         },
       },
@@ -118,14 +128,48 @@ const Products = () => {
               nextArrow={<></>}
               prevArrow={<></>}
               draggable={true}
+              infinite={
+                homeData?.filter(
+                  (data: any) => data?.type === "featuredProducts"
+                ).length > 0 &&
+                homeData?.filter(
+                  (data: any) => data?.type === "featuredProducts"
+                )[0]?.products?.length > 4
+              }
             >
-              {[1, 2, 3, 4, 4, 7, 6, 3, 5].map((item: any, idx: number) => {
+              {homeData &&
+                homeData?.filter(
+                  (data: any) => data?.type === "featuredProducts"
+                ).length > 0 &&
+                homeData
+                  ?.filter((data: any) => data?.type === "featuredProducts")[0]
+                  ?.products?.map((product: any) => {
+                    return (
+                      <div key={product?.id}>
+                        <ProductCard
+                          product={product}
+                          setSelectedProduct={setSelectedProduct}
+                          handleOpenModal={handleOpenModal}
+                        />
+                      </div>
+                    );
+                  })}
+              {/* {[1, 2, 3, 4, 4, 7, 6, 3, 5].map((item: any, idx: number) => {
                 return (
-                  <div key={idx} className=" ">
+                  <div key={idx} className="relative ">
                     <ProductCard />
+                    {modalOpen && (
+                      <Modal
+                        handleCloseModal={()=>{
+                          setModalOpen(false)
+                        }}
+                        selectedProduct={item}
+                        cookie={""}
+                      />
+                    )}
                   </div>
                 );
-              })}
+              })} */}
             </Slider>
           </div>
         </div>
@@ -138,6 +182,14 @@ const Products = () => {
           </button>
         )}
       </div>
+
+      {modalOpen && (
+        <Modal
+          handleCloseModal={handleCloseModal}
+          selectedProduct={selectedProduct}
+          cookie={""}
+        />
+      )}
     </div>
   );
 };

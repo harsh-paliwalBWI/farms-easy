@@ -124,7 +124,6 @@ const SearchHeader = ({ cookie }: any) => {
                 </div>
               </div>
 
-              {/* <Link href={"/#"}>User</Link> */}
               {isDropDownOpen && (
                 <div className="absolute flex flex-col gap-2 py-4 top-[50px] bg-white shadow-lg rounded-lg px-2 w-full">
                   <Link href={"/"}>Profile</Link>

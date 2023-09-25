@@ -1,10 +1,12 @@
 import { auth, db } from "@/config/firebase-config";
 import {
+  QuerySnapshot,
   addDoc,
   collection,
   doc,
   getDoc,
   getDocs,
+  orderBy,
   query,
   where,
 } from "firebase/firestore";
@@ -31,8 +33,43 @@ export const fetchCategories = async () => {
 
   return JSON.parse(JSON.stringify(arr));
 };
+
+export const fetchHomeData = async () => {
+  const data: any = (await getDoc(doc(db, "settings", "homePage"))).data();
+  // console.log("HOME DATA", { data });
+  let homeData = [];
+
+  for (const [key, value] of Object.entries(data)) {
+    let response: any = {
+      type: key,
+    };
+
+    let products = [];
+
+    let ids: any = value;
+
+    for (const prodId of ids) {
+      if (prodId) {
+        let prodData = await fetchSingleProduct({ id: prodId });
+
+        if (prodData) {
+          products.push(prodData);
+        }
+      }
+    }
+
+    response.products = products;
+
+    homeData.push(response);
+  }
+
+  return JSON.parse(JSON.stringify(homeData));
+};
+
 export const fetchSubCategories = async () => {
-  const querySnapshot = await getDocs(collection(db, "subCategories"));
+  const querySnapshot = await getDocs(
+    query(collection(db, "subCategories"), orderBy("createdAt", "asc"))
+  );
   let arr: any = [];
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
@@ -109,3 +146,129 @@ export const handleBuyNowRequestSubmit = async (data: any) => {
   }
   return false;
 };
+
+export async function fetchSingleProduct({ slug, id }: any) {
+  if (slug) {
+    let prodRes = await getDocs(
+      query(collection(db, "products"), where("slug", "==", slug))
+    ).then((val) => {
+      if (val.docs.length === 0) return "";
+
+      let prod = val.docs[0].data();
+      if (prod?.active) {
+        return { ...prod, id: val.docs[0].id };
+      } else {
+        return null;
+      }
+    });
+
+    return JSON.parse(JSON.stringify(prodRes));
+  }
+  return await getDoc(doc(db, "products", id)).then((docData) => {
+    if (docData.data()?.active) {
+      return { ...docData.data(), id: docData.id };
+    } else {
+      return null;
+    }
+  });
+}
+
+export const fetchCategoryProducts = async ({
+  slug,
+  subCatSlug = null,
+  filters = null,
+}: any) => {
+  // console.log("INSIDE CHECK ", filters);
+  let categoryId;
+  let subCategoryId;
+
+  let catId = await getDocs(
+    query(collection(db, "categories"), where("slug", "==", slug))
+  ).then((val) => {
+    if (val.docs.length != 0) {
+      return val.docs[0].id;
+    } else {
+      return "";
+    }
+  });
+
+  categoryId = catId;
+  let subCatId = null;
+
+  if (subCatSlug) {
+    subCatId = await getDocs(
+      query(collection(db, `subCategories`), where("slug", "==", subCatSlug))
+    ).then((val: any) => {
+      if (val.docs.length != 0) {
+        return val.docs[0].id;
+      } else {
+        return "";
+      }
+    });
+    catId = subCatId;
+    subCategoryId = subCatId;
+  }
+
+  const products = await fetchProducts(catId);
+
+  if (catId) {
+    let minMax = null;
+
+    if (products.length !== 0) {
+      minMax = getMaxAndMinPriceForFilters(products);
+    }
+    return JSON.parse(JSON.stringify({ products, minMax }));
+  }
+
+  return [];
+};
+
+async function fetchProducts(catId: any) {
+  return await getDocs(
+    query(
+      collection(db, "products"),
+      where("categories", "array-contains", catId)
+    )
+  ).then((val: QuerySnapshot) => {
+    if (val.docs.length === 0) return [];
+
+    let arr = [];
+    for (const prod of val.docs) {
+      let data = prod.data();
+      if (data?.active) {
+        arr.push({ ...data, id: prod?.id });
+      }
+    }
+
+    return arr;
+  });
+}
+
+export function getMaxAndMinPriceForFilters(arr: any) {
+  let min = Number.MAX_VALUE;
+
+  let max = 0;
+
+  arr.forEach((element: any) => {
+    if (
+      (element?.variants[0]?.price?.discounted ||
+        element?.variants[0]?.price?.mrp) > max
+    ) {
+      max =
+        element?.variants[0]?.price?.discounted ||
+        element?.variants[0]?.price?.mrp;
+    }
+
+    if (
+      (element?.variants[0]?.price?.discounted ||
+        element?.variants[0]?.price?.mrp) < min
+    ) {
+      min =
+        element?.variants[0]?.price?.discounted ||
+        element?.variants[0]?.price?.mrp;
+    }
+  });
+
+  let res = [Math.ceil(min), Math.ceil(max)];
+  return res;
+}

@@ -2,7 +2,7 @@
 
 import { dehydrate } from "@tanstack/react-query";
 import HomeClient from "./HomeClient";
-import { fetchCategories, fetchSubCategories } from "@/utils/databaseService";
+import { fetchCategories, fetchHomeData, fetchSubCategories } from "@/utils/databaseService";
 import Hydrate from "@/utils/hydrate.client";
 import getQueryClient from "@/utils/getQueryClient";
 
@@ -12,6 +12,12 @@ export default async function Home() {
     queryKey: ["categories"],
     queryFn: fetchCategories,
   });
+  await client.prefetchQuery({
+    queryKey: ["homeData"],
+    queryFn: fetchHomeData,
+  });
+
+  
   await client.prefetchQuery({
     queryKey: ["subCategories"],
     queryFn: fetchSubCategories,

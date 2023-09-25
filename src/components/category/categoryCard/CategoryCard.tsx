@@ -89,36 +89,46 @@ const DUMMY_DATA = [
 ];
 
 const CategoryCard = ({ selectedCategory, subCategories }: any) => {
-  console.log(subCategories, selectedCategory);
-  
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 gap-x-8 md:gap-y-10  gap-y-3  place-items-center">
-      {subCategories
-        ?.filter((cat: any) => cat?.categories.includes(selectedCategory))
-        .map((item: any, idx: any) => {
-          return (
-            <div key={idx} className="">
-              <div className="">
-                <Image
-                  src={item.image?.url}
-                  width={500}
-                  height={500}
-                  alt=""
-                  style={{
-                    maxWidth: "100%",
-                    height: "auto",
-                  }}
-                />
-              </div>
-              <div className="">
-                <button className=" w-[60%] py-[15px] bg-[#E0EAD3] font-bold rounded-md -translate-y-6 drop-shadow-xl md:text-lg sm:text-base text-sm">
-                  {item?.name}
-                </button>
-              </div>
-            </div>
-          );
-        })}
-    </div>
+    <>
+      {subCategories?.filter((cat: any) =>
+        cat?.categories.includes(selectedCategory)
+      ).length === 0 ? (
+        <div className="flex justify-center w-full ">
+         <p className="text-xl font-semibold"> Subcategories not available.</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 gap-x-8 md:gap-y-10  gap-y-3  place-items-center">
+          <>
+            {subCategories
+              ?.filter((cat: any) => cat?.categories.includes(selectedCategory))
+              .map((item: any, idx: any) => {
+                return (
+                  <div key={idx} className="">
+                    <div className="">
+                      <Image
+                        src={item.image?.url}
+                        width={500}
+                        height={500}
+                        alt=""
+                        style={{
+                          maxWidth: "100%",
+                          height: "auto",
+                        }}
+                      />
+                    </div>
+                    <div className="">
+                      <button className=" w-[60%] py-[15px] bg-[#E0EAD3] font-bold rounded-md -translate-y-6 drop-shadow-xl md:text-lg sm:text-base text-sm">
+                        {item?.name}
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+          </>
+        </div>
+      )}
+    </>
   );
 };
 
