@@ -11,8 +11,10 @@ import { BsHeart } from "react-icons/bs";
 
 import Image from "next/image";
 import Link from "next/link";
+import { currency } from "@/utils/constant";
+import { getDiscountedPercentage } from "@/utils/utilities";
 
-const ProductCard = ({ product, cookie }: any) => {
+const ProductCard = ({ product, cookie, params }: any) => {
   const [modalOpen, setModalOpen] = useState(false);
   const handleOpenModal = (product: any) => {
     setModalOpen(true);
@@ -37,7 +39,7 @@ const ProductCard = ({ product, cookie }: any) => {
               }}
             />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-fit text-[12px] text-center flex gap-2 text-white font-medium">
-              <span className="text-white">15%</span>
+              <span className="text-white">{getDiscountedPercentage({price:product?.variants[0]?.price?.mrp, discountedPrice:product?.variants[0]?.price?.discounted})}</span>
               <span className="text-white">OFF</span>
             </div>
           </div>
@@ -47,30 +49,54 @@ const ProductCard = ({ product, cookie }: any) => {
         </div>
         <div className="my-[10px] flex justify-center">
           <Image
-            src={VegtableImg}
+            src={product?.images[product?.coverImage]?.url}
             alt=""
-            style={{
-              maxWidth: "100%",
-              height: "auto",
-            }}
+            width={1000}
+            height={1000}
+            className="w-full h-full object-contain"
+            // style={{
+            //   maxWidth: "100%",
+            //   height: "auto",
+            // }}
           />
         </div>
-        <div className="text-[#ADADAD] text-[12px]">Vegetables</div>
+        <div className="text-[#ADADAD] text-[12px] capitalize">
+          {(params?.subCategorySlug &&
+            params?.subCategorySlug?.split("-").join(" ")) ||
+            ""}
+        </div>
         <div className="text-[#253D4E] font-semibold my-[5px]">
-          <span>Redish </span>
-          <span>5kg</span>
+          <span>{product?.name}</span>
+          <span>
+            {product?.variants[0]?.weight}
+            {product?.variants[0]?.unit}
+          </span>
         </div>
         <div className="text-[12px] flex gap-1 my-[5px]">
           <span className="text-[#ADADAD]">By</span>
-          <span className="text-[#588F27] font-medium">Organic Nature</span>
+          <span className="text-[#588F27] font-medium">
+            {product?.vendor?.name}
+          </span>
         </div>
         <div className="flex h-5  gap-1 items-center my-[5px] ">
           <TiLocation className="h-[100%] w-auto text-[#598f26]" />
-          <p className="font-bold text-xs">Devanahalli, Karnataka</p>
+          <p className="font-bold text-xs">
+            {product?.vendor?.location?.address}
+          </p>
         </div>
         <div className="flex items-center gap-2 mb-[5px]">
-          <span className="font-semibold">Rs 1,200</span>
-          <span className="text-[#ADADAD] text-sm line-through">Rs 1,500</span>
+          <span className="font-semibold">
+            {currency}{" "}
+            {product?.variants[0]?.price?.discounted ||
+              product?.variants[0]?.price?.mrp}
+          </span>
+          {product?.variants[0]?.price?.discounted &&
+            product?.variants[0]?.price?.discounted !==
+              product?.variants[0]?.price?.mrp && (
+              <span className="text-[#ADADAD] text-sm line-through">
+                {currency} {product?.variants[0]?.price?.mrp}
+              </span>
+            )}
         </div>
         <div className="flex items-center justify-between gap-3">
           <div

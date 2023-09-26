@@ -19,9 +19,9 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
   const { data: userData } = useQuery({
     queryKey: ["userData"],
     queryFn: () => getUserData(cookie),
-    refetchInterval: 2000,
     keepPreviousData: true,
   });
+  
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -116,8 +116,11 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
       return;
     }
   };
+
+  console.log({selectedProduct});
+  
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 top-0 left-0 w-[100vw] h-[100vh]">
       <div className="bg-white w-[38rem]  rounded-3xl p-12">
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-2xl font-bold">I&apos;M Interested</h2>

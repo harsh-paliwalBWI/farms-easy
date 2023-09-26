@@ -76,7 +76,7 @@ const NavbarClient = ({ cookie }: any) => {
                           return (
                             <div className="relative" key={idx}>
                               <Link
-                                href={"/category/category-1/subCategory2"}
+                                href={`/shop/category/${category?.slug}`}
                                 onClick={(e) => {
                                   if (category.isSubCategory) {
                                     e.preventDefault();
@@ -134,9 +134,12 @@ const NavbarClient = ({ cookie }: any) => {
                                               setIsCategoriesOpen(false);
                                               setSelectedCategory("");
                                             }}
-                                            href={
-                                              "/category/category-1/subCategory2"
-                                            }
+                                            href={`/shop/category/${
+                                              categories.filter(
+                                                (cat: any) =>
+                                                  cat?.id === selectedCategory
+                                              )[0]?.slug
+                                            }/${sub?.slug}`}
                                           >
                                             <div
                                               className={`px-4 py-3  flex justify-between `}

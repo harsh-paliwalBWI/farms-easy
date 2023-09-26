@@ -13,12 +13,14 @@ import brocli5 from "../../images/brocli5.svg";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { useQuery } from "@tanstack/react-query";
 import {
+  fetchSingleProduct,
   getUserData,
   handleBuyNowRequestSubmit,
 } from "@/utils/databaseService";
 import { auth } from "@/config/firebase-config";
 import { RotatingLines } from "react-loader-spinner";
 import { toast } from "react-toastify";
+import { currency } from "@/utils/constant";
 
 const DUMMY_DATA = {
   id: 6,
@@ -39,7 +41,12 @@ const DUMMY_DATA = {
   Sku: "Variable Product-10",
 };
 
-const Productdescription = ({ cookie }: any) => {
+const Productdescription = ({ cookie, slug }: any) => {
+  const { data: productInfo }: any = useQuery({
+    queryKey: ["product", slug],
+    queryFn: () => fetchSingleProduct({ slug }),
+  });
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const [loading, setLoading] = useState(false);
@@ -50,9 +57,11 @@ const Productdescription = ({ cookie }: any) => {
   const { data: userData } = useQuery({
     queryKey: ["userData"],
     queryFn: () => getUserData(cookie),
-    refetchInterval: 2000,
     keepPreviousData: true,
   });
+  const [selectedImage, setSelectedImage] = useState(product?.coverImage || 0);
+  const [selectedVariant, setSelectedVariant] = useState(0);
+
   const handleOpenModal = () => {
     setModalOpen(true);
   };
@@ -62,7 +71,7 @@ const Productdescription = ({ cookie }: any) => {
 
   const handleBuyNowRequest = async () => {
     let data: any = {
-      createdAt:new Date(),
+      createdAt: new Date(),
       products: [
         {
           name: product?.name,
@@ -110,7 +119,7 @@ const Productdescription = ({ cookie }: any) => {
         <div className="md:w-[50%]">
           <div className="flex flex-col gap-[1rem]">
             <Image
-              src={DUMMY_DATA.image1}
+              src={productInfo?.images[selectedImage]?.url}
               alt=""
               className="w-full"
               width={1000}
@@ -121,87 +130,95 @@ const Productdescription = ({ cookie }: any) => {
               }}
             />
             <div className="flex gap-[1rem]">
-              <Image
-                src={DUMMY_DATA.image2}
-                alt=""
-                className="w-[25%]"
-                width={1000}
-                height={1000}
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                }}
-              />
-              <Image
-                src={DUMMY_DATA.image3}
-                alt=""
-                className="w-[25%]"
-                width={1000}
-                height={1000}
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                }}
-              />
-              <Image
-                src={DUMMY_DATA.image4}
-                alt=""
-                className="w-[25%]"
-                width={1000}
-                height={1000}
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                }}
-              />
-              <Image
-                src={DUMMY_DATA.image5}
-                alt=""
-                className="w-[25%]"
-                width={1000}
-                height={1000}
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                }}
-              />
+              {productInfo?.images?.map((image: any, index: number) => {
+                return (
+                  <div className="">
+                    <Image
+                      key={image?.url}
+                      src={image?.url}
+                      onClick={() => setSelectedImage(index)}
+                      alt=""
+                      className={`w-[25%] ${
+                        selectedImage === index ? "shadow-lg" : ""
+                      }`}
+                      width={1000}
+                      height={1000}
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto",
+                      }}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
         <div className="flex flex-col gap-[.5rem] md:w-[44%]">
-          <div className="font-semibold text-2xl ">
-            {DUMMY_DATA.productname}
-          </div>
+          <div className="font-semibold text-2xl ">{productInfo.name}</div>
           <div className="flex justify-between">
             <div className=" text-base font-medium  text-[#b4b5b5]">
-              By <span className="text-[#598f26]">{DUMMY_DATA.vendor}</span>
+              By{" "}
+              <span className="text-[#598f26]">
+                {productInfo?.vendor?.name}
+              </span>
             </div>
 
-            <div className="flex gap-1 items-center">
-              <TiLocation className="h-[120%] w-[auto] text-[#598f26]"></TiLocation>
-              <p className="font-medium  text-base ">
-                {DUMMY_DATA.vendorlocation}
-              </p>
-            </div>
+            {productInfo?.vendor?.location?.address && (
+              <div className="flex gap-1 items-center">
+                <TiLocation className="h-[120%] w-[auto] text-[#598f26]"></TiLocation>
+                <p className="font-medium  text-base ">
+                  {productInfo?.vendor?.location?.address}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="flex gap-2  items-center mt-[1rem] mb-[.5rem]">
             <div className=" text-3xl font-semibold text-[#598f26] ">
-              Rs {DUMMY_DATA.price}
+              {currency}{" "}
+              {productInfo?.variants[selectedVariant]?.price?.discounted || productInfo?.variants[selectedVariant]?.price?.mrp}
             </div>
-            <div className=" text-2xl line-through font-medium  text-[#b4b5b5] ">
-              Rs {DUMMY_DATA.orignalprice}
-            </div>
+            {productInfo?.variants[selectedVariant]?.price?.discounted &&
+              productInfo?.variants[selectedVariant]?.price?.discounted !==
+                productInfo?.variants[selectedVariant]?.price?.mrp && (
+                <div className=" text-2xl line-through font-medium  text-[#b4b5b5] ">
+                  {currency}{" "}
+                  {productInfo?.variants[selectedVariant]?.price?.mrp}
+                </div>
+              )}
           </div>
 
           <hr></hr>
 
-          <div className=" text-base text-[#8a8b8a] font-medium  leading-8">
-            {DUMMY_DATA.para1}
+          <div className="my-2 flex flex-wrap gap-2">
+            {productInfo?.variants?.map((variant: any, index: number) => {
+              return (
+                <div
+                  key={variant?.weight}
+                  onClick={()=>{
+                    setSelectedVariant(index)
+                  }}
+                  className={`${
+                    selectedVariant === index && "bg-primary "
+                  } border p-2 border-gray-200 shadow-sm rounded-md cursor-pointer`}
+                >
+                  <p className={`${selectedVariant === index && "text-white"}`}>
+                    {variant?.weight} {variant?.unit}
+                  </p>
+                </div>
+              );
+            })}
           </div>
-          <div className=" text-base font-semibold  my-[1rem]">
-            SKU: <span className="text-[#5b5b5a]">{DUMMY_DATA.Sku}</span>
-          </div>
+
+          {/* <div
+            className=" text-base text-[#8a8b8a] font-medium  leading-8"
+            dangerouslySetInnerHTML={{ __html: productInfo?.desc }}
+          >
+          </div> */}
+          {/* <div className=" text-base font-semibold  my-[1rem]">
+            SKU: <span className="text-[#5b5b5a]">{productInfo.Sku}</span>
+          </div> */}
           <div className="flex">
             <button
               type="button"

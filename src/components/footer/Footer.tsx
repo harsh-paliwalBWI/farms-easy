@@ -19,7 +19,7 @@ const Footer = async () => {
       subLinks: [
         { name: "My Enquiry" },
         { name: "Register as Buyer" },
-        { name: "Farmer Login" },
+        { name: "Farmer Login", path: "/farmer-registration" },
         { name: "Farmer Registration", path: "/farmer-registration" },
       ],
     },
@@ -137,6 +137,19 @@ const Footer = async () => {
                   {item.heading}
                 </div>
                 {item.subLinks.map((item: any, idx: number) => {
+                  if (item.name === "Farmer Login") {
+                    return (
+                      <Link
+                        href={"https://bwi-emb-farmacy-vendor.web.app/"}
+                        target="_blank"
+                        key={idx}
+                      >
+                        <div className="text-[#555555] text-sm font-semibold mb-[20px]">
+                          {item.name}
+                        </div>
+                      </Link>
+                    );
+                  }
                   return (
                     <Link href={item?.path || "/#"} key={idx}>
                       <div className="text-[#555555] text-sm font-semibold mb-[20px]">

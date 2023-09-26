@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { MdArrowBack } from "react-icons/md";
 import { MdArrowForward } from "react-icons/md";
 import ProductCard from "../productCard/ProductCard";
@@ -15,25 +15,38 @@ import { LuKey } from "react-icons/lu";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { CiViewList } from "react-icons/ci";
 import FlatIcon from "../flatIcon/flatIcon";
+import { useQuery } from "@tanstack/react-query";
+import { fetchHomeData } from "@/utils/databaseService";
+import Modal from "../modal/Modal";
 
 const BestSells = () => {
   const matches = useMediaQuery("(max-width:770px)");
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
+  const { data: homeData } = useQuery({
+    queryKey: ["homeData"],
+    queryFn: () => fetchHomeData(),
+  });
   const slider = useRef<any>(null);
   const settings = {
     dots: false,
-    infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1242,
+        breakpoint: 1300,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 4,
-          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 2,
           // dots: true
         },
       },
@@ -42,7 +55,6 @@ const BestSells = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          infinite: true,
           // dots: true
         },
       },
@@ -51,7 +63,6 @@ const BestSells = () => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
           // dots: true
         },
       },
@@ -130,14 +141,29 @@ const BestSells = () => {
             nextArrow={<></>}
             prevArrow={<></>}
             draggable={true}
+            infinite={
+              homeData?.filter((data: any) => data?.type === "bestSells")
+                .length > 0 &&
+              homeData?.filter((data: any) => data?.type === "bestSells")[0]
+                ?.products?.length > 4
+            }
           >
-            {[1, 2, 3, 4, 4, 7, 6, 3, 5].map((item: any, idx: number) => {
-              return (
-                <div key={idx} className="">
-                  <SellsCard />
-                </div>
-              );
-            })}
+            {homeData &&
+              homeData?.filter((data: any) => data?.type === "featuredProducts")
+                .length > 0 &&
+              homeData
+                ?.filter((data: any) => data?.type === "featuredProducts")[0]
+                ?.products?.map((product: any, idx: number) => {
+                  return (
+                    <div key={product?.id} className="w-full">
+                      <SellsCard
+                        product={product}
+                        setSelectedProduct={setSelectedProduct}
+                        handleOpenModal={handleOpenModal}
+                      />
+                    </div>
+                  );
+                })}
           </Slider>
         </div>
         {/* </div> */}
@@ -201,6 +227,13 @@ const BestSells = () => {
           </div>
         </div>
       </div>
+      {modalOpen && (
+        <Modal
+          handleCloseModal={handleCloseModal}
+          selectedProduct={selectedProduct}
+          cookie={""}
+        />
+      )}
     </div>
   );
 };
