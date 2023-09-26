@@ -1,14 +1,6 @@
 
-// const typesenseCred = {
-//     apiKey: `${process.env.NEXT_PUBLIC_TYPESENSE_API}`,
-//     searchOnlyKey: "CONM3gS3uAJTm8XBg1wzjjfKZGv7tVOd",
-//     host: "xtz3coih7u9w0qejp-1.a1.typesense.net",
-//     port: 443,
-//     protocol: "https"
-// }
-
 import { doc, getDoc } from "firebase/firestore";
-import { app, db, firebaseConfig } from "./firebase-config";
+import { db } from "./firebase-config";
 
 export function typesense_initClient() {
     return new Promise(async (resolve, reject) => {
@@ -63,16 +55,3 @@ export async function handleTypesenseSearch(query: string) {
 
 }
 
-// function parseArrayOfObjects(object) {
-//     for (const key in object) {
-//         try {
-//             const value = JSON.parse(object[key]);
-//             if ((Array.isArray(value) && value.length && typeof value[0] == 'object') || (Array.isArray(value) && !value.length)) {
-//                 object[key] = value;
-//             }
-//         } catch (error) {
-
-//         }
-//     }
-//     return object;
-// }

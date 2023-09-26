@@ -112,10 +112,12 @@ const SearchHeader = ({ cookie }: any) => {
               <div className="flex flex-col gap-2">
                 {searchedProducts?.map((product: any) => {
                   return (
-                    <SearchTile
-                      setSearchQuery={setSearchQuery}
-                      product={product}
-                    />
+                    <div key={product?.id}>
+                      <SearchTile
+                        setSearchQuery={setSearchQuery}
+                        product={product}
+                      />
+                    </div>
                   );
                 })}
               </div>

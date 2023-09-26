@@ -74,10 +74,12 @@ const NavMobile = () => {
                   <div className="flex flex-col gap-2 bg-white">
                     {searchedProducts?.map((product: any) => {
                       return (
-                        <SearchTile
-                          setSearchQuery={setSearchQuery}
-                          product={product}
-                        />
+                        <div key={product?.id}>
+                          <SearchTile
+                            setSearchQuery={setSearchQuery}
+                            product={product}
+                          />
+                        </div>
                       );
                     })}
                   </div>
@@ -112,9 +114,12 @@ const NavMobile = () => {
           />
         </div>
         <div className="flex items-center sm:gap-10 gap-5">
-          <div className=" sm:px-[10px] sm:py-[10px] px-[5px] py-[5px] rounded-md" onClick={()=>{
-            setIsSearchOpen(true)
-          }}>
+          <div
+            className=" sm:px-[10px] sm:py-[10px] px-[5px] py-[5px] rounded-md"
+            onClick={() => {
+              setIsSearchOpen(true);
+            }}
+          >
             <FiSearch className="sm:h-[22px] sm:w-[22px] h-[18px] w-[18px]" />
           </div>
           <div
