@@ -93,7 +93,7 @@ const ProductRowVersion = ({ product, cookie, params }: any) => {
         >
           I’M Interested
         </div>
-        <Link href={"/product/product-id"} className="w-full">
+        <Link href={`/product/${product?.id}`} className="w-full">
           <div className="bg-[#51150A] w-full text-white text-sm px-[25px] text-center py-[10px] rounded-md ">
             Buy Now
           </div>

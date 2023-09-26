@@ -119,7 +119,7 @@ const Productdescription = ({ cookie, slug }: any) => {
         <div className="md:w-[50%]">
           <div className="flex flex-col gap-[1rem]">
             <Image
-              src={productInfo?.images[selectedImage]?.url}
+              src={productInfo && productInfo?.images[selectedImage]?.url}
               alt=""
               className="w-full"
               width={1000}
@@ -130,27 +130,28 @@ const Productdescription = ({ cookie, slug }: any) => {
               }}
             />
             <div className="flex gap-[1rem]">
-              {productInfo?.images?.map((image: any, index: number) => {
-                return (
-                  <div className="" key={image?.url}>
-                    <Image
-                      key={image?.url}
-                      src={image?.url}
-                      onClick={() => setSelectedImage(index)}
-                      alt=""
-                      className={`w-[25%] ${
-                        selectedImage === index ? "shadow-lg" : ""
-                      }`}
-                      width={1000}
-                      height={1000}
-                      style={{
-                        maxWidth: "100%",
-                        height: "auto",
-                      }}
-                    />
-                  </div>
-                );
-              })}
+              {productInfo &&
+                productInfo?.images?.map((image: any, index: number) => {
+                  return (
+                    <div className="" key={image?.url}>
+                      <Image
+                        key={image?.url}
+                        src={image?.url}
+                        onClick={() => setSelectedImage(index)}
+                        alt=""
+                        className={`w-[25%] ${
+                          selectedImage === index ? "shadow-lg" : ""
+                        }`}
+                        width={1000}
+                        height={1000}
+                        style={{
+                          maxWidth: "100%",
+                          height: "auto",
+                        }}
+                      />
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -164,7 +165,7 @@ const Productdescription = ({ cookie, slug }: any) => {
               </span>
             </div>
 
-            {productInfo?.vendor?.location?.address && (
+            {productInfo && productInfo?.vendor?.location?.address && (
               <div className="flex gap-1 items-center">
                 <TiLocation className="h-[120%] w-[auto] text-[#598f26]"></TiLocation>
                 <p className="font-medium  text-base ">
@@ -177,10 +178,12 @@ const Productdescription = ({ cookie, slug }: any) => {
           <div className="flex gap-2  items-center mt-[1rem] mb-[.5rem]">
             <div className=" text-3xl font-semibold text-[#598f26] ">
               {currency}{" "}
-              {productInfo?.variants[selectedVariant]?.price?.discounted ||
+              {(productInfo &&
+                productInfo?.variants[selectedVariant]?.price?.discounted) ||
                 productInfo?.variants[selectedVariant]?.price?.mrp}
             </div>
-            {productInfo?.variants[selectedVariant]?.price?.discounted &&
+            {productInfo &&
+              productInfo?.variants[selectedVariant]?.price?.discounted &&
               productInfo?.variants[selectedVariant]?.price?.discounted !==
                 productInfo?.variants[selectedVariant]?.price?.mrp && (
                 <div className=" text-2xl line-through font-medium  text-[#b4b5b5] ">
@@ -193,23 +196,26 @@ const Productdescription = ({ cookie, slug }: any) => {
           <hr></hr>
 
           <div className="my-2 flex flex-wrap gap-2">
-            {productInfo?.variants?.map((variant: any, index: number) => {
-              return (
-                <div
-                  key={variant?.weight}
-                  onClick={() => {
-                    setSelectedVariant(index);
-                  }}
-                  className={`${
-                    selectedVariant === index && "bg-primary "
-                  } border p-2 border-gray-200 shadow-sm rounded-md cursor-pointer`}
-                >
-                  <p className={`${selectedVariant === index && "text-white"}`}>
-                    {variant?.weight} {variant?.unit}
-                  </p>
-                </div>
-              );
-            })}
+            {productInfo &&
+              productInfo?.variants?.map((variant: any, index: number) => {
+                return (
+                  <div
+                    key={variant?.weight}
+                    onClick={() => {
+                      setSelectedVariant(index);
+                    }}
+                    className={`${
+                      selectedVariant === index && "bg-primary "
+                    } border p-2 border-gray-200 shadow-sm rounded-md cursor-pointer`}
+                  >
+                    <p
+                      className={`${selectedVariant === index && "text-white"}`}
+                    >
+                      {variant?.weight} {variant?.unit}
+                    </p>
+                  </div>
+                );
+              })}
           </div>
 
           {/* <div
