@@ -39,7 +39,12 @@ const ProductCard = ({ product, cookie, params }: any) => {
               }}
             />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-fit text-[12px] text-center flex gap-2 text-white font-medium">
-              <span className="text-white">{getDiscountedPercentage({price:product?.variants[0]?.price?.mrp, discountedPrice:product?.variants[0]?.price?.discounted})}</span>
+              <span className="text-white">
+                {getDiscountedPercentage({
+                  price: product?.variants[0]?.price?.mrp,
+                  discountedPrice: product?.variants[0]?.price?.discounted,
+                })}
+              </span>
               <span className="text-white">OFF</span>
             </div>
           </div>
@@ -105,7 +110,7 @@ const ProductCard = ({ product, cookie, params }: any) => {
           >
             I’M Interested
           </div>
-          <Link href={"/product/product-id"}>
+          <Link href={`/product/${product?.id}`}>
             <div className="bg-[#51150A] flex items-center justify-center px-[13px] py-[14px] rounded-md cursor-pointer">
               <HiOutlineArrowRight className="text-white" />
             </div>
