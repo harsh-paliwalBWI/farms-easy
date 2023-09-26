@@ -272,3 +272,64 @@ export function getMaxAndMinPriceForFilters(arr: any) {
   let res = [Math.ceil(min), Math.ceil(max)];
   return res;
 }
+
+export async function fetchSingleFarmer({ farmerdetails }: any) {
+  console.log("STARTED FETCHING", farmerdetails);
+
+  let Res = await getDocs(
+    query(collection(db, "vendors"), where("slug", "==", farmerdetails))
+  ).then((val) => {
+    if (val.docs.length === 0) return "";
+    let far = val.docs[0].data();
+    return far;
+  });
+  return JSON.parse(JSON.stringify(Res));
+}
+
+export async function fetchFarmers() {
+  return await getDocs(collection(db, "vendors")).then((val) => {
+    if (val.docs.length === 0) return [];
+
+    let arr = [];
+    for (const doc of val.docs) {
+      arr.push({ ...doc.data(), id: doc.id });
+    }
+
+    return JSON.parse(JSON.stringify(arr));
+  });
+}
+
+export async function fetchFarmerProducts(slug: string) {
+  console.log(slug);
+  const res = await getDocs(
+    query(collection(db, "vendors"), where("slug", "==", slug))
+  ).then((val) => {
+    if (val.docs.length === 0) return null;
+
+    return { ...val.docs[0].data(), id: val.docs[0].id };
+  });
+
+
+  if (res) {
+    const data = await getDocs(
+      query(collection(db, "products"), where("vendorid", "==", res?.id))
+    ).then((val) => {
+
+      if (val.docs.length === 0) return null;
+      let arr = [];
+
+      for (const doc of val.docs) {
+        let data = doc.data();
+        if (data?.active) {
+          arr.push({ ...data, id: doc.id });
+        }
+      }
+
+      return arr;
+    });
+
+    return JSON.parse(JSON.stringify(data));
+  }
+
+  return [];
+}

@@ -9,6 +9,8 @@ import ImageC from "../../images/farmerlist3.svg";
 import ImageD from "../../images/farmerlist4.svg";
 import ImageE from "../../images/farmerlist5.svg";
 import ImageF from "../../images/farmerlist6.svg";
+import { useQuery } from "@tanstack/react-query";
+import { fetchFarmers } from "@/utils/databaseService";
 
 const DUMMY_DATA = [
   {
@@ -56,15 +58,28 @@ const DUMMY_DATA = [
 ];
 
 const Farmerlistsection = () => {
+  const { data: farmers, isLoading } = useQuery({
+    queryKey: ["farmers"],
+    queryFn: () => fetchFarmers(),
+  });
   return (
     <>
       <div className="my-[1rem] px-[3.5%]  pb-[8.5%] items-center">
-        <div className="flex flex-col gap-y-8 md:flex-row md:flex-wrap md:justify-between">
-          {DUMMY_DATA.map((item: any, idx: number) => (
+        {/* <div className="flex flex-col gap-y-8 md:flex-row md:flex-wrap md:justify-between"> */}
+        <div className="grid grid-cols-2 gap-6">
+          {farmers &&
+            farmers?.map((vendor: any) => {
+              return (
+                <div key={vendor.id}>
+                  <Farmerlistitem vendor={vendor} />
+                </div>
+              );
+            })}
+          {/* {DUMMY_DATA.map((item: any, idx: number) => (
             <div key={idx} className="w-full md:w-[48%]">
               <Farmerlistitem item={item} />
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
     </>

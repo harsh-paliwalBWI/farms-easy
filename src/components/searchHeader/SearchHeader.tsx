@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../images/logo.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +12,19 @@ import { signOut } from "firebase/auth";
 import axios from "axios";
 import { usePathname, useRouter } from "next/navigation";
 import OutsideClickHandler from "@/utils/OutsideClickHandler";
+import useDebounce from "@/utils/useDebounce";
+import { handleTypesenseSearch } from "@/config/typesense";
+import { currency } from "@/utils/constant";
+import { CircularProgress } from "@mui/material";
+import SearchTile from "./SrarchTile";
+
 const SearchHeader = ({ cookie }: any) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const debouncedSearch = useDebounce(searchQuery, 500);
+  const [searchedProducts, setSearchedProducts] = useState([]);
+
+  const [isSearching, setIsSearching] = useState(false);
+
   const { data: userData } = useQuery({
     queryKey: ["userData"],
     queryFn: () => getUserData(cookie),
@@ -21,6 +33,25 @@ const SearchHeader = ({ cookie }: any) => {
   const router = useRouter();
   const pathname = usePathname();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
+  async function fetchSearchedProducts() {
+    setIsSearching(true);
+    const res = await handleTypesenseSearch(debouncedSearch);
+    if (res) {
+      setSearchedProducts(res);
+    }
+    setIsSearching(false);
+  }
+
+  useEffect(() => {
+    if (searchQuery === "") {
+      setSearchedProducts([]);
+    }
+    if (debouncedSearch) {
+      fetchSearchedProducts();
+      // fetch(`/api/search?q=${debouncedSearch}`);
+    }
+  }, [debouncedSearch]);
 
   const handleLogout = async () => {
     signOut(auth)
@@ -53,31 +84,53 @@ const SearchHeader = ({ cookie }: any) => {
               maxWidth: "100%",
               height: "auto",
             }}
-             className="w-[100px]"
+            className="w-[100px]"
           />
         </div>
       </Link>
-      <div className="flex justify-between items-center gap-3 rounded-sm  w-[50%] bg-[#F9F9F9]">
+      <div className="flex justify-between items-center gap-3 rounded-sm  w-[50%] bg-[#F9F9F9] relative">
         <input
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+          }}
           className="rounded-sm  outline-0 px-[10px] w-full py-[12px] bg-[#F9F9F9] "
           placeholder="Search for items..."
         />
         <div className="bg-[#51150A] h-full py-[14px] px-[15px] text-white rounded-r-sm">
           <FlatIcon icon="flaticon-search text-lg" />
         </div>
+        {searchQuery !== "" ? (
+          <div className=" z-50 absolute top-full left-0 w-full h-auto max-h-[500px] flex flex-col shadow-lg bg-white border border-gray-200 rounded-lg px-2 py-2">
+            {isSearching ? (
+              <div className="flex justify-center items-center py-4">
+                <CircularProgress size={25} className="!text-primary" />
+              </div>
+            ) : searchedProducts?.length === 0 ? (
+              <div className="flex justify-center py-4">No Product Found</div>
+            ) : (
+              <div className="flex flex-col gap-2">
+                {searchedProducts?.map((product: any) => {
+                  return (
+                    <div key={product?.id}>
+                      <SearchTile
+                        setSearchQuery={setSearchQuery}
+                        product={product}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="flex items-center gap-5">
         <div className="flex items-center gap-3">
           <div>
             <FlatIcon icon="flaticon-heart text-2xl" />
-            {/* <Image
-              src={lilHeart}
-              alt=""
-              style={{
-                maxWidth: "100%",
-                height: "auto",
-              }}
-            /> */}
           </div>
           <div>Wishlist</div>
         </div>

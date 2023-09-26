@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { AiOutlineClose } from "react-icons/ai";
@@ -13,9 +13,17 @@ import { SlArrowDown } from "react-icons/sl";
 import FlatIcon from "../flatIcon/flatIcon";
 import { fetchCategories, fetchSubCategories } from "@/utils/databaseService";
 import { useQuery } from "@tanstack/react-query";
+import useDebounce from "@/utils/useDebounce";
+import { handleTypesenseSearch } from "@/config/typesense";
+import { TiTimes } from "react-icons/ti";
+import SearchTile from "../searchHeader/SrarchTile";
 
 const NavMobile = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const debouncedSearch = useDebounce(searchQuery, 500);
+  const [searchedProducts, setSearchedProducts] = useState([]);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
   const mobile = useMediaQuery("(max-width:480px)");
   const matches = useMediaQuery("(max-width:624px)");
@@ -30,15 +38,75 @@ const NavMobile = () => {
     queryFn: () => fetchSubCategories(),
   });
 
+  async function fetchSearchedProducts() {
+    const res = await handleTypesenseSearch(debouncedSearch);
+    if (res) {
+      setSearchedProducts(res);
+    }
+  }
+
+  useEffect(() => {
+    if (searchQuery === "") {
+      setSearchedProducts([]);
+    }
+    if (debouncedSearch) {
+      fetchSearchedProducts();
+      // fetch(`/api/search?q=${debouncedSearch}`);
+    }
+  }, [debouncedSearch]);
+
   return (
-    <div className="w-full  sm:px-[3.5%] px-[7%]  py-[10px] bg-[#eef0e5] font-medium text-md  relative  overflow-auto">
+    <div className="w-full   sm:px-[3.5%] px-[7%]  py-[10px] bg-[#eef0e5] font-medium text-md  relative ">
+      {isSearchOpen && (
+        <div className="absolute top-0 left-0 bg-white w-full h-full shadow-md flex">
+          <div className="w-full h-full relative">
+            <input
+              type="text"
+              autoFocus
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search for products..."
+              className=" w-full h-full select-none outline-none pl-3 pr-10 "
+            />
+            {searchQuery !== "" && searchedProducts?.length > 0 && (
+              <div className="absolute z-50 px-4 top-full left-0 bg-white  w-full h-full max-h-[500px]flex flex-col gap-2">
+                {searchQuery !== "" ? (
+                  <div className="flex flex-col gap-2 bg-white">
+                    {searchedProducts?.map((product: any) => {
+                      return (
+                        <div key={product?.id}>
+                          <SearchTile
+                            setSearchQuery={setSearchQuery}
+                            product={product}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </div>
+            )}
+          </div>
+
+          <div
+            className="absolute top-0 right-0 px-4 flex flex-col items-center justify-center h-full"
+            onClick={() => {
+              setIsSearchOpen(false);
+            }}
+          >
+            <TiTimes className="h-6 w-6" />
+          </div>
+        </div>
+      )}
       <div className="flex justify-between items-center">
         <div>
           <Image
             src={logo}
             alt=""
-            width={mobile ? 80 : 100}
-            height={mobile ? 80 : 100}
+            width={mobile ? 50 : 100}
+            height={mobile ? 50 : 100}
             style={{
               maxWidth: "100%",
               height: "auto",
@@ -46,7 +114,12 @@ const NavMobile = () => {
           />
         </div>
         <div className="flex items-center sm:gap-10 gap-5">
-          <div className=" sm:px-[10px] sm:py-[10px] px-[5px] py-[5px] rounded-md">
+          <div
+            className=" sm:px-[10px] sm:py-[10px] px-[5px] py-[5px] rounded-md"
+            onClick={() => {
+              setIsSearchOpen(true);
+            }}
+          >
             <FiSearch className="sm:h-[22px] sm:w-[22px] h-[18px] w-[18px]" />
           </div>
           <div
