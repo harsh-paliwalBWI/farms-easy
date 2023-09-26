@@ -152,7 +152,7 @@ const CategoryList = () => {
                     .filter((home: any) => home.type === item.type)[0]
                     ?.products.map((product: any, idx: number) => {
                       return (
-                        <Link href={`/product/${product?.slug}`}>
+                        <Link href={`/product/${product?.slug}`} key={product?.id}>
                           <div key={idx} className="flex gap-3  items-center">
                             <div className="w-[20%] lg:w-[25%] bg-slate-200">
                               <Image

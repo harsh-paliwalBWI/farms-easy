@@ -132,7 +132,7 @@ const Productdescription = ({ cookie, slug }: any) => {
             <div className="flex gap-[1rem]">
               {productInfo?.images?.map((image: any, index: number) => {
                 return (
-                  <div className="">
+                  <div className="" key={image?.url}>
                     <Image
                       key={image?.url}
                       src={image?.url}
@@ -177,7 +177,8 @@ const Productdescription = ({ cookie, slug }: any) => {
           <div className="flex gap-2  items-center mt-[1rem] mb-[.5rem]">
             <div className=" text-3xl font-semibold text-[#598f26] ">
               {currency}{" "}
-              {productInfo?.variants[selectedVariant]?.price?.discounted || productInfo?.variants[selectedVariant]?.price?.mrp}
+              {productInfo?.variants[selectedVariant]?.price?.discounted ||
+                productInfo?.variants[selectedVariant]?.price?.mrp}
             </div>
             {productInfo?.variants[selectedVariant]?.price?.discounted &&
               productInfo?.variants[selectedVariant]?.price?.discounted !==
@@ -196,8 +197,8 @@ const Productdescription = ({ cookie, slug }: any) => {
               return (
                 <div
                   key={variant?.weight}
-                  onClick={()=>{
-                    setSelectedVariant(index)
+                  onClick={() => {
+                    setSelectedVariant(index);
                   }}
                   className={`${
                     selectedVariant === index && "bg-primary "
