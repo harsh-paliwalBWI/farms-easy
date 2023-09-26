@@ -74,6 +74,7 @@ const CategoryAvl = ({ categories, subCategories }: any) => {
       <CategoryCard
         selectedCategory={selectedCategory}
         subCategories={subCategories}
+        categories={categories}
       />
     </>
   );

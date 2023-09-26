@@ -17,9 +17,14 @@ const SubCategoryProducts = async ({ params }: any) => {
   });
   const dehydratedState = dehydrate(queryClient);
 
-  return <Hydrate state={dehydratedState}>
-    <Productsidecomponent />
-  </Hydrate>;
+  return (
+    <Hydrate state={dehydratedState}>
+      <Productsidecomponent
+        params={params}
+        queryKey={["shop", "category", params?.slug, params?.subCategorySlug]}
+      />
+    </Hydrate>
+  );
 };
 
 export default SubCategoryProducts;

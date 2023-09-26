@@ -12,9 +12,9 @@ const SellsCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
   return (
     // <div className=' w-fit'>
     // </div>
-    <div className="border-[#479332] border-[1px]  rounded-md flex justify-center h-[370px] lg:h-[370px]  relative">
+    <div className="border-[#479332] border-[1px] w-full  rounded-md flex justify-center h-[370px] lg:h-[370px]  relative">
       <div className=" flex flex-col items-center">
-        <div className="w-fit">
+        <div className="w-fit  h-[160px] flex justify-center items-center">
           <Image
             src={product?.images[product?.coverImage]?.url}
             alt=""
@@ -61,7 +61,7 @@ const SellsCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
           </div>
           <div className="flex gap-2">
             <div
-              className="bg-[#588F27] text-white text-base w-full py-[10px] rounded-md text-center cursor-pointer"
+              className="bg-[#588F27] text-white text-xs flex items-center justify-center w-full py-[10px] rounded-md text-center cursor-pointer"
               onClick={() => {
                 setSelectedProduct(product);
                 setTimeout(() => {

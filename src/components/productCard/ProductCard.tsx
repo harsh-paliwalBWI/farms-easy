@@ -15,8 +15,8 @@ import { getDiscountedPercentage } from "@/utils/utilities";
 
 const ProductCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
   return (
-    <div className="border-[#479332] border-[1px]  p-[12px] rounded-md flex ">
-      <div className="w-full">
+    <div className="border-[#479332] border-[1px]  p-[12px] rounded-md flex h-full ">
+      <div className="w-full h-full">
         <div className="flex items-center justify-between">
           <div className="relative">
             <Image
@@ -43,7 +43,7 @@ const ProductCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
             <FlatIcon icon={`flaticon-heart text-2xl `} />
           </div>
         </div>
-        <div className="my-[10px] flex justify-center">
+        <div className="my-[10px] flex justify-center h-[160px]">
           <Image
             src={product?.images[product?.coverImage]?.url}
             alt=""
@@ -69,15 +69,13 @@ const ProductCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
             {product?.vendor?.name}
           </span>
         </div>
-        {product?.vendor?.location?.address && (
-          <div className="flex h-5  gap-1 items-center my-[5px] ">
-            <FlatIcon icon={`flaticon-location-fill text-lg text-primary`} />
-            {/* <i className="h-[100%] w-auto text-[#598f26]" /> */}
-            <p className="font-bold text-xs">
-              {product?.vendor?.location?.address}
-            </p>
-          </div>
-        )}
+        <div className="flex h-5  gap-1 items-center my-[5px] ">
+          <FlatIcon icon={`flaticon-location-fill text-lg text-primary`} />
+          {/* <i className="h-[100%] w-auto text-[#598f26]" /> */}
+          <p className="font-semibold text-xs overflow-hidden truncate">
+            {product?.vendor?.location?.address || <span className="text-gray-400 font-medium">Not available</span>}
+          </p>
+        </div>
         <div className="flex items-center gap-2 mb-[5px]">
           <span className="font-semibold">
             {currency}{" "}

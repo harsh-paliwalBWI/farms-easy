@@ -1,3 +1,3 @@
 export const getDiscountedPercentage = ({ price, discountedPrice }: any) => {
-    return `${((price-discountedPrice) / price) * 100}%`
+    return `${Math.ceil(((price-discountedPrice) / price) * 100)}%`
 };

@@ -78,6 +78,7 @@ import image4 from "../../../images/Rectangle 5.svg";
 import image5 from "../../../images/Rectangle 4.svg";
 import image6 from "../../../images/Rectangle 15.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 const DUMMY_DATA = [
   { image: image1, btnText: "VEGETABLES" },
@@ -88,14 +89,14 @@ const DUMMY_DATA = [
   { image: image6, btnText: "FLOWERS" },
 ];
 
-const CategoryCard = ({ selectedCategory, subCategories }: any) => {
+const CategoryCard = ({ selectedCategory, subCategories, categories }: any) => {
   return (
     <>
       {subCategories?.filter((cat: any) =>
         cat?.categories.includes(selectedCategory)
       ).length === 0 ? (
         <div className="flex justify-center w-full ">
-         <p className="text-xl font-semibold"> Subcategories not available.</p>
+          <p className="text-xl font-semibold"> Subcategories not available.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 gap-x-8 md:gap-y-10  gap-y-3  place-items-center">
@@ -104,7 +105,15 @@ const CategoryCard = ({ selectedCategory, subCategories }: any) => {
               ?.filter((cat: any) => cat?.categories.includes(selectedCategory))
               .map((item: any, idx: any) => {
                 return (
-                  <div key={idx} className="">
+                  <Link
+                    href={`/shop/category/${
+                      categories?.filter(
+                        (cat: any) => cat?.id === selectedCategory
+                      )[0]?.slug
+                    }/${item?.slug}`}
+                    key={idx}
+                    className=""
+                  >
                     <div className="">
                       <Image
                         src={item.image?.url}
@@ -122,7 +131,7 @@ const CategoryCard = ({ selectedCategory, subCategories }: any) => {
                         {item?.name}
                       </button>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
           </>

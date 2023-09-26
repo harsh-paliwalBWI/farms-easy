@@ -8,10 +8,20 @@ import Productgridversion from "../productcardgridversion/Productcardgridversion
 import Productcardrowversion from "@/components/productcardrowversion/Productcardrowversion";
 import { BiChevronDown } from "react-icons/bi";
 import FilterComponent from "../filtercomponent/Filtercomponent";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCategoryProducts } from "@/utils/databaseService";
 
 const options = ["Default Sorting", "Ascending Sorting", "Descending Sorting"];
 
-const Productsidecomponent = ({ cookie }: any) => {
+const Productsidecomponent = ({ cookie, params, queryKey, queryFn }: any) => {
+  const { data: pageData } = useQuery({
+    queryKey,
+    queryFn: () =>
+      fetchCategoryProducts({
+        slug: params?.slug,
+        subCatSlug: params?.subCategorySlug || null,
+      }),
+  });
   const [viewMode, setViewMode] = useState("grid");
   const [windowWidth, setWindowWidth] = useState(0);
 
@@ -42,7 +52,7 @@ const Productsidecomponent = ({ cookie }: any) => {
         <div className="flex flex-col md:flex-row items-center justify-between mt-3 mb-8">
           <div>
             <h2 className="font-medium">
-              Showing <span>1</span>-<span>6</span> of <span>6</span> results
+              Found ({(pageData?.products&& pageData?.products?.length) ||0}) results
             </h2>
           </div>
           {!isMobileView && (
@@ -108,12 +118,31 @@ const Productsidecomponent = ({ cookie }: any) => {
           )}
         </div>
 
-        <div
-          className={isMobileView ? "grid gap-6 justify-center" : "grid gap-6"}
-        >
-          {viewMode === "grid" ? (
-            <div className="grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              <Productgridversion
+        {!pageData?.products || pageData?.products?.length === 0 ? (
+          <div className=" w-full h-[25vh] flex justify-center items-center">
+            <p className="font-medium text-lg">No Products available</p>
+          </div>
+        ) : (
+          <div
+            className={
+              isMobileView ? "grid gap-6 justify-center" : "grid gap-6"
+            }
+          >
+            {viewMode === "grid" ? (
+              <div className="grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {pageData?.products?.map((product: any, idx: number) => {
+                  return (
+                    <div className="" key={product?.id}>
+                      <Productgridversion
+                        params={params}
+                        product={product}
+                        cookie={cookie}
+                      />
+                    </div>
+                  );
+                })}
+
+                {/* <Productgridversion
                 product={{
                   name: "asnkcsa",
                   class: "ascsca",
@@ -140,17 +169,28 @@ const Productsidecomponent = ({ cookie }: any) => {
                   class: "ascsca",
                 }}
                 cookie={cookie}
-              />
-              <Productgridversion
+              /> */}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 gap-6 mt-5">
+                {pageData?.products?.map((product: any, idx: number) => {
+                  return (
+                    <div className="" key={product?.id}>
+                      <Productcardrowversion
+                        params={params}
+                        product={product}
+                        cookie={cookie}
+                      />
+                    </div>
+                  );
+                })}
+                {/* <Productcardrowversion
                 product={{
                   name: "asnkcsa",
                   class: "ascsca",
                 }}
                 cookie={cookie}
               />
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 gap-6 mt-5">
               <Productcardrowversion
                 product={{
                   name: "asnkcsa",
@@ -178,17 +218,11 @@ const Productsidecomponent = ({ cookie }: any) => {
                   class: "ascsca",
                 }}
                 cookie={cookie}
-              />
-              <Productcardrowversion
-                product={{
-                  name: "asnkcsa",
-                  class: "ascsca",
-                }}
-                cookie={cookie}
-              />
-            </div>
-          )}
-        </div>
+              /> */}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

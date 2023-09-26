@@ -23,7 +23,7 @@ const Page = async ({ params }: any) => {
   return (
     <Hydrate state={dehydratedState}>
       <Headersectiontype2 slug={params?.id} />
-      <Productdescription cookie={cookie}  slug={params?.id} />
+      <Productdescription cookie={cookie} slug={params?.id} />
       <Productqualities slug={params?.id} />
     </Hydrate>
   );

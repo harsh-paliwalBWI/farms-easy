@@ -57,7 +57,6 @@ const Productdescription = ({ cookie, slug }: any) => {
   const { data: userData } = useQuery({
     queryKey: ["userData"],
     queryFn: () => getUserData(cookie),
-    refetchInterval: 2000,
     keepPreviousData: true,
   });
   const [selectedImage, setSelectedImage] = useState(product?.coverImage || 0);
@@ -197,9 +196,12 @@ const Productdescription = ({ cookie, slug }: any) => {
               return (
                 <div
                   key={variant?.weight}
+                  onClick={()=>{
+                    setSelectedVariant(index)
+                  }}
                   className={`${
-                    selectedVariant === index && "bg-primary"
-                  } border p-2 border-gray-200 shadow-sm rounded-md`}
+                    selectedVariant === index && "bg-primary "
+                  } border p-2 border-gray-200 shadow-sm rounded-md cursor-pointer`}
                 >
                   <p className={`${selectedVariant === index && "text-white"}`}>
                     {variant?.weight} {variant?.unit}

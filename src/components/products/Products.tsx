@@ -118,7 +118,7 @@ const Products = () => {
           </button>
         )}
         <div className="back ">
-          <div className="w-[85vw]  lg:w-[90vw] h-auto">
+          <div className="w-[85vw]  lg:w-[90vw] h-auto ">
             <Slider
               ref={slider}
               {...settings}
@@ -145,7 +145,7 @@ const Products = () => {
                   ?.filter((data: any) => data?.type === "featuredProducts")[0]
                   ?.products?.map((product: any) => {
                     return (
-                      <div key={product?.id}>
+                      <div key={product?.id} className="">
                         <ProductCard
                           product={product}
                           setSelectedProduct={setSelectedProduct}

@@ -43,10 +43,10 @@ const BestSells = () => {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1242,
+        breakpoint: 1300,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 4,
+          slidesToShow: 3,
+          slidesToScroll: 2,
           // dots: true
         },
       },
@@ -155,7 +155,7 @@ const BestSells = () => {
                 ?.filter((data: any) => data?.type === "featuredProducts")[0]
                 ?.products?.map((product: any, idx: number) => {
                   return (
-                    <div key={product?.id} className="">
+                    <div key={product?.id} className="w-full">
                       <SellsCard
                         product={product}
                         setSelectedProduct={setSelectedProduct}

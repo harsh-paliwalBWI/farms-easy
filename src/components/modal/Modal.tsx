@@ -19,9 +19,9 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
   const { data: userData } = useQuery({
     queryKey: ["userData"],
     queryFn: () => getUserData(cookie),
-    refetchInterval: 2000,
     keepPreviousData: true,
   });
+  
   const [state, setState] = useState({
     name: "",
     email: "",

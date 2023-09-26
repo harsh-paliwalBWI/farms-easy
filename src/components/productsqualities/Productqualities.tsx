@@ -51,37 +51,16 @@ const Productqualities = ({ slug }: any) => {
             >
               Additional Information
             </div>
-            {/* <div
-              className={`font-medium text-xl md:text-2xl text-[#598f26] ${
-                selectedTab === 2 && "underline"
-              }  underline-offset-4 cursor-pointer`}
-              onClick={() => setSelectedTab(2)}
-            >
-              Reviews
-            </div> */}
           </div>
           {selectedTab === 0 ? (
             <div dangerouslySetInnerHTML={{ __html: productInfo?.desc }}></div>
           ) : selectedTab === 1 ? (
-            <div dangerouslySetInnerHTML={{ __html: productInfo?.additionalDesc }}></div>
-          ) : (
-            <div className="">
-
-            </div>
-          )}
-          {/* <div className="text-sm font-medium leading-6 mt-2 md:mt-4">
-            {DUMMY_DATA.descriptiontext}
-          </div>
-          <div className="font-medium text-xl mt-4">Features</div>
-          {DUMMY_DATA.features.map((feature, index) => (
             <div
-              className="text-sm font-medium flex gap-2 items-center"
-              key={index}
-            >
-              {" "}
-              <GoDotFill /> {feature}
-            </div>
-          ))} */}
+              dangerouslySetInnerHTML={{ __html: productInfo?.additionalDesc }}
+            ></div>
+          ) : (
+            <div className=""></div>
+          )}
         </div>
       </div>
     </div>
