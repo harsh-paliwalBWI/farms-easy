@@ -174,6 +174,18 @@ const Productdescription = ({ cookie, slug }: any) => {
               </div>
             )}
           </div>
+          {productInfo?.otherVendors?.length > 0 && (
+            <div className="flex flex-col mt-3">
+              <span className="text-[#598f26] font-medium">
+                Also Sold by:{" "}
+                <span className="font-normal">
+                  {productInfo?.otherVendors
+                    ?.map((vend: any) => vend?.name)
+                    .join(", ")}
+                </span>
+              </span>
+            </div>
+          )}
 
           <div className="flex gap-2  items-center mt-[1rem] mb-[.5rem]">
             <div className=" text-3xl font-semibold text-[#598f26] ">
