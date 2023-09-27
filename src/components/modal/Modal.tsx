@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC, Fragment, useState } from "react";
 import { TiTimes } from "react-icons/ti";
 import Button from "../Button/Button";
 import validator from "validator";
@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import { getUserData, handleLeadSubmit } from "@/utils/databaseService";
 import { auth } from "@/config/firebase-config";
 import { useQuery } from "@tanstack/react-query";
+import { Listbox, Transition } from "@headlessui/react";
+import FlatIcon from "../flatIcon/flatIcon";
 
 interface Props {
   handleCloseModal: any;
@@ -21,7 +23,8 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
     queryFn: () => getUserData(cookie),
     keepPreviousData: true,
   });
-  
+  const [selected, setSelected] = useState("");
+
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -85,6 +88,7 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
           vendor: {
             id: selectedProduct?.vendor?.id || "",
           },
+          unit: selected,
         },
       ],
     };
@@ -107,6 +111,7 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
         name: "",
         phone: "",
       });
+      setSelected("");
       setLoading(false);
       handleCloseModal();
       toast("Your interest has been captured.", { type: "success" });
@@ -117,8 +122,6 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
     }
   };
 
-  console.log({selectedProduct});
-  
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 top-0 left-0 w-[100vw] h-[100vh]">
       <div className="bg-white w-[38rem]  rounded-3xl p-12">
@@ -168,7 +171,7 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
             className="border-[0.5px] rounded-sm py-3 md:py-4 px-4 md:px-6"
           />
           <input
-            type="number"
+            type="text"
             name="quantity"
             onChange={(e) => {
               handleChange({ name: e.target.name, value: e.target.value });
@@ -177,8 +180,90 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
             placeholder="Quantity"
             className="border-[0.5px] rounded-sm py-3 md:py-4 px-4 md:px-6"
           />
+
+          <Listbox value={selected} onChange={setSelected}>
+            <div className="relative mt-1">
+              <Listbox.Button className="  relative w-full cursor-default  bg-white py-1 pl-1 pr-5 md:py-4 md:pl-5 md:pr-10 text-left rounded-[1px] border border-gray-200 focus:outline-none sm:text-sm">
+                <span
+                  className={`block truncate font-semibold ${
+                    !selected && "text-gray-400"
+                  }`}
+                >
+                  {selected || "Select Unit"}
+                </span>
+                <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                  <i className="flaticon-down-arrow flex justify-center items-center"></i>
+                  {/* <FlatIcon className={`flaticon-left-arrow text-black`} /> */}
+                </span>
+              </Listbox.Button>
+              <Transition
+                as={Fragment}
+                leave="transition ease-in duration-100"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <Listbox.Options className="absolute px-4 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                  {/* {constant.intakeList.map((intake, personIdx) => ( */}
+                  <Listbox.Option
+                    key={"kg"}
+                    className={({ active }) =>
+                      `relative cursor-default select-none py-2 pl-2 pr-4 border-b border-gray-300 ${
+                        active ? " text-primary" : "text-gray-900"
+                      }`
+                    }
+                    value={"Kgs"}
+                  >
+                    {({ selected }) => (
+                      <>
+                        <span
+                          className={`block truncate ${
+                            selected ? "font-medium" : "font-normal"
+                          }`}
+                        >
+                          Kgs
+                        </span>
+                        {selected ? (
+                          <span className="absolute inset-y-0 right-0 flex items-center pl-3 text-primary">
+                            <FlatIcon className={`flaticon-check`} />
+                          </span>
+                        ) : null}
+                      </>
+                    )}
+                  </Listbox.Option>
+                  <Listbox.Option
+                    key={"tons"}
+                    className={({ active }) =>
+                      `relative cursor-default select-none py-2 pl-2 pr-4 border-b border-gray-300 ${
+                        active ? " text-primary" : "text-gray-900"
+                      }`
+                    }
+                    value={"Tons"}
+                  >
+                    {({ selected }) => (
+                      <>
+                        <span
+                          className={`block truncate ${
+                            selected ? "font-medium" : "font-normal"
+                          }`}
+                        >
+                          Tons
+                        </span>
+                        {selected ? (
+                          <span className="absolute inset-y-0 right-0 flex items-center pl-3 text-primary">
+                            <FlatIcon className={`flaticon-check`} />
+                          </span>
+                        ) : null}
+                      </>
+                    )}
+                  </Listbox.Option>
+                  {/* ))} */}
+                </Listbox.Options>
+              </Transition>
+            </div>
+          </Listbox>
+
           <input
-            type="number"
+            type="text"
             name="quotedPrice"
             onChange={(e) => {
               handleChange({ name: e.target.name, value: e.target.value });

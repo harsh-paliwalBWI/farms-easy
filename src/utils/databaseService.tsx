@@ -106,13 +106,17 @@ export const getUserData = async (cookie: any) => {
   let uid;
   if (auth.currentUser?.uid) {
     uid = auth.currentUser?.uid;
+    // console.log(uid,"auth id")
   }
   if (cookie?.value) {
     uid = cookie?.value;
+    // console.log(uid,"cookie id")
   }
 
+// console.log(uid,"hhhh")
+
   if (uid) {
-    const docRef = doc(db, "user", uid);
+    const docRef = doc(db, "users", uid);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -151,12 +155,32 @@ export async function fetchSingleProduct({ slug, id }: any) {
   if (slug) {
     let prodRes = await getDocs(
       query(collection(db, "products"), where("slug", "==", slug))
-    ).then((val) => {
+    ).then(async (val) => {
       if (val.docs.length === 0) return "";
 
       let prod = val.docs[0].data();
       if (prod?.active) {
-        return { ...prod, id: val.docs[0].id };
+        let otherVendors = await getDocs(
+          query(collection(db, "products"), where("name", "==", prod?.name))
+        ).then((respo) => {
+          if (respo.docs.length === 0) return [];
+
+          let arr = [];
+
+          for (const docs of respo.docs) {
+            let data = docs.data();
+            if (
+              data?.vendor &&
+              data?.vendor?.name &&
+              data?.vendorid !== prod?.vendorid
+            ) {
+              arr.push({ name: data?.vendor?.name, id: data?.vendorid });
+            }
+          }
+          return arr;
+        });
+
+        return { ...prod, id: val.docs[0].id, otherVendors: otherVendors };
       } else {
         return null;
       }
@@ -309,12 +333,10 @@ export async function fetchFarmerProducts(slug: string) {
     return { ...val.docs[0].data(), id: val.docs[0].id };
   });
 
-
   if (res) {
     const data = await getDocs(
       query(collection(db, "products"), where("vendorid", "==", res?.id))
     ).then((val) => {
-
       if (val.docs.length === 0) return null;
       let arr = [];
 

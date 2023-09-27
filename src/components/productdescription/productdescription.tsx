@@ -4,7 +4,7 @@ import { TiLocation } from "react-icons/ti";
 import Modal from "@/components/modal/Modal";
 
 import Image from "next/image";
-
+import { checkUserLogin} from "@/utils/databaseService";
 import brocli1 from "../../images/brocli1.svg";
 import brocli2 from "../../images/brocli2.svg";
 import brocli3 from "../../images/brocli3.svg";
@@ -21,6 +21,7 @@ import { auth } from "@/config/firebase-config";
 import { RotatingLines } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import { currency } from "@/utils/constant";
+import SideMenuLogin from "../sidemenulogin/SideMenulogin";
 
 const DUMMY_DATA = {
   id: 6,
@@ -48,7 +49,7 @@ const Productdescription = ({ cookie, slug }: any) => {
   });
 
   const [modalOpen, setModalOpen] = useState(false);
-
+  const [isShowLoginMenu, setShowLoginMenu] = useState(false);
   const [loading, setLoading] = useState(false);
   const [product, setProduct]: any = useState({
     name: "asnkcsa",
@@ -68,6 +69,17 @@ const Productdescription = ({ cookie, slug }: any) => {
   const handleCloseModal = () => {
     setModalOpen(false);
   };
+
+  const handleLoginClick = () => {
+    setShowLoginMenu(!isShowLoginMenu);
+    document.body.classList.add("no-scroll");
+   };
+ 
+   const closeLoginMenu = () => {
+     setShowLoginMenu(false);
+     document.body.classList.remove("no-scroll");
+ 
+   };
 
   const handleBuyNowRequest = async () => {
     let data: any = {
@@ -174,6 +186,18 @@ const Productdescription = ({ cookie, slug }: any) => {
               </div>
             )}
           </div>
+          {productInfo?.otherVendors?.length > 0 && (
+            <div className="flex flex-col mt-3">
+              <span className="text-[#598f26] font-medium">
+                Also Sold by:{" "}
+                <span className="font-normal">
+                  {productInfo?.otherVendors
+                    ?.map((vend: any) => vend?.name)
+                    .join(", ")}
+                </span>
+              </span>
+            </div>
+          )}
 
           <div className="flex gap-2  items-center mt-[1rem] mb-[.5rem]">
             <div className=" text-3xl font-semibold text-[#598f26] ">
@@ -230,13 +254,13 @@ const Productdescription = ({ cookie, slug }: any) => {
             <button
               type="button"
               className=" text-white bg-[#598f26] w-[45%] font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2"
-              onClick={handleOpenModal}
+              onClick={ auth.currentUser?.uid  ? handleOpenModal: handleLoginClick }
             >
               I&apos;M INTERESTED
             </button>
             <div
               className="bg-[#51150A] gap-2 w-[45%] flex items-center justify-center font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2 cursor-pointer"
-              onClick={handleBuyNowRequest}
+              onClick={auth.currentUser?.uid  ? handleBuyNowRequest : handleLoginClick }
             >
               {loading ? (
                 <RotatingLines
@@ -263,6 +287,13 @@ const Productdescription = ({ cookie, slug }: any) => {
           cookie={cookie}
         />
       )}
+      {isShowLoginMenu && (
+            <SideMenuLogin
+              isOpen={isShowLoginMenu}
+              setShowLogin={setShowLoginMenu}
+              onClose={closeLoginMenu}
+            />
+          )}
     </div>
   );
 };
