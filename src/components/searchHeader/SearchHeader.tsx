@@ -17,19 +17,41 @@ import { handleTypesenseSearch } from "@/config/typesense";
 import { currency } from "@/utils/constant";
 import { CircularProgress } from "@mui/material";
 import SearchTile from "./SrarchTile";
+import SideMenuLogin from "../sidemenulogin/SideMenulogin";
+
 
 const SearchHeader = ({ cookie }: any) => {
+  const [isShowLoginMenu, setShowLoginMenu] = useState(false);
+
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedSearch = useDebounce(searchQuery, 500);
   const [searchedProducts, setSearchedProducts] = useState([]);
 
   const [isSearching, setIsSearching] = useState(false);
 
+
+  const handleLoginClick = () => {
+   // setShowLogin(true); 
+
+   setShowLoginMenu(!isShowLoginMenu);
+   document.body.classList.add("no-scroll");
+  };
+
+  const closeLoginMenu = () => {
+  
+    // dispatch(closeLoginModal());
+    setShowLoginMenu(false);
+    document.body.classList.remove("no-scroll");
+
+  };
+
   const { data: userData } = useQuery({
     queryKey: ["userData"],
     queryFn: () => getUserData(cookie),
     keepPreviousData: true,
   });
+
+  // console.log(userData,"ooooooo")
   const router = useRouter();
   const pathname = usePathname();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
@@ -147,6 +169,7 @@ const SearchHeader = ({ cookie }: any) => {
                   setIsDropDownOpen(!isDropDownOpen);
                 }}
               >
+             
                 <div>
                   {userData &&
                   userData?.profilePic &&
@@ -194,16 +217,28 @@ const SearchHeader = ({ cookie }: any) => {
             </OutsideClickHandler>
           </div>
         ) : (
-          <Link href={"/login"}>Login</Link>
-        )}
-        {/* <div className='flex items-center gap-3'>
-      <div><Image src={userImg} alt=''/></div>
-      <div>Ramzi Cherif</div>
-      <div><Image src={arrowDown} alt=''/></div>
-      </div> */}
+          // <Link href={"/login"}>Login</Link>
+          
+          
+            <div
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={handleLoginClick}
+            >
+              <FlatIcon icon={"flaticon-user text-xl"} />
+              <h3> Buyer's Login</h3>
+            </div>
+          )}
+  
+          {isShowLoginMenu && (
+            <SideMenuLogin
+              isOpen={isShowLoginMenu}
+              setShowLogin={setShowLoginMenu}
+              onClose={closeLoginMenu}
+            />
+          )}
+        </div>
       </div>
-    </div>
-  );
-};
-
-export default SearchHeader;
+    );
+  };
+  
+  export default SearchHeader;
