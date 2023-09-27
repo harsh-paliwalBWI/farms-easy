@@ -10,6 +10,8 @@ import Image from "next/image";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useQuery } from "@tanstack/react-query";
+import { fetchSingleFarmer } from "@/utils/databaseService";
 import { useRef } from "react";
 import Slider from "react-slick";
 
@@ -19,6 +21,12 @@ const DUMMY_DATA = {
 };
 
 const Farmergallery = ({ params }: any) => {
+  const { data: singleFarmer } = useQuery({
+    queryKey: ["farmers", params?.farmerdetails],
+    queryFn: () => fetchSingleFarmer({ farmerdetails: params?.farmerdetails }),
+  });
+
+
   const slider = useRef<any>(null);
   const settings = {
     dots: true,
@@ -57,6 +65,8 @@ const Farmergallery = ({ params }: any) => {
     ],
   };
 
+console.log(singleFarmer?.gallery,"ccccc")
+
   return (
     <div className="relative bg-cover bg-center bg-videobg px-[3.5%] pt-[10%] pb-[4%]">
       <div className="flex flex-col">
@@ -74,18 +84,18 @@ const Farmergallery = ({ params }: any) => {
             arrows={false}
             className="w-full pb-[70px]"
           >
-            {DUMMY_DATA.galleryImages.map((item: any, idx: number) => (
+            {singleFarmer?.gallery?.map((item: any, idx: number) => (
               <div key={idx}>
                 <Image
-                  src={item}
+                  src={item.url}
                   alt=""
-                  style={{
-                    maxWidth: "100%",
-                    height: "auto",
-                  }}
+                 width={1000}
+                 height={1000}
+                 className="rounded-xl"
                 />
               </div>
             ))}
+
           </Slider>
         </div>
       </div>

@@ -106,13 +106,17 @@ export const getUserData = async (cookie: any) => {
   let uid;
   if (auth.currentUser?.uid) {
     uid = auth.currentUser?.uid;
+    // console.log(uid,"auth id")
   }
   if (cookie?.value) {
     uid = cookie?.value;
+    // console.log(uid,"cookie id")
   }
 
+// console.log(uid,"hhhh")
+
   if (uid) {
-    const docRef = doc(db, "user", uid);
+    const docRef = doc(db, "users", uid);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
