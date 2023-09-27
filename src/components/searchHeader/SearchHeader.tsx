@@ -225,7 +225,7 @@ const SearchHeader = ({ cookie }: any) => {
               onClick={handleLoginClick}
             >
               <FlatIcon icon={"flaticon-user text-xl"} />
-              <h3> Buyer's Login</h3>
+              <h3> Buyer&apos;s Login</h3>
             </div>
           )}
   
