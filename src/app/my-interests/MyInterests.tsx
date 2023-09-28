@@ -17,7 +17,10 @@ const MyInterests = ({ cookie }: any) => {
         {interests &&
           interests?.map((interest: any) => {
             return (
-              <div className="border border-gray-300 shadow-md h-full py-2 px-2 md:px-3 rounded-md ">
+              <div
+                className="border border-gray-300 shadow-md h-full py-2 px-2 md:px-3 rounded-md "
+                key={interest?.id}
+              >
                 <div>
                   Created On:{" "}
                   <span className="text-primary font-medium">
@@ -69,7 +72,8 @@ const MyInterests = ({ cookie }: any) => {
                           <p className="text-sm text-gray-500">
                             Quoted Price:{" "}
                             <span className="text-primary font-semibold">
-                             {currency}{product?.quotedPrice}
+                              {currency}
+                              {product?.quotedPrice}
                             </span>
                           </p>
                         </div>
