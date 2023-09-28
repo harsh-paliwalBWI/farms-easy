@@ -110,7 +110,7 @@ const ProductCard = ({ product, cookie, params }: any) => {
           >
             I’M Interested
           </div>
-          <Link href={`/product/${product?.id}`}>
+          <Link href={`/product/${product?.slug}`}>
             <div className="bg-[#51150A] flex items-center justify-center px-[13px] py-[14px] rounded-md cursor-pointer">
               <HiOutlineArrowRight className="text-white" />
             </div>
