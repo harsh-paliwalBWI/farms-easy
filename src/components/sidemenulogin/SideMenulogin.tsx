@@ -15,9 +15,17 @@ import { getUserData } from "../../utils/databaseService";
 import FlatIcon from "../flatIcon/flatIcon";
 import { TiTimes } from "react-icons/ti";
 
-function SideMenuLogin({ isOpen, onClose, setShowLogin }: { isOpen: any; onClose: any; setShowLogin: any; }) {
+function SideMenuLogin({
+  isOpen,
+  onClose,
+  setShowLogin,
+}: {
+  isOpen: any;
+  onClose: any;
+  setShowLogin: any;
+}) {
   const [email, setEmail] = useState<any>("");
-//   const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
   const [phoneNumber, setPhoneNumber] = useState<any>("");
   const queryClient = useQueryClient();
   const [time, setTime] = useState(60);
@@ -60,9 +68,7 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }: { isOpen: any; onClose
           "recaptcha-container",
           {
             size: "invisible",
-            callback: (response: any) => {
-     
-            },
+            callback: (response: any) => {},
           }
         );
 
@@ -73,7 +79,6 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }: { isOpen: any; onClose
           recaptchaVerifier
         )
           .then((confirmationResult) => {
-
             setOTPSent(confirmationResult);
 
             setLoading(false);
@@ -94,7 +99,6 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }: { isOpen: any; onClose
   };
 
   const confirmOTP = () => {
-
     try {
       setTimerStarted(false);
       setVerifying(true);
@@ -105,19 +109,16 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }: { isOpen: any; onClose
           localStorage.setItem("auth", JSON.stringify(res.user.uid));
           if (res._tokenResponse.isNewUser) {
             let user = {
-              phoneNo: phoneNumber,
+              name: "user",
+              phoneNo: `+91${phoneNumber}`,
               createdAt: new Date(),
-              active: true,
-              lastAccessAt: new Date(),
-              role: "user",
-              name: "username",
-              email:"" ,
-              dP: "assets/img/user-pic.gif",
-              setFromUI: true,
-              wallet: { balance: 0, cashback: 0, lastTransactions: {} },
+              profilePic: {
+                url: "",
+              },
+              wishlistIds: [],
             };
             console.log(user, "user info");
-            await setDoc(doc(db, `user/${res.user.uid}`), user, {
+            await setDoc(doc(db, `users/${res.user.uid}`), user, {
               merge: true,
             });
           } else {
@@ -129,7 +130,7 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }: { isOpen: any; onClose
           queryClient.invalidateQueries({ queryKey: ["userData"] });
           queryClient.refetchQueries({ queryKey: ["userData"] });
           router.replace(pathName);
-          onClose()
+          onClose();
           document.body.classList.remove("no-scroll");
           setTime(60);
           setOTP("");
@@ -157,7 +158,6 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }: { isOpen: any; onClose
             className="mt-4 mr-6 bg-[#F6F3FA] rounded-full p-3"
             onClick={onClose}
           >
-       
             <TiTimes className="text-gray-600 cursor-pointer flaticon-close" />
           </div>
         </div>
@@ -172,13 +172,12 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }: { isOpen: any; onClose
               height: "auto",
             }}
           />
-          
+
           <div className="text-[#777777] text-xl my-[30px]">
             Login with your Phone Number.
           </div>
 
-          
-          {showPhoneNumberInput && ( 
+          {showPhoneNumberInput && (
             <div className="mb-[20px] w-[90%]">
               <input
                 type="text"
@@ -187,14 +186,13 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }: { isOpen: any; onClose
                 value={phoneNumber}
                 onChange={(e) => {
                   setPhoneNumber(e.target.value);
-
                 }}
               />
 
               <div
                 onClick={async () => {
                   await signInUserWithPhoneNumber();
-                  setShowPhoneNumberInput(false); 
+                  setShowPhoneNumberInput(false);
                 }}
                 className="text-center bg-primary w-full py-[15px]  text-[white] cursor-pointer"
               >
@@ -204,7 +202,7 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }: { isOpen: any; onClose
             </div>
           )}
 
-          {!showPhoneNumberInput && ( 
+          {!showPhoneNumberInput && (
             <div className="mb-[20px] w-[90%]">
               <input
                 type="text"
@@ -225,11 +223,7 @@ function SideMenuLogin({ isOpen, onClose, setShowLogin }: { isOpen: any; onClose
               </div>
             </div>
           )}
-
-
         </div>
-
-   
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { BsTelephone } from "react-icons/bs";
@@ -12,13 +13,16 @@ import { BsTwitter } from "react-icons/bs";
 import Image from "next/image";
 import FlatIcon from "../flatIcon/flatIcon";
 import Link from "next/link";
-const Footer = async () => {
+import { toast } from "react-toastify";
+import { auth } from "@/config/firebase-config";
+const Footer = () => {
   const DUMMY_DATA = [
     {
       heading: "Account",
       subLinks: [
-        { name: "My Enquiry" },
-        { name: "Register as Buyer" },
+        { name: "My Interests", path: "/my-interests" },
+        { name: "My Buy Requests", path: "/my-buy-requests" },
+        // { name: "Register as Buyer" },
         { name: "Farmer Login", path: "/farmer-registration" },
         { name: "Farmer Registration", path: "/farmer-registration" },
       ],
@@ -150,8 +154,22 @@ const Footer = async () => {
                       </Link>
                     );
                   }
+
                   return (
-                    <Link href={item?.path || "/#"} key={idx}>
+                    <Link
+                      href={item?.path || "/#"}
+                      key={idx}
+                      onClick={(e) => {
+                        if (
+                          (item?.path === "/my-interests" ||
+                            item?.path === "/my-buy-requests") &&
+                          auth.currentUser?.uid === null
+                        ) {
+                          e.preventDefault();
+                          toast.error("Please Login First");
+                        }
+                      }}
+                    >
                       <div className="text-[#555555] text-sm font-semibold mb-[20px]">
                         {item.name}
                       </div>
