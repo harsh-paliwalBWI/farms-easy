@@ -92,7 +92,7 @@ const Productdescription = ({ cookie, slug }: any) => {
           id: product?.id || "", // product id
           variant: {
             unit: product?.unit || "",
-            price: product?.price || {},
+            price: product?.price || "",
             weight: product?.weight || 0,
             sku: product?.sku || "",
           },

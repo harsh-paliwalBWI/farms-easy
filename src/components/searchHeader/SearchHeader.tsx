@@ -1,11 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import logo from "../../images/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import FlatIcon from "../flatIcon/flatIcon";
 import { checkUserLogin, getUserData } from "@/utils/databaseService";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { BsPersonFill } from "react-icons/bs";
 import { auth } from "@/config/firebase-config";
 import { signOut } from "firebase/auth";
@@ -18,10 +18,11 @@ import { currency } from "@/utils/constant";
 import { CircularProgress } from "@mui/material";
 import SearchTile from "./SrarchTile";
 import SideMenuLogin from "../sidemenulogin/SideMenulogin";
-
+import { Menu, Transition } from "@headlessui/react";
 
 const SearchHeader = ({ cookie }: any) => {
   const [isShowLoginMenu, setShowLoginMenu] = useState(false);
+  const queryClient = useQueryClient();
 
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedSearch = useDebounce(searchQuery, 500);
@@ -29,20 +30,17 @@ const SearchHeader = ({ cookie }: any) => {
 
   const [isSearching, setIsSearching] = useState(false);
 
-
   const handleLoginClick = () => {
-   // setShowLogin(true); 
+    // setShowLogin(true);
 
-   setShowLoginMenu(!isShowLoginMenu);
-   document.body.classList.add("no-scroll");
+    setShowLoginMenu(!isShowLoginMenu);
+    document.body.classList.add("no-scroll");
   };
 
   const closeLoginMenu = () => {
-  
     // dispatch(closeLoginModal());
     setShowLoginMenu(false);
     document.body.classList.remove("no-scroll");
-
   };
 
   const { data: userData } = useQuery({
@@ -81,11 +79,9 @@ const SearchHeader = ({ cookie }: any) => {
         // Sign-out successful.
         setIsDropDownOpen(false);
         await axios.get("/api/logout");
-        if (pathname === "/") {
-          router.refresh();
-        } else {
-          router.push("/");
-        }
+        queryClient.invalidateQueries({ queryKey: ["userData"] });
+        queryClient.refetchQueries({ queryKey: ["userData"] });
+        router.replace('/');
       })
       .catch((error) => {
         // An error happened.
@@ -157,88 +153,168 @@ const SearchHeader = ({ cookie }: any) => {
           <div>Wishlist</div>
         </div>
         {checkUserLogin(cookie) ? (
-          <div className="flex gap-2 items-center hover:cursor-pointer relative">
-            <OutsideClickHandler
-              onClick={() => {
-                setIsDropDownOpen(false);
-              }}
+          <>
+            <Menu
+              as="div"
+              className="relative text-left flex justify-center items-center "
             >
-              <div
-                className="flex gap-2 items-center hover:cursor-pointer relative"
-                onClick={() => {
-                  setIsDropDownOpen(!isDropDownOpen);
-                }}
-              >
-             
-                <div>
-                  {userData &&
-                  userData?.profilePic &&
-                  userData?.profilePic?.url ? (
-                    <div className="w-10 h-10 rounded-full overflow-hidden">
-                      <Image
-                        src={userData?.profilePic?.url}
-                        alt="user profileF"
-                        width={100}
-                        height={100}
-                        layout="responsive"
-                        className="w-full h-full"
-                      />
-                    </div>
-                  ) : (
-                    <BsPersonFill />
-                  )}
-                </div>
-                <div>
-                  <p>{userData && userData?.name}</p>
-                </div>
-                <div>
-                  <FlatIcon
-                    icon="flaticon-down-arrow"
-                    classname={`text-primary`}
-                  />
-                </div>
+              <div className="flex justify-center items-center">
+                <Menu.Button className="">
+                  <div className="flex items-center  gap-2">
+                    {userData?.profilePic?.url ? (
+                      <div className="w-10 h-10 rounded-full overflow-hidden">
+                        <Image
+                          src={userData?.profilePic?.url}
+                          alt="user profileF"
+                          width={100}
+                          height={100}
+                          layout="responsive"
+                          className="w-full h-full"
+                        />
+                      </div>
+                    ) : (
+                      <BsPersonFill />
+                    )}
+                    <p>{(userData && userData?.name) || "User"}</p>
+                    <FlatIcon className="flaticon-down-arrow !text-black"></FlatIcon>
+                  </div>
+                </Menu.Button>
               </div>
-
-              {isDropDownOpen && (
-                <div className="absolute flex flex-col gap-2 py-4 top-[50px] bg-white shadow-lg rounded-lg px-2 w-full">
-                  <Link href={"/"}>Profile</Link>
-                  <hr />
-                  <Link
-                    href={"/logout"}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleLogout();
-                    }}
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <Menu.Items className="z-50 absolute right-0 mt-2 top-full w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="px-1 py-1 ">
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link href={"/profile"}>
+                          <button
+                            className={`${
+                              active ? "bg-primary text-white" : "text-gray-900"
+                            } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                          >
+                            {/* {active ? "active" : "notActive"} */}
+                            Profile
+                          </button>
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          onClick={handleLogout}
+                          className={`${
+                            active ? "bg-primary text-white" : "text-gray-900"
+                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        >
+                          {/* {active ? "active" : "notActive"} */}
+                          Logout
+                        </button>
+                      )}
+                    </Menu.Item>
+                    {/* <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`${
+                      active ? "bg-primary text-white" : "text-gray-900"
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
-                    Logout
-                  </Link>
-                </div>
-              )}
-            </OutsideClickHandler>
-          </div>
+                    {active ? "active" : "notActive"}
+                    Edit
+                  </button>
+                )}
+              </Menu.Item> */}
+                  </div>
+                </Menu.Items>
+              </Transition>
+            </Menu>
+          </>
         ) : (
+          // <div className="flex gap-2 items-center hover:cursor-pointer relative">
+          //   <OutsideClickHandler
+          //     onClick={() => {
+          //       setIsDropDownOpen(false);
+          //     }}
+          //   >
+          //     <div
+          //       className="flex gap-2 items-center hover:cursor-pointer relative"
+          //       onClick={() => {
+          //         setIsDropDownOpen(!isDropDownOpen);
+          //       }}
+          //     >
+          //       <div>
+          //         {userData &&
+          //         userData?.profilePic &&
+          // userData?.profilePic?.url ? (
+          //   <div className="w-10 h-10 rounded-full overflow-hidden">
+          //     <Image
+          //       src={userData?.profilePic?.url}
+          //       alt="user profileF"
+          //       width={100}
+          //       height={100}
+          //       layout="responsive"
+          //       className="w-full h-full"
+          //     />
+          //   </div>
+          // ) : (
+          //   <BsPersonFill />
+          // )}
+          //       </div>
+          //       <div>
+          //         <p>{userData && userData?.name}</p>
+          //       </div>
+          //       <div>
+          //         <FlatIcon
+          //           icon="flaticon-down-arrow"
+          //           classname={`text-primary`}
+          //         />
+          //       </div>
+          //     </div>
+
+          //     {/* {isDropDownOpen && (
+          //       <div className="absolute min-w-[150px] flex flex-col gap-2 py-4 top-[50px] bg-white shadow-lg rounded-lg px-2 w-full">
+          //         <Link href={"/"}>Profile</Link>
+          //         <hr />
+          //         <Link
+          //           href={"/logout"}
+          //           onClick={(e) => {
+          //             e.preventDefault();
+          //             handleLogout();
+          //           }}
+          //         >
+          //           Logout
+          //         </Link>
+          //       </div>
+          //     )} */}
+          //   </OutsideClickHandler>
+          // </div>
           // <Link href={"/login"}>Login</Link>
-          
-          
-            <div
-              className="flex items-center gap-2 cursor-pointer"
-              onClick={handleLoginClick}
-            >
-              <FlatIcon icon={"flaticon-user text-xl"} />
-              <h3> Buyer&apos;s Login</h3>
-            </div>
-          )}
-  
-          {isShowLoginMenu && (
-            <SideMenuLogin
-              isOpen={isShowLoginMenu}
-              setShowLogin={setShowLoginMenu}
-              onClose={closeLoginMenu}
-            />
-          )}
-        </div>
+
+          <div
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={handleLoginClick}
+          >
+            <FlatIcon icon={"flaticon-user text-xl"} />
+            <h3> Buyer&apos;s Login</h3>
+          </div>
+        )}
+
+        {isShowLoginMenu && (
+          <SideMenuLogin
+            isOpen={isShowLoginMenu}
+            setShowLogin={setShowLoginMenu}
+            onClose={closeLoginMenu}
+          />
+        )}
       </div>
-    );
-  };
-  
-  export default SearchHeader;
+    </div>
+  );
+};
+
+export default SearchHeader;

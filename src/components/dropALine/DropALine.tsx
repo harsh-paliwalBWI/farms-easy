@@ -18,7 +18,7 @@ const DropALine = () => {
     name: "",
     email: "",
     phone: "",
-    website: "",
+    // website: "",
     message: "",
   });
 
@@ -56,7 +56,7 @@ const DropALine = () => {
       message: state.message,
       name: state.name,
       phoneNo: state.phone,
-      website: state.website,
+      // website: state.website,
     };
 
     const res: boolean = await handleContactUsSubmit(data);
@@ -65,7 +65,7 @@ const DropALine = () => {
         email: "",
         message: "",
         name: "",
-        website: "",
+        // website: "",
         phone: "",
       });
       setLoading(false);
@@ -141,7 +141,7 @@ const DropALine = () => {
               className="outline-0 w-full py-[15px]   px-[20px]"
             />
           </div>
-          <div className="md:w-[50%] w-[100%] border-[0.5px] border-[#E3E3E3]  rounded-sm">
+          {/* <div className="md:w-[50%] w-[100%] border-[0.5px] border-[#E3E3E3]  rounded-sm">
             <input
               type="text"
               name="website"
@@ -152,7 +152,7 @@ const DropALine = () => {
               placeholder="Website"
               className="outline-0 w-full py-[15px]   px-[20px]"
             />
-          </div>
+          </div> */}
         </div>
         <div className="border-[0.5px] border-[#E3E3E3] rounded-sm mb-[35px] textarea-container">
           <textarea

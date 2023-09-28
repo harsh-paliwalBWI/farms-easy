@@ -113,7 +113,7 @@ export const getUserData = async (cookie: any) => {
     // console.log(uid,"cookie id")
   }
 
-// console.log(uid,"hhhh")
+  // console.log(uid,"hhhh")
 
   if (uid) {
     const docRef = doc(db, "users", uid);
@@ -354,4 +354,73 @@ export async function fetchFarmerProducts(slug: string) {
   }
 
   return [];
+}
+
+export async function getUserInterestedProductsData(cookie: any) {
+  let uid;
+  if (auth.currentUser?.uid) {
+    uid = auth.currentUser?.uid;
+    // console.log(uid,"auth id")
+  }
+  if (cookie?.value) {
+    uid = cookie?.value;
+    // console.log(uid,"cookie id")
+  }
+
+  if (!uid) return null;
+
+  const data = await getDocs(
+    query(
+      collection(db, "leads"),
+      where("uid", "==", uid),
+      orderBy("createdAt", "desc")
+    )
+  ).then((val) => {
+    if (val.docs.length === 0) return [];
+
+    let arr = [];
+
+    for (const doc of val.docs) {
+      let createdAt = doc.data().createdAt?.toDate();
+      arr.push({ ...doc.data(), id: doc.id, createdAt });
+    }
+
+    return arr;
+  });
+  return data;
+}
+export async function getUserBuyNowRequests(cookie: any) {
+  let uid;
+  if (auth.currentUser?.uid) {
+    uid = auth.currentUser?.uid;
+    // console.log(uid,"auth id")
+  }
+  if (cookie?.value) {
+    uid = cookie?.value;
+    // console.log(uid,"cookie id")
+  }
+
+  if (!uid) return null;
+
+  console.log("STARTED FETCHING");
+
+  const data = await getDocs(
+    query(
+      collection(db, "buyNowRequest"),
+      where("user.id", "==", uid),
+      orderBy("createdAt", "desc")
+    )
+  ).then((val) => {
+    if (val.docs.length === 0) return [];
+
+    let arr = [];
+
+    for (const doc of val.docs) {
+      let createdAt = doc.data().createdAt?.toDate();
+      arr.push({ ...doc.data(), id: doc.id, createdAt });
+    }
+
+    return arr;
+  });
+  return data;
 }

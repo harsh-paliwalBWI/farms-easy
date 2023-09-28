@@ -38,14 +38,14 @@ const BestSells = () => {
   const settings = {
     dots: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1300,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 2,
           // dots: true
         },
@@ -53,7 +53,7 @@ const BestSells = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 2,
           // dots: true
         },
@@ -61,7 +61,7 @@ const BestSells = () => {
       {
         breakpoint: 957,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 3,
           // dots: true
         },
@@ -69,7 +69,7 @@ const BestSells = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
         },
@@ -131,7 +131,7 @@ const BestSells = () => {
       </div>
       <div className="flex md:justify-start justify-center lg:flex-row flex-col gap-5 items-center my-4  w-full mx-auto   ">
         {/* <div className='back '> */}
-        <div className="w-full lg:w-[73%] h-full ">
+        <div className="w-full  h-full ">
           <Slider
             ref={slider}
             {...settings}
@@ -167,7 +167,7 @@ const BestSells = () => {
           </Slider>
         </div>
         {/* </div> */}
-        <div className="w-full relative rounded-md  max-h-[370px] ">
+       {/* <div className="w-full relative rounded-md  max-h-[370px] ">
           <Image
             src={offerImg}
             className=""
@@ -183,7 +183,7 @@ const BestSells = () => {
               // height: "auto",
             }}
           />
-          <div className="absolute bottom-[15px] px-[15px] max-h-[370px] w-full bst-sell-form">
+           <div className="absolute bottom-[15px] px-[15px] max-h-[370px] w-full bst-sell-form">
             <div className="text-[#588F27] font-bold text-2xl text-center mb-[20px]">
               10% OFF
             </div>
@@ -224,8 +224,8 @@ const BestSells = () => {
             <div className="bg-[#588F27] text-base text-center text-[#FFFFFF] py-[12px] rounded-md">
               Register Now
             </div>
-          </div>
-        </div>
+          </div> 
+        </div>*/}
       </div>
       {modalOpen && (
         <Modal

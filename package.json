@@ -34,6 +34,7 @@
     "f": "^1.4.0",
     "firebase": "^10.1.0",
     "firebase-admin": "^11.10.1",
+    "moment": "^2.29.4",
     "next": "13.4.12",
     "postcss": "8.4.27",
     "rc-slider": "^10.2.1",
