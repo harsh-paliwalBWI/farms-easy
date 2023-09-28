@@ -4,7 +4,7 @@ import { TiLocation } from "react-icons/ti";
 import Modal from "@/components/modal/Modal";
 
 import Image from "next/image";
-import { checkUserLogin} from "@/utils/databaseService";
+import { checkUserLogin } from "@/utils/databaseService";
 import brocli1 from "../../images/brocli1.svg";
 import brocli2 from "../../images/brocli2.svg";
 import brocli3 from "../../images/brocli3.svg";
@@ -51,16 +51,14 @@ const Productdescription = ({ cookie, slug }: any) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isShowLoginMenu, setShowLoginMenu] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [product, setProduct]: any = useState({
-    name: "asnkcsa",
-    class: "ascsca",
-  });
   const { data: userData } = useQuery({
     queryKey: ["userData"],
     queryFn: () => getUserData(cookie),
     keepPreviousData: true,
   });
-  const [selectedImage, setSelectedImage] = useState(product?.coverImage || 0);
+  const [selectedImage, setSelectedImage] = useState(
+    productInfo?.coverImage || 0
+  );
   const [selectedVariant, setSelectedVariant] = useState(0);
 
   const handleOpenModal = () => {
@@ -73,35 +71,37 @@ const Productdescription = ({ cookie, slug }: any) => {
   const handleLoginClick = () => {
     setShowLoginMenu(!isShowLoginMenu);
     document.body.classList.add("no-scroll");
-   };
- 
-   const closeLoginMenu = () => {
-     setShowLoginMenu(false);
-     document.body.classList.remove("no-scroll");
- 
-   };
+  };
+
+  const closeLoginMenu = () => {
+    setShowLoginMenu(false);
+    document.body.classList.remove("no-scroll");
+  };
 
   const handleBuyNowRequest = async () => {
     let data: any = {
       createdAt: new Date(),
       products: [
         {
-          name: product?.name,
+          name: productInfo?.name,
           qty: 1,
           quotedPrice: 0,
-          id: product?.id || "", // product id
+          id: productInfo?.id || "", // productInfo id
           variant: {
-            unit: product?.unit || "",
-            price: product?.price || "",
-            weight: product?.weight || 0,
-            sku: product?.sku || "",
+            unit: productInfo?.variants[selectedVariant]?.unit || "",
+            price:
+              productInfo?.variants[selectedVariant]?.price?.discountedPrice ||
+              productInfo?.variants[selectedVariant]?.price?.mrp ||
+              "",
+            weight: productInfo?.variants[selectedVariant]?.weight || 0,
+            sku: productInfo?.variants[selectedVariant]?.sku || "",
           },
           vendor: {
-            id: product?.vendor?.id || "",
+            id: productInfo?.vendor?.id || "",
           },
         },
       ],
-      productIds: [product?.id || ""], // for where clause to check user has raised the buy now req or not
+      productIds: [productInfo?.id || ""], // for where clause to check user has raised the buy now req or not
     };
 
     if (auth.currentUser?.uid && userData) {
@@ -254,13 +254,17 @@ const Productdescription = ({ cookie, slug }: any) => {
             <button
               type="button"
               className=" text-white bg-[#598f26] w-[45%] font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2"
-              onClick={ auth.currentUser?.uid  ? handleOpenModal: handleLoginClick }
+              onClick={
+                auth.currentUser?.uid ? handleOpenModal : handleLoginClick
+              }
             >
               I&apos;M INTERESTED
             </button>
             <div
               className="bg-[#51150A] gap-2 w-[45%] flex items-center justify-center font-medium rounded-lg text-sm px-5 py-5 mr-2 mb-2 cursor-pointer"
-              onClick={auth.currentUser?.uid  ? handleBuyNowRequest : handleLoginClick }
+              onClick={
+                auth.currentUser?.uid ? handleBuyNowRequest : handleLoginClick
+              }
             >
               {loading ? (
                 <RotatingLines
@@ -283,17 +287,17 @@ const Productdescription = ({ cookie, slug }: any) => {
       {modalOpen && (
         <Modal
           handleCloseModal={handleCloseModal}
-          selectedProduct={product}
+          selectedProduct={productInfo}
           cookie={cookie}
         />
       )}
       {isShowLoginMenu && (
-            <SideMenuLogin
-              isOpen={isShowLoginMenu}
-              setShowLogin={setShowLoginMenu}
-              onClose={closeLoginMenu}
-            />
-          )}
+        <SideMenuLogin
+          isOpen={isShowLoginMenu}
+          setShowLogin={setShowLoginMenu}
+          onClose={closeLoginMenu}
+        />
+      )}
     </div>
   );
 };
