@@ -28,9 +28,9 @@ const Footer = async () => {
       subLinks: [
         { name: "About Us", path: "/aboutUs" },
         { name: "Contact", path: "/contactUs" },
-        { name: "Hot Deals" },
-        { name: "Promotions" },
-        { name: "New Products" },
+        // { name: "Hot Deals" },
+        // { name: "Promotions" },
+        // { name: "New Products" },
       ],
     },
     {
