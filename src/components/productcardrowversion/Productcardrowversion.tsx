@@ -55,12 +55,14 @@ const ProductRowVersion = ({ product, cookie, params }: any) => {
               {product?.vendor?.name}
             </span>
           </div>
-          <div className="flex h-5 gap-1 items-center">
-            <TiLocation className="h-[100%] w-auto text-[#598f26]" />
-            <p className="font-bold text-xs">
-              {product?.vendor?.location?.address}
-            </p>
-          </div>
+          {product?.vendor?.location?.address?.trim() && (
+            <div className="flex h-5 gap-1 items-center">
+              <TiLocation className="h-[100%] w-auto text-[#598f26]" />
+              <p className="font-bold text-xs">
+                {product?.vendor?.location?.address}
+              </p>
+            </div>
+          )}
         </div>
         <div className="text-[#9f9e9e] text-sm mt-5">
           <p>

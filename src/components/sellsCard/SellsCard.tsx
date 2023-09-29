@@ -36,7 +36,7 @@ const SellsCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
             <span>{product?.name}</span>
             <span>
               {" "}
-              {product?.variants[0]?.weight} {product?.variants[0]?.unit}
+              {/* {product?.variants[0]?.weight} {product?.variants[0]?.unit} */}
             </span>
           </div>
           <div className="text-[12px] flex gap-1 my-[10px]">

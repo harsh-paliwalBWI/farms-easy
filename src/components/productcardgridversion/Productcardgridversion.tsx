@@ -24,7 +24,7 @@ const ProductCard = ({ product, cookie, params }: any) => {
   };
 
   return (
-    <div className="border-[#479332] border-[1px] w-[full] md:w-[full] p-[12px] rounded-md flex">
+    <div className="border-[#479332] flex-col justify-between h-full relative border-[1px] w-[full] md:w-[full] p-[12px] rounded-md flex">
       <div className="w-full">
         <div className="flex items-center justify-between">
           <div className="relative">
@@ -52,7 +52,7 @@ const ProductCard = ({ product, cookie, params }: any) => {
             <BsHeart className="h-[18px] w-[20.59px] text-[#777777]" />
           </div>
         </div>
-        <div className="my-[10px] flex justify-center">
+        <div className="my-[10px] h-[150px] flex justify-center">
           <Image
             src={product?.images[product?.coverImage]?.url}
             alt=""
@@ -83,12 +83,14 @@ const ProductCard = ({ product, cookie, params }: any) => {
             {product?.vendor?.name}
           </span>
         </div>
-        <div className="flex h-5  gap-1 items-center my-[5px] ">
-          <TiLocation className="h-[100%] w-auto text-[#598f26]" />
-          <p className="font-bold text-xs">
-            {product?.vendor?.location?.address}
-          </p>
-        </div>
+        {product?.vendor?.location?.address?.trim() && (
+          <div className="flex h-5  gap-1 items-center my-[5px] ">
+            <TiLocation className="h-[100%] w-auto text-[#598f26]" />
+            <p className="font-bold text-xs w-full overflow-hidden truncate">
+              {product?.vendor?.location?.address}
+            </p>
+          </div>
+        )}
         <div className="flex items-center gap-2 mb-[5px]">
           <span className="font-semibold">
             {currency}{" "}
@@ -103,19 +105,20 @@ const ProductCard = ({ product, cookie, params }: any) => {
               </span>
             )}
         </div>
-        <div className="flex items-center justify-between gap-3">
-          <div
-            className="bg-[#588F27] text-white text-xs px-[20px] py-[15px] rounded-md w-full text-center cursor-pointer"
-            onClick={handleOpenModal}
-          >
-            I’M Interested
-          </div>
-          <Link href={`/product/${product?.slug}`}>
-            <div className="bg-[#51150A] flex items-center justify-center px-[13px] py-[14px] rounded-md cursor-pointer">
-              <HiOutlineArrowRight className="text-white" />
-            </div>
-          </Link>
+      </div>
+
+      <div className="flex items-center justify-between gap-3">
+        <div
+          className="bg-[#588F27] text-white text-xs px-[20px] py-[15px] rounded-md w-full text-center cursor-pointer"
+          onClick={handleOpenModal}
+        >
+          I’M Interested
         </div>
+        <Link href={`/product/${product?.slug}`}>
+          <div className="bg-[#51150A] flex items-center justify-center px-[13px] py-[14px] rounded-md cursor-pointer">
+            <HiOutlineArrowRight className="text-white" />
+          </div>
+        </Link>
       </div>
       {modalOpen && (
         <Modal

@@ -177,7 +177,7 @@ const Productdescription = ({ cookie, slug }: any) => {
               </span>
             </div>
 
-            {productInfo && productInfo?.vendor?.location?.address && (
+            {productInfo && productInfo?.vendor?.location?.address?.trim() && (
               <div className="flex gap-1 items-center">
                 <TiLocation className="h-[120%] w-[auto] text-[#598f26]"></TiLocation>
                 <p className="font-medium  text-base ">
