@@ -132,7 +132,7 @@ const Productsidecomponent = ({ cookie, params, queryKey, queryFn }: any) => {
               <div className="grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {pageData?.products?.map((product: any, idx: number) => {
                   return (
-                    <div className="" key={product?.id}>
+                    <div className="h-full" key={product?.id}>
                       <Productgridversion
                         params={params}
                         product={product}
@@ -175,7 +175,7 @@ const Productsidecomponent = ({ cookie, params, queryKey, queryFn }: any) => {
               <div className="grid grid-cols-1 gap-6 mt-5">
                 {pageData?.products?.map((product: any, idx: number) => {
                   return (
-                    <div className="" key={product?.id}>
+                    <div className="h-full" key={product?.id}>
                       <Productcardrowversion
                         params={params}
                         product={product}

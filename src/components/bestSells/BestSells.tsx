@@ -45,7 +45,7 @@ const BestSells = () => {
       {
         breakpoint: 1300,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 5,
           slidesToScroll: 2,
           // dots: true
         },
@@ -53,7 +53,7 @@ const BestSells = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 2,
           // dots: true
         },

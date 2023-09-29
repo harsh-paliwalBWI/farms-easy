@@ -5,7 +5,7 @@ import heartImg from "../../images/Frame 34409.svg";
 import { TiLocation } from "react-icons/ti";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { BsHeart } from "react-icons/bs";
-import { checkUserLogin} from "@/utils/databaseService";
+import { checkUserLogin } from "@/utils/databaseService";
 import Image from "next/image";
 import Link from "next/link";
 import FlatIcon from "../flatIcon/flatIcon";
@@ -20,19 +20,17 @@ import { toast } from "react-toastify";
 const ProductCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
   // const cookie = cookies().get("uid");
 
-
   const [isShowLoginMenu, setShowLoginMenu] = useState(false);
   const handleLoginClick = () => {
     // setShowLoginMenu(!isShowLoginMenu);
     // document.body.classList.add("no-scroll");
     toast.error("Login First");
-   };
- 
-   const closeLoginMenu = () => {
-     setShowLoginMenu(false);
-     document.body.classList.remove("no-scroll");
- 
-   };
+  };
+
+  const closeLoginMenu = () => {
+    setShowLoginMenu(false);
+    document.body.classList.remove("no-scroll");
+  };
 
   return (
     <div className="border-[#479332] border-[1px]  p-[12px] rounded-md flex h-full ">
@@ -89,13 +87,17 @@ const ProductCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
             {product?.vendor?.name}
           </span>
         </div>
-        <div className="flex h-5  gap-1 items-center my-[5px] ">
-          <FlatIcon icon={`flaticon-location-fill text-lg text-primary`} />
-          {/* <i className="h-[100%] w-auto text-[#598f26]" /> */}
-          <p className="font-semibold text-xs overflow-hidden truncate">
-            {product?.vendor?.location?.address || <span className="text-gray-400 font-medium">Not available</span>}
-          </p>
-        </div>
+        {product?.vendor?.location?.address?.trim() && (
+          <div className="flex h-5  gap-1 items-center my-[5px] ">
+            <FlatIcon icon={`flaticon-location-fill text-lg text-primary`} />
+            {/* <i className="h-[100%] w-auto text-[#598f26]" /> */}
+            <p className="font-semibold text-xs overflow-hidden truncate">
+              {product?.vendor?.location?.address || (
+                <span className="text-gray-400 font-medium">Not available</span>
+              )}
+            </p>
+          </div>
+        )}
         <div className="flex items-center gap-2 mb-[5px]">
           <span className="font-semibold">
             {currency}{" "}
@@ -112,27 +114,30 @@ const ProductCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
         </div>
         <div className="flex items-center justify-between gap-3">
           <div
-            onClick={auth?.currentUser?.uid ? () => {
-              setSelectedProduct(product);
-              setTimeout(() => {
-                handleOpenModal();
-              }, 200);
-            } : handleLoginClick}
+            onClick={
+              auth?.currentUser?.uid
+                ? () => {
+                    setSelectedProduct(product);
+                    setTimeout(() => {
+                      handleOpenModal();
+                    }, 200);
+                  }
+                : handleLoginClick
+            }
             className="bg-[#588F27] cursor-pointer text-white text-xs px-[20px] py-[15px] rounded-md w-full text-center"
           >
             I’M Interested
           </div>
 
-           <Link href={`/product/${product?.slug}`}>
+          <Link href={`/product/${product?.slug}`}>
             <div className="bg-[#51150A] flex items-center justify-center px-[13px] py-[14px] rounded-md">
               <FlatIcon icon={`flaticon-left-arrow text-lg text-white`} />
             </div>
           </Link>
         </div>
       </div>
-      
     </div>
-    );
+  );
 };
 
 export default ProductCard;
