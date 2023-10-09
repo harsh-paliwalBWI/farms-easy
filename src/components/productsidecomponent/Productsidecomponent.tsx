@@ -20,6 +20,7 @@ const Productsidecomponent = ({ cookie, params, queryKey, queryFn }: any) => {
       fetchCategoryProducts({
         slug: params?.slug,
         subCatSlug: params?.subCategorySlug || null,
+        subSubCatSlug: params?.subSubCategorySlug,
       }),
   });
   const [viewMode, setViewMode] = useState("grid");
@@ -52,7 +53,8 @@ const Productsidecomponent = ({ cookie, params, queryKey, queryFn }: any) => {
         <div className="flex flex-col md:flex-row items-center justify-between mt-3 mb-8">
           <div>
             <h2 className="font-medium">
-              Found ({(pageData?.products&& pageData?.products?.length) ||0}) results
+              Found ({(pageData?.products && pageData?.products?.length) || 0})
+              results
             </h2>
           </div>
           {!isMobileView && (

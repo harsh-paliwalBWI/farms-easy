@@ -30,7 +30,6 @@ export default function RootLayout({
         rel="stylesheet"
         type="text/css"
         href="../assets/flaticons/flaticon_farmacy.css"
-        
       />
       <body className="font-jost">
         {/* <NavSearch/> */}

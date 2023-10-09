@@ -83,6 +83,23 @@ export const fetchSubCategories = async () => {
   //   console.log(doc.id, " => ", doc.data());
   // });
 };
+export const fetchSubSubCategories = async () => {
+  const querySnapshot = await getDocs(
+    query(collection(db, "subCategories-1"), orderBy("createdAt", "asc"))
+  );
+  let arr: any = [];
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    arr.push({ ...doc.data(), id: doc.id });
+  });
+  return JSON.parse(JSON.stringify(arr));
+  // const q = query(collection(db, "subCategories"), where("categories", "==", true));
+  // const querySnapshot = await getDocs(q);
+  // querySnapshot.forEach((doc) => {
+  //   // doc.data() is never undefined for query doc snapshots
+  //   console.log(doc.id, " => ", doc.data());
+  // });
+};
 
 export const checkUserLogin = (cookie: any) => {
   const uid = auth.currentUser?.uid;
@@ -197,30 +214,29 @@ export async function fetchSingleProduct({ slug, id }: any) {
   });
 }
 
-export const fetchCategoryProducts = async ({
-  slug,
-  subCatSlug = null,
-  filters = null,
-}: any) => {
-  // console.log("INSIDE CHECK ", filters);
-  let categoryId;
-  let subCategoryId;
+async function getFethincgId({ subCatSlug, slug, subSubCatSlug }: any) {
+  if (subSubCatSlug) {
+    let subSubCatId = await getDocs(
+      query(
+        collection(db, `subCategories-1`),
+        where("slug", "==", subSubCatSlug)
+      )
+    ).then((val: any) => {
+      if (val.docs.length != 0) {
+        return val.docs[0].id;
+      } else {
+        return "";
+      }
+    });
+    if (subSubCatId) {
+      console.log("SUB SUB CAT ID: ", subSubCatId);
 
-  let catId = await getDocs(
-    query(collection(db, "categories"), where("slug", "==", slug))
-  ).then((val) => {
-    if (val.docs.length != 0) {
-      return val.docs[0].id;
-    } else {
-      return "";
+      return subSubCatId;
     }
-  });
-
-  categoryId = catId;
-  let subCatId = null;
+  }
 
   if (subCatSlug) {
-    subCatId = await getDocs(
+    let subCatId = await getDocs(
       query(collection(db, `subCategories`), where("slug", "==", subCatSlug))
     ).then((val: any) => {
       if (val.docs.length != 0) {
@@ -229,13 +245,94 @@ export const fetchCategoryProducts = async ({
         return "";
       }
     });
-    catId = subCatId;
-    subCategoryId = subCatId;
+    if (subCatId) {
+      console.log("SUB CAT ID: ", subCatId);
+
+      return subCatId;
+    }
+  }
+  if (slug) {
+    let catId = await getDocs(
+      query(collection(db, `categories`), where("slug", "==", slug))
+    ).then((val: any) => {
+      if (val.docs.length != 0) {
+        return val.docs[0].id;
+      } else {
+        return "";
+      }
+    });
+    if (catId) {
+      console.log(" CAT ID: ", catId);
+      return catId;
+    }
   }
 
-  const products = await fetchProducts(catId);
+  return null;
+}
 
-  if (catId) {
+export const fetchCategoryProducts = async ({
+  slug,
+  subCatSlug = null,
+  filters = null,
+  subSubCatSlug,
+}: any) => {
+  const fetchingId = await getFethincgId({ subCatSlug, slug, subSubCatSlug });
+
+  // let catId = await getDocs(
+  //   query(collection(db, "categories"), where("slug", "==", slug))
+  // ).then((val) => {
+  //   if (val.docs.length != 0) {
+  //     return val.docs[0].id;
+  //   } else {
+  //     return "";
+  //   }
+  // });
+
+  // categoryId = catId;
+  // let subCatId = null;
+
+  // if (subCatSlug) {
+  //   subCatId = await getDocs(
+  //     query(collection(db, `subCategories`), where("slug", "==", subCatSlug))
+  //   ).then((val: any) => {
+  //     if (val.docs.length != 0) {
+  //       return val.docs[0].id;
+  //     } else {
+  //       return "";
+  //     }
+  //   });
+  //   if (subCatId) {
+  //     catId = subCatId;
+  //     subCategoryId = subCatId;
+  //   }
+  // }
+
+  // let subSubCatId;
+
+  // if (subSubCatSlug) {
+  //   if (subCatId) {
+  //     subSubCatId = subCatId = await getDocs(
+  //       query(
+  //         collection(db, `subCategories-1`),
+  //         where("slug", "==", subSubCatSlug)
+  //       )
+  //     ).then((val: any) => {
+  //       if (val.docs.length != 0) {
+  //         return val.docs[0].id;
+  //       } else {
+  //         return "";
+  //       }
+  //     });
+  //     if (subSubCatId) {
+  //       catId = subSubCatId;
+  //       subCategoryId = subSubCatId;
+  //     }
+  //   }
+  // }
+
+  const products = await fetchProducts(fetchingId);
+
+  if (fetchingId) {
     let minMax = null;
 
     if (products.length !== 0) {

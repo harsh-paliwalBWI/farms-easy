@@ -3,13 +3,16 @@ import getQueryClient from "../../utils/getQueryClient";
 import { fetchCategories } from "../../utils/databaseService";
 import { dehydrate } from "@tanstack/react-query";
 import Hydrate from "../../utils/hydrate.client";
+import CategoryClient from "./CategoryClient";
 
-const CategoryPage = async () => {
+const CategoryPage = async ({ params }: any) => {
   const queryClient: any = getQueryClient();
-  await queryClient.prefetchQuery(["categories"], fetchCategories);
-
   const dehydratedState = dehydrate(queryClient);
-  return <Hydrate state={dehydratedState}></Hydrate>;
+  return (
+    <Hydrate state={dehydratedState}>
+      <CategoryClient params={params} />
+    </Hydrate>
+  );
 };
 
 export default CategoryPage;

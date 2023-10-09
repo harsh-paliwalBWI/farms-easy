@@ -6,6 +6,7 @@ import {
 } from "../../../../../../utils/databaseService";
 import { dehydrate } from "@tanstack/react-query";
 import Hydrate from "../../../../../../utils/hydrate.client";
+import CategoryClient from "@/app/category/CategoryClient";
 export async function generateMetadata({ params, searchParams }: any) {
   // read route params
   const id = params?.slug;
@@ -23,19 +24,11 @@ export async function generateMetadata({ params, searchParams }: any) {
 
 const SubCategory = async ({ params }: any) => {
   const queryClient: any = getQueryClient();
-  await queryClient.prefetchQuery({
-    queryKey: ["subCategory", params?.slug, params?.subCategorySlug],
-    queryFn: () => {},
-    // fetchSubCategories({
-    //   slug: params?.slug,
-    //   subCategorySlug: params?.subCategorySlug,
-    // }),
-  });
   const dehydratedState = dehydrate(queryClient);
 
   return (
     <Hydrate state={dehydratedState}>
-      {/* <SubCategoryProductComponent params={params} /> */}
+      <CategoryClient params={params} />
     </Hydrate>
   );
 };

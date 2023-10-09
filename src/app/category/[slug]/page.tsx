@@ -2,9 +2,8 @@ import React from "react";
 import Hydrate from "../../../utils/hydrate.client";
 import { dehydrate } from "@tanstack/react-query";
 import getQueryClient from "../../../utils/getQueryClient";
-import {
-  fetchSubCategories,
-} from "../../../utils/databaseService";
+import { fetchSubCategories } from "../../../utils/databaseService";
+import CategoryClient from "../CategoryClient";
 
 // export const metadata = {
 //   title: "Category",
@@ -23,18 +22,12 @@ import {
 //   };
 // }
 
-const Category = async ({ params }:any) => {
+const Category = async ({ params }: any) => {
   const queryClient: any = getQueryClient();
-  await queryClient.prefetchQuery({
-    queryKey: ["category", params?.slug],
-    // queryFn: () => fetchSubCategories({ slug: params?.slug }),
-    queryFn: () => {},
-    cacheTime: 60 * 60 * 3,
-  });
-
   const dehydratedState = dehydrate(queryClient);
   return (
     <Hydrate state={dehydratedState}>
+      <CategoryClient params={params} />
     </Hydrate>
   );
 };
