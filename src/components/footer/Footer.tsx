@@ -30,7 +30,7 @@ const Footer = () => {
     {
       heading: "Useful links",
       subLinks: [
-        { name: "About Us", path: "/aboutUs" },
+        { name: "About Us", path: "/about-us" },
         { name: "Contact", path: "/contactUs" },
         // { name: "Hot Deals" },
         // { name: "Promotions" },

@@ -106,7 +106,9 @@ const CategoryCard = ({ selectedCategory, subCategories, categories }: any) => {
               .map((item: any, idx: any) => {
                 return (
                   <Link
-                    href={`/shop/category/${
+                    href={item?.isSubCategory? `/category/${categories?.filter(
+                      (cat: any) => cat?.id === selectedCategory
+                    )[0]?.slug}/${item?.slug}`: `/shop/category/${
                       categories?.filter(
                         (cat: any) => cat?.id === selectedCategory
                       )[0]?.slug

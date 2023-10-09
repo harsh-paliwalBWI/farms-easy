@@ -13,6 +13,7 @@ import {
   checkUserLogin,
   fetchCategories,
   fetchSubCategories,
+  fetchSubSubCategories,
 } from "@/utils/databaseService";
 import OutsideClickHandler from "../../utils/OutsideClickHandler";
 import FlatIcon from "../flatIcon/flatIcon";
@@ -24,14 +25,19 @@ const NavbarClient = ({ cookie }: any) => {
     queryFn: () => fetchCategories(),
   });
   const { data: subCategories } = useQuery({
-    queryKey: ["sub-categories"],
+    queryKey: ["subCategories"],
     queryFn: () => fetchSubCategories(),
+  });
+  const { data: subSubCategories } = useQuery({
+    queryKey: ["subSubCategories"],
+    queryFn: () => fetchSubSubCategories(),
   });
 
   const pathname = usePathname();
   const mobile = useMediaQuery("(max-width:1080px)");
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedSubCategory, setSelectedSubCategory] = useState("");
 
   return (
     <div>
@@ -101,7 +107,9 @@ const NavbarClient = ({ cookie }: any) => {
                                     "border-b border-[#dbdbdb]"
                                   } flex justify-between items-center `}
                                 >
-                                  <p className="">{category.name}</p>
+                                  <p className=" truncate w-full overflow-hidden ">
+                                    {category.name}
+                                  </p>
                                   {category.isSubCategory &&
                                     (selectedCategory === category?.id ? (
                                       <FlatIcon
@@ -128,26 +136,117 @@ const NavbarClient = ({ cookie }: any) => {
                                       )
                                       ?.map((sub: any, idx: any) => {
                                         return (
-                                          <Link
-                                            key={idx}
-                                            onClick={() => {
-                                              setIsCategoriesOpen(false);
-                                              setSelectedCategory("");
-                                            }}
-                                            href={`/shop/category/${
-                                              categories.filter(
-                                                (cat: any) =>
-                                                  cat?.id === selectedCategory
-                                              )[0]?.slug
-                                            }/${sub?.slug}`}
-                                          >
-                                            <div
-                                              className={`px-4 py-3  flex justify-between `}
+                                          <div className="relative" key={sub?.id}>
+                                            <Link
+                                              onClick={(e) => {
+                                                if (sub?.isSubCategory) {
+                                                  e.preventDefault();
+                                                  if (sub.isSubCategory) {
+                                                    if (
+                                                      selectedSubCategory ===
+                                                      sub?.id
+                                                    ) {
+                                                      setSelectedSubCategory(
+                                                        ""
+                                                      );
+                                                    } else {
+                                                      setSelectedSubCategory(
+                                                        sub?.id
+                                                      );
+                                                    }
+                                                  }
+                                                } else {
+                                                  setIsCategoriesOpen(false);
+                                                  setSelectedCategory("");
+                                                  setSelectedSubCategory("");
+                                                }
+                                              }}
+                                              href={`/shop/category/${
+                                                categories.filter(
+                                                  (cat: any) =>
+                                                    cat?.id === selectedCategory
+                                                )[0]?.slug
+                                              }/${sub?.slug}`}
                                             >
-                                              <p className="">{sub.name}</p>
-                                              <div></div>
-                                            </div>
-                                          </Link>
+                                              <div
+                                                className={`px-4 py-3  flex justify-between `}
+                                              >
+                                                <p className="">{sub.name}</p>
+                                                {sub.isSubCategory &&
+                                                  (selectedSubCategory ===
+                                                  sub?.id ? (
+                                                    <FlatIcon
+                                                      icon="flaticon-down-arrow"
+                                                      classname={`text-primary`}
+                                                    />
+                                                  ) : (
+                                                    // <i className="flaticon-down-arrow text-primary w-fit flex items-center" />
+                                                    <FlatIcon
+                                                      icon="flaticon-down-arrow"
+                                                      classname={`text-primary -rotate-90`}
+                                                    />
+                                                  ))}
+                                              </div>
+                                            </Link>
+
+                                            {selectedSubCategory ===
+                                              sub?.id && (
+                                              <div className="absolute top-0 left-full bg-white border-l rounded-lg border-[#dbdbdb] w-auto min-w-[200px]">
+                                                {subSubCategories &&
+                                                  subSubCategories
+                                                    .filter((val: any) =>
+                                                      val.categories.includes(
+                                                        selectedSubCategory
+                                                      )
+                                                    )
+                                                    ?.map(
+                                                      (
+                                                        subSub: any,
+                                                        idx: any
+                                                      ) => {
+                                                        return (
+                                                          <div
+                                                            className="relative"
+                                                            key={subSub?.id}
+                                                          >
+                                                            <Link
+                                                              onClick={(e) => {
+                                                                setIsCategoriesOpen(
+                                                                  false
+                                                                );
+                                                                setSelectedCategory(
+                                                                  ""
+                                                                );
+                                                                setSelectedSubCategory(
+                                                                  ""
+                                                                );
+                                                              }}
+                                                              href={`/shop/category/${
+                                                                categories.filter(
+                                                                  (cat: any) =>
+                                                                    cat?.id ===
+                                                                    selectedCategory
+                                                                )[0]?.slug
+                                                              }/${sub?.slug}/${
+                                                                subSub?.slug
+                                                              }`}
+                                                            >
+                                                              <div
+                                                                className={`px-4 py-3  flex justify-between `}
+                                                              >
+                                                                <p className="">
+                                                                  {subSub.name}
+                                                                </p>
+                                                                <div></div>
+                                                              </div>
+                                                            </Link>
+                                                          </div>
+                                                        );
+                                                      }
+                                                    )}
+                                              </div>
+                                            )}
+                                          </div>
                                         );
                                       })}
                                 </div>

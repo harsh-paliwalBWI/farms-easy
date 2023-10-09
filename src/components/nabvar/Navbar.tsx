@@ -5,6 +5,7 @@ import { dehydrate } from "@tanstack/react-query";
 import {
   fetchCategories,
   fetchSubCategories,
+  fetchSubSubCategories,
   getUserData,
 } from "@/utils/databaseService";
 import Hydrate from "@/utils/hydrate.client";
@@ -14,7 +15,8 @@ const Navbar = async () => {
   const queryClient = getQueryClient();
   const cookie = cookies().get("uid");
   await queryClient.prefetchQuery(["categories"], fetchCategories);
-  await queryClient.prefetchQuery(["sub-categories"], fetchSubCategories);
+  await queryClient.prefetchQuery(["subCategories"], fetchSubCategories);
+  await queryClient.prefetchQuery(["subSubCategories"], fetchSubSubCategories);
   await queryClient.prefetchQuery(["userData"], () => getUserData(cookie));
   const dehydratedState = dehydrate(queryClient);
   return (

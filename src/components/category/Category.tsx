@@ -15,7 +15,11 @@ const Category = () => {
     queryFn: () => fetchCategories(),
   });
   const { data: subCategories } = useQuery({
-    queryKey: ["sub-categories"],
+    queryKey: ["subCategories"],
+    queryFn: () => fetchSubCategories(),
+  });
+  const { data: subSubCategories } = useQuery({
+    queryKey: ["subSubCategories"],
     queryFn: () => fetchSubCategories(),
   });
 
