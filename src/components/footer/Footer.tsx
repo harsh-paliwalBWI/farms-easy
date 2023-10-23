@@ -39,7 +39,10 @@ const Footer = () => {
     },
     {
       heading: "Help Center",
-      subLinks: [{ name: "Privacy Policy" }, { name: "Terms & Conditions" }],
+      subLinks: [
+        { name: "Privacy Policy" },
+        { name: "Terms & Conditions", path: "/terms-&-conditions" },
+      ],
     },
   ];
   const data2 = [
