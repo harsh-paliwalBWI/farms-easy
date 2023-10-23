@@ -14,37 +14,23 @@ import FlatIcon from "../flatIcon/flatIcon";
 const DUMMY_DATA = [
   {
     feedback:
-      "A paragraph is a unit of text that consists of a group of sentences related to a central topic or idea. It serves as a container for expressing a complete thought or developing a specific aspect of an argument. By employing paragraphs, writers can",
+      "We are very happy with our farm produce sold at fair price from our farms itself and its a stress free process for us",
     userImg: userImg,
-    name: "Amit Malviya",
+    name: "MUTHUSWAMY P",
     type: "Customer",
   },
   {
     feedback:
-      "A paragraph is a unit of text that consists of a group of sentences related to a central topic or idea. It serves as a container for expressing a complete thought or developing a specific aspect of an argument. By employing paragraphs, writers can",
+      "We Thank Framseasy , our stress has reduced due to procurement from farm model of Farmeasy. Gone are the days when Farmers were trying to sell their own produce in wholesale markets",
     userImg: userImg,
-    name: "Amit Malviya",
+    name: "KRISHNA KUMAR S",
     type: "Customer",
   },
   {
     feedback:
-      "A paragraph is a unit of text that consists of a group of sentences related to a central topic or idea. It serves as a container for expressing a complete thought or developing a specific aspect of an argument. By employing paragraphs, writers can",
+      "We are very happy with Farmseasy for providing us support relating marketing agriculture products at the right time the products are procured fresh from our farms and transported in a timely manne",
     userImg: userImg,
-    name: "Amit Malviya",
-    type: "Customer",
-  },
-  {
-    feedback:
-      "A paragraph is a unit of text that consists of a group of sentences related to a central topic or idea. It serves as a container for expressing a complete thought or developing a specific aspect of an argument. By employing paragraphs, writers can",
-    userImg: userImg,
-    name: "Amit Malviya",
-    type: "Customer",
-  },
-  {
-    feedback:
-      "A paragraph is a unit of text that consists of a group of sentences related to a central topic or idea. It serves as a container for expressing a complete thought or developing a specific aspect of an argument. By employing paragraphs, writers can",
-    userImg: userImg,
-    name: "Amit Malviya",
+    name: "SARALA DEVI",
     type: "Customer",
   },
 ];
@@ -123,7 +109,9 @@ const Testimonials = () => {
                         idx === 0 ? "bg-[#51150a]" : "bg-[#588f27]"
                       } h-[70px] w-[70px] rounded-full flex justify-center items-center relative z-30 translate-y-[30px]`}
                     >
-                      <FlatIcon icon={"flaticon-quotation text-5xl text-white"} />
+                      <FlatIcon
+                        icon={"flaticon-quotation text-5xl text-white"}
+                      />
                       {/* <Image
                         src={quotationImg}
                         alt=""
