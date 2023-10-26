@@ -90,9 +90,15 @@ const SameProductByOtherVendors = ({ slug }: any) => {
     setModalOpen(false);
   };
 
+  if (!productInfo?.otherVendors || productInfo?.otherVendors?.length === 0) {
+    return <></>;
+  }
+
   return (
     <div className="flex flex-col gap-4 pt-4 py-8 ">
-        <h6 className="px-[3.5%] font-semibold text-xl md:text-2xl ">Also Sold By: </h6>
+      <h6 className="px-[3.5%] font-semibold text-xl md:text-2xl ">
+        Also Sold By:{" "}
+      </h6>
       <div className=" flex justify-center items-center">
         {!matches2 && !matches833 && (
           <button
