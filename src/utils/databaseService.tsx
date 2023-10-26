@@ -179,20 +179,21 @@ export async function fetchSingleProduct({ slug, id }: any) {
       if (prod?.active) {
         let otherVendors = await getDocs(
           query(collection(db, "products"), where("name", "==", prod?.name))
-        ).then((respo) => {
+        ).then((respo:any) => {
           if (respo.docs.length === 0) return [];
 
           let arr = [];
 
           for (const docs of respo.docs) {
             let data = docs.data();
-            if (
-              data?.vendor &&
-              data?.vendor?.name &&
-              data?.vendorid !== prod?.vendorid
-            ) {
-              arr.push({ name: data?.vendor?.name, id: data?.vendorid });
-            }
+            arr.push({ ...data, id: docs.id });
+            // if (
+            //   data?.vendor &&
+            //   data?.vendor?.name &&
+            //   data?.vendorid !== prod?.vendorid
+            // ) {
+            //   arr.push({ name: data?.vendor?.name, id: data?.vendorid });
+            // }
           }
           return arr;
         });
