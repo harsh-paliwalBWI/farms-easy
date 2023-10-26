@@ -8,6 +8,7 @@ import { dehydrate } from "@tanstack/react-query";
 import { cookies } from "next/dist/client/components/headers";
 
 import React from "react";
+import SameProductByOtherVendors from "../../SameProductByOtherVendors";
 
 const Page = async ({ params }: any) => {
   // console.log(params.id);
@@ -25,6 +26,7 @@ const Page = async ({ params }: any) => {
       <Headersectiontype2 slug={params?.id} />
       <Productdescription cookie={cookie} slug={params?.id} />
       <Productqualities slug={params?.id} />
+      <SameProductByOtherVendors slug={params?.id} />
     </Hydrate>
   );
 };
