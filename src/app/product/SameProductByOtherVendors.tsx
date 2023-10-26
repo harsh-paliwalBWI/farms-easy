@@ -90,7 +90,7 @@ const SameProductByOtherVendors = ({ slug }: any) => {
     setModalOpen(false);
   };
 
-  if (!productInfo?.otherVendors || productInfo?.otherVendors?.length === 0) {
+  if (!productInfo?.otherVendors || productInfo?.otherVendors?.length === 0 || productInfo?.otherVendors?.filter((prod: any) => prod?.slug !== slug)?.length===0) {
     return <></>;
   }
 
