@@ -5,7 +5,7 @@ import { BsTelephone } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 import { BsClock } from "react-icons/bs";
 import farmacyLogo from "../../images/Farmacylogo (1).svg";
-import logo from "../../images/logo.png";
+import logo from "../../images/logo2.png";
 import { FaInstagram } from "react-icons/fa";
 import { RiLinkedinFill } from "react-icons/ri";
 import { RiFacebookFill } from "react-icons/ri";
@@ -82,11 +82,10 @@ const Footer = () => {
               alt=""
               height={300}
               width={300}
-              className=" sm:w-[260px] sm:h-[80px] h-[60px] w-[200px] "
+              className=" sm:w-[200px]  w-[150px] "
               style={{
                 maxWidth: "100%",
                 height: "auto",
-                maxHeight: "150px",
               }}
             />
           </div>

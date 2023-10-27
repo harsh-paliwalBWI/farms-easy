@@ -1,6 +1,6 @@
 "use client";
 import React, { Fragment, useEffect, useState } from "react";
-import logo from "../../images/logo.png";
+import logo from "../../images/logo2.png";
 import Image from "next/image";
 import Link from "next/link";
 import FlatIcon from "../flatIcon/flatIcon";
@@ -102,7 +102,7 @@ const SearchHeader = ({ cookie }: any) => {
               maxWidth: "100%",
               height: "auto",
             }}
-            className="w-[100px]"
+            className="w-[100px] scale-100"
           />
         </div>
       </Link>
