@@ -7,7 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BsTelephone } from "react-icons/bs";
 import Image from "next/image";
-import logo from "../../images/logo.png";
+import logo from "../../images/logo2.png";
 import { FiSearch } from "react-icons/fi";
 import { SlArrowDown } from "react-icons/sl";
 import FlatIcon from "../flatIcon/flatIcon";
