@@ -14,6 +14,7 @@ import {
   fetchCategories,
   fetchSubCategories,
   fetchSubSubCategories,
+  fetchSubSubSubCategories,
 } from "@/utils/databaseService";
 import OutsideClickHandler from "../../utils/OutsideClickHandler";
 import FlatIcon from "../flatIcon/flatIcon";
@@ -32,12 +33,17 @@ const NavbarClient = ({ cookie }: any) => {
     queryKey: ["subSubCategories"],
     queryFn: () => fetchSubSubCategories(),
   });
+  const { data: subSubSubCategories } = useQuery({
+    queryKey: ["subSubSubCategories"],
+    queryFn: () => fetchSubSubSubCategories(),
+  });
 
   const pathname = usePathname();
   const mobile = useMediaQuery("(max-width:1080px)");
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
+  const [selectedSubSubCategory, setSelectedSubSubCategory] = useState("");
 
   return (
     <div>
@@ -136,7 +142,10 @@ const NavbarClient = ({ cookie }: any) => {
                                       )
                                       ?.map((sub: any, idx: any) => {
                                         return (
-                                          <div className="relative" key={sub?.id}>
+                                          <div
+                                            className="relative"
+                                            key={sub?.id}
+                                          >
                                             <Link
                                               onClick={(e) => {
                                                 if (sub?.isSubCategory) {
@@ -159,6 +168,7 @@ const NavbarClient = ({ cookie }: any) => {
                                                   setIsCategoriesOpen(false);
                                                   setSelectedCategory("");
                                                   setSelectedSubCategory("");
+                                                  setSelectedSubSubCategory("");
                                                 }
                                               }}
                                               href={`/shop/category/${
@@ -211,15 +221,40 @@ const NavbarClient = ({ cookie }: any) => {
                                                           >
                                                             <Link
                                                               onClick={(e) => {
-                                                                setIsCategoriesOpen(
-                                                                  false
-                                                                );
-                                                                setSelectedCategory(
-                                                                  ""
-                                                                );
-                                                                setSelectedSubCategory(
-                                                                  ""
-                                                                );
+                                                                if (
+                                                                  sub?.isSubCategory
+                                                                ) {
+                                                                  e.preventDefault();
+                                                                  if (
+                                                                    sub.isSubCategory
+                                                                  ) {
+                                                                    if (
+                                                                      selectedSubSubCategory ===
+                                                                      subSub?.id
+                                                                    ) {
+                                                                      setSelectedSubSubCategory(
+                                                                        ""
+                                                                      );
+                                                                    } else {
+                                                                      setSelectedSubSubCategory(
+                                                                        subSub?.id
+                                                                      );
+                                                                    }
+                                                                  }
+                                                                } else {
+                                                                  setIsCategoriesOpen(
+                                                                    false
+                                                                  );
+                                                                  setSelectedCategory(
+                                                                    ""
+                                                                  );
+                                                                  setSelectedSubCategory(
+                                                                    ""
+                                                                  );
+                                                                  setSelectedSubSubCategory(
+                                                                    ""
+                                                                  );
+                                                                }
                                                               }}
                                                               href={`/shop/category/${
                                                                 categories.filter(
@@ -232,14 +267,107 @@ const NavbarClient = ({ cookie }: any) => {
                                                               }`}
                                                             >
                                                               <div
-                                                                className={`px-4 py-3  flex justify-between `}
+                                                                className={`px-4 py-3  flex justify-between items-center `}
                                                               >
                                                                 <p className="">
                                                                   {subSub.name}
                                                                 </p>
-                                                                <div></div>
+
+                                                                <div>
+                                                                  {subSub.isSubCategory &&
+                                                                    (selectedSubSubCategory ===
+                                                                    subSub?.id ? (
+                                                                      <FlatIcon
+                                                                        icon="flaticon-down-arrow"
+                                                                        classname={`text-primary`}
+                                                                      />
+                                                                    ) : (
+                                                                      // <i className="flaticon-down-arrow text-primary w-fit flex items-center" />
+                                                                      <FlatIcon
+                                                                        icon="flaticon-down-arrow"
+                                                                        classname={`text-primary -rotate-90`}
+                                                                      />
+                                                                    ))}
+                                                                </div>
                                                               </div>
                                                             </Link>
+
+                                                            {selectedSubSubCategory ===
+                                                              subSub?.id && (
+                                                              <div className="absolute top-0 left-full bg-white border-l rounded-lg border-[#dbdbdb] w-auto min-w-[200px]">
+                                                                {subSubSubCategories &&
+                                                                  subSubSubCategories
+                                                                    .filter(
+                                                                      (
+                                                                        val: any
+                                                                      ) =>
+                                                                        val.categories.includes(
+                                                                          selectedSubSubCategory
+                                                                        )
+                                                                    )
+                                                                    ?.map(
+                                                                      (
+                                                                        subSubSub: any,
+                                                                        idx: any
+                                                                      ) => {
+                                                                        return (
+                                                                          <div
+                                                                            className="relative"
+                                                                            key={
+                                                                              subSubSub?.id
+                                                                            }
+                                                                          >
+                                                                            <Link
+                                                                              onClick={(
+                                                                                e
+                                                                              ) => {
+                                                                                setIsCategoriesOpen(
+                                                                                  false
+                                                                                );
+                                                                                setSelectedCategory(
+                                                                                  ""
+                                                                                );
+                                                                                setSelectedSubCategory(
+                                                                                  ""
+                                                                                );
+                                                                                setSelectedSubSubCategory(
+                                                                                  ""
+                                                                                );
+                                                                              }}
+                                                                              href={`/shop/category/${
+                                                                                categories.filter(
+                                                                                  (
+                                                                                    cat: any
+                                                                                  ) =>
+                                                                                    cat?.id ===
+                                                                                    selectedCategory
+                                                                                )[0]
+                                                                                  ?.slug
+                                                                              }/${
+                                                                                sub?.slug
+                                                                              }/${
+                                                                                subSub?.slug
+                                                                              }/${
+                                                                                subSubSub?.slug
+                                                                              }`}
+                                                                            >
+                                                                              <div
+                                                                                className={`px-4 py-3  flex justify-between `}
+                                                                              >
+                                                                                <p className="">
+                                                                                  {
+                                                                                    subSubSub.name
+                                                                                  }
+                                                                                </p>
+                                                                                <div></div>
+                                                                              </div>
+                                                                            </Link>
+                                                                          </div>
+                                                                        );
+                                                                      }
+                                                                    )}
+                                                              </div>
+                                                            )}
                                                           </div>
                                                         );
                                                       }

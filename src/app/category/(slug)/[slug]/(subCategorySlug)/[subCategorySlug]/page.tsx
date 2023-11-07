@@ -1,8 +1,11 @@
 import React from "react";
 import getQueryClient from "../../../../../../utils/getQueryClient";
 import {
+  fetchCategories,
   fetchCategoryProducts,
   fetchSubCategories,
+  fetchSubSubCategories,
+  fetchSubSubSubCategories,
 } from "../../../../../../utils/databaseService";
 import { dehydrate } from "@tanstack/react-query";
 import Hydrate from "../../../../../../utils/hydrate.client";
@@ -24,6 +27,13 @@ export async function generateMetadata({ params, searchParams }: any) {
 
 const SubCategory = async ({ params }: any) => {
   const queryClient: any = getQueryClient();
+  await queryClient.prefetchQuery(["categories"], fetchCategories);
+  await queryClient.prefetchQuery(["subCategories"], fetchSubCategories);
+  await queryClient.prefetchQuery(["subSubCategories"], fetchSubSubCategories);
+  await queryClient.prefetchQuery(
+    ["subSubSubCategories"],
+    fetchSubSubSubCategories
+  );
   const dehydratedState = dehydrate(queryClient);
 
   return (
