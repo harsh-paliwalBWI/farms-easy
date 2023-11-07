@@ -4,6 +4,7 @@ import {
   fetchCategories,
   fetchSubCategories,
   fetchSubSubCategories,
+  fetchSubSubSubCategories,
 } from "@/utils/databaseService";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
@@ -25,8 +26,20 @@ const CategoryClient = ({ params }: any) => {
     queryKey: ["subSubCategories"],
     queryFn: () => fetchSubSubCategories(),
   });
+  const { data: subSubSubCategories } = useQuery({
+    queryKey: ["subSubSubCategories"],
+    queryFn: () => fetchSubSubSubCategories(),
+  });
 
   function filterCategoriesByparams() {
+    if (params?.subSubCategorySlug) {
+      let subSubCatId = subCategories?.filter(
+        (subCat: any) => subCat?.slug === params?.subCategorySlug
+      )[0]?.id;
+      return subSubSubCategories?.filter((subSubCat: any) =>
+        subSubCat?.categories?.includes(subSubCatId)
+      );
+    }
     if (params?.subCategorySlug) {
       let subCatId = subCategories?.filter(
         (subCat: any) => subCat?.slug === params?.subCategorySlug
@@ -45,7 +58,6 @@ const CategoryClient = ({ params }: any) => {
       );
     }
 
-    
     if (!params || !Object.entries(params).length) return categories;
   }
 
@@ -55,7 +67,11 @@ const CategoryClient = ({ params }: any) => {
         {filterCategoriesByparams()?.map((item: any) => {
           return (
             <Link
-              href={item?.isSubCategory ? `${pathName}/${item?.slug}` : `/shop${pathName}/${item?.slug}`}
+              href={
+                item?.isSubCategory
+                  ? `${pathName}/${item?.slug}`
+                  : `/shop${pathName}/${item?.slug}`
+              }
               key={item?.id}
               className="h-full"
             >
@@ -65,7 +81,7 @@ const CategoryClient = ({ params }: any) => {
                   width={500}
                   height={500}
                   alt=""
-                 className="w-full h-full object-cover rounded-lg"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
               <div className="w-full flex justify-center">

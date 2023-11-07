@@ -1,20 +1,31 @@
 import React from "react";
-import NavbarClient from "./NavbarClient";
-import getQueryClient from "@/utils/getQueryClient";
 import { dehydrate } from "@tanstack/react-query";
+import CategoryClient from "@/app/category/CategoryClient";
+import getQueryClient from "@/utils/getQueryClient";
 import {
   fetchCategories,
   fetchSubCategories,
   fetchSubSubCategories,
   fetchSubSubSubCategories,
-  getUserData,
 } from "@/utils/databaseService";
 import Hydrate from "@/utils/hydrate.client";
-import { cookies } from "next/dist/client/components/headers";
+export async function generateMetadata({ params, searchParams }: any) {
+  // read route params
+  const id = params?.slug;
+  // const { name }: any = await fetchBySlug({
+  //   collectionName: "categories",
+  //   collectionSlug: id,
+  //   subCollection: "subcategories",
+  //   subCollectionSlug: params?.subCategorySlug,
+  // });
 
-const Navbar = async () => {
-  const queryClient = getQueryClient();
-  const cookie = cookies().get("uid");
+  // return {
+  //   title: name ,
+  // };
+}
+
+const SubSubSubCategory = async ({ params }: any) => {
+  const queryClient: any = getQueryClient();
   await queryClient.prefetchQuery(["categories"], fetchCategories);
   await queryClient.prefetchQuery(["subCategories"], fetchSubCategories);
   await queryClient.prefetchQuery(["subSubCategories"], fetchSubSubCategories);
@@ -22,13 +33,13 @@ const Navbar = async () => {
     ["subSubSubCategories"],
     fetchSubSubSubCategories
   );
-  await queryClient.prefetchQuery(["userData"], () => getUserData(cookie));
   const dehydratedState = dehydrate(queryClient);
+
   return (
     <Hydrate state={dehydratedState}>
-      <NavbarClient cookie={cookie} />
+      <CategoryClient params={params} />
     </Hydrate>
   );
 };
 
-export default Navbar;
+export default SubSubSubCategory;

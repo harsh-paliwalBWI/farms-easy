@@ -100,6 +100,23 @@ export const fetchSubSubCategories = async () => {
   //   console.log(doc.id, " => ", doc.data());
   // });
 };
+export const fetchSubSubSubCategories = async () => {
+  const querySnapshot = await getDocs(
+    query(collection(db, "subCategories-2"), orderBy("createdAt", "asc"))
+  );
+  let arr: any = [];
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    arr.push({ ...doc.data(), id: doc.id });
+  });
+  return JSON.parse(JSON.stringify(arr));
+  // const q = query(collection(db, "subCategories"), where("categories", "==", true));
+  // const querySnapshot = await getDocs(q);
+  // querySnapshot.forEach((doc) => {
+  //   // doc.data() is never undefined for query doc snapshots
+  //   console.log(doc.id, " => ", doc.data());
+  // });
+};
 
 export const checkUserLogin = (cookie: any) => {
   const uid = auth.currentUser?.uid;
@@ -179,7 +196,7 @@ export async function fetchSingleProduct({ slug, id }: any) {
       if (prod?.active) {
         let otherVendors = await getDocs(
           query(collection(db, "products"), where("name", "==", prod?.name))
-        ).then((respo:any) => {
+        ).then((respo: any) => {
           if (respo.docs.length === 0) return [];
 
           let arr = [];
@@ -215,7 +232,32 @@ export async function fetchSingleProduct({ slug, id }: any) {
   });
 }
 
-async function getFethincgId({ subCatSlug, slug, subSubCatSlug }: any) {
+async function getFethincgId({
+  subCatSlug,
+  slug,
+  subSubCatSlug,
+  subSubSubCatSlug,
+}: any) {
+  if (subSubSubCatSlug) {
+    let subSubSubCatId = await getDocs(
+      query(
+        collection(db, `subCategories-2`),
+        where("slug", "==", subSubSubCatSlug)
+      )
+    ).then((val: any) => {
+      if (val.docs.length != 0) {
+        return val.docs[0].id;
+      } else {
+        return "";
+      }
+    });
+    if (subSubSubCatId) {
+      console.log("SUB SUB CAT ID: ", subSubSubCatId);
+
+      return subSubSubCatId;
+    }
+  }
+
   if (subSubCatSlug) {
     let subSubCatId = await getDocs(
       query(
@@ -276,8 +318,14 @@ export const fetchCategoryProducts = async ({
   subCatSlug = null,
   filters = null,
   subSubCatSlug,
+  subSubSubCatSlug,
 }: any) => {
-  const fetchingId = await getFethincgId({ subCatSlug, slug, subSubCatSlug });
+  const fetchingId = await getFethincgId({
+    subCatSlug,
+    slug,
+    subSubCatSlug,
+    subSubSubCatSlug,
+  });
 
   // let catId = await getDocs(
   //   query(collection(db, "categories"), where("slug", "==", slug))
