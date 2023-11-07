@@ -35,22 +35,26 @@ const Productqualities = ({ slug }: any) => {
       <div className="flex flex-col md:flex-row justify-center gap-[60px]">
         <div className="flex flex-col gap-[2rem] md:w-[100%]">
           <div className="flex  gap-10">
-            <div
-              className={`font-medium text-xl md:text-2xl text-[#598f26] ${
-                selectedTab === 0 && "underline"
-              }  underline-offset-4 cursor-pointer`}
-              onClick={() => setSelectedTab(0)}
-            >
-              Description
-            </div>
-            <div
-              className={`font-medium text-xl md:text-2xl text-[#598f26] ${
-                selectedTab === 1 && "underline"
-              }  underline-offset-4 cursor-pointer`}
-              onClick={() => setSelectedTab(1)}
-            >
-              Additional Information
-            </div>
+            {productInfo?.desc && (
+              <div
+                className={`font-medium text-xl md:text-2xl text-[#598f26] ${
+                  selectedTab === 0 && "underline"
+                }  underline-offset-4 cursor-pointer`}
+                onClick={() => setSelectedTab(0)}
+              >
+                Description
+              </div>
+            )}
+            {productInfo?.additionalDesc && (
+              <div
+                className={`font-medium text-xl md:text-2xl text-[#598f26] ${
+                  selectedTab === 1 && "underline"
+                }  underline-offset-4 cursor-pointer`}
+                onClick={() => setSelectedTab(1)}
+              >
+                Additional Information
+              </div>
+            )}
           </div>
           {selectedTab === 0 ? (
             <div dangerouslySetInnerHTML={{ __html: productInfo?.desc }}></div>
