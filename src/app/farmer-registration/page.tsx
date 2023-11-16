@@ -4,37 +4,34 @@ import Button from "@/components/Button/Button";
 import Leaf from "@/components/leaf/Leaf";
 import SideMenuLogin from "@/components/sidemenulogin/SideMenulogin";
 import { checkUserLogin } from "@/utils/databaseService";
-import React  from "react";
+import React from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { cookies } from "next/dist/client/components/headers";
-import { auth } from "@/config/firebase-config";
+import { auth, db } from "@/config/firebase-config";
+import { addDoc, collection } from "firebase/firestore";
 
 const FarmerRegistration = () => {
-
   const [isShowLoginMenu, setShowLoginMenu] = useState(false);
   // const cookie = cookies().get("uid");
-  
+
   const handleLoginClick = () => {
     setShowLoginMenu(!isShowLoginMenu);
     document.body.classList.add("no-scroll");
-   };
- 
-   const closeLoginMenu = () => {
-     setShowLoginMenu(false);
-     document.body.classList.remove("no-scroll");
- 
-   };
+  };
 
+  const closeLoginMenu = () => {
+    setShowLoginMenu(false);
+    document.body.classList.remove("no-scroll");
+  };
 
   const [state, setState] = useState({
     name: "",
     email: "",
-    phoneNo:"",
+    phoneNo: "",
     address: "",
     fpo: "",
-    aadharCard: ""
-
+    aadharCard: "",
   });
 
   const handleChange = ({ name, value }: any) => {
@@ -44,38 +41,35 @@ const FarmerRegistration = () => {
   };
 
   const handleSubmit = async () => {
-    if (!state.name || !state.email || !state.phoneNo ||  !state.address) {
+    if (!state.name || !state.email || !state.phoneNo || !state.address) {
       toast("Enter details", { type: "error" });
       return;
     }
     const data = {
       createdAt: new Date(),
       email: state.email,
-      phoneNo: state. phoneNo,
+      phoneNo: state.phoneNo,
       address: state.address,
       fpo: state.fpo,
       aadharCard: state.aadharCard,
     };
 
     try {
-    
+      await addDoc(collection(db, "farmerRegistration"), data);
       setState({
         name: "",
         email: "",
-        phoneNo:"",
+        phoneNo: "",
         address: "",
         fpo: "",
-        aadharCard: ""
+        aadharCard: "",
       });
 
       toast.success("Application Submitted");
     } catch (error) {
-
       console.log(error);
       toast.error("Something went wrong.");
     }
-
-
   };
 
   return (
@@ -171,20 +165,22 @@ const FarmerRegistration = () => {
         </div>
         <div className="px-4 mt-10">
           <Button
-            onClickHandler={auth.currentUser?.uid  ? handleSubmit : handleLoginClick}
+            onClickHandler={
+              auth.currentUser?.uid ? handleSubmit : handleLoginClick
+            }
             isLoading={false}
             text={"Submit"}
             className="px-[40px] py-[15px] cursor-pointer"
           />
         </div>
-      </div> 
+      </div>
       {isShowLoginMenu && (
-            <SideMenuLogin
-              isOpen={isShowLoginMenu}
-              setShowLogin={setShowLoginMenu}
-              onClose={closeLoginMenu}
-            />
-          )}
+        <SideMenuLogin
+          isOpen={isShowLoginMenu}
+          setShowLogin={setShowLoginMenu}
+          onClose={closeLoginMenu}
+        />
+      )}
     </div>
   );
 };
