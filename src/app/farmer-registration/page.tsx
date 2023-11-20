@@ -52,6 +52,7 @@ const FarmerRegistration = () => {
       address: state.address,
       fpo: state.fpo,
       aadharCard: state.aadharCard,
+      name: state?.name,
     };
 
     try {
