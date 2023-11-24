@@ -9,23 +9,23 @@ const dummdData = [
   {
     img: "flaticon-basil",
     heading: "FRESH & ORGANIC",
-    text: "Neque porro quisquam est, qui dolorem ",
-    text1: "ipsum quia dolor sit amet, consectetur,",
-    text2: "adipisci velit, sed qu",
+    text: "You can buy fresh and organic",
+    text1: "products directly from farm",
+    text2: "",
   },
   {
     img: "flaticon-sprout-1",
     heading: "Buying From Farms Made Easy",
-    text: "Neque porro quisquam est, qui dolorem ",
-    text1: "ipsum quia dolor sit amet, consectetur,",
-    text2: "adipisci velit, sed qu",
+    text: "Now it is very easy to buy products",
+    text1: "from the farm through Farms Easy",
+    text2: "",
   },
   {
     img: "flaticon-best-outline",
     heading: "Choose Best Products",
-    text: "Neque porro quisquam est, qui dolorem ",
-    text1: "ipsum quia dolor sit amet, consectetur,",
-    text2: "adipisci velit, sed qu",
+    text: "You can choose and buy best",
+    text1: "products from the farm directly",
+    text2: "",
   },
 ];
 
@@ -47,7 +47,6 @@ const Features = () => {
                 <div className="text-[#777777] text-xs">
                   <div>{item.text}</div>
                   <div>{item.text1}</div>
-                  <div>{item.text2}</div>
                 </div>
               </div>
             </div>
