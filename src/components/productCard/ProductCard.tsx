@@ -57,7 +57,7 @@ const ProductCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
               <span className="text-white">OFF</span>
             </div>
           </div>
-          <div>
+          <div className="invisible" >
             <FlatIcon icon={`flaticon-heart text-2xl `} />
           </div>
         </div>
