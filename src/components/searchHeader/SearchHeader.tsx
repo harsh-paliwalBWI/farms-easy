@@ -81,7 +81,7 @@ const SearchHeader = ({ cookie }: any) => {
         await axios.get("/api/logout");
         queryClient.invalidateQueries({ queryKey: ["userData"] });
         queryClient.refetchQueries({ queryKey: ["userData"] });
-        router.replace('/');
+        router.replace("/");
       })
       .catch((error) => {
         // An error happened.
@@ -146,7 +146,7 @@ const SearchHeader = ({ cookie }: any) => {
         )}
       </div>
       <div className="flex items-center gap-5">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 invisible">
           <div>
             <FlatIcon icon="flaticon-heart text-2xl" />
           </div>
@@ -191,7 +191,7 @@ const SearchHeader = ({ cookie }: any) => {
               >
                 <Menu.Items className="z-50 absolute right-0 mt-2 top-full w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <div className="px-1 py-1 ">
-                    <Menu.Item>
+                    {/* <Menu.Item>
                       {({ active }) => (
                         <Link href={"/profile"}>
                           <button
@@ -199,12 +199,11 @@ const SearchHeader = ({ cookie }: any) => {
                               active ? "bg-primary text-white" : "text-gray-900"
                             } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                           >
-                            {/* {active ? "active" : "notActive"} */}
                             Profile
                           </button>
                         </Link>
                       )}
-                    </Menu.Item>
+                    </Menu.Item> */}
                     <Menu.Item>
                       {({ active }) => (
                         <button

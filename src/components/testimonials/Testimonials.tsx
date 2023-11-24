@@ -139,7 +139,7 @@ const Testimonials = () => {
                     </div>
                   </div>
                   <div className=" text-center md:mb-[50px] mb-[20px]">
-                    <div className=" flex justify-center items-center mb-[10px]">
+                    {/* <div className=" flex justify-center items-center mb-[10px]">
                       <Image
                         src={item.userImg}
                         alt=""
@@ -148,7 +148,7 @@ const Testimonials = () => {
                           height: "auto",
                         }}
                       />
-                    </div>
+                    </div> */}
                     <div className="sm:text-xl font-semibold mb-[5px] ">
                       {item.name}
                     </div>

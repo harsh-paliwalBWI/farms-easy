@@ -41,15 +41,8 @@ const HealthierWay = () => {
               Choose Best Healthier Way of Life
             </div>
             <div className="text-[#edeeec] mb-[5px] md:text-lg  sm:text-sm text-xs ">
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea{" "}
-            </div>
-            <div className="text-[#edeeec]  md:text-lg sm:text-sm text-xs sm:pb-0 ">
-              commodo con{" "}
-              {/* <span >
-                {" "}
-                <i className={`flaticon-home text-2xl bg-red-400 flex w-fit justify-center items-center `}></i>
-              </span> */}
+              WE HELP YOUR BUSINESS SOURCE FRESH PRODUCE DIRECTLY FROM FARMS
+              WITH TRANSPARENCY AND FAIR MARKET PRICING
             </div>
           </div>
         </div>

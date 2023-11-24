@@ -7,22 +7,22 @@ import FlatIcon from "../flatIcon/flatIcon";
 
 const dummdData = [
   {
-    img: "flaticon-leaf",
+    img: "flaticon-basil",
     heading: "FRESH & ORGANIC",
     text: "Neque porro quisquam est, qui dolorem ",
     text1: "ipsum quia dolor sit amet, consectetur,",
     text2: "adipisci velit, sed qu",
   },
   {
-    img: "flaticon-frams",
-    heading: "CERTIFIED ORGANIC SOURCES",
+    img: "flaticon-sprout-1",
+    heading: "Buying From Farms Made Easy",
     text: "Neque porro quisquam est, qui dolorem ",
     text1: "ipsum quia dolor sit amet, consectetur,",
     text2: "adipisci velit, sed qu",
   },
   {
-    img: "flaticon-pesticide",
-    heading: "Pesticide Free",
+    img: "flaticon-best-outline",
+    heading: "Choose Best Products",
     text: "Neque porro quisquam est, qui dolorem ",
     text1: "ipsum quia dolor sit amet, consectetur,",
     text2: "adipisci velit, sed qu",
@@ -38,7 +38,7 @@ const Features = () => {
           return (
             <div key={idx} className="flex items-start  gap-5 ">
               <div className="bg-[#588F27] sm:h-[80px] sm:w-[80px] h-[60px] w-[60px] rounded-full flex items-center justify-center">
-                <FlatIcon icon={`${item?.img} text-white text-4xl`} />
+                <FlatIcon icon={`${item?.img} text-white text-5xl font-bold`} />
               </div>
               <div>
                 <div className="font-semibold sm:text-lg text-sm mb-[3px]">
