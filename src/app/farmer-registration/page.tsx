@@ -45,6 +45,11 @@ const FarmerRegistration = () => {
       toast("Enter details", { type: "error" });
       return;
     }
+
+    if (/^\+[1-9]{1}[0-9]{3,14}$/.test(state?.phoneNo) === false) {
+      toast.error("Enter Country code with phone number");
+      return;
+    }
     const data = {
       createdAt: new Date(),
       email: state.email,
