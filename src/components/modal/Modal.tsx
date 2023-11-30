@@ -59,15 +59,14 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
     }
 
     if (
-      (state.phone.length < 10 || state.phone.length > 10) &&
-      !state.phone.includes("+")
+      /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/.test(state.phone) ===
+      false
     ) {
       toast("Incorrect Phone Number", { type: "error" });
       return;
     }
 
     setLoading(true);
-
     let data: any = {
       createdAt: new Date(),
       name: state.name,
@@ -91,6 +90,7 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
           unit: selected,
         },
       ],
+      vendorIds: [selectedProduct?.vendor?.id || ""],
     };
 
     if (auth.currentUser?.uid && userData) {
