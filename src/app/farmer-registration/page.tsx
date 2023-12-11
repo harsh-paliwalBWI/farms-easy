@@ -75,22 +75,21 @@ const FarmerRegistration = () => {
       name: state?.name,
     };
 
-    // try {
-    //   await addDoc(collection(db, "farmerRegistration"), data);
-    //   setState({
-    //     name: "",
-    //     email: "",
-    //     phoneNo: "",
-    //     address: "",
-    //     fpo: "",
-    //     aadharCard: "",
-    //   });
-
-    //   toast.success("Application Submitted");
-    // } catch (error) {
-    //   console.log(error);
-    //   toast.error("Something went wrong.");
-    // }
+    try {
+      await addDoc(collection(db, "farmerRegistration"), data);
+      setState({
+        name: "",
+        email: "",
+        phoneNo: "",
+        address: "",
+        fpo: "",
+        aadharCard: "",
+      });
+      toast.success("Application Submitted");
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong.");
+    }
   };
 
   return (
