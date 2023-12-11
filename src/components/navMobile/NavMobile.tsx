@@ -17,9 +17,12 @@ import useDebounce from "@/utils/useDebounce";
 import { handleTypesenseSearch } from "@/config/typesense";
 import { TiTimes } from "react-icons/ti";
 import SearchTile from "../searchHeader/SrarchTile";
+import SideMenuLogin from "../sidemenulogin/SideMenulogin";
 
 const NavMobile = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [isShowLoginMenu, setShowLoginMenu] = useState(false);
+
   const debouncedSearch = useDebounce(searchQuery, 500);
   const [searchedProducts, setSearchedProducts] = useState([]);
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -44,6 +47,19 @@ const NavMobile = () => {
       setSearchedProducts(res);
     }
   }
+
+  const handleLoginClick = () => {
+    // setShowLogin(true);
+
+    setShowLoginMenu(!isShowLoginMenu);
+    document.body.classList.add("no-scroll");
+  };
+
+  const closeLoginMenu = () => {
+    // dispatch(closeLoginModal());
+    setShowLoginMenu(false);
+    document.body.classList.remove("no-scroll");
+  };
 
   useEffect(() => {
     if (searchQuery === "") {
@@ -274,6 +290,46 @@ const NavMobile = () => {
                 )}
               </div>
               <Link
+                href={"/login"}
+                className={`${
+                  pathname.includes("aboutUs") && "text-[#619533]"
+                }  py-[5px] `}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsMobile(false);
+                  document.body.classList.remove("no-scroll");
+                  setShowLoginMenu(!isShowLoginMenu);
+                  document.body.classList.add("no-scroll");
+                }}
+              >
+                Buyer's Login
+              </Link>
+              <Link
+                href={"/farmer-registration"}
+                className={`${
+                  pathname.includes("aboutUs") && "text-[#619533]"
+                }  py-[5px]`}
+                onClick={(e) => {
+                  setIsMobile(false);
+                  document.body.classList.remove("no-scroll");
+                }}
+              >
+                Farmer Registration
+              </Link>
+              <Link
+                href={"https://bwi-emb-farmacy-vendor.web.app/"}
+                target="_blank"
+                className={`${
+                  pathname.includes("aboutUs") && "text-[#619533]"
+                }  py-[5px]`}
+                onClick={(e) => {
+                  setIsMobile(false);
+                  document.body.classList.remove("no-scroll");
+                }}
+              >
+                Farmer Login
+              </Link>
+              <Link
                 href={"/aboutUs"}
                 className={`${
                   pathname.includes("aboutUs") && "text-[#619533]"
@@ -330,6 +386,13 @@ const NavMobile = () => {
             </div>
           </div>
         </div>
+      )}
+      {isShowLoginMenu && (
+        <SideMenuLogin
+          isOpen={isShowLoginMenu}
+          setShowLogin={setShowLoginMenu}
+          onClose={closeLoginMenu}
+        />
       )}
     </div>
   );

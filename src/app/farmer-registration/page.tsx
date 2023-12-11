@@ -9,7 +9,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { cookies } from "next/dist/client/components/headers";
 import { auth, db } from "@/config/firebase-config";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 
 const FarmerRegistration = () => {
   const [isShowLoginMenu, setShowLoginMenu] = useState(false);
@@ -50,6 +50,21 @@ const FarmerRegistration = () => {
       toast.error("Enter Country code with phone number");
       return;
     }
+
+    const alreadyUser = await getDocs(
+      query(
+        collection(db, "auth"),
+        where("phoneNo", "==", state.phoneNo.split(" ").join(""))
+      )
+    ).then((val) => {
+      return val.docs.length;
+    });
+
+    if (alreadyUser) {
+      toast.error("Phone number is already in use.");
+      return;
+    }
+
     const data = {
       createdAt: new Date(),
       email: state.email,
