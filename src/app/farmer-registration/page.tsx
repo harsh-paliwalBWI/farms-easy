@@ -51,7 +51,7 @@ const FarmerRegistration = () => {
       return;
     }
 
-    const alreadyUser = await getDocs(
+    const inAuth = await getDocs(
       query(
         collection(db, "auth"),
         where("phoneNo", "==", state.phoneNo.split(" ").join(""))
@@ -59,8 +59,16 @@ const FarmerRegistration = () => {
     ).then((val) => {
       return val.docs.length;
     });
+    const alreadyUser = await getDocs(
+      query(
+        collection(db, "users"),
+        where("phoneNo", "==", state.phoneNo.split(" ").join(""))
+      )
+    ).then((val) => {
+      return val.docs.length;
+    });
 
-    if (alreadyUser) {
+    if (inAuth || alreadyUser) {
       toast.error("Phone number is already in use.");
       return;
     }
