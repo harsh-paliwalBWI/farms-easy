@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, FC } from "react";
 import { auth, db } from "../../config/firebase-config";
-import { doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import axios from "axios";
 import logo from "../../images/logo.png";
 import { useRouter, usePathname } from "next/navigation";
@@ -118,6 +118,13 @@ function SideMenuLogin({
               wishlistIds: [],
             };
             console.log(user, "user info");
+            await addDoc(collection(db, `auth`), {
+              createdAt: new Date(),
+              loginMode: "otp",
+              name: "user",
+              phoneNo: `+91${phoneNumber}`,
+              role: "user",
+            });
             await setDoc(doc(db, `users/${res.user.uid}`), user, {
               merge: true,
             });
