@@ -302,7 +302,7 @@ const NavMobile = () => {
                   document.body.classList.add("no-scroll");
                 }}
               >
-                Buyer's Login
+                Buyer&apos;s Login
               </Link>
               <Link
                 href={"/farmer-registration"}
