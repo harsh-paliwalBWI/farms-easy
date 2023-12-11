@@ -85,7 +85,6 @@ const FarmerRegistration = () => {
         fpo: "",
         aadharCard: "",
       });
-
       toast.success("Application Submitted");
     } catch (error) {
       console.log(error);
