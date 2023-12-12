@@ -118,13 +118,13 @@ function SideMenuLogin({
               wishlistIds: [],
             };
             console.log(user, "user info");
-            // await addDoc(collection(db, `auth`), {
-            //   createdAt: new Date(),
-            //   loginMode: "otp",
-            //   name: "user",
-            //   phoneNo: `+91${phoneNumber}`,
-            //   role: "user",
-            // });
+            await addDoc(collection(db, `auth`), {
+              createdAt: new Date(),
+              loginMode: "otp",
+              name: "user",
+              phoneNo: `+91${phoneNumber}`,
+              role: "user",
+            });
             await setDoc(doc(db, `users/${res.user.uid}`), user, {
               merge: true,
             });
