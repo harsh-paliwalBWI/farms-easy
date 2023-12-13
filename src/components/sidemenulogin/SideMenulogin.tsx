@@ -1,7 +1,16 @@
 "use client";
 import React, { useState, useEffect, FC } from "react";
 import { auth, db } from "../../config/firebase-config";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  query,
+  where,
+  updateDoc,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import axios from "axios";
 import logo from "../../images/logo.png";
 import { useRouter, usePathname } from "next/navigation";
@@ -14,6 +23,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getUserData } from "../../utils/databaseService";
 import FlatIcon from "../flatIcon/flatIcon";
 import { TiTimes } from "react-icons/ti";
+import { toast } from "react-toastify";
 
 function SideMenuLogin({
   isOpen,
@@ -62,6 +72,37 @@ function SideMenuLogin({
   const signInUserWithPhoneNumber = async () => {
     try {
       if (phoneNumber) {
+        const formattedPhoneNumber = `+91${phoneNumber}`;
+
+        const inAuth = await getDocs(
+          query(
+            collection(db, "auth"),
+            where("phoneNo", "==", formattedPhoneNumber.split(" ").join(""))
+          )
+        );
+
+        const alreadyUser = await getDocs(
+          query(
+            collection(db, "users"),
+            where("phoneNo", "==", formattedPhoneNumber.split(" ").join(""))
+          )
+        ).then((val) => {
+          return val.docs.length;
+        });
+
+        if (inAuth.docs.length > 0 || alreadyUser) {
+          const userDoc = inAuth.docs[0];
+          const userData = userDoc.data();
+
+          if (userData.role === "vendor") {
+            toast.info(
+              "You are a verified vendor. Please Login through Farmer Login"
+            );
+            onClose();
+            return;
+          }
+        }
+
         setLoading(true);
         const recaptchaVerifier = new RecaptchaVerifier(
           auth,
@@ -72,7 +113,7 @@ function SideMenuLogin({
           }
         );
 
-        const formattedPhoneNumber = `+91${phoneNumber}`;
+        // const formattedPhoneNumber = `+91${phoneNumber}`;
         await signInWithPhoneNumber(
           auth,
           formattedPhoneNumber,
@@ -118,13 +159,13 @@ function SideMenuLogin({
               wishlistIds: [],
             };
             console.log(user, "user info");
-            // await addDoc(collection(db, `auth`), {
-            //   createdAt: new Date(),
-            //   loginMode: "otp",
-            //   name: "user",
-            //   phoneNo: `+91${phoneNumber}`,
-            //   role: "user",
-            // });
+            await addDoc(collection(db, `auth`), {
+              createdAt: new Date(),
+              loginMode: "otp",
+              name: "user",
+              phoneNo: `+91${phoneNumber}`,
+              role: "user",
+            });
             await setDoc(doc(db, `users/${res.user.uid}`), user, {
               merge: true,
             });
