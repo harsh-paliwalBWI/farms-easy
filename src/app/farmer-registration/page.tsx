@@ -59,6 +59,7 @@ const FarmerRegistration = () => {
     ).then((val) => {
       return val.docs.length;
     });
+    
     const alreadyUser = await getDocs(
       query(
         collection(db, "users"),
