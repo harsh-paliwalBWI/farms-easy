@@ -12,7 +12,8 @@ import {
   setDoc,
 } from "firebase/firestore";
 import axios from "axios";
-import logo from "../../images/logo.png";
+// import logo from "../../images/logo.png";
+import logo from "../../images/logo2.png";
 import { useRouter, usePathname } from "next/navigation";
 import { RecaptchaVerifier } from "firebase/auth";
 import { signInWithPhoneNumber } from "firebase/auth";
@@ -213,8 +214,8 @@ function SideMenuLogin({
           <Image
             src={logo}
             alt=""
-            width={250}
-            height={250}
+            width={160}
+            height={160}
             style={{
               maxWidth: "100%",
               height: "auto",
