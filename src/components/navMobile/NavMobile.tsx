@@ -4,22 +4,31 @@ import { AiOutlineMenu } from "react-icons/ai";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { AiOutlineClose } from "react-icons/ai";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { BsTelephone } from "react-icons/bs";
 import Image from "next/image";
 import logo from "../../images/logo2.png";
 import { FiSearch } from "react-icons/fi";
 import { SlArrowDown } from "react-icons/sl";
 import FlatIcon from "../flatIcon/flatIcon";
-import { fetchCategories, fetchSubCategories } from "@/utils/databaseService";
-import { useQuery } from "@tanstack/react-query";
+import {
+  checkUserLogin,
+  fetchCategories,
+  fetchSubCategories,
+} from "@/utils/databaseService";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useDebounce from "@/utils/useDebounce";
 import { handleTypesenseSearch } from "@/config/typesense";
 import { TiTimes } from "react-icons/ti";
 import SearchTile from "../searchHeader/SrarchTile";
 import SideMenuLogin from "../sidemenulogin/SideMenulogin";
+import { signOut } from "firebase/auth";
+import { auth } from "@/config/firebase-config";
+import axios from "axios";
 
-const NavMobile = () => {
+const NavMobile = ({ cookie }: any) => {
+  const queryClient = useQueryClient();
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [isShowLoginMenu, setShowLoginMenu] = useState(false);
 
@@ -59,6 +68,23 @@ const NavMobile = () => {
     // dispatch(closeLoginModal());
     setShowLoginMenu(false);
     document.body.classList.remove("no-scroll");
+  };
+
+  const handleLogout = async () => {
+    return await signOut(auth)
+      .then(async () => {
+        // Sign-out successful.
+        await axios.get("/api/logout");
+        queryClient.invalidateQueries({ queryKey: ["userData"] });
+        queryClient.refetchQueries({ queryKey: ["userData"] });
+        router.replace("/");
+        setIsMobile(false);
+        document.body.classList.remove("no-scroll");
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -289,21 +315,24 @@ const NavMobile = () => {
                   </div>
                 )}
               </div>
-              <Link
-                href={"/login"}
-                className={`${
-                  pathname.includes("aboutUs") && "text-[#619533]"
-                }  py-[5px] `}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsMobile(false);
-                  document.body.classList.remove("no-scroll");
-                  setShowLoginMenu(!isShowLoginMenu);
-                  document.body.classList.add("no-scroll");
-                }}
-              >
-                Buyer&apos;s Login
-              </Link>
+
+              {!checkUserLogin(cookie) && (
+                <Link
+                  href={"/login"}
+                  className={`${
+                    pathname.includes("aboutUs") && "text-[#619533]"
+                  }  py-[5px] `}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsMobile(false);
+                    document.body.classList.remove("no-scroll");
+                    setShowLoginMenu(!isShowLoginMenu);
+                    document.body.classList.add("no-scroll");
+                  }}
+                >
+                  Buyer&apos;s Login
+                </Link>
+              )}
               <Link
                 href={"/farmer-registration"}
                 className={`${
@@ -377,6 +406,22 @@ const NavMobile = () => {
               >
                 Contact Us
               </Link>
+              {checkUserLogin(cookie) && (
+                <Link
+                  href={"/logout"}
+                  className={`${
+                    pathname.includes("aboutUs") && "text-[#619533]"
+                  }  py-[5px]`}
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    await handleLogout();
+                    setIsMobile(false);
+                    document.body.classList.remove("no-scroll");
+                  }}
+                >
+                  Logout
+                </Link>
+              )}
               <div className="flex items-center text-[#51150a] font-bold gap-2  py-[5px] ">
                 <div>
                   <BsTelephone className="h-[18px] w-[18px]" />
