@@ -53,7 +53,7 @@ const NavbarClient = ({ cookie }: any) => {
         </div>
       )}
       {mobile ? (
-        <NavMobile />
+        <NavMobile cookie={cookie} />
       ) : (
         <div className="w-full  px-[3.5%] flex justify-between py-[12px] bg-[#eef0e5] font-medium text-md">
           <div className="flex items-center gap-10 font-medium relative  ">
