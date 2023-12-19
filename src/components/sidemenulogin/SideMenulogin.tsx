@@ -1,30 +1,32 @@
 "use client";
-import React, { useState, useEffect, FC } from "react";
-import { auth, db } from "../../config/firebase-config";
+import axios from "axios";
 import {
   addDoc,
   collection,
+  doc,
   getDocs,
   query,
-  where,
-  updateDoc,
-  doc,
   setDoc,
+  where,
 } from "firebase/firestore";
-import axios from "axios";
+import { Fragment, useEffect, useState } from "react";
+import ReactCountryFlag from "react-country-flag";
+import { auth, db } from "../../config/firebase-config";
+
 // import logo from "../../images/logo.png";
-import logo from "../../images/logo2.png";
-import { useRouter, usePathname } from "next/navigation";
-import { RecaptchaVerifier } from "firebase/auth";
-import { signInWithPhoneNumber } from "firebase/auth";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import logo from "../../images/logo2.png";
 // import { useDispatch } from "react-redux";
 // import { closeLoginModal } from "../../redux/slices/loginModalSlice";
+import { allCountries } from "@/utils/constant";
+import { Menu, Transition } from "@headlessui/react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getUserData } from "../../utils/databaseService";
-import FlatIcon from "../flatIcon/flatIcon";
 import { TiTimes } from "react-icons/ti";
 import { toast } from "react-toastify";
+import { getUserData } from "../../utils/databaseService";
+import FlatIcon from "../flatIcon/flatIcon";
 
 function SideMenuLogin({
   isOpen,
@@ -35,7 +37,9 @@ function SideMenuLogin({
   onClose: any;
   setShowLogin: any;
 }) {
-  const [email, setEmail] = useState<any>("");
+  const [dialcountry, setdialcountry] = useState<any>(
+    allCountries?.filter((item) => item?.curr === "INR")[0]
+  );
   //   const dispatch = useDispatch();
   const [phoneNumber, setPhoneNumber] = useState<any>("");
   const queryClient = useQueryClient();
@@ -73,7 +77,7 @@ function SideMenuLogin({
   const signInUserWithPhoneNumber = async () => {
     try {
       if (phoneNumber) {
-        const formattedPhoneNumber = `+91${phoneNumber}`;
+        const formattedPhoneNumber = `${dialcountry.code}${phoneNumber}`;
 
         const inAuth = await getDocs(
           query(
@@ -152,7 +156,7 @@ function SideMenuLogin({
           if (res._tokenResponse.isNewUser) {
             let user = {
               name: "user",
-              phoneNo: `+91${phoneNumber}`,
+              phoneNo: `${dialcountry.code}${phoneNumber}`,
               createdAt: new Date(),
               profilePic: {
                 url: "",
@@ -164,7 +168,7 @@ function SideMenuLogin({
               createdAt: new Date(),
               loginMode: "otp",
               name: "user",
-              phoneNo: `+91${phoneNumber}`,
+              phoneNo: `${dialcountry.code}${phoneNumber}`,
               role: "user",
             });
             await setDoc(doc(db, `users/${res.user.uid}`), user, {
@@ -176,8 +180,8 @@ function SideMenuLogin({
 
           await axios.get(`/api/login?uid=${res.user.uid}`);
           setVerifying(false);
-          queryClient.invalidateQueries({ queryKey: ["userData"] });
-          queryClient.refetchQueries({ queryKey: ["userData"] });
+          await queryClient.invalidateQueries({ queryKey: ["userData"] });
+          await queryClient.refetchQueries({ queryKey: ["userData"] });
           router.replace(pathName);
           onClose();
           document.body.classList.remove("no-scroll");
@@ -228,15 +232,78 @@ function SideMenuLogin({
 
           {showPhoneNumberInput && (
             <div className="mb-[20px] w-[90%]">
-              <input
-                type="text"
-                placeholder="Enter phone number"
-                className="w-full px-[20px] py-[15px] mb-[15px] outline-0 border border-gray-300 "
-                value={phoneNumber}
-                onChange={(e) => {
-                  setPhoneNumber(e.target.value);
-                }}
-              />
+              <div className="flex">
+                <Menu
+                  as="div"
+                  className="w-[28%] relative text-left flex justify-center items-center  "
+                >
+                  <div className="flex justify-center items-center w-full">
+                    <Menu.Button className="w-full px-[4px] sm:px-[6px] md:px-[8px] lg:px-[10px] py-[9px] sm:py-[11px] md:py-[13px] lg:py-[15px]   mb-[15px]  bg-gray-100 border  border-gray-100  ">
+                      <div className="flex items-center gap-1 md:gap-2">
+                        <ReactCountryFlag countryCode={dialcountry?.icon} svg />
+                        <h4 className="lg:text-base md:text-sm text-xs">
+                          {dialcountry?.code}
+                        </h4>
+                        <FlatIcon className="flaticon-arrow-down-2 text-xs md:text-sm" />
+                      </div>
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="z-50 absolute left-0  top-full w-52 sm:w-48 lg:w-56 origin-top-left divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none max-h-[25vh] overflow-y-auto">
+                      {allCountries
+                        ?.sort((a, b) => a.name.localeCompare(b.name))
+                        ?.map((country, id) => {
+                          return (
+                            <div className="px-1 py-1 " key={id}>
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <button
+                                    onClick={() => {
+                                      setdialcountry(country);
+                                    }}
+                                    className={`${
+                                      active
+                                        ? "bg-primary text-white"
+                                        : "text-gray-900"
+                                    } group flex gap-4 w-full items-center rounded-md px-1 py-1 lg:px-2 lg:py-2 text-sm`}
+                                  >
+                                    <ReactCountryFlag
+                                      countryCode={country?.icon}
+                                      svg
+                                    />
+                                    {/* {active ? "active" : "notActive"} */}
+                                    {country?.code}
+
+                                    <h1 className=" line-clamp-1 text-left">
+                                      {country?.name}
+                                    </h1>
+                                  </button>
+                                )}
+                              </Menu.Item>
+                            </div>
+                          );
+                        })}
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+                <input
+                  type="text"
+                  placeholder="Enter phone number"
+                  className="w-full px-[20px] py-[15px] mb-[15px] outline-0 border border-gray-300 "
+                  value={phoneNumber}
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                  }}
+                />
+              </div>
 
               <div
                 onClick={async () => {
