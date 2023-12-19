@@ -14,6 +14,8 @@ const Page = async ({ params }: any) => {
   // console.log(params.id);
   const cookie = cookies().get("uid");
   const client = getQueryClient();
+  console.log("PARAMS", params);
+
   await client.prefetchQuery({
     queryKey: ["product", params?.id],
     queryFn: () => fetchSingleProduct({ slug: params?.id }),

@@ -199,7 +199,7 @@ const Productdescription = ({ cookie, slug }: any) => {
             </div>
           )} */}
 
-          <div className="flex gap-2  items-center mt-[1rem] mb-[.5rem]">
+          {/* <div className="flex gap-2  items-center mt-[1rem] mb-[.5rem]">
             <div className=" text-3xl font-semibold text-[#598f26] ">
               {currency}{" "}
               {(productInfo &&
@@ -215,7 +215,7 @@ const Productdescription = ({ cookie, slug }: any) => {
                   {productInfo?.variants[selectedVariant]?.price?.mrp}
                 </div>
               )}
-          </div>
+          </div> */}
 
           <hr></hr>
 

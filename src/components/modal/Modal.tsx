@@ -31,6 +31,7 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
     phone: "",
     quantity: "",
     quotedPrice: "",
+    companyName: "",
   });
 
   const [loading, setLoading]: any = useState(false);
@@ -72,6 +73,7 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
       name: state.name,
       phoneNo: state.phone,
       email: state.email,
+      companyName: state.companyName,
       products: [
         {
           name: selectedProduct?.name,
@@ -110,6 +112,7 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
         quotedPrice: "",
         name: "",
         phone: "",
+        companyName: "",
       });
       setSelected("");
       setLoading(false);
@@ -124,7 +127,7 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 top-0 left-0 w-[100vw] h-[100vh]">
-      <div className="bg-white w-[38rem]  rounded-3xl p-12">
+      <div className="bg-white w-[38rem] max-h-[90vh] overflow-auto   rounded-3xl p-12">
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-2xl font-bold">I&apos;M Interested</h2>
           <button
@@ -168,6 +171,16 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
               handleChange({ name: e.target.name, value: e.target.value });
             }}
             value={state.email}
+            className="border-[0.5px] rounded-sm py-3 md:py-4 px-4 md:px-6"
+          />
+          <input
+            type="text"
+            placeholder="Company/Brand Name"
+            name="companyName"
+            onChange={(e) => {
+              handleChange({ name: e.target.name, value: e.target.value });
+            }}
+            value={state.companyName}
             className="border-[0.5px] rounded-sm py-3 md:py-4 px-4 md:px-6"
           />
           <input

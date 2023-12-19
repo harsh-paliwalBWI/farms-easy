@@ -5,7 +5,7 @@ import Link from "next/link";
 function SearchTile(props: any) {
   return (
     <Link
-      href={`/product/${props.product?.slug}`}
+      href={`/product/${encodeURIComponent(props.product?.slug)}`}
       onClick={() => {
         props.setSearchQuery("");
       }}
