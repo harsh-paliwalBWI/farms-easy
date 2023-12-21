@@ -81,10 +81,10 @@ const Modal: FC<Props> = ({ handleCloseModal, selectedProduct, cookie }) => {
           quotedPrice: parseFloat(state.quotedPrice),
           id: selectedProduct?.id || "", // product id
           variant: {
-            unit: selectedProduct?.unit || "",
-            price: selectedProduct?.price || {},
-            weight: selectedProduct?.weight || 0,
-            sku: selectedProduct?.sku || "",
+            unit: selectedProduct?.variants[0].unit || "",
+            price: selectedProduct?.variants[0].price || {},
+            weight: selectedProduct?.variants[0].weight || 0,
+            sku: selectedProduct?.variants[0].sku || "",
           },
           vendor: {
             id: selectedProduct?.vendor?.id || "",
