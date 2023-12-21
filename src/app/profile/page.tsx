@@ -13,6 +13,7 @@ export const metadata = {
 const Profile = async () => {
   const cookie = cookies().get("uid");
   const queryClient = getQueryClient();
+  
 
   await queryClient.prefetchQuery(["userData"], () => getUserData(cookie));
   const dehydratedState = dehydrate(queryClient);

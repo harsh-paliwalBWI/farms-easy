@@ -191,6 +191,7 @@ function SideMenuLogin({
             await axios.post(`/api/login?uid=${res.user.uid}`);
             setIsNewUserModalOpen(true);
           } else {
+            await axios.post(`/api/login?uid=${res.user.uid}`);
             setVerifying(false);
             await queryClient.invalidateQueries({ queryKey: ["userData"] });
             await queryClient.refetchQueries({ queryKey: ["userData"] });
