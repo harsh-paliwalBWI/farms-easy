@@ -109,6 +109,8 @@ const Productdescription = ({ cookie, slug }: any) => {
         id: auth.currentUser?.uid,
         name: userData?.name || "",
         phoneNo: userData?.phoneNo || "",
+        companyName: userData?.company || "",
+        email: userData?.email || "",
         // phoneNo: string,
       };
     }

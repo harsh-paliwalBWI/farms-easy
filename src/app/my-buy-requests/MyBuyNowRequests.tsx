@@ -41,6 +41,12 @@ const MyBuyNowRequests = ({ cookie }: any) => {
                       {interest?.user?.phoneNo}
                     </span>
                   </p>
+                  <p>
+                    Company:{" "}
+                    <span className="text-primary font-medium">
+                      {interest?.user?.companyName}
+                    </span>
+                  </p>
                 </div>
                 <div className="flex flex-col mt-2">
                   <p>Products: </p>
@@ -78,6 +84,10 @@ const MyBuyNowRequests = ({ cookie }: any) => {
               </div>
             );
           })}
+
+        {(!interests || (interests && interests?.length === 0)) && (
+          <div className="text-black">No Requests generated till now</div>
+        )}
       </div>
     </div>
   );
