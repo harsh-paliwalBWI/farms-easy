@@ -81,6 +81,7 @@ const Productdescription = ({ cookie, slug }: any) => {
   const handleBuyNowRequest = async () => {
     let data: any = {
       createdAt: new Date(),
+      source: "Web",
       products: [
         {
           name: productInfo?.name,
