@@ -90,10 +90,12 @@ const Productdescription = ({ cookie, slug }: any) => {
           id: productInfo?.id || "", // productInfo id
           variant: {
             unit: productInfo?.variants[selectedVariant]?.unit || "",
-            price:
-              productInfo?.variants[selectedVariant]?.price?.discountedPrice ||
-              productInfo?.variants[selectedVariant]?.price?.mrp ||
-              "",
+            price: {
+              discounted:
+                productInfo?.variants[selectedVariant]?.price
+                  ?.discountedPrice || 0,
+              mrp: productInfo?.variants[selectedVariant]?.price?.mrp || 0,
+            },
             weight: productInfo?.variants[selectedVariant]?.weight || 0,
             sku: productInfo?.variants[selectedVariant]?.sku || "",
           },
