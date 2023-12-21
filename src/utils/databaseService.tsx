@@ -515,10 +515,12 @@ export async function getUserInterestedProductsData(cookie: any) {
 
   if (!uid) return null;
 
+  console.log("FETCIHNG DATA", uid);
+
   const data = await getDocs(
     query(
       collection(db, "leads"),
-      where("uid", "==", uid),
+      where("user.id", "==", uid),
       orderBy("createdAt", "desc")
     )
   ).then((val) => {
@@ -535,20 +537,17 @@ export async function getUserInterestedProductsData(cookie: any) {
   });
   return data;
 }
+
 export async function getUserBuyNowRequests(cookie: any) {
   let uid;
   if (auth.currentUser?.uid) {
     uid = auth.currentUser?.uid;
-    // console.log(uid,"auth id")
   }
   if (cookie?.value) {
     uid = cookie?.value;
-    // console.log(uid,"cookie id")
   }
 
   if (!uid) return null;
-
-  console.log("STARTED FETCHING");
 
   const data = await getDocs(
     query(

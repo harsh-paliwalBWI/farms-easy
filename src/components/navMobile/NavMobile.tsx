@@ -74,7 +74,7 @@ const NavMobile = ({ cookie }: any) => {
     return await signOut(auth)
       .then(async () => {
         // Sign-out successful.
-        await axios.get("/api/logout");
+        await axios.post("/api/logout");
         queryClient.invalidateQueries({ queryKey: ["userData"] });
         queryClient.refetchQueries({ queryKey: ["userData"] });
         router.replace("/");
@@ -331,6 +331,21 @@ const NavMobile = ({ cookie }: any) => {
                   }}
                 >
                   Buyer&apos;s Login
+                </Link>
+              )}
+              {checkUserLogin(cookie) && (
+                <Link
+                  href={"/profile"}
+                  className={`${
+                    pathname.includes("profile") && "text-[#619533]"
+                  }  py-[5px] `}
+                  onClick={(e) => {
+                    setIsMobile(false);
+                    document.body.classList.remove("no-scroll");
+                    document.body.classList.add("no-scroll");
+                  }}
+                >
+                  Profile
                 </Link>
               )}
               <Link

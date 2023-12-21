@@ -84,6 +84,10 @@ const MyInterests = ({ cookie }: any) => {
               </div>
             );
           })}
+
+        {(!interests || (interests && interests?.length === 0)) && (
+          <div className="text-black">No interests generated till now</div>
+        )}
       </div>
     </div>
   );

@@ -78,7 +78,7 @@ const SearchHeader = ({ cookie }: any) => {
       .then(async () => {
         // Sign-out successful.
         setIsDropDownOpen(false);
-        await axios.get("/api/logout");
+        await axios.post("/api/logout");
         queryClient.invalidateQueries({ queryKey: ["userData"] });
         queryClient.refetchQueries({ queryKey: ["userData"] });
         router.replace("/");
@@ -191,7 +191,7 @@ const SearchHeader = ({ cookie }: any) => {
               >
                 <Menu.Items className="z-50 absolute right-0 mt-2 top-full w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                   <div className="px-1 py-1 ">
-                    {/* <Menu.Item>
+                    <Menu.Item>
                       {({ active }) => (
                         <Link href={"/profile"}>
                           <button
@@ -203,7 +203,7 @@ const SearchHeader = ({ cookie }: any) => {
                           </button>
                         </Link>
                       )}
-                    </Menu.Item> */}
+                    </Menu.Item>
                     <Menu.Item>
                       {({ active }) => (
                         <button
