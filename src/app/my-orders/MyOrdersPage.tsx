@@ -67,10 +67,8 @@ const MyOrdersPage = ({ cookie }: any) => {
                     </span>
                   </p>
                   {interest?.attachment && (
-                    <Link
-                      href={interest?.attachment}
-                      onClick={(e) => {
-                        e.preventDefault();
+                    <button
+                      onClick={() => {
                         handleClick(interest?.attachment, interest?.orderId);
                       }}
                       // href={
@@ -79,7 +77,7 @@ const MyOrdersPage = ({ cookie }: any) => {
                       className="bg-primary flex justify-center items-center text-white rounded-md mt-2 py-2"
                     >
                       View Details
-                    </Link>
+                    </button>
                   )}
                 </div>
               </div>

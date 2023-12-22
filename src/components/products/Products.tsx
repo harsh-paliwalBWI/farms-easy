@@ -154,22 +154,6 @@ const Products = () => {
                       </div>
                     );
                   })}
-              {/* {[1, 2, 3, 4, 4, 7, 6, 3, 5].map((item: any, idx: number) => {
-                return (
-                  <div key={idx} className="relative ">
-                    <ProductCard />
-                    {modalOpen && (
-                      <Modal
-                        handleCloseModal={()=>{
-                          setModalOpen(false)
-                        }}
-                        selectedProduct={item}
-                        cookie={""}
-                      />
-                    )}
-                  </div>
-                );
-              })} */}
             </Slider>
           </div>
         </div>
