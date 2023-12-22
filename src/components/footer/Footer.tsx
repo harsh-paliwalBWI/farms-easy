@@ -22,6 +22,7 @@ const Footer = () => {
       subLinks: [
         { name: "My Interests", path: "/my-interests" },
         { name: "My Buy Requests", path: "/my-buy-requests" },
+        { name: "My Orders", path: "/my-orders" },
         // { name: "Register as Buyer" },
         { name: "Farmer Login", path: "/farmer-registration" },
         { name: "Farmer Registration", path: "/farmer-registration" },

@@ -569,3 +569,39 @@ export async function getUserBuyNowRequests(cookie: any) {
   });
   return data;
 }
+
+export async function getUserOrders(cookie: any) {
+  let uid;
+  if (auth.currentUser?.uid) {
+    uid = auth.currentUser?.uid;
+  }
+  if (cookie?.value) {
+    uid = cookie?.value;
+  }
+
+  if (!uid) return null;
+  try {
+    const docsData = await getDocs(
+      query(
+        collection(db, "orders"),
+        where("userId", "==", uid),
+        orderBy("createdAt", "desc")
+      )
+    ).then((val) => {
+      if (val.docs.length === 0) return [];
+
+      let arr = [];
+      for (const doc of val.docs) {
+        arr.push({ ...doc.data(), id: doc.id });
+      }
+
+      return arr;
+    });
+
+    return JSON.parse(JSON.stringify(docsData));
+  } catch (error) {
+    console.log("EROR", error);
+
+    return null;
+  }
+}
