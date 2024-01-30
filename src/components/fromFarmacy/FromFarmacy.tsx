@@ -50,11 +50,12 @@ const DUMMY_DATA1 = [
 const FromFarmacy = () => {
   const matches = useMediaQuery("(max-width:941px)");
   return (
-    <div className="sm:px-[3.5%] px-[7%]  py-[20px] relative">
-      <div className="text-center font-bold sm:text-4xl text-2xl">
+    <div className="sm:px-[3.5%] px-[7%]   relative ">
+      {/* <div className="text-center font-bold sm:text-4xl text-2xl">
         From Farmacy Farm Fresh
-      </div>
-      <div className="flex justify-center md:flex-row flex-col items-center sm:my-[60px] my-[20px] ">
+      </div> */}
+      {/* sm:my-[60px] my-[20px] */}
+      <div className="flex justify-center md:flex-row flex-col items-center sm:mt-[40px]  sm:mb-[60px] mb-[40px] ">
         <div className="  flex flex-col sm:gap-[60px] gap-[30px]">
           {DUMMY_DATA.map((item: any, idx: number) => {
             return (

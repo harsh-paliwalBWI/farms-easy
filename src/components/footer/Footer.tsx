@@ -31,7 +31,7 @@ const Footer = () => {
     {
       heading: "Useful links",
       subLinks: [
-        { name: "About Us", path: "/about-us" },
+        { name: "About Us", path: "/aboutUs" },
         { name: "Contact", path: "/contactUs" },
         // { name: "Hot Deals" },
         // { name: "Promotions" },
@@ -75,9 +75,9 @@ const Footer = () => {
   ];
   return (
     <div className="  h-fit">
-      <div className="flex lg:flex-row flex-wrap  sm:justify-center lg:justify-between gap-10  md:py-[50px] py-[20px]  px-[3.5%] border-t-[0.1px] border-[#E1E1E1] ">
-        <div className=" w-full md:w-auto flex flex-col items-center md:items-start">
-          <div className=" mb-[20px]">
+      <div className="flex lg:flex-row flex-wrap  sm:justify-center lg:justify-between md:gap-10 gap-5 md:py-[50px] py-[20px]  px-[3.5%] border-t-[0.1px] border-[#E1E1E1] ">
+        <div className=" w-full md:w-auto flex flex-col  items-start">
+          <div className=" mb-[20px] flex justify-center items-center w-full">
             <Image
               src={logo}
               alt=""
@@ -90,36 +90,39 @@ const Footer = () => {
               }}
             />
           </div>
-          <div className="flex items-center gap-3  mb-[20px]">
+          <div className="flex items-center  gap-3  md:mb-[20px] mb-[10px]">
             <div>
               <CiLocationOn className="text-xl text-primary" />
             </div>
             <div className="font-bold text-sm">
               Address :
               <span className="text-[#555555] text-sm font-semibold">
-                1762 School House Road
+                {/* 1762 School House Road */}
+                7th Floor, EA Chambers Tower II,<br/> 49/50L, Whites Rd, Express Estate,<br/> Royapettah,
+                Chennai, Tamil Nadu 600014
               </span>
             </div>
           </div>
-          <div className="flex items-center gap-3  mb-[20px]">
+          <div className="flex items-center gap-3  md:mb-[20px] mb-[10px]">
             <div>
               <FlatIcon classname="flaticon-calling text-[#588f27] text-xl" />
             </div>
             <div className="font-bold text-sm">
               Call Us :{" "}
               <span className="text-[#555555] text-sm font-semibold">
-                1233-777-2615
+                +91 9790897308/9798912099
+                {/* 1233-777-2615 */}
               </span>
             </div>
           </div>
-          <div className="flex items-center gap-3 mb-[20px]">
+          <div className="flex items-center gap-3 md:mb-[20px] mb-[10px]">
             <div>
               <FlatIcon classname="flaticon-message text-[#588f27] text-xl" />
             </div>
             <div className="font-bold text-sm">
               Email :{" "}
               <span className="text-[#555555] text-sm font-semibold">
-                farmacy@contact.com
+                admin@farmseasy.com
               </span>
             </div>
           </div>
@@ -136,11 +139,11 @@ const Footer = () => {
           </div>
         </div>
         {/* <div ></div> */}
-        <div className="flex w-full justify-around md:w-auto md:flex-1 md:justify-center md:gap-10 lg:gap-32">
+        <div className="flex md:flex-row flex-col w-full justify-around md:w-auto md:flex-1 md:justify-center md:gap-10 lg:gap-32 gap-4">
           {DUMMY_DATA.map((item: any, idx: number) => {
             return (
               <div className="" key={idx}>
-                <div className="font-semibold sm:text-xl text-base mb-[20px]">
+                <div className="font-semibold sm:text-xl text-base  md:mb-[20px] mb-[10px]">
                   {item.heading}
                 </div>
                 {item.subLinks.map((item: any, idx: number) => {
@@ -151,7 +154,7 @@ const Footer = () => {
                         target="_blank"
                         key={idx}
                       >
-                        <div className="text-[#555555] text-sm font-semibold mb-[20px]">
+                        <div className="text-[#555555] text-sm font-semibold md:mb-[20px] mb-[10px]">
                           {item.name}
                         </div>
                       </Link>
@@ -173,7 +176,7 @@ const Footer = () => {
                         }
                       }}
                     >
-                      <div className="text-[#555555] text-sm font-semibold mb-[20px]">
+                      <div className="text-[#555555] text-sm font-semibold md:mb-[20px] mb-[10px]">
                         {item.name}
                       </div>
                     </Link>
@@ -195,16 +198,16 @@ const Footer = () => {
         <div className="flex sm:gap-3 gap-2">
           <div className="bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center">
             {/* <RiFacebookFill className="text-white md:h-[22px] md:w-[22px] w-[15px] h-[15px]" /> */}
-            <FlatIcon icon={"flaticon-facebook text-white text-xl"} />
+            <FlatIcon icon={"flaticon-facebook text-white sm:text-xl text-lg"} />
           </div>
           <div className="bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center">
-            <FlatIcon icon={"flaticon-linkedin text-white text-xl"} />
+            <FlatIcon icon={"flaticon-linkedin text-white sm:text-xl text-lg"} />
           </div>
           <div className="bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center">
-            <FlatIcon icon={"flaticon-insta text-white text-xl"} />
+            <FlatIcon icon={"flaticon-insta text-white sm:text-xl text-lg"} />
           </div>
           <div className="bg-[#588f27] md:h-[40px] md:w-[40px] h-[30px] w-[30px] rounded-full flex items-center justify-center">
-            <FlatIcon icon={"flaticon-twitter text-white text-xl"} />
+            <FlatIcon icon={"flaticon-twitter text-white sm:text-xl text-lg"} />
           </div>
         </div>
       </div>
