@@ -21,7 +21,7 @@ const OfferBanner = () => {
   };
 
   return (
-    <div className="sm:px-[3.5%] px-[7%]  py-[100px]">
+    <div className="sm:px-[3.5%] px-[7%] py-[60px] sm:py-[80px] md:py-[100px]">
       <div className="flex flex-wrap gap-5  justify-center items-center ">
         <div
           style={{ position: "relative" }}

@@ -24,7 +24,7 @@ const CategoryAvl = ({ categories, subCategories }: any) => {
   return (
     // <div className=' w-[70%] mx-auto chooseCategory gap-8 '>
     <>
-      <div className="flex justify-center md:flex-no-wrap flex-wrap gap-x-10 gap-2  w-[90%] mx-auto sm:mb-[70px] mb-[50px]">
+      <div className="flex justify-center md:flex-no-wrap flex-wrap gap-x-10 gap-0.5 sm:gap-1 md:gap-2  w-[90%] mx-auto md:mb-[70px] sm:mb-[50px] mb-[30px]">
         {categories &&
           categories.map((item: any, idx: number) => {
             return (
@@ -36,7 +36,7 @@ const CategoryAvl = ({ categories, subCategories }: any) => {
                 <div
                   className={`${
                     item?.id === selectedCategory ? "bg-[#a4d672]" : "bg-white"
-                  } rounded-full w-[102px] h-[102px]  flex justify-center items-center mx-auto translate-y-[30px]`}
+                  } rounded-full w-[60px] sm:w-[80px] md:w-[102px] aspect-square  flex justify-center items-center mx-auto translate-y-[30px]`}
                 >
                   <FlatIcon
                     icon={`${
@@ -57,7 +57,7 @@ const CategoryAvl = ({ categories, subCategories }: any) => {
                     item?.id === selectedCategory
                       ? "bg-[#588f27]"
                       : "bg-[#b1bca6]"
-                  }   text-white font-semibold rounded-md  text-center h-[120px] pt-[40px] pb-[35px] w-[250px] px-[20px] `}
+                  }   text-white font-semibold rounded-md  text-center  h-[60px] sm:h-[90px] md:h-[120px] pt-[40px] pb-[28px] md:pb-[35px] w-[250px] px-[20px] `}
                 >
                   <div className="sm:text-lg text-base text-white  font-medium">
                     {item.name}

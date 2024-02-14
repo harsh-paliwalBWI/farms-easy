@@ -95,10 +95,10 @@ const BestSells = () => {
   return (
     <div className="px-[3.5%] pb-2 ">
       <div className="flex items-center justify-between ">
-        <div className="text-[#253D4E] font-bold text-3xl">
+        <div className=" text-[#253D4E] font-bold md:text-3xl sm:text-2xl text-xl">
           Daily Best Sells
         </div>
-        <div className="flex gap-3 items-center">
+        <div className="flex gap-1 sm:gap-2 md:gap-3 items-center">
           <div>
             <button
               onClick={() => slider.current?.slickPrev()}

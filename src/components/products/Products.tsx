@@ -88,8 +88,8 @@ const Products = () => {
     ],
   };
   return (
-    <div className=" px-[3.5%] pt-[100px]">
-      <div className="flex items-center justify-between mb-[65px]">
+    <div className=" px-[3.5%] pt-[60px] sm:pt-[80px] md:pt-[100px]">
+      <div className="flex items-center justify-between mb-[20px] sm:mb-[40px] md:mb-[65px]">
         <div className="text-[#253D4E] font-bold md:text-3xl sm:text-2xl text-xl">
           Featured Products
         </div>
@@ -118,7 +118,7 @@ const Products = () => {
           </button>
         )}
         <div className="back ">
-          <div className="w-[85vw]  lg:w-[90vw] h-auto ">
+          <div className="w-[90vw] md:w-[85vw]  lg:w-[90vw] h-auto ">
             <Slider
               ref={slider}
               {...settings}

@@ -33,14 +33,16 @@ const CategoryClient = ({ params }: any) => {
 
   function filterCategoriesByparams() {
     if (params?.subSubCategorySlug) {
-      let subSubCatId = subCategories?.filter(
-        (subCat: any) => subCat?.slug === params?.subCategorySlug
+      // console.log("3");
+      let subSubCatId = subSubCategories?.filter(
+        (subSubCat: any) => subSubCat?.slug === params?.subSubCategorySlug
       )[0]?.id;
-      return subSubSubCategories?.filter((subSubCat: any) =>
-        subSubCat?.categories?.includes(subSubCatId)
+      return subSubSubCategories?.filter((subSubSubCat: any) =>
+        subSubSubCat?.categories?.includes(subSubCatId)
       );
     }
     if (params?.subCategorySlug) {
+      // console.log("2");
       let subCatId = subCategories?.filter(
         (subCat: any) => subCat?.slug === params?.subCategorySlug
       )[0]?.id;
@@ -50,6 +52,7 @@ const CategoryClient = ({ params }: any) => {
     }
 
     if (params?.slug) {
+      // console.log("1");
       let catId = categories?.filter(
         (cat: any) => cat?.slug === params?.slug
       )[0]?.id;

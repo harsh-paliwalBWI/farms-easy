@@ -84,7 +84,7 @@ const Testimonials = () => {
   };
   const matches = useMediaQuery("(max-width:1150px)");
   return (
-    <div className={` pb-[150px] ${matches ? "pb-[20px]" : "pb-[150px]"}`}>
+    <div className={`mt-10 sm:mt-5 md:mt-0  ${matches ? "pb-[20px]" : "pb-[150px]"}`}>
       <div className="text-center text-[#51150a] font-semibold md:text-lg sm:text-base text-sm mb-[10px] ">
         Testimonials
       </div>

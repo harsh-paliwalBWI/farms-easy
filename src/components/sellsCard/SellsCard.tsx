@@ -12,9 +12,9 @@ const SellsCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
   return (
     // <div className=' w-fit'>
     // </div>
-    <div className="border-[#479332] border-[1px] w-full  rounded-md flex justify-center h-[370px] lg:h-[370px]  relative">
-      <div className=" flex flex-col items-center">
-        <div className="w-fit  h-[160px] flex justify-center items-center">
+    <div className="border-[#479332] border-[1px] w-full  rounded-md flex justify-center h-fit  relative">
+      <div className=" flex flex-col items-center w-full py-4">
+        <div className="w-full h-[160px] flex justify-center items-center ">
           <Image
             src={product?.images[product?.coverImage]?.url}
             alt=""
@@ -30,16 +30,16 @@ const SellsCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
             }
           />
         </div>
-        <div className="px-[15px] absolute bottom-[15px] w-full">
+        <div className="px-[15px]  bottom-[6px] sm:bottom-[10px] md:bottom-[15px] w-full">
           {/* <div className="text-[#ADADAD] text-[12px]">Vegetables</div> */}
-          <div className="text-[#253D4E] font-semibold my-[10px] flex gap-2 ">
+          <div className="text-[#253D4E] font-semibold my-[6px] sm:my-[8px] md:my-[10px] flex gap-2 ">
             <span>{product?.name}</span>
             <span>
               {" "}
               {/* {product?.variants[0]?.weight} {product?.variants[0]?.unit} */}
             </span>
           </div>
-          <div className="text-[12px] flex gap-1 my-[10px]">
+          <div className="text-[12px] flex gap-1 my-[6px] sm:my-[8px] md:my-[10px]">
             <span className="text-[#ADADAD]">By</span>
             <span className="text-[#588F27] font-medium">
               {product?.vendor?.name}

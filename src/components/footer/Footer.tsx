@@ -75,22 +75,22 @@ const Footer = () => {
   ];
   return (
     <div className="  h-fit">
-      <div className="flex lg:flex-row flex-wrap  sm:justify-center lg:justify-between md:gap-10 gap-5 md:py-[50px] py-[20px]  px-[3.5%] border-t-[0.1px] border-[#E1E1E1] ">
-        <div className=" w-full md:w-auto flex flex-col  items-start">
+      <div className="flex lg:flex-row flex-wrap  sm:justify-center lg:justify-between md:gap-7 gap-3 py-4 sm:py-5 md:py-6 px-6 sm:px-8 md:px-10 border-t-[0.1px] border-[#E1E1E1] ">
+        <div className=" w-full md:w-[35%] flex flex-col  items-start  bg-primary bg-opacity-10 p-3 sm:p-4 md:p-5">
           <div className=" mb-[20px] flex justify-center items-center w-full">
             <Image
               src={logo}
               alt=""
               height={300}
               width={300}
-              className=" sm:w-[200px]  w-[150px] "
+              className=" md:w-[100px]  sm:w-[75px] w-[50px] "
               style={{
                 maxWidth: "100%",
                 height: "auto",
               }}
             />
           </div>
-          <div className="flex items-center  gap-3  md:mb-[20px] mb-[10px]">
+          <div className="flex items-center  gap-3  md:mb-[20px] mb-[10px] w-full">
             <div>
               <CiLocationOn className="text-xl text-primary" />
             </div>
@@ -98,7 +98,7 @@ const Footer = () => {
               Address :
               <span className="text-[#555555] text-sm font-semibold">
                 {/* 1762 School House Road */}
-                7th Floor, EA Chambers Tower II,<br/> 49/50L, Whites Rd, Express Estate,<br/> Royapettah,
+                7th Floor, EA Chambers Tower II, 49/50L, Whites Rd, Express Estate, Royapettah,
                 Chennai, Tamil Nadu 600014
               </span>
             </div>
@@ -139,7 +139,7 @@ const Footer = () => {
           </div>
         </div>
         {/* <div ></div> */}
-        <div className="flex md:flex-row flex-col w-full justify-around md:w-auto md:flex-1 md:justify-center md:gap-10 lg:gap-32 gap-4">
+        <div className="flex md:flex-row flex-col w-full justify-around md:w-auto md:flex-1 md:justify-center md:gap-10 lg:gap-32 gap-4 pt-4 sm:pt-6  md:pt-8  pb-1 sm:pb-2 md:pb-3">
           {DUMMY_DATA.map((item: any, idx: number) => {
             return (
               <div className="" key={idx}>
