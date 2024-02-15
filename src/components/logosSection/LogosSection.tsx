@@ -103,7 +103,7 @@ const LogosSection = () => {
           <>
             {IMAGES.map((item: any, idx: number) => {
               return (
-                <div className="w-[180px]  border-2 border-black" key={idx}>
+                <div className="w-[180px] " key={idx}>
                   <Image
                     src={item.image}
                     height={1000}
