@@ -24,7 +24,7 @@ const CategoryAvl = ({ categories, subCategories }: any) => {
   return (
     // <div className=' w-[70%] mx-auto chooseCategory gap-8 '>
     <>
-      <div className="flex justify-center md:flex-no-wrap flex-wrap gap-x-10 gap-0.5 sm:gap-1 md:gap-2  w-[90%] mx-auto md:mb-[70px] sm:mb-[50px] mb-[30px]">
+      <div className="flex justify-center md:flex-no-wrap flex-wrap  gap-1 sm:gap-4 md:gap-7  w-[90%] mx-auto md:mb-[70px] sm:mb-[50px] mb-[30px]">
         {categories &&
           categories.map((item: any, idx: number) => {
             return (
