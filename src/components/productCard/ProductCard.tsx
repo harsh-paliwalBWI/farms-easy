@@ -55,10 +55,12 @@ const ProductCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
                   discountedPrice: product?.variants[0]?.price?.discounted,
                 })}
               </span>
-              <span className="text-white text-[10px] sm:text-xs md:text-sm">OFF</span>
+              <span className="text-white text-[10px] sm:text-xs md:text-sm">
+                OFF
+              </span>
             </div>
           </div>
-          <div className="invisible" >
+          <div className="invisible">
             <FlatIcon icon={`flaticon-heart text-lg sm:text-xl md:text-2xl `} />
           </div>
         </div>
@@ -77,28 +79,35 @@ const ProductCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
         </div>
         {/* <div className="text-[#ADADAD] text-[12px]">{product?.vendor?.name}</div> */}
         <div className="text-[#253D4E] font-semibold my-[3px] sm:my-[4px] md:my-[5px]">
-          <span className="text-xs sm:text-sm md:text-base">{product?.name} </span>
+          <span className="text-xs sm:text-sm md:text-base">
+            {product?.name}{" "}
+          </span>
           <span className="text-xs sm:text-sm md:text-base">
             {product?.variants[0]?.weight} {product?.variants[0]?.unit}
           </span>
         </div>
         <div className="text-[12px] flex gap-1 my-[3px] sm:my-[4px] md:my-[5px]">
-          <span className="text-[#ADADAD] text-xs sm:text-sm md:text-base">By</span>
+          <span className="text-[#ADADAD] text-xs sm:text-sm md:text-base">
+            By
+          </span>
           <span className="text-[#588F27] text-xs sm:text-sm md:text-base font-medium">
             {product?.vendor?.name}
           </span>
         </div>
-        {product?.vendor?.location?.address?.trim() && (
+        {product?.vendor?.location?.address && (
           <div className="flex h-5  gap-1 items-center my-[3px] sm:my-[4px] md:my-[5px] ">
-            <FlatIcon icon={`flaticon-location-fill text-sm sm:text-base md:text-lg text-primary`} />
+            <FlatIcon
+              icon={`flaticon-location-fill text-sm sm:text-base md:text-lg text-primary`}
+            />
             {/* <i className="h-[100%] w-auto text-[#598f26]" /> */}
             <p className="font-semibold text-[10px] sm:text-xs md:text-sm overflow-hidden truncate ">
-              {product?.vendor?.location?.address || (
-                <span className="text-gray-400 font-medium text-xs sm:text-sm md:text-base">Not available</span>
-              )}
+              {product?.vendor?.location?.address?.trim()
+                ? product.vendor.location.address
+                : "Not available"}
             </p>
           </div>
         )}
+        {/* {console.log(product?.vendor?.location?.address?.trim(), "ffffff")} */}
         <div className="flex items-center gap-2 my-[3px] sm:my-[4px] md:my-[5px]">
           <span className="font-semibold text-xs sm:text-sm md:text-base">
             {currency}{" "}
@@ -132,7 +141,9 @@ const ProductCard = ({ product, setSelectedProduct, handleOpenModal }: any) => {
 
           <Link href={`/product/${product?.slug}`}>
             <div className="bg-[#51150A] flex items-center justify-center px-[9px] sm:px-[11px] md:px-[13px] py-[10px] sm:py-[12px] md:py-[14px] rounded-md">
-              <FlatIcon icon={`flaticon-left-arrow text-xs sm:text-sm md:text-base text-white`} />
+              <FlatIcon
+                icon={`flaticon-left-arrow text-xs sm:text-sm md:text-base text-white`}
+              />
             </div>
           </Link>
         </div>
