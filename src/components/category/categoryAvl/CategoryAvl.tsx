@@ -96,7 +96,7 @@ const CategoryAvl = ({ categories, subCategories }: any) => {
                           item?.id === selectedCategory
                             ? "bg-[#588f27]"
                             : "bg-[#b1bca6]"
-                        }  flex text-white font-semibold rounded-md  text-center  h-[65px] sm:h-[75px] md:h-[100px]   w-fit  p-1 sm:p-1.5  cursor-pointer`}
+                        }  flex text-white font-semibold rounded-md  text-center  h-[55px] sm:h-[65px] md:h-[100px]   w-fit  p-1 sm:p-1.5  cursor-pointer`}
                         onClick={() => setSelectedCategory(item?.id)}
                       >
                 
