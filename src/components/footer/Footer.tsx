@@ -110,7 +110,7 @@ const Footer = () => {
             <div className="font-bold text-sm">
               Call Us :{" "}
               <span className="text-[#555555] text-sm font-semibold">
-                +91 9790897308/9798912099
+                +91 9790897308/ 9798912099
                 {/* 1233-777-2615 */}
               </span>
             </div>

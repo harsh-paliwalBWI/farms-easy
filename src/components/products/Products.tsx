@@ -32,40 +32,39 @@ const Products = () => {
     dots: false,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToScroll: 1,
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1242,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          // dots: true
-        },
-      },
-      {
-        breakpoint: 1515,
+        breakpoint: 1300,
         settings: {
           slidesToShow: 5,
-          slidesToScroll: 5,
+          slidesToScroll: 2,
           // dots: true
         },
       },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
+          slidesToScroll: 2,
+          // dots: true
+        },
+      },
+      {
+        breakpoint: 957,
+        settings: {
+          slidesToShow: 4,
           slidesToScroll: 3,
           // dots: true
         },
       },
       {
-        breakpoint: 833,
+        breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1.75,
+          slidesToScroll: 1,
           initialSlide: 2,
-          dots: true,
         },
       },
       {
@@ -74,21 +73,20 @@ const Products = () => {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
-          dots: true,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.75,
           slidesToScroll: 1,
-          dots: true,
+          // initialSlide: 1
         },
       },
     ],
   };
   return (
-    <div className=" px-[3.5%] pt-[60px] sm:pt-[80px] md:pt-[100px]">
+    <div className=" px-[3.5%] pt-[40px] sm:pt-[60px] md:pt-[100px]">
       <div className="flex items-center justify-between mb-[20px] sm:mb-[40px] md:mb-[65px]">
         <div className="text-[#253D4E] font-bold md:text-3xl sm:text-2xl text-xl">
           Featured Products

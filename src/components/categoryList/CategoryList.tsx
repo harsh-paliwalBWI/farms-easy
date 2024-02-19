@@ -126,7 +126,7 @@ const categoryList = [
 const CategoryList = () => {
   const slider = useRef<any>(null);
   const settings = {
-    dots: true,
+    // dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
@@ -139,33 +139,33 @@ const CategoryList = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
+          // dots: true,
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.75,
           slidesToScroll: 1,
           initialSlide: 2,
-          dots: true,
+          // dots: true,
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
           initialSlide: 2,
-          dots: true,
+          // dots: true,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.5,
           slidesToScroll: 1,
-          dots: true,
+          // dots: true,
         },
       },
     ],
@@ -219,9 +219,9 @@ const CategoryList = () => {
                               >
                                 <div
                                   key={idx}
-                                  className="flex gap-3  items-center"
+                                  className="flex gap-3  items-center border-2 border-primary rounded-md"
                                 >
-                                  <div className="w-[20%] lg:w-[25%] bg-slate-200">
+                                  <div className="w-[25%] bg-slate-200">
                                     <Image
                                       src={
                                         product?.images[product.coverImage]

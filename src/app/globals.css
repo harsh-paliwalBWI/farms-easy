@@ -63,6 +63,12 @@ h1,p,h2,h3,h4,h5,h6,div,span,a{
 
   grid-template-rows: 200px 200px;
 }
+
+.slick-slide>div {
+  margin: 0 3px !important;
+ }
+
+
 /* .category-card {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

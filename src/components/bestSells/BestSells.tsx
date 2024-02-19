@@ -69,8 +69,8 @@ const BestSells = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1.75,
+          slidesToScroll: 1,
           initialSlide: 2,
         },
       },
@@ -85,7 +85,7 @@ const BestSells = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.75,
           slidesToScroll: 1,
           // initialSlide: 1
         },
@@ -102,18 +102,18 @@ const BestSells = () => {
           <div>
             <button
               onClick={() => slider.current?.slickPrev()}
-              className="bg-[#F2F3F4] p-2 rounded-full "
+              className="bg-[#F2F3F4] p-1 md:p-2 rounded-full "
             >
-              <FlatIcon icon={`flaticon-left-arrow text-2xl rotate-180 `} />
+              <FlatIcon icon={`flaticon-left-arrow text-lg sm:text-xl md:text-2xl rotate-180 `} />
             </button>
           </div>
           <div>
             {" "}
             <button
               onClick={() => slider.current.slickNext()}
-              className="bg-[#F2F3F4] p-2 rounded-full "
+              className="bg-[#F2F3F4] p-1 md:p-2 rounded-full "
             >
-              <FlatIcon icon={`flaticon-left-arrow text-2xl  `} />
+              <FlatIcon icon={`flaticon-left-arrow text-lg sm:text-xl md:text-2xl  `} />
             </button>
           </div>
         </div>
@@ -129,7 +129,7 @@ const BestSells = () => {
             </div>
 } */}
       </div>
-      <div className="flex md:justify-start justify-center lg:flex-row flex-col gap-5 items-center my-4  w-full mx-auto   ">
+      <div className="flex md:justify-start justify-center lg:flex-row flex-col gap-1 sm:gap-3 md:gap-5 items-center my-4  w-full mx-auto   ">
         {/* <div className='back '> */}
         <div className="w-full  h-full ">
           <Slider
